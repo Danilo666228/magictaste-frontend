@@ -6,18 +6,20 @@ import { Button, Card, CardContent, CardDescription, CardHeader, CardTitle, Slid
 
 import { useConfig } from '@/hooks/useConfig'
 
+import { cn } from '@/lib/utils'
+
+const presets = [
+	{ name: 'Квадрат', value: 0 },
+	{ name: 'Скругленный', value: 8 },
+	{ name: 'Круглый', value: 20 }
+]
+
 export function ChangeAccentRadius() {
 	const { accentRadius, setAccentRadius } = useConfig()
 
 	const handleRadiusChange = (value: number[]) => {
 		setAccentRadius(value[0])
 	}
-
-	const presets = [
-		{ name: 'Квадрат', value: 0 },
-		{ name: 'Скругленный', value: 8 },
-		{ name: 'Круглый', value: 20 }
-	]
 
 	return (
 		<Card>
@@ -40,9 +42,7 @@ export function ChangeAccentRadius() {
 							key={preset.value}
 							variant='outline'
 							onClick={() => setAccentRadius(preset.value)}
-							className={`flex-1 shadow-sm transition-all duration-200 ${
-								accentRadius === preset.value ? 'border-accent bg-accent/10' : ''
-							}`}>
+							className={cn('flex-1 shadow-sm transition-all duration-200', accentRadius === preset.value && 'border-primary')}>
 							{preset.name}
 						</Button>
 					))}

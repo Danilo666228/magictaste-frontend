@@ -73,7 +73,7 @@ export function LoyaltyCard() {
 				<div>
 					<Typography className='mb-4 text-lg font-semibold'>Текущие преимущества</Typography>
 					<ul className='space-y-3'>
-						{loyalty?.data.loyaltyLevel.additionalBenefits.map((benefit, index) => (
+						{loyalty?.data.loyaltyLevel?.additionalBenefits?.map((benefit, index) => (
 							<motion.li
 								key={index}
 								initial={{ opacity: 0, x: -20 }}
@@ -103,7 +103,7 @@ export function LoyaltyCard() {
 							<Typography className='text-lg font-semibold text-primary'>Следующий уровень</Typography>
 						</div>
 						<ul className='space-y-3'>
-							{nextLevelLoyalty?.data.additionalBenefits.map((benefit, index) => (
+							{nextLevelLoyalty?.data.additionalBenefits?.map((benefit, index) => (
 								<motion.li
 									key={index}
 									initial={{ opacity: 0, y: 20 }}

@@ -24,12 +24,12 @@ export function VerificationAccount({ token }: { token: string }) {
 	const { isPending, isSuccess } = useVerificationAccount(token)
 	const [showAnimation, setShowAnimation] = useState(true)
 
-	useEffect(() => {
-		if (!isPending) {
-			const timer = setTimeout(() => setShowAnimation(false), 1000)
-			return () => clearTimeout(timer)
-		}
-	}, [isPending])
+	// useEffect(() => {
+	// 	if (!isPending) {
+	// 		const timer = setTimeout(() => setShowAnimation(false), 1000)
+	// 		return () => clearTimeout(timer)
+	// 	}
+	// }, [isPending])
 
 	return (
 		<Card className='w-full max-w-md shadow-lg'>

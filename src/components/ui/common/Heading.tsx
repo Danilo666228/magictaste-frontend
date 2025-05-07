@@ -26,10 +26,10 @@ interface HeadingProps extends VariantProps<typeof headingSizes>, ComponentProps
 
 const Heading = ({ title, description, className, size, ...props }: HeadingProps) => {
 	return (
-		<Container className={cn('mb-4', className)} {...props}>
+		<div className={cn('mb-4', className)} {...props}>
 			<h1 className={cn('font-semibold text-foreground my-2', headingSizes({ size }))}>{title}</h1>
 			{description && <Typography className='text-muted-foreground'>{description}</Typography>}
-		</Container>
+		</div>
 	)
 }
 
