@@ -1,0 +1,12 @@
+{
+	"header": {
+		"logo": {
+			"title": "Restorante Russian Cookie",
+			"description": "Delivery eat"
+		},
+		"navigation" : {
+			"main" : "Main",
+			"menu" : "Menu"
+		}
+	}
+}

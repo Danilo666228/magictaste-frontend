@@ -1,0 +1,169 @@
+[data-theme='violet'] {
+	--primary: 262.1 83.3% 57.8%;
+	--primary-foreground: 210 20% 98%;
+}
+
+.dark [data-theme='violet'] {
+	--primary: 263.4 70% 50.4%;
+	--primary-foreground: 210 20% 98%;
+}
+
+[data-theme='blue'] {
+	--primary: 204, 70%, 53%;
+	--primary-foreground: 210 40% 98%;
+}
+
+.dark [data-theme='blue'] {
+	--primary: 204, 70%, 53%;
+	--primary-foreground: 210 40% 98%;
+}
+
+[data-theme='turquoise'] {
+	--primary: 176, 77%, 41%;
+	--primary-foreground: 210 40% 98%;
+}
+
+.dark [data-theme='turquoise'] {
+	--primary: 176, 77%, 41%;
+	--primary-foreground: 210 40% 98%;
+}
+
+[data-theme='yellow'] {
+	--primary: 48, 89%, 50%;
+	--primary-foreground: 210 40% 98%;
+}
+
+.dark [data-theme='yellow'] {
+	--primary: 48, 89%, 50%;
+	--primary-foreground: 210 40% 98%;
+}
+
+[data-theme='peach'] {
+	--primary: 17, 94%, 67%;
+	--primary-foreground: 210 40% 98%;
+}
+
+.dark [data-theme='peach'] {
+	--primary: 17, 94%, 67%;
+	--primary-foreground: 210 40% 98%;
+}
+
+[data-theme='pink'] {
+	--primary: 330.4 81.2% 60.4%;
+	--primary-foreground: 210 40% 98%;
+}
+
+.dark [data-theme='pink'] {
+	--primary: 330.4 81.2% 60.4%;
+	--primary-foreground: 210 40% 98%;
+}
+
+[data-theme='rose'] {
+	--primary: 336 80% 58%;
+	--primary-foreground: 210 40% 98%;
+}
+
+.dark [data-theme='rose'] {
+	--primary: 336 80% 58%;
+	--primary-foreground: 210 40% 98%;
+}
+
+[data-theme='red'] {
+	--primary: 0 72.2% 50.6%;
+	--primary-foreground: 210 40% 98%;
+}
+
+.dark [data-theme='red'] {
+	--primary: 0 72.2% 50.6%;
+	--primary-foreground: 210 40% 98%;
+}
+
+[data-theme='indigo'] {
+	--primary: 234 89% 74%;
+	--primary-foreground: 210 40% 98%;
+}
+
+.dark [data-theme='indigo'] {
+	--primary: 234 89% 74%;
+	--primary-foreground: 210 40% 98%;
+}
+
+[data-theme='sky'] {
+	--primary: 199 89% 48%;
+	--primary-foreground: 210 40% 98%;
+}
+
+.dark [data-theme='sky'] {
+	--primary: 199 89% 48%;
+	--primary-foreground: 210 40% 98%;
+}
+
+[data-theme='mint'] {
+	--primary: 168 74% 45%;
+	--primary-foreground: 210 40% 98%;
+}
+
+.dark [data-theme='mint'] {
+	--primary: 168 74% 45%;
+	--primary-foreground: 210 40% 98%;
+}
+
+[data-theme='teal'] {
+	--primary: 172 66% 50%;
+	--primary-foreground: 210 40% 98%;
+}
+
+.dark [data-theme='teal'] {
+	--primary: 172 66% 50%;
+	--primary-foreground: 210 40% 98%;
+}
+
+[data-theme='emerald'] {
+	--primary: 142 71% 45%;
+	--primary-foreground: 210 40% 98%;
+}
+
+.dark [data-theme='emerald'] {
+	--primary: 142 71% 45%;
+	--primary-foreground: 210 40% 98%;
+}
+
+[data-theme='amber'] {
+	--primary: 43 96% 56%;
+	--primary-foreground: 210 40% 98%;
+}
+
+.dark [data-theme='amber'] {
+	--primary: 43 96% 56%;
+	--primary-foreground: 210 40% 98%;
+}
+
+[data-theme='coral'] {
+	--primary: 16 85% 66%;
+	--primary-foreground: 210 40% 98%;
+}
+
+.dark [data-theme='coral'] {
+	--primary: 16 85% 66%;
+	--primary-foreground: 210 40% 98%;
+}
+
+[data-theme='purple'] {
+	--primary: 269 75% 63%;
+	--primary-foreground: 210 40% 98%;
+}
+
+.dark [data-theme='purple'] {
+	--primary: 269 75% 63%;
+	--primary-foreground: 210 40% 98%;
+}
+
+[data-theme='slate'] {
+	--primary: 215 25% 27%;
+	--primary-foreground: 210 40% 98%;
+}
+
+.dark [data-theme='slate'] {
+	--primary: 215 25% 27%;
+	--primary-foreground: 210 40% 98%;
+}
