@@ -34,7 +34,12 @@ export function TwoFactorForm({ form, onComplete, isPending, fieldName }: TwoFac
 					render={({ field }) => (
 						<FormItem className='flex flex-col items-center'>
 							<FormControl>
-								<InputOTP disabled={isPending} pattern={REGEXP_ONLY_DIGITS} onComplete={onComplete} maxLength={6} {...field}>
+								<InputOTP
+									disabled={isPending}
+									pattern={REGEXP_ONLY_DIGITS}
+									onComplete={onComplete}
+									maxLength={6}
+									{...field}>
 									<InputOTPGroup>
 										<InputOTPSlot index={0} className='' />
 										<InputOTPSlot index={1} className='' />

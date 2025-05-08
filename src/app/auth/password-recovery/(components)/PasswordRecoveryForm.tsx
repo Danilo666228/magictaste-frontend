@@ -8,8 +8,7 @@ import { Button, Input } from '@/components/ui/common'
 import { Container } from '@/components/ui/common/Container'
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/common/Form'
 
-import { passwordRecoverySchema } from '@/schemas/auth/passwordRecovery'
-import { PasswordRecoverySchema } from '@/schemas/auth/passwordRecovery'
+import { PasswordRecoverySchema, passwordRecoverySchema } from '@/schemas/auth/passwordRecovery'
 
 import { usePasswordRecoveryMutation } from '@/shared/api/hooks/auth/usePasswordRecoveryMutation'
 

@@ -5,7 +5,7 @@ import Link from 'next/link'
 import { useRouter } from 'next/navigation'
 import { ReactNode } from 'react'
 
-import { Button, Container, Typography } from '@/components/ui/common'
+import { Button, Typography } from '@/components/ui/common'
 
 import { ROUTE } from '@/config/route.config'
 
@@ -17,17 +17,17 @@ interface LayoutProps {
 export default function AuthLayout({ children, modal }: LayoutProps) {
 	const router = useRouter()
 	return (
-		<Container className='grid min-h-svh overflow-hidden bg-gradient-to-br from-background to-muted lg:grid-cols-1'>
+		<div className='grid min-h-svh overflow-hidden bg-gradient-to-br from-background to-muted lg:grid-cols-1'>
 			<div className='relative z-10 flex flex-col gap-6 p-6 md:p-10'>
-				<Container className='flex justify-center gap-2 md:justify-start'>
+				<div className='flex justify-center gap-2 md:justify-start'>
 					<Link href='/' className='group flex items-center gap-2 font-medium transition-all hover:opacity-80'>
-						<Container className='flex h-8 w-8 items-center justify-center rounded-lg bg-primary text-primary-foreground shadow-md transition-all group-hover:scale-110'>
+						<div className='flex h-8 w-8 items-center justify-center rounded-lg bg-primary text-primary-foreground shadow-md transition-all group-hover:scale-110'>
 							<GalleryVerticalEnd className='size-4' />
-						</Container>
+						</div>
 						<span className='text-lg font-semibold'>Magic Taste.</span>
 					</Link>
-				</Container>
-				<Container className='flex flex-1 items-center justify-center'>
+				</div>
+				<div className='flex flex-1 items-center justify-center'>
 					<div className='flex w-full max-w-xl flex-col rounded-2xl border border-border/40 bg-background/90 p-8 shadow-xl backdrop-blur-xl transition-all hover:shadow-lg'>
 						{children}
 						{modal}
@@ -55,8 +55,8 @@ export default function AuthLayout({ children, modal }: LayoutProps) {
 							применяются.
 						</Typography>
 					</div>
-				</Container>
+				</div>
 			</div>
-		</Container>
+		</div>
 	)
 }

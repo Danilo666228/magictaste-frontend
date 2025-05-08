@@ -80,7 +80,6 @@ export function ProductsActions({ row }: ProductsActions) {
 					onOpenChange={setIsOpen}
 				/>
 				<ChangeStatusSale onSale={row.original.onSale} productId={row.original.id} />
-				<DropdownMenuItem onClick={() => router.push(ROUTE.product(row.original.id))}>Страница продукта</DropdownMenuItem>
 			</DropdownMenuContent>
 		</DropdownMenu>
 	)

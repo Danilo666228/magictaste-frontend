@@ -24,7 +24,7 @@ import { isActiveFavorite } from '@/lib/utils/favorite/is-active-favorite'
 import { cn } from '@/lib/utils/twMerge'
 
 interface ProductListProps {
-	products?: Product[]
+	products: Product[]
 	take?: number
 }
 

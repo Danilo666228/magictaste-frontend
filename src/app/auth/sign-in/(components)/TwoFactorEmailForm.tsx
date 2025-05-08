@@ -2,9 +2,9 @@
 
 import { UseFormReturn } from 'react-hook-form'
 
-import { SignInSchema } from '@/schemas/auth/signIn'
-
 import { TwoFactorForm } from '@/app/auth/sign-in/(components)/TwoFactorForm'
+
+import { SignInSchema } from '@/schemas/auth/signIn'
 
 interface TwoFactorEmailFormProps {
 	form: UseFormReturn<SignInSchema>
@@ -13,14 +13,5 @@ interface TwoFactorEmailFormProps {
 }
 
 export function TwoFactorEmailForm({ form, onComplete, isPending }: TwoFactorEmailFormProps) {
-	return (
-		<TwoFactorForm
-			form={form}
-			onComplete={onComplete}
-			isPending={isPending}
-			fieldName='emailCode'
-			title='Проверка электронной почты'
-			description='Введите 6-значный код, отправленный на вашу электронную почту'
-		/>
-	)
+	return <TwoFactorForm form={form} onComplete={onComplete} isPending={isPending} fieldName='emailCode' />
 }

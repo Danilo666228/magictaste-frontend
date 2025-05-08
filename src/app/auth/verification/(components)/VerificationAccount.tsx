@@ -2,7 +2,7 @@
 
 import { CheckCircle2, Loader2, XCircle } from 'lucide-react'
 import Link from 'next/link'
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 
 import {
 	Alert,
@@ -23,13 +23,6 @@ import { ROUTE } from '@/config/route.config'
 export function VerificationAccount({ token }: { token: string }) {
 	const { isPending, isSuccess } = useVerificationAccount(token)
 	const [showAnimation, setShowAnimation] = useState(true)
-
-	// useEffect(() => {
-	// 	if (!isPending) {
-	// 		const timer = setTimeout(() => setShowAnimation(false), 1000)
-	// 		return () => clearTimeout(timer)
-	// 	}
-	// }, [isPending])
 
 	return (
 		<Card className='w-full max-w-md shadow-lg'>
@@ -66,8 +59,8 @@ export function VerificationAccount({ token }: { token: string }) {
 						<XCircle className='h-16 w-16 text-destructive' />
 						<Alert variant='destructive'>
 							<AlertDescription>
-								Произошла ошибка при подтверждении вашей учетной записи. Возможно, ссылка недействительна или срок ее действия
-								истек.
+								Произошла ошибка при подтверждении вашей учетной записи. Возможно, ссылка недействительна или срок ее
+								действия истек.
 							</AlertDescription>
 						</Alert>
 						<Button asChild variant='outline' className='mt-4 w-full'>

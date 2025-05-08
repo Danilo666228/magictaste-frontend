@@ -1,22 +1,17 @@
 'use client'
 
 import { Heart } from 'lucide-react'
-import Link from 'next/link'
 import { useState } from 'react'
 
 import { Typography } from '@/components/ui/common'
 import { SearchInput } from '@/components/ui/elements/input/SearchInput'
 
-import { useProfile } from '@/hooks/useProfile'
-
 import { useGetFavoriteProductsQuery } from '@/shared/api/hooks/favorite/useGetFavoriteProductsQuery'
 import { useDebounceValue } from '@/shared/hooks'
 
 import { FavoriteList } from './FavoriteList'
-import { ROUTE } from '@/config/route.config'
 
 export function Favorites() {
-	const { profile } = useProfile()
 	const [searchValue, setSearchValue] = useState<string>('')
 	const debouncedSearch = useDebounceValue(searchValue, 500)
 
@@ -37,7 +32,7 @@ export function Favorites() {
 				</div>
 				<SearchInput placeholder='Поиск избранных' searchValue={searchValue} setSearchValue={setSearchValue} />
 			</div>
-			{!favorites?.data.length ? (
+			{/* {!favorites?.data.length ? (
 				<div className='flex flex-col items-center justify-center gap-4 rounded-xl border-2 border-dashed border-muted-foreground/50 p-12 text-center'>
 					<div className='rounded-full border bg-background p-3 shadow-md'>
 						<Heart className='h-8 w-8 fill-red-500 text-red-500' />
@@ -51,9 +46,13 @@ export function Favorites() {
 				</div>
 			) : (
 				<div className='flex flex-col gap-4'>
-					<FavoriteList favorites={favorites?.data ?? []} />
+					<FavoriteList favorites={favorites?.data} />
 				</div>
-			)}
+			)} */}
+
+			<div className='flex flex-col gap-4'>
+				<FavoriteList favorites={favorites?.data} />
+			</div>
 		</div>
 	)
 }

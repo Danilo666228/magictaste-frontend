@@ -28,7 +28,7 @@ export const getRoleName = (role : RoleName) : string => {
 
 	if(role in roles) {
 		return roles[role]
-	}else {
+	} else {
 		return 'Неизвестная роль'
 	}
 }

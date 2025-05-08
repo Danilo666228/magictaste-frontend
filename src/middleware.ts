@@ -23,7 +23,7 @@ export default async function middleware(request: NextRequest) {
 		console.log(error)
 	}
 
-	const isAdminRole = userRoles.includes(RoleName.ADMIN) || userRoles.includes(RoleName.SUPER_ADMIN)
+	const isAdminRole = userRoles.includes('ADMIN') || userRoles.includes('SUPER_ADMIN')
 
 	const isSupportRoute = nextUrl.pathname.startsWith('/dashboard/support')
 	const isAdminRoute = nextUrl.pathname.startsWith('/dashboard/admin')

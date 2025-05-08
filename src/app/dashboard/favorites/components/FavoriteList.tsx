@@ -2,6 +2,7 @@ import { useQueryClient } from '@tanstack/react-query'
 import { m } from 'framer-motion'
 import { Heart, ShoppingCart } from 'lucide-react'
 import { useFormatter } from 'next-intl'
+import Link from 'next/link'
 
 import {
 	ProductCard,
@@ -18,10 +19,11 @@ import { useProfile } from '@/hooks/useProfile'
 import { useToggleFavoriteMutation } from '@/shared/api/hooks/favorite/useToggleFavoriteMutation'
 import { Favorite } from '@/shared/api/types'
 
+import { ROUTE } from '@/config/route.config'
 import { cn } from '@/lib/utils/twMerge'
 
 interface FavoriteListProps {
-	favorites: Favorite[]
+	favorites: Favorite[] | undefined
 }
 
 export function FavoriteList({ favorites }: FavoriteListProps) {
@@ -68,6 +70,23 @@ export function FavoriteList({ favorites }: FavoriteListProps) {
 		hidden: { opacity: 0, y: 20 },
 		show: { opacity: 1, y: 0, transition: { duration: 0.5 } }
 	}
+
+	if (!favorites?.length) {
+		return (
+			<div className='flex flex-col items-center justify-center gap-4 rounded-xl border-2 border-dashed border-muted-foreground/50 p-12 text-center'>
+				<div className='rounded-full border bg-background p-3 shadow-md'>
+					<Heart className='h-8 w-8 fill-red-500 text-red-500' />
+				</div>
+				<Typography tag='h3' className='text-muted-foreground'>
+					Добавьте товары в избранное, чтобы просматривать их здесь
+				</Typography>
+				<Link href={ROUTE.menu()} className='text-primary'>
+					<Typography tag={'h3'}>Перейти в меню</Typography>
+				</Link>
+			</div>
+		)
+	}
+
 	return (
 		<m.ul
 			variants={container}
