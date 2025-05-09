@@ -1,6 +1,5 @@
 'use client'
 
-import { motion } from 'framer-motion'
 import { ArrowRight, Loader2, Lock, Mail } from 'lucide-react'
 import { useTheme } from 'next-themes'
 import Link from 'next/link'
@@ -90,11 +89,9 @@ export function SignInForm() {
 						/>
 
 						<div className='flex justify-end'>
-							<motion.div whileHover={{ x: 3 }} transition={{ type: 'spring', stiffness: 400, damping: 10 }}>
-								<Link href={ROUTE.auth.newPassword} className='text-sm text-muted-foreground hover:text-primary'>
-									Забыли пароль?
-								</Link>
-							</motion.div>
+							<Link href={ROUTE.auth.newPassword} className='text-sm text-muted-foreground hover:text-primary'>
+								Забыли пароль?
+							</Link>
 						</div>
 
 						<ReCAPTCHA
@@ -108,31 +105,26 @@ export function SignInForm() {
 							badge='bottomright'
 						/>
 
-						<motion.div
-							whileHover={{ scale: 1.02 }}
-							whileTap={{ scale: 0.98 }}
-							transition={{ type: 'spring', stiffness: 400, damping: 17 }}>
-							<Button
-								disabled={!form.formState.isValid || isPending}
-								type='submit'
-								className='group mt-2 h-12 w-full font-medium'
-								onClick={e => {
-									if (form.formState.isValid && !isPending) {
-										e.preventDefault()
-										recaptchaRef.current?.execute()
-									}
-								}}>
-								{isPending ? <Loader2 className='mr-2 h-5 w-5 animate-spin' /> : null}
-								{isPending ? (
-									'Выполняется вход...'
-								) : (
-									<span className='flex items-center'>
-										Войти в аккаунт
-										<ArrowRight className='ml-2 h-4 w-4 transition-transform group-hover:translate-x-1' />
-									</span>
-								)}
-							</Button>
-						</motion.div>
+						<Button
+							disabled={!form.formState.isValid || isPending}
+							type='submit'
+							className='group mt-2 h-12 w-full font-medium'
+							onClick={e => {
+								if (form.formState.isValid && !isPending) {
+									e.preventDefault()
+									recaptchaRef.current?.execute()
+								}
+							}}>
+							{isPending && <Loader2 className='mr-2 h-5 w-5 animate-spin' />}
+							{isPending ? (
+								'Выполняется вход...'
+							) : (
+								<span className='flex items-center'>
+									Войти в аккаунт
+									<ArrowRight className='ml-2 h-4 w-4 transition-transform duration-300 group-hover:translate-x-2' />
+								</span>
+							)}
+						</Button>
 					</form>
 				</Form>
 			</AuthWrapper>

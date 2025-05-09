@@ -169,7 +169,11 @@ export function SupportTicketChat({ socket, selectedTicket, onClose }: SupportTi
 									<AvatarFallback>{selectedTicket.userName.slice(0, 2)}</AvatarFallback>
 								</Avatar>
 							)}
-							<div className={cn('flex max-w-[75%] flex-col', message.senderId === profile?.data.id ? 'items-end' : 'items-start')}>
+							<div
+								className={cn(
+									'flex max-w-[75%] flex-col',
+									message.senderId === profile?.data.id ? 'items-end' : 'items-start'
+								)}>
 								<div
 									className={cn(
 										'w-fit max-w-full break-words rounded-t-2xl p-2 text-sm',

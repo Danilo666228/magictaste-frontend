@@ -31,8 +31,8 @@ export default function AuthLayout({ children, modal }: LayoutProps) {
 					<div className='flex w-full max-w-xl flex-col rounded-2xl border border-border/40 bg-background/90 p-8 shadow-xl backdrop-blur-xl transition-all hover:shadow-lg'>
 						{children}
 						{modal}
-						<Button onClick={() => router.push(ROUTE.home)} className='mt-1' variant={'link'}>
-							<ArrowLeft />
+						<Button onClick={() => router.push(ROUTE.home)} className='group mt-1' variant={'link'}>
+							<ArrowLeft className='transition-transform duration-300 group-hover:-translate-x-1' />
 							На главную
 						</Button>
 						<Typography className='block text-center text-xs text-muted-foreground'>

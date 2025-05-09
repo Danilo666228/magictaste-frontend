@@ -26,9 +26,7 @@ export function useProfile() {
 
 	useEffect(() => {
 		if (isError) {
-			if (isAuth) {
-				clearSession({})
-			}
+			clearSession({})
 			unauthorized()
 			router.push(ROUTE.auth.signIn)
 		}

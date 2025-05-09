@@ -1,5 +1,4 @@
-import { Apple, LucideIcon, MessageSquare, SquareChartGantt, User } from 'lucide-react'
-import { BarChart3, Bell, BookOpenCheck, CircleUser, Heart, Settings, Truck, Users } from 'lucide-react'
+import { BarChart3, Bell, BookOpenCheck, CircleUser, Heart, MessageSquare, Settings, SquareChartGantt, Truck } from 'lucide-react'
 
 import { NavigationItem } from './Navigation/types'
 import { ROUTE } from '@/config/route.config'
@@ -84,22 +83,22 @@ export const navigationConfig: NavigationItem[] = [
 		title: 'Управление магазином',
 		icon: SquareChartGantt,
 		isActive: false,
-		roles: ['ADMIN', 'SUPER_ADMIN'],
+		roles: ['ADMIN', 'SUPER_ADMIN', 'MANAGER'],
 		items: [
 			{
 				title: 'Продукты',
 				url: ROUTE.dashboard.admin.products,
-				roles: ['ADMIN', 'SUPER_ADMIN']
+				roles: ['ADMIN', 'SUPER_ADMIN', 'MANAGER']
 			},
 			{
 				title: 'Категории',
 				url: ROUTE.dashboard.admin.categories,
-				roles: ['ADMIN', 'SUPER_ADMIN']
+				roles: ['ADMIN', 'SUPER_ADMIN', 'MANAGER']
 			},
 			{
 				title: 'Ингредиенты',
 				url: ROUTE.dashboard.admin.ingredients,
-				roles: ['ADMIN', 'SUPER_ADMIN']
+				roles: ['ADMIN', 'SUPER_ADMIN', 'MANAGER']
 			}
 		]
 	},

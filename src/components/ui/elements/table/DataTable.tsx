@@ -7,20 +7,10 @@ import {
 	flexRender,
 	getCoreRowModel,
 	getFilteredRowModel,
-	getPaginationRowModel,
 	getSortedRowModel,
 	useReactTable
 } from '@tanstack/react-table'
-import {
-	ChevronLeftIcon,
-	ChevronRightIcon,
-	ChevronsLeftIcon,
-	ChevronsRightIcon,
-	EllipsisVertical,
-	Filter,
-	Search,
-	Settings
-} from 'lucide-react'
+import { ChevronLeftIcon, ChevronRightIcon, ChevronsLeftIcon, ChevronsRightIcon, Filter, Search, Settings } from 'lucide-react'
 import { useState } from 'react'
 
 import {
@@ -30,15 +20,16 @@ import {
 	CardDescription,
 	CardHeader,
 	CardTitle,
-	DropdownMenu,
-	DropdownMenuContent,
-	DropdownMenuItem,
-	DropdownMenuTrigger,
 	Input,
 	Label,
 	Popover,
 	PopoverContent,
 	PopoverTrigger,
+	Select,
+	SelectContent,
+	SelectItem,
+	SelectTrigger,
+	SelectValue,
 	Separator,
 	Skeleton,
 	Table,
@@ -49,7 +40,6 @@ import {
 	TableRow,
 	Typography
 } from '@/components/ui/common'
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/common'
 
 import { useProfile } from '@/hooks/useProfile'
 
@@ -114,6 +104,8 @@ export function DataTable<TData, TValue>({
 		}
 	})
 
+	if (!profile?.data) return null
+
 	return (
 		<div className='space-y-4'>
 			<Card>
@@ -126,7 +118,11 @@ export function DataTable<TData, TValue>({
 						<div className='flex items-center gap-2'>
 							{filterKey && (
 								<>
-									<div className='flex items-center gap-2'>{createModal}</div>
+									{checkAccessRoles(
+										profile?.data.roles.map(role => role.name),
+										['SUPER_ADMIN', 'ADMIN']
+									) && <div className='flex items-center gap-2'>{createModal}</div>}
+
 									<div className='relative'>
 										<Search className='absolute left-2 top-2.5 h-4 w-4 text-muted-foreground' />
 										<Input
@@ -165,7 +161,9 @@ export function DataTable<TData, TValue>({
 										{headerGroup.headers.map(header => {
 											return (
 												<TableHead key={header.id}>
-													{header.isPlaceholder ? null : flexRender(header.column.columnDef.header, header.getContext())}
+													{header.isPlaceholder
+														? null
+														: flexRender(header.column.columnDef.header, header.getContext())}
 												</TableHead>
 											)
 										})}
@@ -187,7 +185,9 @@ export function DataTable<TData, TValue>({
 									table.getRowModel().rows.map(row => (
 										<TableRow key={row.id} data-state={row.getIsSelected() && 'selected'}>
 											{row.getVisibleCells().map(cell => (
-												<TableCell key={cell.id}>{flexRender(cell.column.columnDef.cell, cell.getContext())}</TableCell>
+												<TableCell key={cell.id}>
+													{flexRender(cell.column.columnDef.cell, cell.getContext())}
+												</TableCell>
 											))}
 											{checkAccessRoles(
 												(profile?.data.roles ?? []).map(role => role.name),
@@ -202,7 +202,9 @@ export function DataTable<TData, TValue>({
 														</PopoverTrigger>
 														<PopoverContent className='flex flex-col gap-2 p-0'>
 															<div className='px-2 py-1 text-center'>
-																<Typography className='text-center text-sm font-semibold'>Действия</Typography>
+																<Typography className='text-center text-sm font-semibold'>
+																	Действия
+																</Typography>
 															</div>
 															<Separator className='' />
 															<div className='p-2'>{editModal && editModal(row.original)}</div>

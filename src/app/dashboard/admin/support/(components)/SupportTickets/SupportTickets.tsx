@@ -11,7 +11,7 @@ import { Account } from '@/shared/api/types'
 
 import { SupportTicketChat } from './SupportTicketChat/SupportTicketChat'
 import { SupportTicketList } from './SupportTicketList'
-import { SERVER_URL, SOCKET_SUPPORT_CHAT_URL } from '@/lib/constants/url.constants'
+import { SERVER_URL } from '@/lib/constants/url.constants'
 
 export function SupportTickets() {
 	const [selectedTicket, setSelectedTicket] = useState<Account | null>(null)
@@ -23,21 +23,12 @@ export function SupportTickets() {
 		if (!profile?.data.id) return
 
 		const socket = io(SERVER_URL, {
-			path: SOCKET_SUPPORT_CHAT_URL,
+			// path: SOCKET_SUPPORT_CHAT_URL,
 			auth: {
-				userId: profile.data.id,
-				isSupport: true
+				userId: profile.data.id
 			},
 			withCredentials: true,
 			transports: ['websocket']
-		})
-
-		socket.on('connect', () => {
-			console.log('Support socket connected')
-		})
-
-		socket.on('connect_error', error => {
-			console.error('Support socket connection error:', error)
 		})
 
 		socket.on('newChatRequest', data => {})
@@ -50,25 +41,13 @@ export function SupportTickets() {
 	}, [profile?.data.id])
 
 	const handleTicketClick = (ticket: Account) => {
-		console.log('Selected ticket:', ticket)
 		setSelectedTicket(ticket)
 
-		// Назначаем чат текущему администратору
 		if (socket && profile?.data.id) {
-			socket.emit(
-				'assignChat',
-				{
-					userId: ticket.id,
-					supportId: profile.data.id
-				},
-				(response: any) => {
-					if (response.success) {
-						console.log('Chat assigned successfully:', response.chat)
-					} else {
-						console.error('Failed to assign chat:', response.error)
-					}
-				}
-			)
+			socket.emit('assignChat', {
+				userId: ticket.id,
+				supportId: profile.data.id
+			})
 		}
 	}
 

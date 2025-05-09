@@ -24,6 +24,7 @@ export default async function middleware(request: NextRequest) {
 	}
 
 	const isAdminRole = userRoles.includes('ADMIN') || userRoles.includes('SUPER_ADMIN')
+	const isManager = userRoles.includes('MANAGER')
 
 	const isSupportRoute = nextUrl.pathname.startsWith('/dashboard/support')
 	const isAdminRoute = nextUrl.pathname.startsWith('/dashboard/admin')
@@ -34,7 +35,7 @@ export default async function middleware(request: NextRequest) {
 		return NextResponse.redirect(new URL(ROUTE.auth.signIn, request.url))
 	}
 
-	if (!isAdminRole && nextUrl.pathname.endsWith('/overview')) {
+	if (!isAdminRole && !isManager && nextUrl.pathname.endsWith('/overview')) {
 		return NextResponse.redirect(new URL(ROUTE.notfound, request.url))
 	}
 
@@ -46,7 +47,7 @@ export default async function middleware(request: NextRequest) {
 		return NextResponse.redirect(new URL(ROUTE.dashboard.profile, request.url))
 	}
 
-	if (isAdminRoute && !isAdminRole) {
+	if (isAdminRoute && !isAdminRole && !isManager) {
 		return NextResponse.redirect(new URL(ROUTE.dashboard.profile, request.url))
 	}
 

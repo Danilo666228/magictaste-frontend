@@ -1,7 +1,6 @@
 import { useQueryClient } from '@tanstack/react-query'
 import { Row } from '@tanstack/react-table'
 import { MoreHorizontal } from 'lucide-react'
-import { useRouter } from 'next/navigation'
 import { useState } from 'react'
 
 import {
@@ -23,7 +22,6 @@ import { useChangeProductImageMutation } from '@/shared/api/hooks/products/useCh
 import { ChangeStatusSale } from './actions/ChangeStatusSale'
 import { DeleteProductMenuItem } from './actions/DeleteProductMenuItem'
 import { ProductColumn } from './columns'
-import { ROUTE } from '@/config/route.config'
 
 interface ProductsActions {
 	row: Row<ProductColumn>
@@ -43,7 +41,7 @@ export function ProductsActions({ row }: ProductsActions) {
 			}
 		}
 	})
-	const router = useRouter()
+
 	return (
 		<DropdownMenu>
 			<DropdownMenuTrigger asChild>

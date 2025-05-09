@@ -1,6 +1,6 @@
 'use client'
 
-import { CircleUser, MessageCircle } from 'lucide-react'
+import { MessageCircle } from 'lucide-react'
 import { useFormatter } from 'next-intl'
 import { useEffect, useState } from 'react'
 import { Socket, io } from 'socket.io-client'
@@ -14,10 +14,10 @@ import { Avatar, AvatarFallback, AvatarImage } from '../../common'
 import { Typography } from '../../common/Typography'
 
 import { ExpandableChat, ExpandableChatBody, ExpandableChatFooter, ExpandableChatHeader } from './ExpandableChat'
-import { SERVER_URL, SOCKET_SUPPORT_CHAT_URL } from '@/lib/constants/url.constants'
+import { SERVER_URL } from '@/lib/constants/url.constants'
 import { getMediaSource } from '@/lib/utils'
-import { cn } from '@/lib/utils/twMerge'
 import { checkAccessRoles } from '@/lib/utils/accessRoles'
+import { cn } from '@/lib/utils/twMerge'
 
 interface Message {
 	id: string
@@ -32,7 +32,6 @@ interface Message {
 
 export function SupportChat() {
 	const { profile } = useProfile()
-
 	const formatter = useFormatter()
 	const [messages, setMessages] = useState<Message[]>([])
 	const [message, setMessage] = useState('')
@@ -43,13 +42,9 @@ export function SupportChat() {
 	const [isLoading, setIsLoading] = useState(true)
 
 	useEffect(() => {
-		// Проверка на роли должна быть внутри компонента, а не на верхнем уровне
 		if (!profile?.data?.id) return
 
-		
-		// Инициализация сокета
 		const socketInstance = io(SERVER_URL, {
-			path: SOCKET_SUPPORT_CHAT_URL,
 			auth: { userId: profile.data.id },
 			withCredentials: true,
 			transports: ['websocket']
@@ -57,7 +52,6 @@ export function SupportChat() {
 
 		setSocket(socketInstance)
 
-		// Обработчики событий сокета
 		socketInstance.on('connect', () => {
 			console.log('Connected to support socket')
 			setIsConnected(true)
@@ -73,147 +67,69 @@ export function SupportChat() {
 			setMessages(prev => [...prev, newMessage])
 		})
 
-		socketInstance.on('supportConnected', (data: { supportName: string; support: Account }) => {
-			console.log('Support connected:', data)
-			setSupport(data.support)
-		})
-
-		socketInstance.on('chatFinished', () => {
-			console.log('Chat finished')
-			setSupport(null)
-			setChatStarted(false)
-			// Добавляем системное сообщение о завершении чата
-			const systemMessage: Message = {
-				id: uuidv4(),
-				message: 'Чат завершен. Вы можете запросить поддержку снова, если потребуется помощь.',
-				senderId: 'system',
-				sender: { id: 'system', userName: 'Система' } as Account,
-				createdAt: new Date(),
-				updatedAt: new Date()
-			}
-			setMessages(prev => [...prev, systemMessage])
-		})
-
-		socketInstance.on('chatClosed', () => {
-			console.log('Chat closed by admin')
-			setSupport(null)
-			setChatStarted(false)
-			// Добавляем системное сообщение о закрытии чата администратором
-			const systemMessage: Message = {
-				id: uuidv4(),
-				message: 'Чат был закрыт администратором. Вы можете запросить поддержку снова, если потребуется помощь.',
-				senderId: 'system',
-				sender: { id: 'system', userName: 'Система' } as Account,
-				createdAt: new Date(),
-				updatedAt: new Date()
-			}
-			setMessages(prev => [...prev, systemMessage])
-		})
-
 		socketInstance.on('supportAssigned', (data: { support: Account }) => {
 			console.log('Support assigned:', data)
 			setSupport(data.support)
 		})
 
-		// Альтернативное событие для совместимости
-		socketInstance.on('supportConnected', (data: { support: Account }) => {
-			console.log('Support connected:', data)
-			setSupport(data.support)
-		})
+		socketInstance.on('chatFinished', handleChatEnd('Чат завершен. Вы можете запросить поддержку снова.'))
+		socketInstance.on('chatClosed', handleChatEnd('Чат был закрыт администратором. Вы можете запросить поддержку снова.'))
 
 		// Проверка активного чата при подключении
-		socketInstance.emit(
-			'getUserChat',
-			{ userId: profile.data.id },
-			(response: {
-				success: boolean
-				chat?: {
-					status: string
-					assignedAdmin?: Account
-				}
-			}) => {
-				console.log('Get user chat response:', response)
-				if (response.success && response.chat) {
-					// Проверяем статус чата
-					if (response.chat.status === 'ACTIVE' || response.chat.status === 'WAITING') {
-						setChatStarted(true)
-						if (response.chat.assignedAdmin) {
-							setSupport(response.chat.assignedAdmin)
-						}
-					} else {
-						// Если чат не активен (CLOSED, FINISHED и т.д.), сбрасываем состояние
-						setChatStarted(false)
-						setSupport(null)
-					}
-				} else {
-					// Если чата нет или запрос не успешен, сбрасываем состояние
-					setChatStarted(false)
-					setSupport(null)
-				}
-			}
-		)
+		socketInstance.emit('getUserChat', { userId: profile.data.id }, handleChatResponse)
+
 		// Получаем историю сообщений
-		socketInstance.emit(
-			'getChatHistory',
-			{ userId: profile.data.id },
-			(response: { success: boolean; history: Message[]; chatStatus?: string }) => {
-				if (response.success) {
-					setMessages(response.history)
-
-					// Проверяем статус чата из ответа истории
-					if (response.chatStatus) {
-						if (response.chatStatus === 'ACTIVE' || response.chatStatus === 'WAITING') {
-							setChatStarted(true)
-
-							// Ищем сообщения от администратора
-							const adminMessages = response.history.filter(msg =>
-								msg.sender.roles?.some(role => role.name === 'ADMIN' || role.name === 'SUPER_ADMIN' || role.name === 'SUPPORT')
-							)
-
-							if (adminMessages.length > 0) {
-								// Берем последнее сообщение от администратора
-								const lastAdminMessage = adminMessages[adminMessages.length - 1]
-								setSupport(lastAdminMessage.sender)
-							}
-						} else {
-							// Если чат закрыт или завершен
-							setChatStarted(false)
-							setSupport(null)
-						}
-					} else {
-						// Если статус не пришел, определяем по истории
-						// Если есть сообщения и последнее не системное о закрытии
-						const lastMessage = response.history[response.history.length - 1]
-						const isClosedMessage =
-							lastMessage &&
-							lastMessage.senderId === 'system' &&
-							(lastMessage.message.includes('закрыт') || lastMessage.message.includes('завершен'))
-
-						if (response.history.length > 0 && !isClosedMessage) {
-							setChatStarted(true)
-
-							// Проверяем, есть ли назначенный администратор
-							const adminMessages = response.history.filter(msg =>
-								msg.sender.roles?.some(role => role.name === 'ADMIN' || role.name === 'SUPER_ADMIN' || role.name === 'SUPPORT')
-							)
-
-							if (adminMessages.length > 0) {
-								setSupport(adminMessages[adminMessages.length - 1].sender)
-							}
-						} else {
-							setChatStarted(false)
-							setSupport(null)
-						}
-					}
-				}
-				setIsLoading(false)
-			}
-		)
+		socketInstance.emit('getChatHistory', { userId: profile.data.id }, handleChatHistoryResponse)
 
 		return () => {
 			socketInstance.disconnect()
 		}
 	}, [profile?.data?.id])
+
+	const handleChatEnd = (messageText: string) => () => {
+		console.log('Chat ended')
+		setSupport(null)
+		setChatStarted(false)
+
+		const systemMessage: Message = {
+			id: uuidv4(),
+			message: messageText,
+			senderId: 'system',
+			sender: { id: 'system', userName: 'Система' } as Account,
+			createdAt: new Date(),
+			updatedAt: new Date()
+		}
+		setMessages(prev => [...prev, systemMessage])
+	}
+
+	const handleChatResponse = (response: { success: boolean; chat?: { status: string; assignedAdmin?: Account } }) => {
+		console.log('Get user chat response:', response)
+		if (response.success && response.chat) {
+			const { status, assignedAdmin } = response.chat
+			setChatStarted(status === 'ACTIVE' || status === 'WAITING')
+			if (assignedAdmin) setSupport(assignedAdmin)
+		}
+		setIsLoading(false)
+	}
+
+	const handleChatHistoryResponse = (response: { success: boolean; history: Message[]; chatStatus?: string }) => {
+		if (response.success) {
+			setMessages(response.history)
+			const isChatActive = response.chatStatus === 'ACTIVE' || response.chatStatus === 'WAITING'
+			setChatStarted(isChatActive)
+			if (!isChatActive) {
+				setSupport(null)
+			} else {
+				const lastAdminMessage = response.history.reverse().find(msg => {
+					return msg.sender.roles?.some(role => role.name === 'ADMIN' || role.name === 'SUPER_ADMIN' || role.name === 'SUPPORT')
+				})
+				if (lastAdminMessage) {
+					setSupport(lastAdminMessage.sender)
+				}
+			}
+		}
+		setIsLoading(false)
+	}
 
 	const requestSupport = () => {
 		if (!socket || !isConnected || !profile?.data?.id) return
@@ -232,19 +148,15 @@ export function SupportChat() {
 		e.preventDefault()
 		if (!message.trim() || !socket || !isConnected || !profile?.data?.id) return
 
-		// Используем uuid вместо useId
 		const messageId = uuidv4()
-
-		// Создаем объект сообщения
 		const messageData = {
 			content: message,
 			sender: profile.data,
-			receiver: support || { id: 'support' }, // Если нет назначенного администратора, отправляем всем администраторам
+			receiver: support || { id: 'support' },
 			createdAt: new Date(),
 			updatedAt: new Date()
 		}
 
-		// Отображаем сообщение локально сразу
 		const localMessage: Message = {
 			id: messageId,
 			message: message,
@@ -258,16 +170,13 @@ export function SupportChat() {
 		setMessages(prev => [...prev, localMessage])
 		setMessage('')
 
-		// Отправляем сообщение через сокет
 		socket.emit('sendMessage', messageData, (response: { success: boolean; message: Message }) => {
 			if (!response.success) {
 				console.error('Failed to send message')
-				// Можно добавить обработку ошибки отправки
 			}
 		})
 	}
 
-	// Проверка на наличие профиля должна быть здесь
 	if (!profile?.data) {
 		return (
 			<ExpandableChat icon={<MessageCircle />}>
@@ -277,7 +186,14 @@ export function SupportChat() {
 			</ExpandableChat>
 		)
 	}
-	if (checkAccessRoles(profile.data.roles.map(role => role.name),['SUPER_ADMIN'])) return null
+
+	if (
+		checkAccessRoles(
+			profile.data.roles.map(role => role.name),
+			['SUPER_ADMIN']
+		)
+	)
+		return null
 
 	return (
 		<ExpandableChat icon={<MessageCircle className='text-white' />}>
@@ -295,7 +211,7 @@ export function SupportChat() {
 				) : chatStarted ? (
 					<div className='flex items-center gap-3'>
 						<div className='flex h-8 w-8 items-center justify-center rounded-full bg-blue-400/30'>
-							<div className='h-3 w-3 animate-pulse rounded-full bg-blue-200'></div>
+							<div className='h-3 w-3 animate-pulse rounded-full bg-blue-200' />
 						</div>
 						<div>
 							<Typography className='font-medium'>Ожидание подключения</Typography>
@@ -336,28 +252,34 @@ export function SupportChat() {
 								key={msg.id}
 								className={cn(
 									'flex items-start gap-2',
-									msg.senderId === 'system' ? 'justify-center' : msg.senderId === profile.data.id ? 'flex-row-reverse' : 'flex-row'
+									msg.senderId === 'system'
+										? 'justify-center'
+										: msg.senderId === profile.data.id
+											? 'flex-row-reverse'
+											: 'flex-row'
 								)}>
 								{msg.senderId === 'system' ? (
-									<div className='my-2 rounded-lg bg-gray-100 px-4 py-2 text-center text-sm text-gray-600'>{msg.message}</div>
+									<div className='my-2 rounded-lg bg-gray-100 px-4 py-2 text-center text-sm text-gray-600'>
+										{msg.message}
+									</div>
 								) : (
 									<>
-										{msg.senderId === profile.data.id ? (
-											<Avatar className='flex-shrink-0 border border-blue-200'>
-												<AvatarImage src={getMediaSource(profile.data?.picture)} />
-												<AvatarFallback className='bg-blue-600 text-white'>
-													{profile.data?.userName.slice(0, 2).toUpperCase()}
-												</AvatarFallback>
-											</Avatar>
-										) : (
-											<Avatar className='flex-shrink-0 border border-indigo-200 bg-indigo-100'>
-												<AvatarImage src={support?.picture ? getMediaSource(support.picture) : undefined} />
-												<AvatarFallback className='bg-indigo-600 text-white'>
-													{support?.userName ? support.userName.slice(0, 2).toUpperCase() : <CircleUser size={20} />}
-												</AvatarFallback>
-											</Avatar>
-										)}
-
+										<Avatar
+											className={cn(
+												'flex-shrink-0 border',
+												msg.senderId === profile.data.id ? 'border-blue-200' : 'border-indigo-200 bg-indigo-100'
+											)}>
+											<AvatarImage
+												src={
+													msg.senderId === profile.data.id
+														? getMediaSource(profile.data?.picture)
+														: getMediaSource(support?.picture)
+												}
+											/>
+											<AvatarFallback className='bg-indigo-600 text-white'>
+												{msg.sender?.userName?.slice(0, 2).toUpperCase()}
+											</AvatarFallback>
+										</Avatar>
 										<div
 											className={cn(
 												'flex max-w-[75%] flex-col',
@@ -373,10 +295,7 @@ export function SupportChat() {
 												{msg.message}
 											</div>
 											<div className='mt-1 text-xs text-gray-500'>
-												{formatter.dateTime(new Date(msg.createdAt), {
-													hour: 'numeric',
-													minute: 'numeric'
-												})}
+												{formatter.dateTime(new Date(msg.createdAt), { hour: 'numeric', minute: 'numeric' })}
 											</div>
 										</div>
 									</>
