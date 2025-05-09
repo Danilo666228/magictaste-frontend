@@ -27,15 +27,6 @@ interface OrderItemProps {
 	order: Order
 }
 
-// const orderSteps: { status: OrderStatus; label: string; icon: React.ReactNode }[] = [
-// 	{ status: 'WAITING_FOR_PAYMENT', label: 'Ожидает оплаты', icon: <Clock className='h-4 w-4' /> },
-// 	{ status: 'PAYED', label: 'Оплачен', icon: <CheckCircle className='h-4 w-4' /> },
-// 	{ status: 'PROCESSING', label: 'В обработке', icon: <RefreshCcw className='h-4 w-4' /> },
-// 	{ status: 'READY_FOR_DELIVERY', label: 'Готов к доставке', icon: <Package className='h-4 w-4' /> },
-// 	{ status: 'DELIVERING', label: 'Доставляется', icon: <Truck className='h-4 w-4' /> },
-// 	{ status: 'COMPLETED', label: 'Завершен', icon: <CheckCircle className='h-4 w-4' /> }
-// ]
-
 export function OrderItem({ order }: OrderItemProps) {
 	const formatter = useFormatter()
 	const { data: deliveryAddress } = useGetDeliveryAddressById({ deliveryAddressId: order.deliveryAddressId })
@@ -125,12 +116,12 @@ export function OrderItem({ order }: OrderItemProps) {
 							<CardTitle className='text-xl'>Информация о доставке</CardTitle>
 						</CardHeader>
 						<CardContent className='flex flex-col gap-3'>
-							<Typography className='text-lg'>
+							{/* <Typography className='text-lg'>
 								Адрес доставки:
 								{order.deliveryAddress?.street
 									? ` ${order.deliveryAddress.street ?? 'Неизвестно'}, дом ${order.deliveryAddress?.flat ?? 'Неизвестно'}`
 									: ` ${deliveryAddress?.data.street ?? 'Неизвестно'}, дом ${deliveryAddress?.data?.flat ?? 'Неизвестно'}`}
-							</Typography>
+							</Typography> */}
 							<Typography className='text-lg text-muted-foreground'>
 								Способ доставки: {order.deliveryType === 'COURIER' ? 'Курьер' : 'Самовывоз'}
 							</Typography>

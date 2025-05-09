@@ -1,4 +1,3 @@
-import { useRouter } from 'next/navigation'
 import { useCallback } from 'react'
 
 import { useCreateProductCommentMutation } from '@/shared/api/hooks/product-comment/useCreateProductCommentMutation'
@@ -16,7 +15,6 @@ interface UseProductCommentsProps {
 }
 
 export function useProductComments({ productId, includeReplies = true, onSuccess, onError }: UseProductCommentsProps) {
-	const router = useRouter()
 	const {
 		data: comments,
 		isLoading,

@@ -1,15 +1,15 @@
-
-import { OrderStatus } from '@/shared/api/types'
 import { AlertTriangle, CheckCircle, Clock, LucideIcon, Package, RefreshCcw, Truck, XCircle } from 'lucide-react'
 
+import { OrderStatus } from '@/shared/api/types'
+
 interface StatusInfo {
-	icon : LucideIcon
-	label : string
-	bgColor : string
-	textColor : string
+	icon: LucideIcon
+	label: string
+	bgColor: string
+	textColor: string
 }
 
-export const statusInfo : Record<OrderStatus,StatusInfo> = {
+export const statusInfo: Record<OrderStatus, StatusInfo> = {
 	WAITING_FOR_PAYMENT: {
 		icon: Clock,
 		label: 'Ожидает оплаты',
@@ -58,4 +58,4 @@ export const statusInfo : Record<OrderStatus,StatusInfo> = {
 		bgColor: 'bg-orange-50',
 		textColor: 'text-orange-700'
 	}
-}  
+}

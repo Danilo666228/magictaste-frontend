@@ -22,7 +22,7 @@ import { Order, OrderStatus } from '@/shared/api/types'
 
 import { OrderItem } from './OrderItem/OrderItem'
 
-type FilterStatus = 'ALL' | keyof typeof OrderStatus
+type FilterStatus = 'ALL' | OrderStatus
 
 export function OrderList() {
 	const { data: orders, isLoading } = useGetOrdersQuery()
@@ -87,12 +87,12 @@ export function OrderList() {
 
 	const statusCounts = {
 		ALL: orders.data.length,
-		WAITING_FOR_PAYMENT: orders.data.filter(order => order.status === OrderStatus.WAITING_FOR_PAYMENT).length,
-		PAYED: orders.data.filter(order => order.status === OrderStatus.PAYED).length,
-		PROCESSING: orders.data.filter(order => order.status === OrderStatus.PROCESSING).length,
-		DELIVERING: orders.data.filter(order => order.status === OrderStatus.DELIVERING).length,
-		COMPLETED: orders.data.filter(order => order.status === OrderStatus.COMPLETED).length,
-		CANCELED: orders.data.filter(order => order.status === OrderStatus.CANCELED).length
+		WAITING_FOR_PAYMENT: orders.data.filter(order => order.status === 'WAITING_FOR_PAYMENT').length,
+		PAYED: orders.data.filter(order => order.status === 'PAYED').length,
+		PROCESSING: orders.data.filter(order => order.status === 'PROCESSING').length,
+		DELIVERING: orders.data.filter(order => order.status === 'DELIVERING').length,
+		COMPLETED: orders.data.filter(order => order.status === 'COMPLETED').length,
+		CANCELED: orders.data.filter(order => order.status === 'CANCELED').length
 	}
 
 	return (
@@ -100,7 +100,12 @@ export function OrderList() {
 			<div className='flex flex-col items-start justify-between gap-4 sm:flex-row sm:items-center'>
 				<div className='relative w-full sm:w-72'>
 					<Search className='absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground' />
-					<Input placeholder='Поиск заказов...' className='pl-10' value={searchQuery} onChange={e => setSearchQuery(e.target.value)} />
+					<Input
+						placeholder='Поиск заказов...'
+						className='pl-10'
+						value={searchQuery}
+						onChange={e => setSearchQuery(e.target.value)}
+					/>
 				</div>
 
 				<div className='flex w-full items-center gap-2 sm:w-auto'>
@@ -136,13 +141,17 @@ export function OrderList() {
 					<TabsTrigger value='PROCESSING'>
 						В обработке
 						{statusCounts.PROCESSING > 0 && (
-							<span className='ml-2 rounded-full bg-blue-100 px-2 py-0.5 text-xs text-blue-800'>{statusCounts.PROCESSING}</span>
+							<span className='ml-2 rounded-full bg-blue-100 px-2 py-0.5 text-xs text-blue-800'>
+								{statusCounts.PROCESSING}
+							</span>
 						)}
 					</TabsTrigger>
 					<TabsTrigger value='COMPLETED'>
 						Завершенные
 						{statusCounts.COMPLETED > 0 && (
-							<span className='ml-2 rounded-full bg-green-100 px-2 py-0.5 text-xs text-green-800'>{statusCounts.COMPLETED}</span>
+							<span className='ml-2 rounded-full bg-green-100 px-2 py-0.5 text-xs text-green-800'>
+								{statusCounts.COMPLETED}
+							</span>
 						)}
 					</TabsTrigger>
 				</TabsList>

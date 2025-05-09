@@ -22,7 +22,6 @@ interface ProductCommentsProps {
 }
 
 export function ProductComments({ product }: ProductCommentsProps) {
-	console.log(product)
 	const { isAuth } = useAuth()
 	const [isOpen, setIsOpen] = useState(false)
 	const { comments, getAverageRating, getRatingDistribution } = useProductComments({ productId: product.id, includeReplies: true })

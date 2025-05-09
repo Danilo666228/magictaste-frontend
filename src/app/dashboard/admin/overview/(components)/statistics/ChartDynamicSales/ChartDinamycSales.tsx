@@ -54,10 +54,13 @@ export function ChartDinamycSales({ period, isLoading, sales, customers }: Chart
 						</div>
 					) : (
 						<ChartContainer className='' config={chartConfig}>
-							<BarChart className='' accessibilityLayer data={chartData(sales?.totalSales ?? 0, customers?.totalCustomers ?? 0)}>
+							<BarChart
+								className=''
+								accessibilityLayer
+								data={chartData(sales?.totalSales ?? 0, customers?.totalCustomers ?? 0)}>
 								<CartesianGrid vertical={false} />
 								<XAxis dataKey='name' tickLine={false} tickMargin={10} axisLine={false} tickFormatter={value => value} />
-								<ChartTooltip content={<ChartTooltipContent formatter={(value) => format.number(Number(value))} />} />
+								<ChartTooltip content={<ChartTooltipContent formatter={value => format.number(Number(value))} />} />
 								<Bar
 									dataKey='value'
 									strokeWidth={2}

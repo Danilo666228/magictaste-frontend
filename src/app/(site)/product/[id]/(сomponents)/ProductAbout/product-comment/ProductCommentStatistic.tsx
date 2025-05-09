@@ -16,10 +16,7 @@ export function ProductCommentStatistic({ comments, averageRating, ratingDistrib
 
 	return (
 		comments.length > 0 && (
-			<m.div
-				initial={{ opacity: 0, y: 20 }}
-				animate={{ opacity: 1, y: 0 }}
-				className='overflow-hidden rounded-2xl bg-white/50 backdrop-blur-sm'>
+			<m.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className='overflow-hidden rounded-2xl backdrop-blur-sm'>
 				<div className='grid gap-6 p-6 md:grid-cols-2'>
 					<div className='flex items-center gap-6'>
 						<div className='text-center'>
