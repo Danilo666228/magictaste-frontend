@@ -16,7 +16,7 @@ export function SectionWhyMe() {
 				{sectionDetails.map(section => (
 					<div
 						key={section.id}
-						className='group flex max-w-[560px] flex-col gap-3 rounded-xl border p-3 transition-transform duration-300 hover:-translate-y-1'>
+						className='group flex max-w-[560px] flex-col gap-3 rounded-xl border p-3 transition-transform duration-500 hover:-translate-y-1 hover:border-primary'>
 						<div className='relative h-[340px] overflow-hidden rounded-xl'>
 							<Image alt={section.title} src={section.img} className='object-cover' fill />
 						</div>

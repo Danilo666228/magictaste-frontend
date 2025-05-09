@@ -14,7 +14,9 @@ export function SectionContactUs() {
 				</Typography>
 				<div className='grid grid-cols-4 gap-4 max-sm:grid-cols-2'>
 					{contactItems.map((item, index) => (
-						<div key={index} className='flex flex-col items-center gap-3 max-sm:text-sm'>
+						<div
+							key={index}
+							className='flex flex-col items-center gap-3 rounded-xl border p-3 transition-all duration-300 hover:border-primary hover:shadow-md max-sm:text-sm'>
 							<item.icon className='text-primary' size={32} />
 							<Typography className='font-semibold'>{item.title}</Typography>
 							{item.content && item.content}
