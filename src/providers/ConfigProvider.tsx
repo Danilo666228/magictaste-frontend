@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect, useLayoutEffect } from 'react'
+import { useEffect } from 'react'
 
 import { useConfig } from '@/hooks/useConfig'
 

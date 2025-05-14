@@ -1,4 +1,14 @@
-import { BarChart3, Bell, BookOpenCheck, CircleUser, Heart, MessageSquare, Settings, SquareChartGantt, Truck } from 'lucide-react'
+import {
+	BarChart3,
+	Bell,
+	BookOpenCheck,
+	CircleUser,
+	Heart,
+	MessageSquare,
+	Settings,
+	SquareChartGantt,
+	Truck
+} from 'lucide-react'
 
 import { NavigationItem } from './Navigation/types'
 import { ROUTE } from '@/config/route.config'
@@ -102,20 +112,6 @@ export const navigationConfig: NavigationItem[] = [
 			}
 		]
 	},
-	// {
-	// 	title: 'Аккаунты',
-	// 	url: ROUTE.dashboard.admin.accounts,
-	// 	icon: User,
-	// 	isActive: true,
-	// 	roles: ['ADMIN', 'SUPER_ADMIN']
-	// },
-	// {
-	// 	title: 'Заказы',
-	// 	url: ROUTE.dashboard.admin.orders,
-	// 	icon: User,
-	// 	isActive: true,
-	// 	roles: ['ADMIN', 'SUPER_ADMIN']
-	// },
 	{
 		title: 'Чаты',
 		url: ROUTE.dashboard.admin.support,

@@ -44,11 +44,41 @@ export function useCart() {
 			}
 		}
 	})
+
+	const handleClearCart = () => {
+		clearCartMutation.mutate()
+	}
+
+	const handleAddProduct = (id: string, quantity?: number) => {
+		addProductMutation.mutate({
+			params: {
+				productId: id,
+				quantity
+			}
+		})
+	}
+
+	const handleDecreaseItem = (id: string) => {
+		decreaseProductMutation.mutate({
+			params: {
+				productId: id
+			}
+		})
+	}
+
+	const handleDeleteItem = (id: string) => {
+		deleteItemMutation.mutate({
+			config: {
+				params: { productId: id }
+			}
+		})
+	}
+
 	return {
 		cart: getCartQuery.data,
-		addProduct: addProductMutation.mutate,
-		decreaseProduct: decreaseProductMutation.mutate,
-		deleteItem: deleteItemMutation.mutate,
-		clearCart: clearCartMutation.mutate
+		handleAddProduct,
+		handleDecreaseItem,
+		handleDeleteItem,
+		handleClearCart
 	}
 }

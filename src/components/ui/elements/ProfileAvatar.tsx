@@ -16,8 +16,9 @@ import {
 
 import { useAuth } from '@/hooks/useAuth'
 
-import { routeConfig } from '@/config/route.config'
-import { getMediaSource } from '@/lib/utils/getMediaSource'
+import { getMediaSource } from '@/lib/utils'
+
+import { ROUTE } from '@/config/route.config'
 
 interface ProfileAvatarProps {
 	avatar: string | null
@@ -41,9 +42,9 @@ export function ProfileAvatar({ avatar }: ProfileAvatarProps) {
 				<DropdownMenuLabel>Мой профиль</DropdownMenuLabel>
 				<DropdownMenuSeparator />
 				<DropdownMenuGroup>
-					<DropdownMenuItem onClick={() => router.push(routeConfig.profile)}>Профиль</DropdownMenuItem>
-					<DropdownMenuItem onClick={() => router.push(routeConfig.orders)}>Мои заказы</DropdownMenuItem>
-					<DropdownMenuItem onClick={() => router.push(routeConfig.settings)}>Настройки</DropdownMenuItem>
+					<DropdownMenuItem onClick={() => router.push(ROUTE.dashboard.profile)}>Профиль</DropdownMenuItem>
+					<DropdownMenuItem onClick={() => router.push(ROUTE.dashboard.orders)}>Мои заказы</DropdownMenuItem>
+					<DropdownMenuItem onClick={() => router.push(ROUTE.dashboard.settings.profile)}>Настройки</DropdownMenuItem>
 				</DropdownMenuGroup>
 				<DropdownMenuSeparator />
 				<DropdownMenuItem onClick={handleLogout}>Выйти из аккаунта</DropdownMenuItem>

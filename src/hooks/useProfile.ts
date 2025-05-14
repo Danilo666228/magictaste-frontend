@@ -19,7 +19,7 @@ export function useProfile() {
 		refetch
 	} = useGetProfileQuery({
 		options: {
-			enabled: !!isAuth
+			enabled: isAuth
 		}
 	})
 	const { mutate: clearSession } = useClearSessionMutation()

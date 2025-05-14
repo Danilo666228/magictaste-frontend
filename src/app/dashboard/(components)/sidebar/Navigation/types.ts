@@ -2,6 +2,7 @@ import { LucideIcon } from 'lucide-react'
 
 import { RoleName } from '@/shared/api/types'
 
+
 export interface NavigationItem {
 	title: string
 	url?: string
@@ -21,8 +22,8 @@ interface NavigationSubItem {
 export interface NavigationProps {
 	profile:
 		| {
-				roles: { name: RoleName }[]
-		  }
+		roles: { name: RoleName }[]
+	}
 		| undefined
 }
 

@@ -1,8 +1,10 @@
 'use client'
 
+import { DollarSign } from 'lucide-react'
 import { Area, AreaChart, CartesianGrid, XAxis } from 'recharts'
 
 import {
+	Badge,
 	Card,
 	CardContent,
 	CardDescription,
@@ -15,13 +17,12 @@ import {
 } from '@/components/ui/common'
 
 import { useGetStatisticSale } from '@/shared/api/hooks/statisctics/useGetStatisticSale'
-import { DollarSign, SquareArrowLeft } from 'lucide-react'
 
 const chartConfig = {
 	sale: {
 		label: 'Продажи',
 		color: 'hsl(var(--chart-5))',
-		icon : DollarSign
+		icon: DollarSign
 	}
 } satisfies ChartConfig
 
@@ -29,7 +30,8 @@ export function ChartDynamicStatistics() {
 	const { data: statistics } = useGetStatisticSale({ config: { params: { period: 'week' } } })
 
 	return (
-		<Card>
+		<Card className='relative'>
+			<Badge className='absolute right-2 top-2'>Beta</Badge>
 			<CardHeader className='relative flex flex-row justify-between'>
 				<div className='flex items-center gap-3'>
 					<CardTitle>Все продажи</CardTitle>

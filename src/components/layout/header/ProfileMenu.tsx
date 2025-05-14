@@ -32,7 +32,7 @@ export function ProfileMenu() {
 	return isPending || !profile ? (
 		<Loader2 size={32} className='animate-spin' />
 	) : (
-		<DropdownMenu>
+			<DropdownMenu>
 			<DropdownMenuTrigger>
 				<Avatar className='border'>
 					<AvatarImage src={getMediaSource(profile.data.picture)} />

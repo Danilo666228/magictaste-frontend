@@ -6,8 +6,6 @@ import { Sidebar, SidebarContent, SidebarFooter, SidebarHeader, SidebarRail } fr
 
 import { useProfile } from '@/hooks/useProfile'
 
-// import { useProfile } from '@/hooks/useProfile'
-
 import { NavHeader } from './NavHeader'
 import { NavUser } from './NavUser'
 import { Navigation } from './Navigation/Navigation'
@@ -15,9 +13,14 @@ import { Navigation } from './Navigation/Navigation'
 export function DashboardSidebar({ ...props }: ComponentProps<typeof Sidebar>) {
 	const { profile, isPending } = useProfile()
 
+
+	if (!profile?.data) {
+		return null
+	}
+
 	return (
-		<Sidebar className='font-semibold' variant='inset' collapsible='icon' {...props}>
-			<SidebarHeader className='mb-2 rounded-lg'>
+		<Sidebar className="font-semibold" variant="inset" collapsible="icon" {...props}>
+			<SidebarHeader className="mb-2 rounded-lg">
 				<NavHeader />
 			</SidebarHeader>
 			<SidebarContent>

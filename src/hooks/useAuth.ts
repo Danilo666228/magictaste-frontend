@@ -7,6 +7,7 @@ import { useLogoutMutation } from '@/shared/api/hooks/auth/useLogoutMutation'
 import { ROUTE } from '@/config/route.config'
 
 export function useAuth() {
+	const router = useRouter()
 	const { mutate: logout } = useLogoutMutation({
 		options: {
 			onSuccess: () => router.push(ROUTE.auth.signIn)
@@ -14,7 +15,7 @@ export function useAuth() {
 	})
 	const isAuth = useAuthStore(c => c.isAuth)
 	const setIsAuth = useAuthStore(c => c.setAuth)
-	const router = useRouter()
+
 
 	const authorized = () => setIsAuth(true)
 	const unauthorized = () => setIsAuth(false)

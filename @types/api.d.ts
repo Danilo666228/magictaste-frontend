@@ -5,10 +5,7 @@ interface MutationSettings<Params = void, Func = unknown> {
 
 interface QuerySettings<Func = unknown> {
 	config?: ApiRequestConfig
-	options?: Omit<
-		import('@tanstack/react-query').UseQueryOptions<Awaited<ReturnType<Func>>, any, Awaited<ReturnType<Func>>, any>,
-		'queryKey'
-	>
+	options?: Omit<import('@tanstack/react-query').UseQueryOptions<Awaited<ReturnType<Func>>, any, Awaited<ReturnType<Func>>, any>, 'queryKey'>
 }
 
 interface InfiniteQuerySettings<Func = unknown> {
@@ -21,6 +18,4 @@ interface InfiniteQuerySettings<Func = unknown> {
 
 type ApiRequestConfig = import('@siberiacancode/fetches').RequestOptions
 
-type RequestConfig<Params = undefined> = Params extends undefined
-	? { config?: ApiRequestConfig }
-	: { params: Params; config?: ApiRequestConfig }
+type RequestConfig<Params = undefined> = Params extends undefined ? { config?: ApiRequestConfig } : { params: Params; config?: ApiRequestConfig }

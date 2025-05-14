@@ -2,15 +2,15 @@ export const ROUTE = {
 	notfound: '/not-found',
 	home: '/',
 	checkout: '/checkout',
-	thanks : '/checkout/thanks',
-	about : '/about',
+	thanks: '/checkout/thanks',
+	about: '/about',
 	auth: {
 		signIn: '/auth/sign-in',
 		signUp: '/auth/sign-up',
 		newPassword: '/auth/new-password',
 		passwordRecovery: '/auth/password-recovery'
 	},
-	product : (productId : string) => `/product/${productId}`,
+	product: (productId: string) => `/product/${productId}`,
 	menu: (categoryId?: string) => (categoryId ? `/menu/${categoryId}` : '/menu'),
 	dashboard: {
 		favorites: '/dashboard/favorites',
@@ -35,4 +35,8 @@ export const ROUTE = {
 			orders: '/dashboard/admin/orders'
 		}
 	}
-}
+} as const
+
+
+
+

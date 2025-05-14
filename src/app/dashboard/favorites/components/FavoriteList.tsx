@@ -14,13 +14,14 @@ import {
 import { Button, Typography } from '@/components/ui/common'
 
 import { useCart } from '@/hooks/useCart'
+import { useFavorite } from '@/hooks/useFavorite'
 import { useProfile } from '@/hooks/useProfile'
 
-import { useToggleFavoriteMutation } from '@/shared/api/hooks/favorite/useToggleFavoriteMutation'
+import { cn } from '@/lib/utils/twMerge'
+
 import { Favorite } from '@/shared/api/types'
 
 import { ROUTE } from '@/config/route.config'
-import { cn } from '@/lib/utils/twMerge'
 
 interface FavoriteListProps {
 	favorites: Favorite[] | undefined
@@ -30,31 +31,8 @@ export function FavoriteList({ favorites }: FavoriteListProps) {
 	const queryClient = useQueryClient()
 	const formatter = useFormatter()
 	const { profile } = useProfile()
-
-	const { addProduct } = useCart()
-	const { mutate: toggleFavorite } = useToggleFavoriteMutation({
-		options: {
-			onSuccess: () => queryClient.invalidateQueries({ queryKey: ['getFavoriteProducts'] })
-		}
-	})
-
-	const handleAddProduct = (id: string) => {
-		addProduct({
-			params: {
-				productId: id
-			}
-		})
-	}
-
-	const handleToggleFavorite = (id: string) => {
-		toggleFavorite({
-			config: {
-				params: {
-					productId: id
-				}
-			}
-		})
-	}
+	const { toggleFavorite } = useFavorite()
+	const { handleAddProduct } = useCart()
 
 	const container = {
 		hidden: { opacity: 0 },
@@ -103,7 +81,7 @@ export function FavoriteList({ favorites }: FavoriteListProps) {
 									variant={'outline'}
 									onClick={e => {
 										e.preventDefault()
-										handleToggleFavorite(favorite.product.id)
+										toggleFavorite(favorite.product.id)
 									}}
 									size={'icon'}
 									className='absolute right-3 top-3 z-10 h-9 w-9 rounded-full border-none bg-white/80 text-gray-600 shadow-sm backdrop-blur-[2px] transition-all hover:scale-110 hover:bg-white hover:text-red-500 hover:shadow-md active:scale-95'>
@@ -111,7 +89,8 @@ export function FavoriteList({ favorites }: FavoriteListProps) {
 										size={20}
 										className={cn(
 											'transition-transform',
-											profile?.data.favorites.some(fav => fav.product.id === favorite.product.id) && 'fill-red-500 text-red-500'
+											profile?.data.favorites.some(fav => fav.product.id === favorite.product.id) &&
+												'fill-red-500 text-red-500'
 										)}
 									/>
 								</Button>

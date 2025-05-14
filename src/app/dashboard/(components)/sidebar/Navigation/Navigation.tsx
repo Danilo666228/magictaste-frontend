@@ -20,9 +20,8 @@ export function Navigation({ profile }: NavigationProps) {
 	return (
 		<>
 			{Object.entries(groupedItems).map(([group, items]) => (
-				<SidebarGroup className='rounded-lg' key={group}>
-					<SidebarGroupLabel className=''>{getGroupLabel(group as any)}</SidebarGroupLabel>
-
+				<SidebarGroup className="rounded-lg" key={group}>
+					<SidebarGroupLabel className="">{getGroupLabel(group as any)}</SidebarGroupLabel>
 					<SidebarMenu>
 						{items.map(item => (
 							<NavigationItem key={item.title} item={item} pathname={pathname} />

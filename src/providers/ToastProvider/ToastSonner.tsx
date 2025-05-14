@@ -7,10 +7,10 @@ import { Toaster as Sonner, toast } from 'sonner'
 import { useConfig } from '@/hooks/useConfig'
 import { useProfile } from '@/hooks/useProfile'
 
-import { useNotificationsWebSocketStore } from '@/store/useNotificationsWebSocketStore'
-
 import { fonts } from '@/lib/constants/font.constants'
 import { cn } from '@/lib/utils'
+
+import { useNotificationsWebSocketStore } from '@/store/useNotificationsWebSocketStore'
 
 type ToasterProps = React.ComponentProps<typeof Sonner>
 

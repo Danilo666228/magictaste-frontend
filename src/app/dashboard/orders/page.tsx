@@ -1,5 +1,4 @@
 import { Heading } from '@/components/ui/common'
-import { Stepper, StepperIndicator, StepperItem, StepperSeparator, StepperTitle, StepperTrigger } from '@/components/ui/elements/Stepper'
 
 import { OrderList } from './(components)/OrderList'
 

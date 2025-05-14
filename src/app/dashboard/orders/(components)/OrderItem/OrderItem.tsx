@@ -16,7 +16,6 @@ import {
 	Typography
 } from '@/components/ui/common'
 
-import { useGetDeliveryAddressById } from '@/shared/api/hooks/delivery-address/useDeliveryAddressById'
 import { useGetPaymentDetailsQuery } from '@/shared/api/hooks/order/useGetPaymentDetailsQuery'
 import { Order } from '@/shared/api/types'
 
@@ -29,18 +28,14 @@ interface OrderItemProps {
 
 export function OrderItem({ order }: OrderItemProps) {
 	const formatter = useFormatter()
-	const { data: deliveryAddress } = useGetDeliveryAddressById({ deliveryAddressId: order.deliveryAddressId })
+
 	const { data: paymentDetails } = useGetPaymentDetailsQuery({
 		config: { params: { orderId: order.id } },
 		options: { enabled: order.status === 'WAITING_FOR_PAYMENT' }
 	})
 	const [isExpanded, setIsExpanded] = useState<boolean>(false)
 
-	const orderDate = new Date(order.createdAt)
-	const totalItems = order.items.map(item => item.quantity).reduce((a, b) => a + b, 0)
-	const totalAmount = order.total
 	const info = statusInfo[order.status]
-	console.log(deliveryAddress?.data.street)
 
 	return (
 		<Accordion type='multiple' className='my-6'>
@@ -53,17 +48,27 @@ export function OrderItem({ order }: OrderItemProps) {
 						</Badge>
 						<div className='flex flex-col'>
 							<Typography className='text-muted-foreground'>Заказ #{order.id.substring(0, 8)}</Typography>
-							<Typography>{formatter.dateTime(orderDate, { day: 'numeric', month: 'long', year: 'numeric' })}</Typography>
+							<Typography>
+								{formatter.dateTime(new Date(order.createdAt), {
+									day: 'numeric',
+									month: 'long',
+									year: 'numeric',
+									hour: 'numeric',
+									minute: 'numeric'
+								})}
+							</Typography>
 						</div>
 
 						<div className='ml-auto flex flex-col gap-4 sm:flex-row sm:gap-8'>
 							<div className='flex flex-col items-start sm:items-center'>
 								<Typography className='text-sm text-muted-foreground'>Товары</Typography>
-								<Typography className='font-medium'>{totalItems} шт.</Typography>
+								<Typography className='font-medium'>
+									{order.items.map(item => item.quantity).reduce((acc, item) => acc + item, 0)} шт.
+								</Typography>
 							</div>
 							<div className='flex flex-col items-start sm:items-center'>
 								<Typography className='text-sm text-muted-foreground'>Сумма</Typography>
-								<Typography className='font-medium'>{formatter.number(totalAmount)} ₽</Typography>
+								<Typography className='font-medium'>{formatter.number(order.total)} ₽</Typography>
 							</div>
 						</div>
 					</div>
@@ -116,12 +121,6 @@ export function OrderItem({ order }: OrderItemProps) {
 							<CardTitle className='text-xl'>Информация о доставке</CardTitle>
 						</CardHeader>
 						<CardContent className='flex flex-col gap-3'>
-							{/* <Typography className='text-lg'>
-								Адрес доставки:
-								{order.deliveryAddress?.street
-									? ` ${order.deliveryAddress.street ?? 'Неизвестно'}, дом ${order.deliveryAddress?.flat ?? 'Неизвестно'}`
-									: ` ${deliveryAddress?.data.street ?? 'Неизвестно'}, дом ${deliveryAddress?.data?.flat ?? 'Неизвестно'}`}
-							</Typography> */}
 							<Typography className='text-lg text-muted-foreground'>
 								Способ доставки: {order.deliveryType === 'COURIER' ? 'Курьер' : 'Самовывоз'}
 							</Typography>

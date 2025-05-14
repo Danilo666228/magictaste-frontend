@@ -14,7 +14,7 @@ import { usePostOrderMutation } from '@/shared/api/hooks/order/usePostOrderMutat
 import { ROUTE } from '@/config/route.config'
 
 export function useCheckoutForm() {
-	const { clearCart } = useCart()
+	const { handleClearCart } = useCart()
 
 	const router = useRouter()
 	const { items, resetOrder, total, deliveryPrice } = useOrderStore()
@@ -25,7 +25,7 @@ export function useCheckoutForm() {
 
 				if (paymentMethod === 'CASH') {
 					router.push(ROUTE.thanks)
-					clearCart()
+					handleClearCart()
 					resetOrder()
 				}
 				if (paymentMethod === 'CARD') {
@@ -33,18 +33,6 @@ export function useCheckoutForm() {
 					resetOrder()
 					return
 				}
-
-				// if (deliveryType === 'COURIER' || (deliveryType === 'PICKUP' && paymentMethod === 'CARD')) {
-				// 	router.push(data.confirmation.confirmation_url)
-				// 	resetOrder()
-				// 	return
-				// }
-
-				// if (deliveryType === 'PICKUP' && paymentMethod === 'CASH') {
-				// 	router.push(ROUTE.thanks)
-				// 	clearCart()
-				// 	resetOrder()
-				// }
 			}
 		}
 	})
@@ -106,7 +94,6 @@ export function useCheckoutForm() {
 				}))
 			}
 		})
-		// formPersist.clear()
 	}
 
 	return { form, formPersist, onSubmit, isPending }

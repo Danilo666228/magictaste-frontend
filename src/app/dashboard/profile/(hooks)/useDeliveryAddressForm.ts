@@ -2,21 +2,16 @@ import { zodResolver } from '@hookform/resolvers/zod'
 import { useState } from 'react'
 import { useForm } from 'react-hook-form'
 
-
-
-import { useProfile } from '@/hooks/useProfile'
-
-import { TypeCreateDeliveryAddressSchema, deliveryAddressSchema } from '@/schemas/delivery-address/delivery-address'
-
-import { useGetDeliveryAddress } from '@/shared/api/hooks/delivery-address/useGetDeliveryAddress'
+import { deliveryAddressSchema, TypeCreateDeliveryAddressSchema } from '@/schemas/delivery-address/delivery-address'
 import { usePostDeliveryAddress } from '@/shared/api/hooks/delivery-address/usePostDeliveryAddress'
-import { useModal } from '@/components/ui/elements/modal/FormModal/FormModalContext'
+import { useModal } from '@/components/ui/elements/modal/Default/ModalContext'
+import { useQueryClient } from '@tanstack/react-query'
 
 export const useDeliveryAddressForm = () => {
-	const { refetch } = useGetDeliveryAddress()
+	const queryClient = useQueryClient()
 	const [isShowMap, setIsShowMap] = useState(false)
 	const { closeModal } = useModal()
-	const { refetch: refetchProfile } = useProfile()
+
 	const {
 		mutate: createDeliveryAddress,
 		isPending,
@@ -24,8 +19,7 @@ export const useDeliveryAddressForm = () => {
 	} = usePostDeliveryAddress({
 		options: {
 			onSuccess() {
-				refetch()
-				refetchProfile()
+				queryClient.invalidateQueries({ queryKey: ['getDeliveryAddresses'] })
 				closeModal()
 			}
 		}
@@ -47,10 +41,11 @@ export const useDeliveryAddressForm = () => {
 				city: data.city,
 				street: data.street,
 				house: data.house,
-				flat: data.flat 
+				flat: data.flat
 			}
 		})
 	}
+
 
 	return { form, onSubmit, isPending, isSuccess, isShowMap, setIsShowMap }
 }

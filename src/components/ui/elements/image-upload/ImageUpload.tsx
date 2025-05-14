@@ -3,10 +3,9 @@ import Image from 'next/image'
 import { useCallback, useState } from 'react'
 
 import { Button, Input } from '@/components/ui/common'
-
 import { useImageUpload } from '@/components/ui/elements/image-upload/useImageUpload'
-
 import { useModal } from '@/components/ui/elements/modal/FormModal/FormModalContext'
+
 import { cn } from '@/lib/utils/twMerge'
 
 interface ImageUploadProps {
