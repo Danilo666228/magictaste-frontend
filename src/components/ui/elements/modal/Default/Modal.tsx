@@ -11,8 +11,8 @@ import { ModalContext } from '@/components/ui/elements/modal/Default/ModalContex
 
 interface ModalProps extends ComponentProps<typeof Dialog> {
 	title: string
-	description: string
-	trigger: ReactNode
+	description?: string
+	trigger?: ReactNode
 	children: ReactNode
 	open: boolean
 	onOpenChange: (open: boolean) => void

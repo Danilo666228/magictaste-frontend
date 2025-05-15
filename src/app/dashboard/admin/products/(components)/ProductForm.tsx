@@ -22,14 +22,14 @@ import {
 	Textarea
 } from '@/components/ui/common'
 import { TagsSelector } from '@/components/ui/common/TagsSelector'
-import { useModal } from '@/components/ui/elements/modal/FormModal/FormModalContext'
+import { useModal } from '@/components/ui/elements/modal/Default/ModalContext'
 
 import { CreateProductSchema, createProductSchema } from '@/schemas/product/createProduct'
 
 import { useGetCategoryQuery } from '@/shared/api/hooks/category/useGetCategoryQuery'
 import { useGetIngredientsQuery } from '@/shared/api/hooks/ingredient/useGetIngredientsQuery'
 import { useCreateProductMutation } from '@/shared/api/hooks/products/useCreateProductMutation'
-import { useGetProductsQuery } from '@/shared/api/hooks/products/useGetProductsQuery'
+
 import { useUpdateProductMutation } from '@/shared/api/hooks/products/useUpdateProductMutation'
 import { Product } from '@/shared/api/types'
 
@@ -97,15 +97,15 @@ export function ProductForm({ mode, initialData }: ProductFormProps) {
 
 	return (
 		<Form {...form}>
-			<form onSubmit={form.handleSubmit(handleSubmit)} className='space-y-4'>
+			<form onSubmit={form.handleSubmit(handleSubmit)} className="space-y-4">
 				<FormField
 					control={form.control}
-					name='title'
+					name="title"
 					render={({ field }) => (
 						<FormItem>
 							<FormLabel>Название продукта</FormLabel>
 							<FormControl>
-								<Input type='text' {...field} />
+								<Input type="text" {...field} />
 							</FormControl>
 							<FormMessage />
 						</FormItem>
@@ -113,7 +113,7 @@ export function ProductForm({ mode, initialData }: ProductFormProps) {
 				/>
 				<FormField
 					control={form.control}
-					name='ingredients'
+					name="ingredients"
 					render={({ field }) => (
 						<FormItem>
 							<FormLabel>Ингредиенты</FormLabel>
@@ -121,7 +121,7 @@ export function ProductForm({ mode, initialData }: ProductFormProps) {
 								<TagsSelector
 									modal
 									tags={
-										ingredients?.data?.map(ingredient => ({
+										ingredients?.data.ingredients?.map(ingredient => ({
 											id: ingredient.id,
 											label: ingredient.title
 										})) || []
@@ -129,7 +129,7 @@ export function ProductForm({ mode, initialData }: ProductFormProps) {
 									selectedTags={
 										field.value.map(id => ({
 											id,
-											label: ingredients?.data?.find(ingredient => ingredient.id === id)?.title || ''
+											label: ingredients?.data?.ingredients.find(ingredient => ingredient.id === id)?.title || ''
 										})) || []
 									}
 									onChange={tags => field.onChange(tags.map(tag => tag.id))}
@@ -141,7 +141,7 @@ export function ProductForm({ mode, initialData }: ProductFormProps) {
 				/>
 				<FormField
 					control={form.control}
-					name='description'
+					name="description"
 					render={({ field }) => (
 						<FormItem>
 							<FormLabel>Описание</FormLabel>
@@ -152,15 +152,15 @@ export function ProductForm({ mode, initialData }: ProductFormProps) {
 						</FormItem>
 					)}
 				/>
-				<div className='grid grid-cols-2 gap-4'>
+				<div className="grid grid-cols-2 gap-4">
 					<FormField
 						control={form.control}
-						name='price'
+						name="price"
 						render={({ field }) => (
 							<FormItem>
 								<FormLabel>Цена</FormLabel>
 								<FormControl>
-									<Input type='number' {...field} />
+									<Input type="number" {...field} />
 								</FormControl>
 								<FormMessage />
 							</FormItem>
@@ -168,12 +168,12 @@ export function ProductForm({ mode, initialData }: ProductFormProps) {
 					/>
 					<FormField
 						control={form.control}
-						name='weight'
+						name="weight"
 						render={({ field }) => (
 							<FormItem>
 								<FormLabel>Вес (г)</FormLabel>
 								<FormControl>
-									<Input type='number' {...field} />
+									<Input type="number" {...field} />
 								</FormControl>
 								<FormMessage />
 							</FormItem>
@@ -182,18 +182,18 @@ export function ProductForm({ mode, initialData }: ProductFormProps) {
 				</div>
 				<FormField
 					control={form.control}
-					name='categoryId'
+					name="categoryId"
 					render={({ field }) => (
 						<FormItem>
 							<FormLabel>Категория</FormLabel>
 							<Select onValueChange={field.onChange} value={field.value}>
 								<FormControl>
 									<SelectTrigger>
-										<SelectValue placeholder='Выберите категорию' />
+										<SelectValue placeholder="Выберите категорию" />
 									</SelectTrigger>
 								</FormControl>
 								<SelectContent>
-									{categories?.data.map(category => (
+									{categories?.data.categories.map(category => (
 										<SelectItem key={category.id} value={category.id}>
 											{category.title}
 										</SelectItem>
@@ -206,10 +206,10 @@ export function ProductForm({ mode, initialData }: ProductFormProps) {
 				/>
 				<FormField
 					control={form.control}
-					name='onSale'
+					name="onSale"
 					render={({ field }) => (
-						<FormItem className='flex items-center justify-between rounded-lg border p-4'>
-							<FormLabel className='text-base'>В продаже</FormLabel>
+						<FormItem className="flex items-center justify-between rounded-lg border p-4">
+							<FormLabel className="text-base">В продаже</FormLabel>
 							<FormControl>
 								<Switch checked={field.value} onCheckedChange={field.onChange} />
 							</FormControl>
@@ -217,7 +217,7 @@ export function ProductForm({ mode, initialData }: ProductFormProps) {
 					)}
 				/>
 
-				<Button type='submit' className='w-full'>
+				<Button type="submit" className="w-full">
 					{mode === 'create' ? 'Создать' : 'Обновить'}
 				</Button>
 			</form>

@@ -9,8 +9,6 @@ import {
 	DropdownMenuSeparator,
 	DropdownMenuTrigger
 } from '@/components/ui/common'
-
-import { ChangeCategoryImage } from './actions/ChangeCategoryImage'
 import { DeleteCategory } from './actions/DeleteCategory'
 import { CategoryColumn } from './columns'
 
@@ -22,15 +20,14 @@ export function CategoryActions({ row }: CategoryActions) {
 	return (
 		<DropdownMenu>
 			<DropdownMenuTrigger asChild>
-				<Button variant='ghost'>
+				<Button variant="ghost">
 					<MoreHorizontal />
 				</Button>
 			</DropdownMenuTrigger>
-			<DropdownMenuContent align='center'>
+			<DropdownMenuContent align="center">
 				<DropdownMenuLabel>Действие</DropdownMenuLabel>
 				<DropdownMenuSeparator />
 				<DeleteCategory categoryId={row.original.id} />
-				<ChangeCategoryImage categoryId={row.original.id} />
 			</DropdownMenuContent>
 		</DropdownMenu>
 	)

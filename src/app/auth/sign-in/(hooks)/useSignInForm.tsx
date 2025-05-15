@@ -12,8 +12,6 @@ import { SignInSchema, signInSchema } from '@/schemas/auth/signIn'
 import { usePostSignInMutation } from '@/shared/api/hooks/auth/usePostSignInMutation'
 import { ROUTE } from '@/config/route.config'
 
-
-
 export function useSignInForm() {
 	const router = useRouter()
 	const [recaptchaValue, setRecaptchaValue] = useState<string | null>(null)

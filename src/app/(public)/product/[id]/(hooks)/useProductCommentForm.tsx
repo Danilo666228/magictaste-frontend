@@ -1,7 +1,7 @@
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useForm } from 'react-hook-form'
 
-import { useModal } from '@/components/ui/elements/modal/FormModal/FormModalContext'
+import { useModal } from '@/components/ui/elements/modal/Default/ModalContext'
 
 import { ProductCommentSchema } from '@/schemas/review/product-comment'
 

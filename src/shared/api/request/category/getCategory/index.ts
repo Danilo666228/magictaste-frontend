@@ -3,4 +3,9 @@ import { Category } from '@/shared/api/types'
 
 export type GetCategoryRequestConfig = RequestConfig
 
-export const getCategory = (requestConfig?: GetCategoryRequestConfig) => api.get<Category[]>('/category', requestConfig?.config)
+interface GetCategoryResponse {
+	categories: Category[]
+	total: number
+}
+
+export const getCategory = (requestConfig?: GetCategoryRequestConfig) => api.get<GetCategoryResponse>('/category', requestConfig?.config)

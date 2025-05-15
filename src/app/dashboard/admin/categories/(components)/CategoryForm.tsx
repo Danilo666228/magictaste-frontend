@@ -2,14 +2,14 @@ import { zodResolver } from '@hookform/resolvers/zod'
 import { useForm } from 'react-hook-form'
 
 import { Button, Form, FormControl, FormField, FormItem, FormLabel, FormMessage, Input } from '@/components/ui/common'
-import { useModal } from '@/components/ui/elements/modal/FormModal/FormModalContext'
+import { useModal } from '@/components/ui/elements/modal/Default/ModalContext'
 
 import { CreateCategorySchema, createCategorySchema } from '@/schemas/category/createCategory'
 
 import { useCreateCategoryMutation } from '@/shared/api/hooks/category/useCreateCategoryMutation'
-import { useGetCategoryQuery } from '@/shared/api/hooks/category/useGetCategoryQuery'
 import { useUpdateCategoryMutation } from '@/shared/api/hooks/category/useUpdateCategoryMutation'
 import { Category } from '@/shared/api/types'
+import { useQueryClient } from '@tanstack/react-query'
 
 interface CategoryFormProps {
 	mode: 'create' | 'edit'
@@ -18,11 +18,11 @@ interface CategoryFormProps {
 
 export function CategoryForm({ mode, initialData }: CategoryFormProps) {
 	const { closeModal } = useModal()
-	const { refetch } = useGetCategoryQuery()
+	const queryClient = useQueryClient()
 	const createCategoryMutation = useCreateCategoryMutation({
 		options: {
 			onSuccess: () => {
-				refetch()
+				queryClient.invalidateQueries({ queryKey: ['getCategory'] })
 				closeModal()
 			}
 		}
@@ -31,8 +31,8 @@ export function CategoryForm({ mode, initialData }: CategoryFormProps) {
 	const updateCategoryMutation = useUpdateCategoryMutation({
 		options: {
 			onSuccess: () => {
+				queryClient.invalidateQueries({ queryKey: ['getCategory'] })
 				closeModal()
-				refetch()
 			}
 		}
 	})
@@ -56,22 +56,22 @@ export function CategoryForm({ mode, initialData }: CategoryFormProps) {
 
 	return (
 		<Form {...form}>
-			<form onSubmit={form.handleSubmit(handleSubmit)} className='space-y-4'>
+			<form onSubmit={form.handleSubmit(handleSubmit)} className="space-y-4">
 				<FormField
 					control={form.control}
-					name='title'
+					name="title"
 					render={({ field }) => (
 						<FormItem>
 							<FormLabel>Название категории</FormLabel>
 							<FormControl>
-								<Input type='text' {...field} />
+								<Input type="text"  {...field} />
 							</FormControl>
 							<FormMessage />
 						</FormItem>
 					)}
 				/>
 
-				<Button type='submit' className='w-full'>
+				<Button type="submit" className="w-full">
 					{mode === 'create' ? 'Создать' : 'Обновить'}
 				</Button>
 			</form>

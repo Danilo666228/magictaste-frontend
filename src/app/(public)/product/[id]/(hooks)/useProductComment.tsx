@@ -1,7 +1,9 @@
 import { useCallback } from 'react'
 
 import { useCreateProductCommentMutation } from '@/shared/api/hooks/product-comment/useCreateProductCommentMutation'
-import { useCreateReplyProductCommentMutation } from '@/shared/api/hooks/product-comment/useCreateReplyProductCommentMutation'
+import {
+	useCreateReplyProductCommentMutation
+} from '@/shared/api/hooks/product-comment/useCreateReplyProductCommentMutation'
 import { useDeleteProductCommentMutation } from '@/shared/api/hooks/product-comment/useDeleteProductCommentMutation'
 import { useGetProductCommentsQuery } from '@/shared/api/hooks/product-comment/useGetProductCommentsQuery'
 import { useUpdateProductCommentMutation } from '@/shared/api/hooks/product-comment/useUpdateProductCommentMutation'
@@ -87,15 +89,12 @@ export function useProductComments(productId: string, includeReplies: boolean = 
 	return {
 		comments: comments?.data || [],
 		isLoading,
-
 		isPending: isCreating || isReplying || isDeleting || isUpdating,
-
 		addComment,
 		addReply,
 		removeComment,
 		editComment,
 		refetch,
-
 		getAverageRating,
 		getRatingDistribution
 	}

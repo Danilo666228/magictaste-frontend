@@ -13,11 +13,6 @@ import { Navigation } from './Navigation/Navigation'
 export function DashboardSidebar({ ...props }: ComponentProps<typeof Sidebar>) {
 	const { profile, isPending } = useProfile()
 
-
-	if (!profile?.data) {
-		return null
-	}
-
 	return (
 		<Sidebar className="font-semibold" variant="inset" collapsible="icon" {...props}>
 			<SidebarHeader className="mb-2 rounded-lg">

@@ -1,10 +1,9 @@
 'use client'
 
-import { Pencil, Plus } from 'lucide-react'
+import { Plus } from 'lucide-react'
 import { useState } from 'react'
 
-import { Button, Typography } from '@/components/ui/common'
-import { FormModal } from '@/components/ui/elements/modal/FormModal/FormModal'
+import { Button } from '@/components/ui/common'
 import { DataTable } from '@/components/ui/elements/table/DataTable'
 
 import { useGetProductsQuery } from '@/shared/api/hooks/products/useGetProductsQuery'
@@ -12,6 +11,7 @@ import { useGetProductsQuery } from '@/shared/api/hooks/products/useGetProductsQ
 import { ProductForm } from '../ProductForm'
 
 import { columns } from './columns'
+import { Modal } from '@/components/ui/elements/modal/Default/Modal'
 
 export function ProductTable() {
 	const [page, setPage] = useState(1)
@@ -24,9 +24,7 @@ export function ProductTable() {
 				limit: pageSize
 			}
 		},
-		options : {
-			
-		}
+		options: {}
 	})
 
 	const [isOpen, setIsOpen] = useState({
@@ -36,34 +34,32 @@ export function ProductTable() {
 
 	return (
 		<DataTable
-			title='Продукты'
+			title="Продукты"
 			columns={columns}
 			data={products?.data.products}
-			filterKey='title'
+			filterKey="title"
 			isLoading={isLoading}
 			editModal={product => (
-				<FormModal
-					title='Редактирование продукта'
-					description='Редактирование продукта'
-					renderForm={() => <ProductForm mode='edit' initialData={product} />}
-					trigger={<Button variant='outline'>Редактировать</Button>}
-					isOpen={isOpen.edit}
-					onOpenChange={() => setIsOpen({ ...isOpen, edit: !isOpen.edit })}
-				/>
+				<Modal
+					title="Редактирование продукта"
+					trigger={<Button variant="outline">Редактировать</Button>}
+					open={isOpen.edit}
+					onOpenChange={() => setIsOpen({ ...isOpen, edit: !isOpen.edit })}>
+					<ProductForm mode="edit" initialData={product} />
+				</Modal>
 			)}
 			createModal={
-				<FormModal
-					title='Создание продукта'
-					description='Создание продукта'
-					renderForm={() => <ProductForm mode='create' />}
+				<Modal
+					title="Добавление продукта"
 					trigger={
-						<Button variant='outline'>
+						<Button variant="outline">
 							<Plus /> Добавить продукт
 						</Button>
 					}
-					isOpen={isOpen.create}
-					onOpenChange={() => setIsOpen({ ...isOpen, create: !isOpen.create })}
-				/>
+					open={isOpen.create}
+					onOpenChange={() => setIsOpen({ ...isOpen, create: !isOpen.create })}>
+					<ProductForm mode="create" />
+				</Modal>
 			}
 			onPageChange={setPage}
 			onPageSizeChange={setPageSize}

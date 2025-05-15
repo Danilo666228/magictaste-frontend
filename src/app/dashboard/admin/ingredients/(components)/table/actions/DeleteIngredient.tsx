@@ -1,17 +1,17 @@
 import { DropdownMenuItem } from '@/components/ui/common'
 
 import { useDeleteIngredientMutation } from '@/shared/api/hooks/ingredient/useDeleteIngredientMutation'
-import { useGetIngredientsQuery } from '@/shared/api/hooks/ingredient/useGetIngredientsQuery'
+import { useQueryClient } from '@tanstack/react-query'
 
 interface DeleteIngredientProps {
 	ingredientId: string
 }
 
 export function DeleteIngredient({ ingredientId }: DeleteIngredientProps) {
-	const { refetch } = useGetIngredientsQuery()
+	const queryClient = useQueryClient()
 	const { mutateAsync: deleteIngredient } = useDeleteIngredientMutation({
 		options: {
-			onSuccess: () => refetch()
+			onSuccess: () => queryClient.invalidateQueries({ queryKey: ['getIngredients'] })
 		}
 	})
 

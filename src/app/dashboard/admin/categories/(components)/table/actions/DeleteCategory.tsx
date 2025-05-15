@@ -3,7 +3,6 @@ import { useQueryClient } from '@tanstack/react-query'
 import { DropdownMenuItem } from '@/components/ui/common'
 
 import { useDeleteCategoryMutation } from '@/shared/api/hooks/category/useDeleteCategoryMutation'
-import { useGetCategoryQuery } from '@/shared/api/hooks/category/useGetCategoryQuery'
 
 interface DeleteCategoryProps {
 	categoryId: string
@@ -11,7 +10,7 @@ interface DeleteCategoryProps {
 
 export function DeleteCategory({ categoryId }: DeleteCategoryProps) {
 	const queryClient = useQueryClient()
-	const { mutateAsync: deleteCategory } = useDeleteCategoryMutation({
+	const { mutate: deleteCategory } = useDeleteCategoryMutation({
 		options: {
 			onSuccess: () => queryClient.refetchQueries({ queryKey: ['getCategory'] })
 		}

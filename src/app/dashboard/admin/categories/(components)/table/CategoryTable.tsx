@@ -4,7 +4,6 @@ import { Plus } from 'lucide-react'
 import { useState } from 'react'
 
 import { Button } from '@/components/ui/common'
-import { FormModal } from '@/components/ui/elements/modal/FormModal/FormModal'
 import { DataTable } from '@/components/ui/elements/table/DataTable'
 
 import { useGetCategoryQuery } from '@/shared/api/hooks/category/useGetCategoryQuery'
@@ -12,6 +11,7 @@ import { useGetCategoryQuery } from '@/shared/api/hooks/category/useGetCategoryQ
 import { CategoryForm } from '../CategoryForm'
 
 import { columns } from './columns'
+import { Modal } from '@/components/ui/elements/modal/Default/Modal'
 
 export function CategoryTable() {
 	const [page, setPage] = useState(1)
@@ -24,43 +24,46 @@ export function CategoryTable() {
 			}
 		}
 	})
+
 	const [isOpen, setIsOpen] = useState({
 		create: false,
 		edit: false
 	})
 	return (
 		<DataTable
-			filterKey='title'
-			title='Категории'
+			filterKey="title"
+			title="Категории"
 			isLoading={isLoading}
 			columns={columns}
-			data={categories?.data ?? []}
+			data={categories?.data.categories ?? []}
 			page={page}
 			onPageChange={setPage}
 			onPageSizeChange={setPageSize}
 			pageSize={pageSize}
-			totalCount={categories?.data.length}
+			totalCount={categories?.data.total}
 			createModal={
-				<FormModal
-					title='Добавление категории'
-					renderForm={() => <CategoryForm mode='create' />}
-					trigger={
-						<Button variant='outline'>
-							<Plus /> Добавить категорию
-						</Button>
-					}
-					isOpen={isOpen.create}
-					onOpenChange={() => setIsOpen({ ...isOpen, create: !isOpen.create })}
-				/>
+				<Modal title={'Добавление категории'}
+							 trigger={
+								 <Button variant="outline">
+									 <Plus /> Добавить категорию
+								 </Button>
+							 }
+							 open={isOpen.create}
+							 onOpenChange={() => setIsOpen({ ...isOpen, create: !isOpen.create })}>
+					<CategoryForm mode="create" />
+				</Modal>
 			}
 			editModal={category => (
-				<FormModal
-					title='Редактирование категории'
-					renderForm={() => <CategoryForm mode='edit' initialData={category} />}
-					trigger={<Button variant='outline'>Редактировать</Button>}
-					isOpen={isOpen.edit}
-					onOpenChange={() => setIsOpen({ ...isOpen, edit: !isOpen.edit })}
-				/>
+				<Modal title={'Редактировать категорию'}
+							 trigger={
+								 <Button variant="outline">
+									 Редактировать
+								 </Button>
+							 }
+							 open={isOpen.create}
+							 onOpenChange={() => setIsOpen({ ...isOpen, edit: !isOpen.edit })}>
+					<CategoryForm mode="edit" initialData={category} />
+				</Modal>
 			)}
 		/>
 	)

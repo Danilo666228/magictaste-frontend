@@ -4,13 +4,13 @@ import { Plus } from 'lucide-react'
 import { useState } from 'react'
 
 import { Button } from '@/components/ui/common'
-import { FormModal } from '@/components/ui/elements/modal/FormModal/FormModal'
 import { DataTable } from '@/components/ui/elements/table/DataTable'
 
 import { useGetIngredientsQuery } from '@/shared/api/hooks/ingredient/useGetIngredientsQuery'
 
 import { IngredientForm } from './IngredientForm'
 import { columns } from './columns'
+import { Modal } from '@/components/ui/elements/modal/Default/Modal'
 
 export function IngredientTable() {
 	const [pageSize, setPageSize] = useState(10)
@@ -30,39 +30,37 @@ export function IngredientTable() {
 
 	return (
 		<DataTable
-			title='Ингредиенты'
-			filterKey='title'
+			title="Ингредиенты"
+			filterKey="title"
 			isLoading={isLoading}
 			columns={columns}
-			data={ingredients?.data}
+			data={ingredients?.data.ingredients}
 			page={page}
 			onPageChange={setPage}
 			onPageSizeChange={setPageSize}
 			pageSize={pageSize}
-			totalCount={ingredients?.data.length}
+			totalCount={ingredients?.data.total}
 			createModal={
-				<FormModal
-					title='Добавление ингредиента'
-					description='Добавление ингредиента'
-					renderForm={() => <IngredientForm mode='create' />}
+				<Modal
+					title="Добавление ингредиента"
 					trigger={
 						<Button variant={'outline'}>
 							<Plus /> Добавить ингредиент
 						</Button>
 					}
-					isOpen={isOpen.create}
-					onOpenChange={() => setIsOpen({ ...isOpen, create: !isOpen.create })}
-				/>
+					open={isOpen.create}
+					onOpenChange={() => setIsOpen({ ...isOpen, create: !isOpen.create })}>
+					<IngredientForm mode="create" />
+				</Modal>
 			}
 			editModal={ingredient => (
-				<FormModal
-					title='Редактирование ингредиента'
-					description='Редактирование ингредиента'
-					renderForm={() => <IngredientForm mode='edit' initialData={ingredient} />}
+				<Modal
+					title="Редактирование ингредиента"
 					trigger={<Button variant={'outline'}>Редактировать</Button>}
-					isOpen={isOpen.edit}
-					onOpenChange={() => setIsOpen({ ...isOpen, edit: !isOpen.edit })}
-				/>
+					open={isOpen.edit}
+					onOpenChange={() => setIsOpen({ ...isOpen, edit: !isOpen.edit })}>
+					<IngredientForm mode="edit" initialData={ingredient} />
+				</Modal>
 			)}
 		/>
 	)

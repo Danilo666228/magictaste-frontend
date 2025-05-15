@@ -35,7 +35,7 @@ export const ROUTE = {
 			orders: '/dashboard/admin/orders'
 		}
 	}
-} as const
+}
 
 
 
