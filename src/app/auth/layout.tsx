@@ -44,7 +44,7 @@ export default function AuthLayout({ children }: LayoutProps) {
 									target="_blank"
 									rel="noopener noreferrer">
 									Политика конфиденциальности
-								</Link>
+								</Link> {''}
 								и
 								<Link
 									href="https://policies.google.com/terms"
@@ -52,7 +52,7 @@ export default function AuthLayout({ children }: LayoutProps) {
 									target="_blank"
 									rel="noopener noreferrer">
 									Условия использования
-								</Link>
+								</Link> {''}
 								применяются.
 							</Typography>
 						</div>
