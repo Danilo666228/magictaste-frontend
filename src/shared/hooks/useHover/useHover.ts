@@ -1,39 +1,37 @@
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react'
 
-import type { HookTarget } from '@/utils/helpers';
 
-import { getElement, isTarget } from '@/lib/utils';
+import { getElement, HookTarget, isTarget } from '@/lib/utils'
 
-import type { StateRef } from '../useRefState/useRefState';
-
-import { useRefState } from '../useRefState/useRefState';
+import type { StateRef } from '../useRefState/useRefState'
+import { useRefState } from '../useRefState/useRefState'
 
 /** The use hover options type */
 export interface UseHoverOptions {
-  /** The on entry callback */
-  onEntry?: (event: Event) => void;
-  /** The on leave callback */
-  onLeave?: (event: Event) => void;
+	/** The on entry callback */
+	onEntry?: (event: Event) => void;
+	/** The on leave callback */
+	onLeave?: (event: Event) => void;
 }
 
 export interface UseHoverReturn {
-  value: boolean;
+	value: boolean;
 }
 
 export interface UseHover {
-  (target: HookTarget, callback?: (event: Event) => void): boolean;
+	(target: HookTarget, callback?: (event: Event) => void): boolean;
 
-  (target: HookTarget, options?: UseHoverOptions): boolean;
+	(target: HookTarget, options?: UseHoverOptions): boolean;
 
-  <Target extends Element>(
-    callback?: (event: Event) => void,
-    target?: never
-  ): { ref: StateRef<Target> } & UseHoverReturn;
+	<Target extends Element>(
+		callback?: (event: Event) => void,
+		target?: never
+	): { ref: StateRef<Target> } & UseHoverReturn;
 
-  <Target extends Element>(
-    options?: UseHoverOptions,
-    target?: never
-  ): { ref: StateRef<Target> } & UseHoverReturn;
+	<Target extends Element>(
+		options?: UseHoverOptions,
+		target?: never
+	): { ref: StateRef<Target> } & UseHoverReturn;
 }
 
 /**
@@ -76,51 +74,51 @@ export interface UseHover {
  * const [ref, hovering] = useHover(options);
  */
 export const useHover = ((...params: any[]) => {
-  const target = (isTarget(params[0]) ? params[0] : undefined) as HookTarget | undefined;
+	const target = (isTarget(params[0]) ? params[0] : undefined) as HookTarget | undefined
 
-  const options = (
-    target
-      ? typeof params[1] === 'object'
-        ? params[1]
-        : { onEntry: params[1] }
-      : typeof params[0] === 'object'
-        ? params[0]
-        : { onEntry: params[0] }
-  ) as UseHoverOptions | undefined;
+	const options = (
+		target
+			? typeof params[1] === 'object'
+				? params[1]
+				: { onEntry: params[1] }
+			: typeof params[0] === 'object'
+				? params[0]
+				: { onEntry: params[0] }
+	) as UseHoverOptions | undefined
 
-  const [hovering, setHovering] = useState(false);
-  const internalRef = useRefState<Element>();
-  const internalOptionsRef = useRef(options);
-  internalOptionsRef.current = options;
+	const [hovering, setHovering] = useState(false)
+	const internalRef = useRefState<Element>()
+	const internalOptionsRef = useRef(options)
+	internalOptionsRef.current = options
 
-  useEffect(() => {
-    if (!target && !internalRef.state) return;
-    const element = (target ? getElement(target) : internalRef.current) as Element;
+	useEffect(() => {
+		if (!target && !internalRef.state) return
+		const element = (target ? getElement(target) : internalRef.current) as Element
 
-    if (!element) return;
+		if (!element) return
 
-    const onMouseEnter = (event: Event) => {
-      internalOptionsRef.current?.onEntry?.(event);
-      setHovering(true);
-    };
+		const onMouseEnter = (event: Event) => {
+			internalOptionsRef.current?.onEntry?.(event)
+			setHovering(true)
+		}
 
-    const onMouseLeave = (event: Event) => {
-      internalOptionsRef.current?.onLeave?.(event);
-      setHovering(false);
-    };
+		const onMouseLeave = (event: Event) => {
+			internalOptionsRef.current?.onLeave?.(event)
+			setHovering(false)
+		}
 
-    element.addEventListener('mouseenter', onMouseEnter);
-    element.addEventListener('mouseleave', onMouseLeave);
+		element.addEventListener('mouseenter', onMouseEnter)
+		element.addEventListener('mouseleave', onMouseLeave)
 
-    return () => {
-      element.removeEventListener('mouseenter', onMouseEnter);
-      element.removeEventListener('mouseleave', onMouseLeave);
-    };
-  }, [target, internalRef.state]);
+		return () => {
+			element.removeEventListener('mouseenter', onMouseEnter)
+			element.removeEventListener('mouseleave', onMouseLeave)
+		}
+	}, [target, internalRef.state])
 
-  if (target) return hovering;
-  return {
-    ref: internalRef,
-    value: hovering
-  } as const;
-}) as UseHover;
+	if (target) return hovering
+	return {
+		ref: internalRef,
+		value: hovering
+	} as const
+}) as UseHover
