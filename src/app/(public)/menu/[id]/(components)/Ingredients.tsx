@@ -1,16 +1,16 @@
 import { ChevronRight } from 'lucide-react'
 import Image from 'next/image'
+import { ComponentProps } from 'react'
 
-import { Badge, Button, Container, Popover, PopoverContent, PopoverTrigger, Skeleton } from '@/components/ui/common'
-
-import { useGetIngredientByCategoryQuery } from '@/shared/api/hooks/ingredient/useGetIngredientByCategoryQuery'
+import { Badge, Button, Popover, PopoverContent, PopoverTrigger, Skeleton } from '@/components/ui/common'
 
 import { getMediaSource } from '@/lib/utils'
 import { cn } from '@/lib/utils/twMerge'
 
-interface IngredientsProps {
+import { useGetIngredientByCategoryQuery } from '@/shared/api/hooks/ingredient/useGetIngredientByCategoryQuery'
+
+interface IngredientsProps extends ComponentProps<'div'> {
 	categoryId: string
-	className?: string
 	selectedIngredients: string[]
 	handleClickIngredients: (ingredientId: string) => void
 }
@@ -29,7 +29,7 @@ export function Ingredients({ className, categoryId, handleClickIngredients, sel
 	}
 
 	return (
-		<Container className={cn('flex flex-wrap items-center gap-2', className)}>
+		<div className={cn('flex flex-wrap items-center gap-2', className)}>
 			<div className='mr-2 text-sm font-medium text-gray-700'>Ингредиенты:</div>
 
 			<div className='flex flex-wrap gap-2'>
@@ -50,7 +50,7 @@ export function Ingredients({ className, categoryId, handleClickIngredients, sel
 			{ingredients.data.length > 4 && (
 				<Popover>
 					<PopoverTrigger asChild>
-						<Button variant='outline' size='sm' className='ml-1 gap-1'>
+						<Button variant='outline' className='ml-1 gap-1'>
 							Ещё <ChevronRight size={14} />
 						</Button>
 					</PopoverTrigger>
@@ -75,7 +75,7 @@ export function Ingredients({ className, categoryId, handleClickIngredients, sel
 					</PopoverContent>
 				</Popover>
 			)}
-		</Container>
+		</div>
 	)
 }
 

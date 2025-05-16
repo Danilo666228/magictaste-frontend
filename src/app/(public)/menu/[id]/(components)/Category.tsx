@@ -1,55 +1,43 @@
 'use client'
 
-import { Filter, Search } from 'lucide-react'
+import { Search } from 'lucide-react'
 import { useState } from 'react'
 
-import {
-	Button,
-	Pagination,
-	PaginationContent,
-	PaginationItem,
-	PaginationLink,
-	PaginationNext,
-	PaginationPrevious,
-	Select,
-	SelectContent,
-	SelectItem,
-	SelectTrigger,
-	SelectValue,
-	Sheet,
-	SheetContent,
-	SheetTitle,
-	SheetTrigger,
-	Typography
-} from '@/components/ui/common'
+import { FilterMobile } from '@/app/(public)/menu/[id]/(components)/Filter/FilterMobile'
+import { SelectFilter } from '@/app/(public)/menu/[id]/(components)/Filter/SelectFilter'
+
+import { Pagination, PaginationContent, PaginationItem, PaginationLink, PaginationNext, PaginationPrevious, Typography } from '@/components/ui/common'
+import { SearchInput } from '@/components/ui/elements/input/SearchInput'
 
 import { useGetProductsQuery } from '@/shared/api/hooks/products/useGetProductsQuery'
-import { Category } from '@/shared/api/types/category'
+import { Category as CategoryType } from '@/shared/api/types/category'
 import { useDebounceValue } from '@/shared/hooks'
 
 import { ProductList, ProductListSkeleton } from '../../(components)/ProductList'
-import { SearchInput } from '../../../../../components/ui/elements/input/SearchInput'
 
+import { SortType } from './Filter/sort.type'
 import { Ingredients } from './Ingredients'
 
 interface MenuCategoryProps {
-	category: Category
+	category: CategoryType
 }
 
-export function MenuCategory({ category }: MenuCategoryProps) {
-	const [searchValue, setSearchValue] = useState('')
+export function Category({ category }: MenuCategoryProps) {
 	const [selectedIngredients, setSelectedIngredients] = useState<string[]>([])
-	const [sortByPrice, setSortByPrice] = useState<'asc' | 'desc' | undefined>(undefined)
+	const [sort, setSort] = useState<SortType>({
+		sortByPrice: 'asc',
+		sortByTitle: ''
+	})
 	const [currentPage, setCurrentPage] = useState(1)
-	const debouncedSearch = useDebounceValue(searchValue, 500)
-	const [isFilterOpen, setIsFilterOpen] = useState(false)
+	const debouncedSearch = useDebounceValue(sort.sortByTitle, 500)
+	const [isFilterOpen, setIsFilterOpen] = useState<boolean>(false)
 	const { data: products, isPending } = useGetProductsQuery({
 		config: {
 			params: {
 				categoryId: category.id,
 				search: debouncedSearch,
 				ingredientId: selectedIngredients,
-				orderBy: sortByPrice,
+				orderBy: sort.sortByPrice,
 				page: currentPage,
 				limit: 5
 			}
@@ -62,12 +50,18 @@ export function MenuCategory({ category }: MenuCategoryProps) {
 		setCurrentPage(1)
 	}
 
-	const activeFiltersCount = (selectedIngredients.length > 0 ? 1 : 0) + (sortByPrice ? 1 : 0)
+	const activeFiltersCount = (selectedIngredients.length > 0 ? 1 : 0) + (sort.sortByPrice ? 1 : 0)
 
-	const handlePageChange = (page: number) => {
-		setCurrentPage(page)
+	const handleSetSortByPrice = (value: SortType['sortByPrice']) => {
+		setSort(prev => ({ ...prev, sortByPrice: value }))
+		setCurrentPage(1)
 	}
 
+	const handleSortByTitle = (value: SortType['sortByTitle']) => {
+		setSort(prev => ({ ...prev, sortByTitle: value }))
+		setCurrentPage(1)
+	}
+	console.log(products?.data.total)
 	return (
 		<div className='px-4 py-8 sm:px-6 lg:px-8'>
 			<section className='relative mb-12 rounded-lg shadow-md shadow-primary/30'>
@@ -86,65 +80,22 @@ export function MenuCategory({ category }: MenuCategoryProps) {
 			</section>
 
 			<div className='mb-8 flex flex-col items-start justify-between gap-4 sm:flex-row sm:items-center'>
-				<SearchInput searchValue={searchValue} setSearchValue={setSearchValue} />
-
+				<SearchInput searchValue={sort.sortByTitle} setSearchValue={handleSortByTitle} />
 				<div className='flex gap-4'>
-					<Select
-						value={sortByPrice}
-						onValueChange={value => {
-							setSortByPrice(value as 'asc' | 'desc')
-							setCurrentPage(1)
-						}}>
-						<SelectTrigger className='w-[200px] rounded-xl border-neutral-200 bg-white/50 backdrop-blur-sm transition-colors hover:bg-white/80'>
-							<SelectValue placeholder='Сортировка' />
-						</SelectTrigger>
-						<SelectContent>
-							<SelectItem value='asc'>По возрастанию цены</SelectItem>
-							<SelectItem value='desc'>По убыванию цены</SelectItem>
-						</SelectContent>
-					</Select>
-
-					<Sheet open={isFilterOpen} onOpenChange={setIsFilterOpen}>
-						<SheetTrigger asChild>
-							<Button
-								variant='outline'
-								className='flex items-center gap-2 rounded-xl border-neutral-200 bg-white/50 backdrop-blur-sm transition-colors hover:bg-white/80 sm:hidden'>
-								<Filter size={16} />
-								<span>Фильтры</span>
-								{activeFiltersCount > 0 && (
-									<span className='ml-1 flex h-5 w-5 items-center justify-center rounded-full bg-amber-600 text-xs text-white'>
-										{activeFiltersCount}
-									</span>
-								)}
-							</Button>
-						</SheetTrigger>
-						<SheetContent side='right' className='w-[300px] sm:w-[400px]'>
-							<SheetTitle>Фильтры</SheetTitle>
-
-							<div className='py-8'>
-								<Typography tag='h3' className='mb-6 text-xl font-semibold'>
-									Фильтры
-								</Typography>
-								<div className='space-y-8'>
-									<div className='grid grid-cols-2 gap-3'>
-										<Ingredients
-											selectedIngredients={selectedIngredients}
-											handleClickIngredients={toggleIngredient}
-											categoryId={category.id}
-											className='flex-col'
-										/>
-									</div>
-								</div>
-							</div>
-						</SheetContent>
-					</Sheet>
+					<SelectFilter disabled={products?.data.total === 1} sort={sort.sortByPrice} setSort={handleSetSortByPrice} />
+					<FilterMobile
+						open={isFilterOpen}
+						onOpenChange={setIsFilterOpen}
+						categoryId={category.id}
+						selectedIngredients={selectedIngredients}
+						toggleIngredient={toggleIngredient}
+						activeFiltersCount={activeFiltersCount}
+					/>
 				</div>
 			</div>
-
 			<div className='mb-8 hidden sm:block'>
 				<Ingredients selectedIngredients={selectedIngredients} handleClickIngredients={toggleIngredient} categoryId={category.id} />
 			</div>
-
 			<div className='mt-8'>
 				{isPending ? (
 					<ProductListSkeleton />
@@ -156,20 +107,20 @@ export function MenuCategory({ category }: MenuCategoryProps) {
 								<PaginationContent>
 									<PaginationItem>
 										<PaginationPrevious
-											onClick={() => handlePageChange(Math.max(1, currentPage - 1))}
+											onClick={() => setCurrentPage(Math.max(1, currentPage - 1))}
 											className={currentPage === 1 ? 'pointer-events-none opacity-50' : ''}
 										/>
 									</PaginationItem>
 									{Array.from({ length: totalPages }, (_, i) => i + 1).map(page => (
 										<PaginationItem key={page}>
-											<PaginationLink onClick={() => handlePageChange(page)} isActive={currentPage === page}>
+											<PaginationLink onClick={() => setCurrentPage(page)} isActive={currentPage === page}>
 												{page}
 											</PaginationLink>
 										</PaginationItem>
 									))}
 									<PaginationItem>
 										<PaginationNext
-											onClick={() => handlePageChange(Math.min(totalPages, currentPage + 1))}
+											onClick={() => setCurrentPage(Math.min(totalPages, currentPage + 1))}
 											className={currentPage === totalPages ? 'pointer-events-none opacity-50' : ''}
 										/>
 									</PaginationItem>
