@@ -1,4 +1,5 @@
 export const API_URL = process.env.NEXT_PUBLIC_API_URL as string
+export const CLIENT_URL = process.env.NEXT_PUBLIC_CLIENT_URL as string
 export const SERVER_URL = process.env.NEXT_PUBLIC_SERVER_URL as string
 export const MEDIA_URL = process.env.NEXT_PUBLIC_MEDIA_URL as string
 export const RECAPTCHA_SITE_KEY = process.env.NEXT_PUBLIC_GOOGLE_RECAPTCHA_SITE_KEY as string

@@ -3,6 +3,11 @@ import { Utensils } from 'lucide-react'
 import { Typography } from '@/components/ui/common'
 
 import { CategoryList } from './(components)/CategoryList/CategoryList'
+import { Metadata } from 'next'
+
+export const metadata : Metadata = {
+	title: 'Меню',
+}
 
 export default async function MenuPage() {
 	return (

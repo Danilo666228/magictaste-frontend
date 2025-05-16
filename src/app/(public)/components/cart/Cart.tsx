@@ -56,9 +56,9 @@ export function Cart({ children }: CartProps) {
 		<Sheet>
 			<SheetTrigger asChild>{children}</SheetTrigger>
 			<SheetContent side='right' size={'xl'} className='grid grid-rows-[auto_1fr_auto]'>
-				<SheetHeader className='mt-5 flex-row items-center justify-between'>
+				<SheetHeader className='mt-5 flex-row items-center justify-between max-sm:flex-col'>
 					<div>
-						<SheetTitle className='text-2xl'>Моя Корзина</SheetTitle>
+						<SheetTitle className='text-2xl max-sm:text-xl'>Моя Корзина</SheetTitle>
 						<SheetDescription>{isEmpty ? 'Корзина пуста' : `${cart.data.totalItems} товаров в корзине`}</SheetDescription>
 					</div>
 
