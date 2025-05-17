@@ -36,6 +36,16 @@ async function getSimilarProducts(categoryId: string, productId: string) {
 	}
 }
 
+type Params = Promise<{ id: string }>
+
+export async function generateMetadata({ params }: { params: Params }) {
+	const { id } = await params
+	const product = await getProduct(id)
+	return {
+		title: product.title
+	}
+}
+
 export default async function ProductPage({ params }: { params: Promise<{ id: string }> }) {
 	const { id } = await params
 	const product = await getProduct(id)

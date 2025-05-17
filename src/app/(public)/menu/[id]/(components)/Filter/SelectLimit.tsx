@@ -18,7 +18,7 @@ export const SelectLimit = ({ setLimit, className, ...props }: SelectLimitProps)
 			<SelectContent>
 				{[5, 10, 15, 20].map(limit => (
 					<SelectItem key={limit} value={String(limit)}>
-						{limit}
+						{limit + ' товаров'}
 					</SelectItem>
 				))}
 			</SelectContent>

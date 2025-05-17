@@ -26,7 +26,7 @@ interface SupportTicketItemProps {
 export function SupportTicketItem({ ticket, onClick }: SupportTicketItemProps) {
 	const formatter = useFormatter()
 
-	// Определяем цвет и текст статуса
+	
 	const statusConfig = {
 		new: { color: 'bg-red-100 text-red-800', text: 'Новый' },
 		active: { color: 'bg-green-100 text-green-800', text: 'Активный' },
@@ -34,7 +34,7 @@ export function SupportTicketItem({ ticket, onClick }: SupportTicketItemProps) {
 	}
 
 	const status = statusConfig[ticket.status]
-
+	console.log(ticket)
 	return (
 		<div
 			onClick={onClick}
@@ -45,13 +45,13 @@ export function SupportTicketItem({ ticket, onClick }: SupportTicketItemProps) {
 			)}>
 			<div className='flex items-start justify-between'>
 				<div className='flex items-center gap-2'>
-					<Avatar className='h-8 w-8'>
+					<Avatar className='h-12 w-12'>
 						<AvatarImage src={getMediaSource(ticket.user.picture)} />
 						<AvatarFallback>{ticket.user.userName.slice(0, 2)}</AvatarFallback>
 					</Avatar>
-					<div>
-						<Typography className='font-medium'>{ticket.user.userName}</Typography>
-						{ticket.user.email && <Typography className='text-xs text-muted-foreground'>{ticket.user.email}</Typography>}
+					<div className='flex flex-col gap-1'>
+						<Typography className='font-medium'>Имя пользователя : {ticket.user.userName}</Typography>
+						<Typography className='text-xs text-muted-foreground'>{ticket.user.email}</Typography>
 					</div>
 				</div>
 				<div className='flex flex-col items-end gap-1'>
