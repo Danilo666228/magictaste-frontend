@@ -9,12 +9,14 @@ import { SelectFilter } from '@/app/(public)/menu/[id]/(components)/Filter/Selec
 import { Pagination, PaginationContent, PaginationItem, PaginationLink, PaginationNext, PaginationPrevious, Typography } from '@/components/ui/common'
 import { SearchInput } from '@/components/ui/elements/input/SearchInput'
 
+import { useGetIngredientByCategoryQuery } from '@/shared/api/hooks/ingredient/useGetIngredientByCategoryQuery'
 import { useGetProductsQuery } from '@/shared/api/hooks/products/useGetProductsQuery'
 import { Category as CategoryType } from '@/shared/api/types/category'
 import { useDebounceValue } from '@/shared/hooks'
 
 import { ProductList, ProductListSkeleton } from '../../(components)/ProductList'
 
+import { SelectLimit } from './Filter/SelectLimit'
 import { SortType } from './Filter/sort.type'
 import { Ingredients } from './Ingredients'
 
@@ -24,6 +26,7 @@ interface MenuCategoryProps {
 
 export function Category({ category }: MenuCategoryProps) {
 	const [selectedIngredients, setSelectedIngredients] = useState<string[]>([])
+	const [limit, setLimit] = useState<number>(5)
 	const [sort, setSort] = useState<SortType>({
 		sortByPrice: 'asc',
 		sortByTitle: ''
@@ -31,7 +34,10 @@ export function Category({ category }: MenuCategoryProps) {
 	const [currentPage, setCurrentPage] = useState(1)
 	const debouncedSearch = useDebounceValue(sort.sortByTitle, 500)
 	const [isFilterOpen, setIsFilterOpen] = useState<boolean>(false)
-	const { data: products, isPending } = useGetProductsQuery({
+	const ingredientQuery = useGetIngredientByCategoryQuery({
+		categoryId: category.id
+	})
+	const productQuery = useGetProductsQuery({
 		config: {
 			params: {
 				categoryId: category.id,
@@ -39,11 +45,11 @@ export function Category({ category }: MenuCategoryProps) {
 				ingredientId: selectedIngredients,
 				orderBy: sort.sortByPrice,
 				page: currentPage,
-				limit: 5
+				limit
 			}
 		}
 	})
-	const totalPages = products?.data?.totalPages || 1
+	const totalPages = productQuery.data?.data?.totalPages || 1
 
 	const toggleIngredient = (ingredientId: string) => {
 		setSelectedIngredients(prev => (prev.includes(ingredientId) ? prev.filter(id => id !== ingredientId) : [...prev, ingredientId]))
@@ -51,6 +57,11 @@ export function Category({ category }: MenuCategoryProps) {
 	}
 
 	const activeFiltersCount = (selectedIngredients.length > 0 ? 1 : 0) + (sort.sortByPrice ? 1 : 0)
+
+	const handleSetLimit = (value: number) => {
+		setLimit(value)
+		setCurrentPage(1)
+	}
 
 	const handleSetSortByPrice = (value: SortType['sortByPrice']) => {
 		setSort(prev => ({ ...prev, sortByPrice: value }))
@@ -61,10 +72,10 @@ export function Category({ category }: MenuCategoryProps) {
 		setSort(prev => ({ ...prev, sortByTitle: value }))
 		setCurrentPage(1)
 	}
-	console.log(products?.data.total)
+
 	return (
 		<div className='px-4 py-8 sm:px-6 lg:px-8'>
-			<section className='relative mb-12 rounded-lg shadow-md shadow-primary/30'>
+			<section className='relative mb-12 rounded-lg border shadow-md'>
 				<div className='relative z-10 px-8 py-16 sm:py-20'>
 					<div className='max-w-3xl'>
 						<Typography
@@ -82,11 +93,21 @@ export function Category({ category }: MenuCategoryProps) {
 			<div className='mb-8 flex flex-col items-start justify-between gap-4 sm:flex-row sm:items-center'>
 				<SearchInput searchValue={sort.sortByTitle} setSearchValue={handleSortByTitle} />
 				<div className='flex gap-4'>
-					<SelectFilter disabled={products?.data.total === 1} sort={sort.sortByPrice} setSort={handleSetSortByPrice} />
+					<SelectFilter
+						className='max-sm:hidden'
+						disabled={productQuery.data?.data.total === 1}
+						sort={sort.sortByPrice}
+						setSort={handleSetSortByPrice}
+					/>
+					<SelectLimit className='max-sm:hidden' setLimit={handleSetLimit} />
 					<FilterMobile
+						isPending={ingredientQuery.isPending}
+						ingredients={ingredientQuery.data?.data || []}
+						setLimit={handleSetLimit}
+						setSort={handleSetSortByPrice}
+						sort={sort}
 						open={isFilterOpen}
 						onOpenChange={setIsFilterOpen}
-						categoryId={category.id}
 						selectedIngredients={selectedIngredients}
 						toggleIngredient={toggleIngredient}
 						activeFiltersCount={activeFiltersCount}
@@ -94,14 +115,20 @@ export function Category({ category }: MenuCategoryProps) {
 				</div>
 			</div>
 			<div className='mb-8 hidden sm:block'>
-				<Ingredients selectedIngredients={selectedIngredients} handleClickIngredients={toggleIngredient} categoryId={category.id} />
+				<Ingredients
+					isPending={ingredientQuery.isPending}
+					take={4}
+					selectedIngredients={selectedIngredients}
+					handleClickIngredients={toggleIngredient}
+					ingredients={ingredientQuery.data?.data || []}
+				/>
 			</div>
 			<div className='mt-8'>
-				{isPending ? (
+				{productQuery.isPending ? (
 					<ProductListSkeleton />
-				) : products?.data && products.data.products.length > 0 ? (
+				) : productQuery.data?.data && productQuery.data.data.products.length > 0 ? (
 					<>
-						<ProductList products={products.data.products} />
+						<ProductList products={productQuery.data.data.products} />
 						<div className='mt-8'>
 							<Pagination>
 								<PaginationContent>

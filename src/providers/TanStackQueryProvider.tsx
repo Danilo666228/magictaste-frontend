@@ -1,8 +1,8 @@
 'use client'
 
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
-import { ReactNode, useState } from 'react'
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools'
+import { ReactNode, useState } from 'react'
 
 interface TanStackQueryProviderProps {
 	children: ReactNode

@@ -12,6 +12,7 @@ export function useFavorite(search?: string) {
 			}
 		}
 	})
+
 	const toggleFavoriteMutation = useToggleFavoriteMutation({
 		options: {
 			onSuccess: () => {

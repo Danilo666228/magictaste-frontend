@@ -1,29 +1,21 @@
 import { ComponentProps } from 'react'
 
-import {
-	Badge,
-	Select,
-	SelectContent,
-	SelectItem,
-	SelectTrigger,
-	SelectValue,
-	Tooltip,
-	TooltipContent,
-	TooltipProvider,
-	TooltipTrigger
-} from '@/components/ui/common'
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/common'
+
+import { cn } from '@/lib/utils'
 
 import { SortType } from './sort.type'
 
 interface SelectFilterProps extends ComponentProps<typeof Select> {
 	sort: SortType['sortByPrice']
 	setSort: (value: 'asc' | 'desc') => void
+	className?: string
 }
 
-export const SelectFilter = ({ sort, setSort, disabled, ...props }: SelectFilterProps) => {
+export const SelectFilter = ({ sort, setSort, disabled, className, ...props }: SelectFilterProps) => {
 	return (
 		<Select disabled={disabled} value={sort} onValueChange={setSort} {...props}>
-			<SelectTrigger className='w-[200px] rounded-xl border-neutral-200 bg-white/50 backdrop-blur-sm transition-colors hover:bg-white/80'>
+			<SelectTrigger className={cn('w-[200px] border-neutral-200 bg-white/50 backdrop-blur-sm transition-colors hover:bg-white/80', className)}>
 				<SelectValue placeholder='Сортировка' />
 			</SelectTrigger>
 			<SelectContent>

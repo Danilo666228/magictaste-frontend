@@ -6,7 +6,7 @@ import { ROUTE } from '@/config/route.config'
 
 export const CallToOrder = () => {
 	return (
-		<section className='py-16 bg-muted'>
+		<section className='mx-[3%] rounded-xl bg-muted py-16'>
 			<div className='px-4 text-center sm:px-6 lg:px-8'>
 				<Typography tag='h2' className='mb-4 text-3xl font-bold'>
 					Готовы попробовать наши блюда?
