@@ -8,17 +8,7 @@ import { v4 as uuidv4 } from 'uuid'
 
 import { useProfile } from '@/hooks/useProfile'
 
-<<<<<<< HEAD
-import { Account } from '@/shared/api/types'
-
-import { Avatar, AvatarFallback, AvatarImage } from '../../common'
-import { Typography } from '../../common/Typography'
-
-import { ExpandableChat, ExpandableChatBody, ExpandableChatFooter, ExpandableChatHeader } from './ExpandableChat'
 import { SERVER_URL, SOCKET_SUPPORT_CHAT_URL } from '@/lib/constants/url.constants'
-=======
-import { SERVER_URL } from '@/lib/constants/url.constants'
->>>>>>> development
 import { getMediaSource } from '@/lib/utils'
 import { checkAccessRoles } from '@/lib/utils/accessRoles'
 import { cn } from '@/lib/utils/twMerge'
@@ -200,28 +190,17 @@ export function SupportChat() {
 		return null
 
 	return (
-<<<<<<< HEAD
-		<ExpandableChat icon={<MessageCircle className="text-white" />}>
-			<ExpandableChatHeader className="bg-gradient-to-r from-blue-600 to-indigo-700 text-white">
-=======
 		<ExpandableChat icon={<MessageCircle className='text-white' />}>
 			<ExpandableChatHeader className='bg-primary text-white'>
->>>>>>> development
 				{support ? (
 					<div className="flex items-center gap-3">
 						<Avatar className="h-8 w-8 border-2 border-white/30">
 							<AvatarFallback
 								className="bg-blue-400 text-white">{support.userName.slice(0, 2).toUpperCase()}</AvatarFallback>
 						</Avatar>
-<<<<<<< HEAD
-						<div>
-							<Typography className="font-medium">{support.userName}</Typography>
-							<Typography className="text-blue-100">Менеджер поддержки</Typography>
-=======
 						<div className='flex flex-col'>
 							<Typography className='font-medium'>{support.userName}</Typography>
 							<Typography className='text-blue-100'>Менеджер поддержки</Typography>
->>>>>>> development
 						</div>
 					</div>
 				) : chatStarted ? (
@@ -229,15 +208,9 @@ export function SupportChat() {
 						<div className="flex h-8 w-8 items-center justify-center rounded-full bg-blue-400/30">
 							<div className="h-3 w-3 animate-pulse rounded-full bg-blue-200" />
 						</div>
-<<<<<<< HEAD
-						<div>
-							<Typography className="font-medium">Ожидание подключения</Typography>
-							<Typography className="text-blue-100">Менеджер скоро присоединится</Typography>
-=======
 						<div className='flex flex-col'>
 							<Typography className='font-medium'>Ожидание подключения</Typography>
 							<Typography className='text-blue-100'>Менеджер скоро присоединится</Typography>
->>>>>>> development
 						</div>
 					</div>
 				) : (
@@ -246,11 +219,7 @@ export function SupportChat() {
 						<button
 							onClick={requestSupport}
 							disabled={!isConnected || isLoading}
-<<<<<<< HEAD
-							className="rounded-full bg-white px-4 py-1.5 text-sm font-medium text-blue-700 transition-colors hover:bg-blue-50 disabled:bg-blue-100 disabled:text-blue-400">
-=======
 							className='rounded-full bg-white px-4 py-1.5 text-sm font-medium text-primary transition-colors hover:bg-blue-50 disabled:bg-blue-100 disabled:text-blue-400'>
->>>>>>> development
 							{isLoading ? 'Загрузка...' : 'Запросить поддержку'}
 						</button>
 					</div>
@@ -259,16 +228,6 @@ export function SupportChat() {
 
 			<ExpandableChatBody className="bg-gray-50">
 				{isLoading ? (
-<<<<<<< HEAD
-					<div className="flex h-full flex-col items-center justify-center gap-3 text-gray-500">
-						<div className="h-8 w-8 animate-spin rounded-full border-4 border-blue-200 border-t-blue-600"></div>
-						<Typography>Загрузка сообщений...</Typography>
-					</div>
-				) : messages.length === 0 && !chatStarted ? (
-					<div className="flex h-full flex-col items-center justify-center gap-4 p-6 text-center">
-						<div className="rounded-full bg-blue-100 p-4">
-							<MessageCircle className="h-10 w-10 text-blue-600" />
-=======
 					<div className='flex h-full flex-col items-center justify-center gap-3 text-gray-500'>
 						<div className='h-8 w-8 animate-spin rounded-full border-4 border-primary'></div>
 						<Typography>Загрузка сообщений...</Typography>
@@ -277,7 +236,6 @@ export function SupportChat() {
 					<div className='flex h-full flex-col items-center justify-center gap-4 p-6 text-center'>
 						<div className='rounded-full bg-blue-100 p-4'>
 							<MessageCircle className='h-10 w-10 text-primary' />
->>>>>>> development
 						</div>
 						<Typography className="font-medium text-gray-800">Добро пожаловать в чат поддержки</Typography>
 						<Typography className="text-gray-500">Нажмите "Запросить поддержку", чтобы начать общение с
@@ -293,13 +251,7 @@ export function SupportChat() {
 									msg.senderId === 'system' ? 'justify-center' : msg.senderId === profile.data.id ? 'flex-row-reverse' : 'flex-row'
 								)}>
 								{msg.senderId === 'system' ? (
-<<<<<<< HEAD
-									<div className="my-2 rounded-lg bg-gray-100 px-4 py-2 text-center text-sm text-gray-600">
-										{msg.message}
-									</div>
-=======
 									<div className='my-2 rounded-lg bg-gray-100 px-4 py-2 text-center text-sm text-gray-600'>{msg.message}</div>
->>>>>>> development
 								) : (
 									<>
 										<Avatar
@@ -344,23 +296,6 @@ export function SupportChat() {
 				)}
 			</ExpandableChatBody>
 
-<<<<<<< HEAD
-			<ExpandableChatFooter className="bg-white shadow-inner">
-				<form onSubmit={handleSubmit} className="w-full">
-					<div className="flex gap-2">
-						<input
-							type="text"
-							value={message}
-							onChange={e => setMessage(e.target.value)}
-							className="flex-1 rounded-full border border-gray-300 bg-gray-50 px-4 py-2.5 focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500"
-							placeholder="Введите сообщение..."
-							disabled={!isConnected || (!support && !chatStarted)}
-						/>
-						<button
-							type="submit"
-							disabled={!isConnected || (!support && !chatStarted) || !message.trim()}
-							className="rounded-full bg-blue-600 px-4 py-2.5 text-white transition-colors hover:bg-blue-700 disabled:bg-gray-300">
-=======
 			<ExpandableChatFooter className='bg-background'>
 				<form onSubmit={handleSubmit} className='w-full'>
 					<div className='flex items-center gap-2'>
@@ -376,7 +311,6 @@ export function SupportChat() {
 							type='submit'
 							disabled={!support || !message}
 							className=' bg-blue-600 px-4 py-2.5 text-white transition-colors hover:bg-blue-700 disabled:bg-gray-300'>
->>>>>>> development
 							Отправить
 						</Button>
 					</div>

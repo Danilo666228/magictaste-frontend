@@ -9,11 +9,8 @@ export interface Notification {
 	createdAt: Date
 	updatedAt: Date
 }
-<<<<<<< HEAD
-=======
 
 export interface UnreadNotification {
 	count: number
 	notifications: Notification[]
 }
->>>>>>> development
