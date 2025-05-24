@@ -5,10 +5,12 @@ import Image from 'next/image'
 
 import { Typography } from '@/components/ui/common'
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from '@/components/ui/common/Сarousel'
+import { API_URL } from '@/lib/constants/url.constants'
 
 const AUTOPLAY_DELAY = 5000
 
 export function HeroCarousel() {
+	console.log(API_URL)
 	return (
 		<section className='mt-4 h-[400px] overflow-hidden rounded-3xl sm:mx-6 lg:mx-8'>
 			<Carousel
