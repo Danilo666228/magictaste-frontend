@@ -1,5 +1,3 @@
-import { useRouter } from 'next/router'
-
 import { API_URL } from '@/lib/constants/url.constants'
 
 import { Product } from '@/shared/api/types'
@@ -7,7 +5,6 @@ import { Product } from '@/shared/api/types'
 import { ProductModal } from './components/ProductModal'
 
 async function getProduct(id: string) {
-	const router = useRouter()
 	try {
 		const response = await fetch(API_URL + `/products/${id}`)
 
