@@ -3,14 +3,20 @@ import type { MetadataRoute } from 'next'
 import { CLIENT_URL } from '@/lib/constants/url.constants'
 
 import { api } from '@/shared/api/instance'
-import type { Category } from '@/shared/api/types'
+import { Category } from '@/shared/api/types'
 
 async function getCategories() {
-	return await api.get<{ categories: Category[]; total: number }>(`/category`)
+	try {
+		return await api.get<{ categories: Category[]; total: number }>('/category')
+	} catch (error) {
+		console.error('Failed to fetch categories:', error)
+		return { data: { categories: [], total: 0 } }
+	}
 }
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-	const categories = await getCategories()
+	const categoriesResponse = await getCategories()
+	const categories = categoriesResponse.data.categories
 
 	const routes: MetadataRoute.Sitemap = [
 		{
@@ -30,13 +36,14 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 		}
 	]
 
-	categories.data.categories.forEach(category => {
+	categories.forEach(category => {
 		routes.push({
 			url: CLIENT_URL + `/menu/${category.id}`,
-			lastModified: category.createdAt,
+			lastModified: new Date(category.createdAt).toISOString(),
 			priority: 0.7
 		})
 	})
 
 	return routes
 }
+
