@@ -1,39 +1,35 @@
 import { ChevronRight } from 'lucide-react'
 import Image from 'next/image'
+import { ComponentProps } from 'react'
 
-import { Badge, Button, Container, Popover, PopoverContent, PopoverTrigger, Skeleton } from '@/components/ui/common'
-
-import { useGetIngredientByCategoryQuery } from '@/shared/api/hooks/ingredient/useGetIngredientByCategoryQuery'
+import { Badge, Button, Popover, PopoverContent, PopoverTrigger, Skeleton } from '@/components/ui/common'
 
 import { getMediaSource } from '@/lib/utils'
 import { cn } from '@/lib/utils/twMerge'
 
-interface IngredientsProps {
-	categoryId: string
-	className?: string
+import { Ingredient } from '@/shared/api/types'
+
+interface IngredientsProps extends ComponentProps<'div'> {
 	selectedIngredients: string[]
 	handleClickIngredients: (ingredientId: string) => void
+	take: number
+	ingredients: Ingredient[]
+	isPending: boolean
 }
 
-export function Ingredients({ className, categoryId, handleClickIngredients, selectedIngredients }: IngredientsProps) {
-	const { data: ingredients, isPending } = useGetIngredientByCategoryQuery({
-		categoryId
-	})
-
+export function Ingredients({ className, handleClickIngredients, selectedIngredients, take, ingredients, isPending }: IngredientsProps) {
 	if (isPending) {
 		return <IngredientSkeleton />
 	}
 
-	if (!ingredients?.data || ingredients.data.length === 0) {
+	if (!ingredients || ingredients.length === 0) {
 		return null
 	}
 
 	return (
-		<Container className={cn('flex flex-wrap items-center gap-2', className)}>
-			<div className='mr-2 text-sm font-medium text-gray-700'>Ингредиенты:</div>
-
+		<div className={cn('flex flex-wrap items-center gap-3 w-fit', className)}>
 			<div className='flex flex-wrap gap-2'>
-				{ingredients.data.slice(0, 4).map(ingredient => (
+				{ingredients.slice(0, take).map(ingredient => (
 					<Badge
 						key={ingredient.id}
 						variant={'outline'}
@@ -47,16 +43,16 @@ export function Ingredients({ className, categoryId, handleClickIngredients, sel
 				))}
 			</div>
 
-			{ingredients.data.length > 4 && (
-				<Popover>
+			{ingredients.length > take && (
+				<Popover modal>
 					<PopoverTrigger asChild>
-						<Button variant='outline' size='sm' className='ml-1 gap-1'>
-							Ещё <ChevronRight size={14} />
+						<Button variant='outline' className='group gap-1'>
+							Ещё <ChevronRight size={14} className='duration-300 group-hover:translate-x-1' />
 						</Button>
 					</PopoverTrigger>
-					<PopoverContent className='w-[300px] p-3'>
+					<PopoverContent className='p-3'>
 						<div className='grid grid-cols-2 gap-2'>
-							{ingredients.data.map(ingredient => (
+							{ingredients.map(ingredient => (
 								<Badge
 									key={ingredient.id}
 									variant={'outline'}
@@ -75,7 +71,7 @@ export function Ingredients({ className, categoryId, handleClickIngredients, sel
 					</PopoverContent>
 				</Popover>
 			)}
-		</Container>
+		</div>
 	)
 }
 

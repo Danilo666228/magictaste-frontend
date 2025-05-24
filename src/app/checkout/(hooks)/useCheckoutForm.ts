@@ -30,6 +30,7 @@ export function useCheckoutForm() {
 				}
 				if (paymentMethod === 'CARD') {
 					router.push(data.confirmation.confirmation_url)
+					handleClearCart()
 					resetOrder()
 					return
 				}

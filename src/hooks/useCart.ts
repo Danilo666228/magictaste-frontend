@@ -10,7 +10,7 @@ export function useCart() {
 	const { isAuth } = useAuth()
 	const getCartQuery = useGetCartQuery({
 		options: {
-			enabled: !!isAuth
+			enabled: isAuth
 		}
 	})
 

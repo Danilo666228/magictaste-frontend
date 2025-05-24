@@ -31,6 +31,7 @@ export function RecoveryPasswordForm() {
 		defaultValues: {
 			email: ''
 		},
+		mode: 'onChange',
 		resolver: zodResolver(newPasswordSchema)
 	})
 
@@ -53,15 +54,15 @@ export function RecoveryPasswordForm() {
 						render={({ field }) => (
 							<FormItem className='space-y-1.5'>
 								<Container className='flex items-center justify-between'>
-									<FormLabel className='flex items-center gap-2'>Email</FormLabel>
+									<FormLabel className='flex items-center gap-2'>Почта</FormLabel>
 									<FormMessage />
 								</Container>
 								<FormControl>
 									<Input
 										type='email'
 										placeholder='myemail@mail.ru'
-										{...field}
 										className='h-11 px-4 transition-all focus-visible:ring-primary/70'
+										{...field}
 									/>
 								</FormControl>
 							</FormItem>

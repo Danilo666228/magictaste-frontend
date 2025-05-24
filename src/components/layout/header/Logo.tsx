@@ -4,8 +4,9 @@ import { ComponentProps } from 'react'
 
 import { Typography } from '@/components/ui/common'
 
-import { ROUTE } from '@/config/route.config'
 import { cn } from '@/lib/utils'
+
+import { ROUTE } from '@/config/route.config'
 
 interface LogoProps extends ComponentProps<'div'> {}
 
@@ -16,9 +17,11 @@ export function Logo({ className }: LogoProps) {
 				<Image src='/logo.png' alt='Logo' width={80} height={80} className='dark:invert' />
 			</div>
 			<div className='flex flex-col gap-2 max-lg:hidden'>
-				<Typography tag='h4'>MagicTaste</Typography>
+				<Typography className='font-semibold' tag='h4'>
+					Волшебный вкус
+				</Typography>
 				<Typography tag='span' className='text-muted-foreground'>
-					Доставка еды
+					Доставка вкусных пельменей
 				</Typography>
 			</div>
 		</Link>

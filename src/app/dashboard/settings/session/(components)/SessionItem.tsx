@@ -3,12 +3,14 @@ import { useFormatter } from 'next-intl'
 
 import { Badge, Button, Card, CardContent } from '@/components/ui/common'
 
+import { cn } from '@/lib/utils'
+import { getBrowserIcon } from '@/lib/utils/getBrowseIcon'
+
 import { useDeleteSessionMutation } from '@/shared/api/hooks/session/useDeleteSessionMutation'
 import { useGetAllSessionsQuery } from '@/shared/api/hooks/session/useGetAllSessionsQuery'
 import { Session } from '@/shared/api/types'
 
 import { SessionInfo } from './SessionInfo'
-import { getBrowserIcon } from '@/lib/utils/getBrowseIcon'
 
 interface SessionItemProps {
 	session: Session | undefined
@@ -30,11 +32,11 @@ export function SessionItem({ session, isCurrentSession }: SessionItemProps) {
 	if (!session) return null
 
 	return (
-		<Card className={`border transition-all ${isCurrentSession ? 'border-primary/30 bg-primary/5' : 'hover:shadow-md'}`}>
+		<Card className={cn('border transition-all', isCurrentSession ? 'border-primary/30 bg-primary/5' : 'hover:shadow-md')}>
 			<CardContent className='p-0'>
 				<div className='flex flex-col gap-4 p-4 md:flex-row md:items-center'>
 					<div className='flex items-center gap-4'>
-						<div className={`rounded-full p-2.5 ${isCurrentSession ? 'bg-primary/20' : 'bg-muted/30'}`}>
+						<div className={cn('rounded-full p-2.5', isCurrentSession ? 'bg-primary/20' : 'bg-muted/30')}>
 							{Icon && <Icon className='h-6 w-6 text-primary' />}
 						</div>
 
@@ -47,7 +49,7 @@ export function SessionItem({ session, isCurrentSession }: SessionItemProps) {
 									</Badge>
 								)}
 							</div>
-							<div className='flex items-center gap-3 text-sm text-muted-foreground'>
+							<div className='flex items-center gap-3 text-sm text-muted-foreground max-xl:hidden'>
 								<span>{session.metadata.device.os}</span>
 								<span className='h-1 w-1 rounded-full bg-muted-foreground/50'></span>
 								<div className='flex items-center gap-1'>
@@ -64,7 +66,7 @@ export function SessionItem({ session, isCurrentSession }: SessionItemProps) {
 					</div>
 
 					<div className='flex items-center gap-2 md:ml-auto'>
-						<div className='flex items-center gap-1 text-sm text-muted-foreground'>
+						<div className='flex items-center gap-1 text-sm text-muted-foreground max-xl:hidden'>
 							<MapPin className='h-3.5 w-3.5' />
 							<span>
 								{session.metadata.location.city}, {session.metadata.location.country}

@@ -2,7 +2,7 @@
 
 import { ChevronRight } from 'lucide-react'
 import Link from 'next/link'
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 
 import {
 	Collapsible,
@@ -19,8 +19,9 @@ import {
 	useSidebar
 } from '@/components/ui/common'
 
-import { NavigationItemProps } from './types'
 import { cn } from '@/lib/utils'
+
+import { NavigationItemProps } from './types'
 
 export function NavigationItem({ item, pathname }: NavigationItemProps) {
 	const [isOpen, setIsOpen] = useState(false)

@@ -38,14 +38,7 @@ interface ExpandableChatProps extends React.HTMLAttributes<HTMLDivElement> {
 	icon?: React.ReactNode
 }
 
-const ExpandableChat: React.FC<ExpandableChatProps> = ({
-																												 className,
-																												 position = 'bottom-right',
-																												 size = 'md',
-																												 icon,
-																												 children,
-																												 ...props
-																											 }) => {
+const ExpandableChat: React.FC<ExpandableChatProps> = ({ className, position = 'bottom-right', size = 'md', icon, children, ...props }) => {
 	const [isOpen, setIsOpen] = useState(false)
 	const chatRef = useRef<HTMLDivElement>(null)
 
@@ -63,8 +56,8 @@ const ExpandableChat: React.FC<ExpandableChatProps> = ({
 					className
 				)}>
 				{children}
-				<Button variant="ghost" size="icon" className="absolute right-2 top-2 sm:hidden" onClick={toggleChat}>
-					<X className="h-4 w-4" />
+				<Button variant='ghost' size='icon' className='absolute right-2 top-2 sm:hidden' onClick={toggleChat}>
+					<X className='h-4 w-4' />
 				</Button>
 			</div>
 			<ExpandableChatToggle icon={icon} isOpen={isOpen} toggleChat={toggleChat} />
@@ -106,23 +99,17 @@ interface ExpandableChatToggleProps extends React.ButtonHTMLAttributes<HTMLButto
 	toggleChat: () => void
 }
 
-const ExpandableChatToggle: React.FC<ExpandableChatToggleProps> = ({
-																																		 className,
-																																		 icon,
-																																		 isOpen,
-																																		 toggleChat,
-																																		 ...props
-																																	 }) => (
+const ExpandableChatToggle: React.FC<ExpandableChatToggleProps> = ({ className, icon, isOpen, toggleChat, ...props }) => (
 	<Button
-		variant="default"
+		variant='default'
 		onClick={toggleChat}
 		className={cn(
-			'flex h-14 w-14 items-center justify-center rounded-full bg-gradient-to-r from-blue-600 to-indigo-700 shadow-md transition-all duration-300 hover:shadow-lg hover:shadow-blue-700/30',
+			'flex h-14 w-14 items-center justify-center rounded-full bg-primary shadow-md transition-all duration-300 hover:shadow-lg hover:shadow-blue-700/30',
 			isOpen ? 'rotate-0' : 'rotate-0',
 			className
 		)}
 		{...props}>
-		{isOpen ? <X className="h-6 w-6 text-white" /> : icon || <MessageCircle className="h-6 w-6 text-white" />}
+		{isOpen ? <X className='h-6 w-6 text-white' /> : icon || <MessageCircle className='h-6 w-6 text-white' />}
 	</Button>
 )
 

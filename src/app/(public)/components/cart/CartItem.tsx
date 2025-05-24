@@ -19,7 +19,7 @@ export function CartItem({ item }: CartItemProps) {
 	const { handleAddProduct, handleDecreaseItem, handleDeleteItem } = useCart()
 
 	return (
-		<div className='space-y-3'>
+		<div className='space-y-3 max-sm:space-y-2'>
 			<div className='grid grid-cols-[80px_1fr_auto] items-center gap-4'>
 				<div className='relative aspect-square overflow-hidden rounded-md'>
 					<Image

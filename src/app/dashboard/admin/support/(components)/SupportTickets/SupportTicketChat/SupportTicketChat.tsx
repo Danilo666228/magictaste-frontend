@@ -8,11 +8,11 @@ import { Avatar, AvatarFallback, AvatarImage, Button, Textarea, Typography } fro
 
 import { useProfile } from '@/hooks/useProfile'
 
-import { Account } from '@/shared/api/types'
-import { Message } from '@/shared/api/types/supportChat'
-
 import { getMediaSource } from '@/lib/utils'
 import { cn } from '@/lib/utils/twMerge'
+
+import { Account } from '@/shared/api/types'
+import { Message } from '@/shared/api/types/supportChat'
 
 interface SupportTicketChatProps {
 	socket: Socket | null
@@ -34,7 +34,6 @@ export function SupportTicketChat({ socket, selectedTicket, onClose }: SupportTi
 
 		setIsLoading(true)
 
-		// Загружаем историю сообщений
 		socket.emit('getChatHistory', { userId: selectedTicket.id }, (response: { success: boolean; history: Message[] }) => {
 			if (response.success && Array.isArray(response.history)) {
 				setMessages(response.history)
@@ -43,18 +42,14 @@ export function SupportTicketChat({ socket, selectedTicket, onClose }: SupportTi
 			}
 			setIsLoading(false)
 
-			// Прокручиваем к последнему сообщению
 			setTimeout(() => {
 				messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' })
 			}, 100)
 		})
 
-		// Слушаем новые сообщения
 		const handleNewMessage = (message: Message) => {
-			// Проверяем, относится ли сообщение к текущему чату
 			if (message.senderId === selectedTicket.id || message.receiverId === selectedTicket.id) {
 				setMessages(prev => [...prev, message])
-				messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' })
 			}
 		}
 
@@ -80,7 +75,6 @@ export function SupportTicketChat({ socket, selectedTicket, onClose }: SupportTi
 				updatedAt: new Date()
 			}
 
-			// Отправляем сообщение через сокет
 			socket.emit('sendMessage', messageData, (response: { success: boolean; message: Message }) => {
 				if (response.success) {
 					setMessages(prev => [...prev, response.message])
@@ -102,8 +96,7 @@ export function SupportTicketChat({ socket, selectedTicket, onClose }: SupportTi
 
 		socket.emit('finishChat', { userId: selectedTicket.id }, (response: { success: boolean }) => {
 			if (response.success) {
-				console.log('Chat finished successfully')
-				onClose() // Закрываем чат
+				onClose()
 			} else {
 				console.error('Failed to finish chat')
 			}
@@ -112,7 +105,6 @@ export function SupportTicketChat({ socket, selectedTicket, onClose }: SupportTi
 
 	return (
 		<div className='flex h-full flex-col'>
-			{/* Header */}
 			<div className='flex items-start justify-between gap-3 border-b p-5'>
 				<div className='flex items-start gap-3'>
 					<Avatar>
@@ -140,7 +132,6 @@ export function SupportTicketChat({ socket, selectedTicket, onClose }: SupportTi
 				</div>
 			</div>
 
-			{/* Messages */}
 			<div className='flex-grow overflow-y-auto p-5'>
 				{isLoading ? (
 					<div className='flex justify-center'>
@@ -169,11 +160,7 @@ export function SupportTicketChat({ socket, selectedTicket, onClose }: SupportTi
 									<AvatarFallback>{selectedTicket.userName.slice(0, 2)}</AvatarFallback>
 								</Avatar>
 							)}
-							<div
-								className={cn(
-									'flex max-w-[75%] flex-col',
-									message.senderId === profile?.data.id ? 'items-end' : 'items-start'
-								)}>
+							<div className={cn('flex max-w-[75%] flex-col', message.senderId === profile?.data.id ? 'items-end' : 'items-start')}>
 								<div
 									className={cn(
 										'w-fit max-w-full break-words rounded-t-2xl p-2 text-sm',
@@ -189,7 +176,6 @@ export function SupportTicketChat({ socket, selectedTicket, onClose }: SupportTi
 				<div ref={messagesEndRef} />
 			</div>
 
-			{/* Input */}
 			<form onSubmit={handleSubmit} className='flex flex-col items-center gap-4 border-t p-5'>
 				<div className='flex w-full items-center gap-2'>
 					<Textarea

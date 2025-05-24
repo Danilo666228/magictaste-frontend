@@ -33,7 +33,6 @@ export function SupportTicketList({ socket, onTicketSelect, searchQuery }: Suppo
 	useEffect(() => {
 		if (!socket) return
 
-		// Получаем активные чаты при загрузке
 		socket.emit('getActiveChats', (response: { success: boolean; chats: ActiveChat[] }) => {
 			if (response.success) {
 				setActiveChats(response.chats)
@@ -43,11 +42,9 @@ export function SupportTicketList({ socket, onTicketSelect, searchQuery }: Suppo
 			setIsLoading(false)
 		})
 
-		// Слушаем новые запросы чата
 		socket.on('newChatRequest', (chat: ActiveChat) => {
 			console.log('New chat request received:', chat)
 			setActiveChats(prev => {
-				// Проверяем, есть ли уже такой чат
 				const exists = prev.some(c => c.account.id === chat.account.id)
 				if (exists) {
 					return prev.map(c => (c.account.id === chat.account.id ? chat : c))
@@ -57,14 +54,12 @@ export function SupportTicketList({ socket, onTicketSelect, searchQuery }: Suppo
 			})
 		})
 
-		// Слушаем обновления статуса чата
 		socket.on('chatStatusUpdated', (updatedChat: ActiveChat) => {
 			setActiveChats(prev =>
 				prev.map(chat => (chat.account.id === updatedChat.account.id ? updatedChat : chat)).filter(chat => chat.status !== 'finished')
 			)
 		})
 
-		// Слушаем завершение чата
 		socket.on('chatFinished', (userId: string) => {
 			setActiveChats(prev => prev.filter(chat => chat.account.id !== userId))
 		})
@@ -76,7 +71,6 @@ export function SupportTicketList({ socket, onTicketSelect, searchQuery }: Suppo
 		}
 	}, [socket])
 
-	// Фильтруем чаты по поисковому запросу
 	const filteredChats = activeChats.filter(chat => {
 		if (!chat?.account) return false
 

@@ -6,10 +6,11 @@ import { useCallback, useEffect, useMemo } from 'react'
 
 import { Button, Popover, PopoverContent, PopoverTrigger } from '@/components/ui/common'
 
+import { cn } from '@/lib/utils/twMerge'
+
 import { useNotificationsWebSocketStore } from '@/store/useNotificationsWebSocketStore'
 
 import { ROUTE } from '@/config/route.config'
-import { cn } from '@/lib/utils/twMerge'
 
 export function Notifications() {
 	const { notifications, markAllAsRead, checkConnection, isConnected, fetchNotifications, markAsRead } = useNotificationsWebSocketStore()

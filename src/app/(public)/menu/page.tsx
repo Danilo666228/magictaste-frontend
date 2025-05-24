@@ -3,11 +3,16 @@ import { Utensils } from 'lucide-react'
 import { Typography } from '@/components/ui/common'
 
 import { CategoryList } from './(components)/CategoryList/CategoryList'
+import { Metadata } from 'next'
+
+export const metadata : Metadata = {
+	title: 'Меню',
+}
 
 export default async function MenuPage() {
 	return (
 		<div>
-			<div className='bg-gradient-to-r from-amber-500 to-orange-500 text-background'>
+			<div className='bg-gradient-to-r from-amber-500 to-orange-500 text-background -mx-[100%]'>
 				<div className='px-4 py-16 sm:px-6 md:py-24 lg:px-8'>
 					<div className='mx-auto max-w-4xl text-center'>
 						<div className='mb-6 inline-flex h-16 w-16 items-center justify-center rounded-full bg-white/20 backdrop-blur-sm'>
@@ -28,7 +33,7 @@ export default async function MenuPage() {
 				</div>
 			</div>
 
-			<div className='-mt-8 px-4 sm:px-6 lg:px-8'>
+			<div className='-mt-8 -mx-6 px-4 sm:px-6 lg:px-8'>
 				<div className='rounded-lg bg-muted p-6 shadow-xl md:p-8'>
 					<CategoryList />
 				</div>

@@ -6,3 +6,4 @@ export * from './useShare/useShare'
 export * from './useUnmount/useUnmount'
 export * from './useHover/useHover';
 export * from './useRefState/useRefState';
+export * from './useScroll/useScroll';

@@ -29,7 +29,11 @@ export default async function middleware(request: NextRequest) {
 	const isSupportRoute = nextUrl.pathname.startsWith('/dashboard/support')
 	const isAdminRoute = nextUrl.pathname.startsWith('/dashboard/admin')
 	const isDashboardRoute = nextUrl.pathname.startsWith('/dashboard')
-	const isSignInRoute = nextUrl.pathname.startsWith('/auth')
+	const isAuthRoute = nextUrl.pathname.startsWith('/auth')
+
+	if (isAuthRoute && token) {
+		return NextResponse.redirect(new URL(ROUTE.dashboard.profile, request.url))
+	}
 
 	if (isDashboardRoute && !token) {
 		return NextResponse.redirect(new URL(ROUTE.auth.signIn, request.url))
@@ -37,10 +41,6 @@ export default async function middleware(request: NextRequest) {
 
 	if (!isAdminRole && !isManager && nextUrl.pathname.endsWith('/overview')) {
 		return NextResponse.redirect(new URL(ROUTE.notfound, request.url))
-	}
-
-	if (isSignInRoute && token) {
-		return NextResponse.redirect(new URL(ROUTE.dashboard.profile, request.url))
 	}
 
 	if (isSupportRoute && !userRoles.some(role => role === 'SUPPORT')) {

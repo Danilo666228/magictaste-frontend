@@ -1,10 +1,17 @@
 import { CheckIcon } from 'lucide-react'
+import { Metadata } from 'next'
 import Image from 'next/image'
 
 import { Typography } from '@/components/ui/common'
 
+import { NO_INDEX_PAGE } from '@/lib/constants/seo.constants'
+
 import { CheckoutForm } from './(components)/CheckoutForm/CheckoutForm'
 import { OrderList } from './(components)/OrderList'
+
+export const metadata: Metadata = {
+	...NO_INDEX_PAGE
+}
 
 export default async function CheckoutPage() {
 	return (
