@@ -109,10 +109,11 @@ export function SignInForm() {
 							ref={recaptchaRef}
 							theme={theme === 'dark' ? 'dark' : 'light'}
 							sitekey={RECAPTCHA_SITE_KEY}
+							
 							onChange={handleRecaptchaChange}
 							size="invisible"
 							onExpired={handleRecaptchaExpired}
-							badge="bottomright"
+							badge="bottomleft"
 						/>
 
 						<Button
