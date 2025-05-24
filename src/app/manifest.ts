@@ -8,18 +8,6 @@ export default function manifest(): MetadataRoute.Manifest {
 		description: SITE_DESCRIPTION,
 		start_url: '/auth/sign-in',
 		display: 'standalone',
-		orientation : 'portrait',
-		icons: [
-			{
-				src: '/favicon-192x192.png',
-				sizes: '192x192',
-				type: 'image/png'
-			},
-			{
-				src: '/favicon-512x512.png',
-				sizes: '512x512',
-				type: 'image/png'
-			}
-		]
+		orientation: 'portrait'
 	}
 }
