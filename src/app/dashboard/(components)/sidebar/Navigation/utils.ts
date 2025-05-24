@@ -1,7 +1,8 @@
+import { checkAccessRoles } from '@/lib/utils/accessRoles'
+
 import { RoleName } from '@/shared/api/types'
 
 import { NavigationGroup, NavigationItem } from './types'
-import { checkAccessRoles } from '@/lib/utils/accessRoles'
 
 export const getNavigationGroup = (item: NavigationItem): NavigationGroup => {
 	if (item.roles?.includes(RoleName.SUPPORT)) return 'support'

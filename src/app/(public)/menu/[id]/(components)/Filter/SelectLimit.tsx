@@ -12,7 +12,7 @@ interface SelectLimitProps extends ComponentProps<typeof Select> {
 export const SelectLimit = ({ setLimit, className, ...props }: SelectLimitProps) => {
 	return (
 		<Select onValueChange={value => setLimit(Number(value))} {...props}>
-			<SelectTrigger className={cn('w-fit', className)}>
+			<SelectTrigger className={cn('w-fit flex items-center gap-2', className)}>
 				<SelectValue placeholder='Товаров на странице' />
 			</SelectTrigger>
 			<SelectContent>

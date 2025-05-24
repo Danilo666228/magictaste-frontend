@@ -12,13 +12,11 @@ interface SiteLayoutProps {
 export default function SiteLayout({ children, modal }: SiteLayoutProps) {
 	return (
 		<>
-			<main className='min-h-screen'>
-				<Header />
-				<SupportChat />
-				{children}
-			</main>
-			{modal}
+			<Header />
+			<main className='mx-[70px]'>{children}</main>
+			<SupportChat />
 			<Footer />
+			{modal}
 		</>
 	)
 }

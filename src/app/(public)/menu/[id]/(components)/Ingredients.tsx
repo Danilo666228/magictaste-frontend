@@ -27,7 +27,7 @@ export function Ingredients({ className, handleClickIngredients, selectedIngredi
 	}
 
 	return (
-		<div className={cn('flex flex-wrap items-center gap-3', className)}>
+		<div className={cn('flex flex-wrap items-center gap-3 w-fit', className)}>
 			<div className='flex flex-wrap gap-2'>
 				{ingredients.slice(0, take).map(ingredient => (
 					<Badge

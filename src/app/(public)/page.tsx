@@ -7,8 +7,7 @@ import { HeroCarousel } from './components/HeroCarousel'
 import { MostPopularProducts } from './components/MostPopularProducts'
 
 export const metadata: Metadata = {
-	title: 'Главная',
-	description: ''
+	title: 'Главная'
 }
 
 export default function MainPage() {

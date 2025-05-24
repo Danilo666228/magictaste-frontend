@@ -5,7 +5,7 @@ import { Typography } from '@/components/ui/common'
 
 import { ROUTE } from '@/config/route.config'
 
-export default function NotFoundPage() {
+export default function NotFound() {
 	return (
 		<div className='flex min-h-screen flex-col items-center justify-center bg-gradient-to-b from-gray-50 to-gray-100 px-4 dark:from-gray-900 dark:to-gray-800'>
 			<div className='mx-auto max-w-md text-center'>

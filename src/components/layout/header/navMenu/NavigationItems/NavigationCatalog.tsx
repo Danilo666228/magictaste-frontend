@@ -5,10 +5,11 @@ import { usePathname } from 'next/navigation'
 
 import { NavigationMenuContent, NavigationMenuItem, NavigationMenuTrigger, Typography } from '@/components/ui/common'
 
+import { cn } from '@/lib/utils'
+
 import { useGetCategoryQuery } from '@/shared/api/hooks/category/useGetCategoryQuery'
 
 import { ROUTE } from '@/config/route.config'
-import { cn } from '@/lib/utils'
 
 export function NavigationCatalog() {
 	const { data: categories } = useGetCategoryQuery()
@@ -28,15 +29,14 @@ export function NavigationCatalog() {
 				</Link>
 			</NavigationMenuTrigger>
 			<NavigationMenuContent>
-				<div className="w-[650px] p-6">
-					<div className="mb-4">
-						<Typography tag="h3" className="text-xl font-semibold tracking-tight">
+				<div className='w-[650px] p-6'>
+					<div className='mb-4'>
+						<Typography tag='h3' className='text-xl font-semibold tracking-tight'>
 							Категории
 						</Typography>
-						<Typography className="mt-1 text-sm text-muted-foreground">Выберите категорию блюд из нашего
-							меню</Typography>
+						<Typography className='mt-1 text-sm text-muted-foreground'>Выберите категорию блюд из нашего меню</Typography>
 					</div>
-					<ul className="grid grid-cols-3 gap-4">
+					<ul className='grid grid-cols-3 gap-4'>
 						{categories?.data?.categories.map(
 							category =>
 								category.products &&
@@ -47,8 +47,8 @@ export function NavigationCatalog() {
 											className={cn(
 												'flex items-center justify-between rounded-lg border p-2 ring-offset-background transition-all duration-300 hover:border-ring hover:shadow-md hover:ring-primary'
 											)}>
-											<Typography tag="span">{category.title}</Typography>
-											<Typography className="flex size-7 items-center justify-center rounded-full bg-primary" tag="span">
+											<Typography tag='span'>{category.title}</Typography>
+											<Typography className='flex size-7 items-center justify-center rounded-full bg-primary' tag='span'>
 												{category.products?.length}
 											</Typography>
 										</Link>

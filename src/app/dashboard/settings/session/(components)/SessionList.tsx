@@ -2,7 +2,7 @@
 
 import { Computer, ShieldAlert } from 'lucide-react'
 
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/common'
+import { Card, CardContent, CardDescription, CardHeader, CardTitle, Typography } from '@/components/ui/common'
 import { Skeleton } from '@/components/ui/common/Skeleton'
 
 import { useGetAllSessionsQuery } from '@/shared/api/hooks/session/useGetAllSessionsQuery'
@@ -11,11 +11,11 @@ import { useGetCurrentSessionQuery } from '@/shared/api/hooks/session/useGetCurr
 import { SessionItem } from './SessionItem'
 
 export function SessionList() {
-	const { data: currentSession, isPending: isCurrentSessionLoading, error: currentSessionError } = useGetCurrentSessionQuery()
-	const { data: sessions, isPending: isSessionsLoading, error: sessionsError } = useGetAllSessionsQuery()
+	const currentSessionQuery = useGetCurrentSessionQuery()
+	const allSessionsQuery = useGetAllSessionsQuery()
 
-	const isLoading = isCurrentSessionLoading || isSessionsLoading
-	const hasError = currentSessionError || sessionsError
+	const isLoading = currentSessionQuery.isLoading || allSessionsQuery.isLoading
+	const hasError = currentSessionQuery.error || allSessionsQuery.error
 
 	return (
 		<Card className='border shadow-sm'>
@@ -34,7 +34,9 @@ export function SessionList() {
 				{hasError ? (
 					<div className='flex items-center gap-3 rounded-lg border border-red-200 bg-red-50 p-4'>
 						<ShieldAlert className='h-5 w-5 text-red-600' />
-						<p className='text-red-800'>Произошла ошибка при загрузке данных о сессиях</p>
+						<Typography tag='p' className='text-red-800'>
+							Произошла ошибка при загрузке данных о сессиях
+						</Typography>
 					</div>
 				) : isLoading ? (
 					<div className='space-y-4'>
@@ -44,27 +46,32 @@ export function SessionList() {
 				) : (
 					<>
 						<div className='space-y-3'>
-							<h3 className='flex items-center gap-2 text-lg font-medium'>
-								<span className='relative flex size-2'>
-									<span className='absolute left-0 top-0 inline-flex h-full w-full animate-ping rounded-full bg-primary' />
-									<span className='relative inline-flex size-2 rounded-full bg-primary' />
-								</span>
+							<Typography tag='h3' className='flex items-center gap-2 text-lg font-medium'>
+								<Typography className='relative flex size-2'>
+									<Typography className='absolute left-0 top-0 inline-flex h-full w-full animate-ping rounded-full bg-primary' />
+									<Typography className='relative inline-flex size-2 rounded-full bg-primary' />
+								</Typography>
 								Текущая сессия
-							</h3>
-							<SessionItem session={currentSession?.data.session} isCurrentSession />
+							</Typography>
+							<SessionItem session={currentSessionQuery.data?.data.session} isCurrentSession />
 						</div>
 
 						<div className='space-y-3 pt-2'>
-							<h3 className='text-lg font-medium'>Все активные сессии</h3>
-							{!sessions?.data.length ? (
+							<Typography tag='h3' className='text-lg font-medium'>
+								Все активные сессии
+							</Typography>
+							{!allSessionsQuery.data?.data.length ? (
 								<div className='rounded-lg border bg-muted/20 p-4 text-center'>
 									<p className='text-muted-foreground'>Нет других активных сессий</p>
 								</div>
 							) : (
 								<ul className='space-y-3'>
-									{sessions.data.map(session => (
+									{allSessionsQuery.data?.data.map(session => (
 										<li key={session.id}>
-											<SessionItem session={session} isCurrentSession={session.id === currentSession?.data.session.id} />
+											<SessionItem
+												session={session}
+												isCurrentSession={session.id === currentSessionQuery.data?.data.session.id}
+											/>
 										</li>
 									))}
 								</ul>

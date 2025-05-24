@@ -45,7 +45,7 @@ export function ChangePasswordForm() {
 				<CardTitle className='text-xl'>Смена пароля</CardTitle>
 			</CardHeader>
 			<CardContent className='flex flex-col gap-5 pt-4'>
-				<Typography className='text-sm text-muted-foreground'>
+				<Typography className='text-sm text-muted-foreground max-sm:hidden'>
 					Пароль — ключ к вашей учетной записи. Никому его не сообщайте. При необходимости вы можете изменить его здесь для повышения
 					безопасности.
 				</Typography>
@@ -68,7 +68,7 @@ export function ChangePasswordForm() {
 												type='button'
 												variant='outline'
 												size='icon'
-												className='absolute right-2 top-1/2 h-6 w-6 -translate-y-1/2 transform border-none bg-transparent'>
+												className='absolute right-2 top-1/2 h-6 w-6 -translate-y-1/2 transform border-none bg-transparent shadow-none'>
 												{showPassword.oldPassword ? <EyeOff /> : <Eye />}
 											</Button>
 										</div>
@@ -94,7 +94,7 @@ export function ChangePasswordForm() {
 												variant='outline'
 												size='icon'
 												onClick={() => handleShowPassword('newPassword')}
-												className='absolute right-2 top-1/2 h-6 w-6 -translate-y-1/2 transform border-none bg-transparent'>
+												className='absolute right-2 top-1/2 h-6 w-6 -translate-y-1/2 transform border-none bg-transparent shadow-none'>
 												{showPassword.newPassword ? <EyeOff /> : <Eye />}
 											</Button>
 										</div>

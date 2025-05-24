@@ -1,7 +1,7 @@
-import { m } from 'framer-motion'
 import { Heart, ShoppingCart } from 'lucide-react'
 import { useFormatter } from 'next-intl'
 import { useRouter } from 'next/navigation'
+import { ComponentProps } from 'react'
 
 import { ProductCard, ProductCardContent, ProductCardFooter, ProductCardImage, ProductCardLink } from '@/components/shared/product-card/ProductCard'
 import { Button, Skeleton, Typography } from '@/components/ui/common'
@@ -18,12 +18,12 @@ import { Product } from '@/shared/api/types'
 
 import { ROUTE } from '@/config/route.config'
 
-interface ProductListProps {
+interface ProductListProps extends ComponentProps<'div'> {
 	products: Product[] | undefined
 	take?: number
 }
 
-export function ProductList({ products = [], take }: ProductListProps) {
+export function ProductList({ products = [], take, className, ...props }: ProductListProps) {
 	const { handleAddProduct } = useCart()
 	const { profile } = useProfile()
 	const { isAuth } = useAuth()
@@ -33,28 +33,12 @@ export function ProductList({ products = [], take }: ProductListProps) {
 
 	const displayedProducts = take ? products.slice(0, take) : products
 
-	const container = {
-		hidden: { opacity: 0 },
-		show: {
-			opacity: 1,
-			transition: {
-				staggerChildren: 0.1
-			}
-		}
-	}
-
 	return (
-		<m.ul
-			variants={container}
-			initial='hidden'
-			animate='show'
-			className='max-lg-grid-cols-2 grid grid-cols-5 gap-3 max-[1520px]:grid-cols-4 max-xl:grid-cols-3 max-[940px]:grid-cols-2 max-sm:grid-cols-1'>
+		<div className={cn('flex flex-row flex-wrap gap-3', className)} {...props}>
 			{displayedProducts.map(product => (
-				<m.li key={product.id} className='flex justify-center'>
+				<article key={product.id} className='ml-5 max-h-[400px] max-w-[280px] min-w-[280px]'>
 					<ProductCardLink id={product.id}>
-						<ProductCard
-							className='min-h-[150px] min-w-[280px] bg-background/20 transition-all duration-300 hover:shadow-lg'
-							product={product}>
+						<ProductCard className='bg-background/20 transition-all duration-300 hover:shadow-lg' product={product}>
 							<div className='relative overflow-hidden rounded-t-xl'>
 								<ProductCardImage />
 								{isAuth && (
@@ -76,17 +60,13 @@ export function ProductList({ products = [], take }: ProductListProps) {
 									<Typography tag='h3' className='font-medium text-foreground transition-colors group-hover:text-primary'>
 										{product.title}
 									</Typography>
-									<Typography
-										tag='span'
-										className='line-clamp-1 overflow-hidden whitespace-nowrap break-words text-sm text-muted-foreground'>
-										{product.ingredients
-											.map(ingredient => ingredient.title)
-											.slice(0, 3)
-											.join(', ')}
+									<Typography tag='p' className='truncate text-sm text-muted-foreground'>
+										{product.ingredients.map(ingredient => ingredient.title).join(', ')}
 									</Typography>
 								</div>
-								<div className='flex items-center justify-between'>
-									<div className='flex flex-col'>
+
+								<ProductCardFooter className='flex flex-row items-center justify-between gap-3 p-0'>
+									<div className='flex flex-col max-xl:text-sm'>
 										<Typography tag='span' className='text-sm font-medium text-primary'>
 											{product.weight} г
 										</Typography>
@@ -94,25 +74,23 @@ export function ProductList({ products = [], take }: ProductListProps) {
 											{formatter.number(product.price, { style: 'currency', currency: 'RUB' })}
 										</Typography>
 									</div>
-									<ProductCardFooter className='p-0'>
-										<Button
-											onClick={e => {
-												if (!isAuth) router.push(ROUTE.auth.signIn)
-												e.preventDefault()
-												handleAddProduct(product.id)
-											}}
-											variant='outline'
-											className='bg-primary text-primary-foreground'>
-											<ShoppingCart className='mr-2 h-4 w-4' />В корзину
-										</Button>
-									</ProductCardFooter>
-								</div>
+									<Button
+										onClick={e => {
+											if (!isAuth) router.push(ROUTE.auth.signIn)
+											e.preventDefault()
+											handleAddProduct(product.id)
+										}}
+										variant='outline'
+										className='bg-primary text-primary-foreground'>
+										<ShoppingCart className='mr-2 h-4 w-4 max-2xl:hidden' />В корзину
+									</Button>
+								</ProductCardFooter>
 							</ProductCardContent>
 						</ProductCard>
 					</ProductCardLink>
-				</m.li>
+				</article>
 			))}
-		</m.ul>
+		</div>
 	)
 }
 

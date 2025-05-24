@@ -16,7 +16,7 @@ export function useFavorite(search?: string) {
 	const toggleFavoriteMutation = useToggleFavoriteMutation({
 		options: {
 			onSuccess: () => {
-				getFavoriteQuery.refetch()
+				queryClient.invalidateQueries({ queryKey: ['getFavoriteProducts'] })
 				queryClient.invalidateQueries({ queryKey: ['getProfile'] })
 			}
 		}

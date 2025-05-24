@@ -3,7 +3,7 @@
 import { useEffect, useState } from 'react'
 import { Socket, io } from 'socket.io-client'
 
-import { ResizableHandle, ResizablePanel, ResizablePanelGroup } from '@/components/ui/common'
+import { Heading, ResizableHandle, ResizablePanel, ResizablePanelGroup } from '@/components/ui/common'
 import { SearchInput } from '@/components/ui/elements/input/SearchInput'
 
 import { useProfile } from '@/hooks/useProfile'
@@ -53,25 +53,28 @@ export function SupportTickets() {
 	}
 
 	return (
-		<div className='h-[calc(100vh-100px)]'>
-			<ResizablePanelGroup direction='horizontal' className='w-full rounded-lg border'>
-				<ResizablePanel className='min-w-[300px]' defaultSize={100}>
-					<div className='flex w-full flex-col gap-4 p-4'>
-						<SearchInput placeholder='Поиск' setSearchValue={setSearchQuery} searchValue={searchQuery} />
-						{socket ? (
-							<SupportTicketList onTicketSelect={handleTicketClick} socket={socket} searchQuery={searchQuery} />
-						) : (
-							<div>Подключение к серверу...</div>
-						)}
-					</div>
-				</ResizablePanel>
-				{selectedTicket && <ResizableHandle withHandle />}
-				{selectedTicket && (
+		<>
+			<Heading title='Техническая поддержка' description='Поддержка пользователей' />
+			<div className='h-[calc(100vh-220px)]'>
+				<ResizablePanelGroup direction='horizontal' className='w-full rounded-lg border'>
 					<ResizablePanel className='min-w-[300px]' defaultSize={100}>
-						<SupportTicketChat socket={socket} selectedTicket={selectedTicket} onClose={() => setSelectedTicket(null)} />
+						<div className='flex w-full flex-col gap-4 p-4'>
+							<SearchInput placeholder='Поиск' setSearchValue={setSearchQuery} searchValue={searchQuery} />
+							{socket ? (
+								<SupportTicketList onTicketSelect={handleTicketClick} socket={socket} searchQuery={searchQuery} />
+							) : (
+								<div>Подключение к серверу...</div>
+							)}
+						</div>
 					</ResizablePanel>
-				)}
-			</ResizablePanelGroup>
-		</div>
+					{selectedTicket && <ResizableHandle withHandle />}
+					{selectedTicket && (
+						<ResizablePanel className='min-w-[300px]' defaultSize={100}>
+							<SupportTicketChat socket={socket} selectedTicket={selectedTicket} onClose={() => setSelectedTicket(null)} />
+						</ResizablePanel>
+					)}
+				</ResizablePanelGroup>
+			</div>
+		</>
 	)
 }

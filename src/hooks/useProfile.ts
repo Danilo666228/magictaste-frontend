@@ -1,3 +1,5 @@
+'use client'
+
 import { useRouter } from 'next/navigation'
 import { useEffect } from 'react'
 
@@ -10,13 +12,14 @@ import { ROUTE } from '@/config/route.config'
 
 export function useProfile() {
 	const { isAuth, unauthorized } = useAuth()
-
 	const router = useRouter()
+
 	const {
 		isError,
 		data: profile,
 		isPending,
-		refetch
+		refetch,
+		error
 	} = useGetProfileQuery({
 		options: {
 			enabled: isAuth
@@ -27,6 +30,7 @@ export function useProfile() {
 	useEffect(() => {
 		if (isError) {
 			clearSession({})
+
 			unauthorized()
 			router.push(ROUTE.auth.signIn)
 		}

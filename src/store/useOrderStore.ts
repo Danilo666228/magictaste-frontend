@@ -8,7 +8,6 @@ export type OrderStep = 'user' | 'delivery' | 'payment'
 
 interface OrderStore {
 	currentStep: OrderStep
-	isOrder: boolean
 	items: OrderItem[]
 	deliveryType: DeliveryType
 	deliveryPrice: number
@@ -28,7 +27,6 @@ interface OrderStore {
 const initialState: OrderStore = {
 	currentStep: 'user',
 	deliveryPrice: 0,
-	isOrder: false,
 	items: [],
 	deliveryType: 'PICKUP',
 	total: 0,
@@ -50,8 +48,7 @@ export const useOrderStore = create<OrderStore>()(
 			setItems: (items: OrderItem[]) =>
 				set({
 					items,
-					total: items.reduce((acc, item) => acc + item.price * item.quantity, 0) - get().discount,
-					isOrder: true
+					total: items.reduce((acc, item) => acc + item.price * item.quantity, 0) - get().discount
 				}),
 			setDiscount: (discount: number) => set({ discount }),
 			setDeliveryPrice: (deliveryPrice: number) => set({ deliveryPrice }),

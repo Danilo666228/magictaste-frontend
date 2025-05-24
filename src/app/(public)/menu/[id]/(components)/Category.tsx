@@ -114,7 +114,7 @@ export function Category({ category }: MenuCategoryProps) {
 					/>
 				</div>
 			</div>
-			<div className='mb-8 hidden sm:block'>
+			<div className='mb-8 hidden w-fit sm:block'>
 				<Ingredients
 					isPending={ingredientQuery.isPending}
 					take={4}
@@ -128,7 +128,7 @@ export function Category({ category }: MenuCategoryProps) {
 					<ProductListSkeleton />
 				) : productQuery.data?.data && productQuery.data.data.products.length > 0 ? (
 					<>
-						<ProductList products={productQuery.data.data.products} />
+						<ProductList products={productQuery.data.data.products} className='justify-start' />
 						<div className='mt-8'>
 							<Pagination>
 								<PaginationContent>
