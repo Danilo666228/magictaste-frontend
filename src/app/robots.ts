@@ -9,6 +9,6 @@ export default function robots(): MetadataRoute.Robots {
 			allow: '/',
 			disallow: '/dashboard/*'
 		},
-		sitemap: CLIENT_URL + '/sitemap.xml'
+		// sitemap: CLIENT_URL + '/sitemap.xml'
 	}
 }

@@ -19,21 +19,21 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 	const categories = categoriesResponse.data.categories
 
 	const routes: MetadataRoute.Sitemap = [
-		{
-			url: CLIENT_URL,
-			lastModified: new Date().toISOString(),
-			priority: 1.0
-		},
-		{
-			url: CLIENT_URL + '/menu',
-			lastModified: new Date().toISOString(),
-			priority: 0.8
-		},
-		{
-			url: CLIENT_URL + '/about',
-			lastModified: new Date().toISOString(),
-			priority: 0.7
-		}
+		// {
+		// 	url: CLIENT_URL,
+		// 	lastModified: new Date().toISOString(),
+		// 	priority: 1.0
+		// },
+		// {
+		// 	url: CLIENT_URL + '/menu',
+		// 	lastModified: new Date().toISOString(),
+		// 	priority: 0.8
+		// },
+		// {
+		// 	url: CLIENT_URL + '/about',
+		// 	lastModified: new Date().toISOString(),
+		// 	priority: 0.7
+		// }
 	]
 
 	// categories.forEach(category => {
