@@ -4,7 +4,7 @@ import { getLocale, getMessages } from 'next-intl/server'
 import { ReactNode } from 'react'
 
 import { SITE_DESCRIPTION, SITE_KEYWORDS, SITE_NAME } from '@/lib/constants/seo.constants'
-// import { CLIENT_URL } from '@/lib/constants/url.constants'
+import { CLIENT_URL } from '@/lib/constants/url.constants'
 
 import { ConfigProvider } from '@/providers/ConfigProvider'
 import { FramerMotionProvider } from '@/providers/FramerMotionProvider'
@@ -22,7 +22,7 @@ export const metadata: Metadata = {
 		template: `%s | ${SITE_NAME}`
 	},
 	description: SITE_DESCRIPTION,
-	// metadataBase: new URL(CLIENT_URL),
+	metadataBase: new URL(CLIENT_URL),
 	applicationName: SITE_NAME,
 	authors: [{ name: 'Danil Kovinskiy', url: new URL('https://github.com/Danilo666228') }],
 	keywords: SITE_KEYWORDS,
@@ -44,7 +44,7 @@ export const metadata: Metadata = {
 		description: SITE_DESCRIPTION,
 		type: 'website',
 		locale: 'ru-RU',
-		// url: new URL(CLIENT_URL),
+		url: new URL(CLIENT_URL),
 		siteName: SITE_NAME
 	}
 }
