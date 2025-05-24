@@ -36,13 +36,13 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 		}
 	]
 
-	categories.forEach(category => {
-		routes.push({
-			url: CLIENT_URL + `/menu/${category.id}`,
-			lastModified: new Date(category.createdAt).toISOString(),
-			priority: 0.7
-		})
-	})
+	// categories.forEach(category => {
+	// 	routes.push({
+	// 		url: CLIENT_URL + `/menu/${category.id}`,
+	// 		lastModified: new Date(category.createdAt).toISOString(),
+	// 		priority: 0.7
+	// 	})
+	// })
 
 	return routes
 }
