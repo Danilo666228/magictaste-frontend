@@ -6,6 +6,7 @@ export default function SessionSettingsPage() {
 	return (
 		<>
 			<Heading title='Сессии' description='Управление сессиями' />
+
 			<SessionList />
 		</>
 	)
