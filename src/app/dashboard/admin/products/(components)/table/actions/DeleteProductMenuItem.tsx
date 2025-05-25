@@ -9,7 +9,8 @@ export function DeleteProductMenuItem({ productId }: { productId: string }) {
 	const { mutateAsync: deleteProduct } = useDeleteProductMutation({
 		options: {
 			onSuccess() {
-				queryClient.refetchQueries({ queryKey: ['getProducts'] })
+				queryClient.invalidateQueries({ queryKey: ['getProducts'] })
+				queryClient.invalidateQueries({ queryKey: ['getProductsStatistics'] })
 			}
 		}
 	})

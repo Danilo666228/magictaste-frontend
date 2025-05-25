@@ -48,6 +48,7 @@ export function ProductForm({ mode, initialData }: ProductFormProps) {
 		options: {
 			onSuccess: () => {
 				queryClient.invalidateQueries({ queryKey: ['getProducts'] })
+				queryClient.invalidateQueries({ queryKey: ['getProductsStatistics'] })
 				closeModal()
 			}
 		}

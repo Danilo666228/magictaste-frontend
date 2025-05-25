@@ -32,7 +32,8 @@ export const ROUTE = {
 			ingredients: '/dashboard/admin/ingredients',
 			support: '/dashboard/admin/support',
 			accounts: '/dashboard/admin/accounts',
-			orders: '/dashboard/admin/orders'
+			orders: '/dashboard/admin/orders',
+			loyalty : '/dashboard/admin/loyalty'
 		}
 	}
 }

@@ -16,7 +16,7 @@ export default function TanStackQueryProvider({ children }: TanStackQueryProvide
 					refetchOnWindowFocus: false,
 					retry: 0,
 					gcTime: 0,
-					staleTime: Infinity
+					staleTime: 0
 				}
 			}
 		})

@@ -1,14 +1,4 @@
-import {
-	BarChart3,
-	Bell,
-	BookOpenCheck,
-	CircleUser,
-	Heart,
-	MessageSquare,
-	Settings,
-	SquareChartGantt,
-	Truck
-} from 'lucide-react'
+import { BarChart3, Bell, BookOpenCheck, Cake, CircleUser, Heart, MessageSquare, Settings, SquareChartGantt, Truck } from 'lucide-react'
 
 import { NavigationItem } from './Navigation/types'
 import { ROUTE } from '@/config/route.config'
@@ -111,6 +101,13 @@ export const navigationConfig: NavigationItem[] = [
 				roles: ['ADMIN', 'SUPER_ADMIN', 'MANAGER']
 			}
 		]
+	},
+	{
+		title: 'Система лояльности',
+		icon: Cake,
+		roles: ['ADMIN', 'SUPER_ADMIN'],
+		url: ROUTE.dashboard.admin.loyalty,
+		isBeta: true
 	},
 	{
 		title: 'Чаты',
