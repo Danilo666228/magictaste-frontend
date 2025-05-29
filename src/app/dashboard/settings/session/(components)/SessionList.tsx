@@ -26,6 +26,7 @@ export function SessionList() {
 					<div className='rounded-full bg-primary/10 p-2'>
 						<Computer className='h-5 w-5 text-primary' />
 					</div>
+
 					<div>
 						<CardTitle className='text-xl font-medium'>Управление сессиями</CardTitle>
 						<CardDescription>Просмотр и управление активными сессиями вашего аккаунта</CardDescription>

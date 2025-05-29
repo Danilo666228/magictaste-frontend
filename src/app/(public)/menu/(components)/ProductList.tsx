@@ -36,7 +36,7 @@ export function ProductList({ products = [], take, className, ...props }: Produc
 	return (
 		<div className={cn('flex flex-row flex-wrap gap-3', className)} {...props}>
 			{displayedProducts.map(product => (
-				<article key={product.id} className='ml-5 max-h-[400px] max-w-[280px] min-w-[280px]'>
+				<article key={product.id} className='ml-5 max-h-[400px] min-w-[280px] max-w-[280px]'>
 					<ProductCardLink id={product.id}>
 						<ProductCard className='bg-background/20 transition-all duration-300 hover:shadow-lg' product={product}>
 							<div className='relative overflow-hidden rounded-t-xl'>
@@ -57,7 +57,7 @@ export function ProductList({ products = [], take, className, ...props }: Produc
 							</div>
 							<ProductCardContent className='flex flex-col gap-3 p-4'>
 								<div className='space-y-1'>
-									<Typography tag='h3' className='font-medium text-foreground transition-colors group-hover:text-primary'>
+									<Typography tag='h3' className='truncate font-medium text-foreground transition-colors group-hover:text-primary'>
 										{product.title}
 									</Typography>
 									<Typography tag='p' className='truncate text-sm text-muted-foreground'>

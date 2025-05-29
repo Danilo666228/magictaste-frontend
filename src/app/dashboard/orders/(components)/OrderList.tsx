@@ -13,7 +13,7 @@ import { OrderItem } from './OrderItem/OrderItem'
 type SearchByDate = 'date-desc' | 'date-asc'
 
 export function OrderList() {
-	const { data: orders, isLoading } = useGetOrdersQuery()
+	const { data: orders } = useGetOrdersQuery()
 	const [searchValue, setSearchValue] = useState<string>('')
 	const [sortByDate, setSortByDate] = useState<SearchByDate>('date-asc')
 
@@ -38,7 +38,7 @@ export function OrderList() {
 		<div>
 			<div className='flex justify-between'>
 				<SearchInput placeholder='Поиск по названию блюда' searchValue={searchValue} setSearchValue={setSearchValue} />
-				<Select onValueChange={value => setSortByDate(value as SearchByDate)}>
+				<Select onValueChange={(value: SearchByDate) => setSortByDate(value)}>
 					<SelectTrigger className='w-[240px]'>
 						<SelectValue placeholder='Выбери тип сортировки' />
 					</SelectTrigger>

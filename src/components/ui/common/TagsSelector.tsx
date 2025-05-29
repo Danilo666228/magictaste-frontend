@@ -16,8 +16,9 @@ import {
 	Typography
 } from '@/components/ui/common'
 
-import { Button } from './Button/Button'
 import { cn } from '@/lib/utils/twMerge'
+
+import { Button } from './Button/Button'
 
 type Tag = {
 	id: string
@@ -72,11 +73,11 @@ export function TagsSelector({ tags, selectedTags, onChange, modal = false }: Ta
 					<ChevronsUpDown size={16} className='ml-auto opacity-50' />
 				</div>
 			</PopoverTrigger>
-			<PopoverContent className='w-auto p-0'>
-				<Command>
-					<CommandInput placeholder='Ингредиенты' value={inputValue} onValueChange={setInputValue} />
+			<PopoverContent className='z-50 w-auto p-0'>
+				<Command className='z-50'>
+					<CommandInput className='z-50' placeholder='Ингредиенты' value={inputValue} onValueChange={setInputValue} />
 					<CommandEmpty>Ничего не найдено</CommandEmpty>
-					<CommandGroup heading='Ингредиенты'>
+					<CommandGroup heading='Ингредиенты' className='max-h-[400px] overflow-y-auto'>
 						{filteredTags.map((tag, index) => (
 							<motion.div key={`${tag.id}-${index}`} initial={{ scale: 0 }} animate={{ scale: 1 }} exit={{ scale: 1 }}>
 								<CommandItem value={tag.label} onSelect={() => handleTagChange(tag.id, true)}>

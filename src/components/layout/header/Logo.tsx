@@ -12,7 +12,7 @@ interface LogoProps extends ComponentProps<'div'> {}
 
 export function Logo({ className }: LogoProps) {
 	return (
-		<Link href={ROUTE.home} className={cn('flex items-center gap-2', className)}>
+		<Link href={ROUTE.home} className={cn('flex items-center gap-2 transition-all duration-500', className)}>
 			<div className='relative'>
 				<Image src='/logo.png' alt='Logo' width={80} height={80} className='dark:invert' />
 			</div>
@@ -21,7 +21,7 @@ export function Logo({ className }: LogoProps) {
 					Волшебный вкус
 				</Typography>
 				<Typography tag='span' className='text-muted-foreground'>
-					Доставка вкусных пельменей
+					Ресторан русской кухни
 				</Typography>
 			</div>
 		</Link>

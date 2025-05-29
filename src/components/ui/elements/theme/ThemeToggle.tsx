@@ -26,7 +26,7 @@ export function ThemeToggle({ className }: ThemeToggleProps) {
 
 	return (
 		<div className={cn('flex items-center gap-2', className)}>
-			<Button variant={'outline'} className='size-8' onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}>
+			<Button variant={'outline'} className='size-9' onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}>
 				{theme === 'dark' ? <Moon /> : <Sun />}
 			</Button>
 		</div>

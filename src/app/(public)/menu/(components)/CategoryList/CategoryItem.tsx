@@ -33,7 +33,7 @@ export function CategoryItem({ category }: CategoryItemProps) {
 					</Link>
 				</div>
 			</div>
-			<ProductList className='justify-center' take={5} products={category.products} />
+			<ProductList className='justify-start' take={5} products={category.products} />
 		</div>
 	)
 }

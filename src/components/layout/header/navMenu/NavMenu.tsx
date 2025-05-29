@@ -4,10 +4,11 @@ import { ComponentProps } from 'react'
 
 import { NavigationMenu, NavigationMenuList } from '@/components/ui/common'
 
+import { cn } from '@/lib/utils'
+
 import { NavigationAbout } from './NavigationItems/NavigationAbout'
 import { NavigationCatalog } from './NavigationItems/NavigationCatalog'
 import { NavigationMain } from './NavigationItems/NavigationMain'
-import { cn } from '@/lib/utils'
 
 interface NavMenu extends ComponentProps<typeof NavigationMenu> {}
 

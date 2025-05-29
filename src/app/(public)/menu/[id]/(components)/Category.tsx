@@ -1,5 +1,6 @@
 'use client'
 
+import { keepPreviousData } from '@tanstack/react-query'
 import { Search } from 'lucide-react'
 import { useState } from 'react'
 
@@ -47,6 +48,9 @@ export function Category({ category }: MenuCategoryProps) {
 				page: currentPage,
 				limit
 			}
+		},
+		options: {
+			placeholderData: keepPreviousData
 		}
 	})
 	const totalPages = productQuery.data?.data?.totalPages || 1

@@ -22,16 +22,11 @@ const initialState: ConfigStore = {
 	fontSize: 16,
 	language: 'ru',
 	fontFamily: 'fira-sans',
-	setLanguage: (language: string) => {
-	},
-	setAccentRadius: (accentRadius: number) => {
-	},
-	setAccentColor: (accentColor: BaseColor) => {
-	},
-	setFontSize: (fontSize: number) => {
-	},
-	setFontFamily: (fontFamily: string) => {
-	}
+	setLanguage: (language: string) => {},
+	setAccentRadius: (accentRadius: number) => {},
+	setAccentColor: (accentColor: BaseColor) => {},
+	setFontSize: (fontSize: number) => {},
+	setFontFamily: (fontFamily: string) => {}
 }
 
 export const useConfigStore = create<ConfigStore>()(

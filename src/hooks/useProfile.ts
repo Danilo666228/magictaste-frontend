@@ -18,8 +18,7 @@ export function useProfile() {
 		isError,
 		data: profile,
 		isPending,
-		refetch,
-		error
+		refetch
 	} = useGetProfileQuery({
 		options: {
 			enabled: isAuth
@@ -30,7 +29,6 @@ export function useProfile() {
 	useEffect(() => {
 		if (isError) {
 			clearSession({})
-
 			unauthorized()
 			router.push(ROUTE.auth.signIn)
 		}

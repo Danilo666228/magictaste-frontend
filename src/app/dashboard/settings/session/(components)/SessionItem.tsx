@@ -1,5 +1,7 @@
+import { useQueryClient } from '@tanstack/react-query'
 import { Clock, MapPin, Trash2 } from 'lucide-react'
 import { useFormatter } from 'next-intl'
+import { ComponentProps } from 'react'
 
 import { Badge, Button, Card, CardContent } from '@/components/ui/common'
 
@@ -7,23 +9,23 @@ import { cn } from '@/lib/utils'
 import { getBrowserIcon } from '@/lib/utils/getBrowseIcon'
 
 import { useDeleteSessionMutation } from '@/shared/api/hooks/session/useDeleteSessionMutation'
-import { useGetAllSessionsQuery } from '@/shared/api/hooks/session/useGetAllSessionsQuery'
 import { Session } from '@/shared/api/types'
 
 import { SessionInfo } from './SessionInfo'
 
-interface SessionItemProps {
+interface SessionItemProps extends ComponentProps<typeof Card> {
 	session: Session | undefined
 	isCurrentSession?: boolean
 }
 
-export function SessionItem({ session, isCurrentSession }: SessionItemProps) {
+export function SessionItem({ session, isCurrentSession, ...props }: SessionItemProps) {
+	const queryClient = useQueryClient()
 	const Icon = getBrowserIcon(session?.metadata.device.browser ?? '')
-	const { refetch } = useGetAllSessionsQuery()
+
 	const { mutate: deleteSession, isPending } = useDeleteSessionMutation({
 		options: {
 			onSuccess: () => {
-				refetch()
+				queryClient.invalidateQueries({ queryKey: ['getAllSessions'] })
 			}
 		}
 	})
@@ -32,7 +34,7 @@ export function SessionItem({ session, isCurrentSession }: SessionItemProps) {
 	if (!session) return null
 
 	return (
-		<Card className={cn('border transition-all', isCurrentSession ? 'border-primary/30 bg-primary/5' : 'hover:shadow-md')}>
+		<Card className={cn('border transition-all', isCurrentSession ? 'border-primary/30 bg-primary/5' : 'hover:shadow-md')} {...props}>
 			<CardContent className='p-0'>
 				<div className='flex flex-col gap-4 p-4 md:flex-row md:items-center'>
 					<div className='flex items-center gap-4'>

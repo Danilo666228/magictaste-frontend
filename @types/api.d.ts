@@ -8,6 +8,14 @@ interface QuerySettings<Func = unknown> {
 	options?: Omit<import('@tanstack/react-query').UseQueryOptions<Awaited<ReturnType<Func>>, any, Awaited<ReturnType<Func>>, any>, 'queryKey'>
 }
 
+interface SuspenceQuerySettings<Func = unknown> {
+	config?: ApiRequestConfig
+	options?: Omit<
+		import('@tanstack/react-query').UseSuspenseQueryOptions<Awaited<ReturnType<Func>>, any, Awaited<ReturnType<Func>>, any>,
+		'queryKey'
+	>
+}
+
 interface InfiniteQuerySettings<Func = unknown> {
 	config?: ApiRequestConfig
 	options?: Omit<

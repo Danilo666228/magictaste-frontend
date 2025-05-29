@@ -12,10 +12,8 @@ export default function TanStackQueryProvider({ children }: TanStackQueryProvide
 		new QueryClient({
 			defaultOptions: {
 				queries: {
-					refetchOnWindowFocus: false,
-					retry: 0,
-					gcTime: 0,
-					staleTime: 0
+					staleTime: 0,
+					retry: 2
 				}
 			}
 		})

@@ -1,4 +1,4 @@
-import { useQuery } from '@tanstack/react-query'
+import { useQuery, UseQueryOptions, useSuspenseQuery } from '@tanstack/react-query'
 
 import { getCurrentSession } from '@/shared/api/request'
 
