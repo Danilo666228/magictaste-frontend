@@ -1,6 +1,6 @@
 import type { MetadataRoute } from 'next'
 
-import { CLIENT_URL } from '@/lib/constants/url.constants'
+import { CLIENT_URL } from '@/shared/utils/constants/env'
 
 export default function robots(): MetadataRoute.Robots {
 	return {

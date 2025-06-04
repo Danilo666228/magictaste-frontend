@@ -1,9 +1,8 @@
 import type { MetadataRoute } from 'next'
 
-import { CLIENT_URL } from '@/lib/constants/url.constants'
-
 import { api } from '@/shared/api/instance'
 import { Category } from '@/shared/api/types'
+import { CLIENT_URL } from '@/shared/utils/constants/env'
 
 async function getCategories() {
 	try {

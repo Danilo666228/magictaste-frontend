@@ -3,8 +3,7 @@ import { useRouter } from 'next/navigation'
 import { useAuthStore } from '@/store/useAuthStore'
 
 import { useLogoutMutation } from '@/shared/api/hooks/auth/useLogoutMutation'
-
-import { ROUTE } from '@/config/route.config'
+import { ROUTE } from '@/shared/utils/constants/route'
 
 export function useAuth() {
 	const router = useRouter()
@@ -15,7 +14,6 @@ export function useAuth() {
 	})
 	const isAuth = useAuthStore(c => c.isAuth)
 	const setIsAuth = useAuthStore(c => c.setAuth)
-
 
 	const authorized = () => setIsAuth(true)
 	const unauthorized = () => setIsAuth(false)

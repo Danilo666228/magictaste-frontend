@@ -7,8 +7,7 @@ export const createProductSchema = z.object({
 	price: z.string().min(1),
 	categoryId: z.string().min(1),
 	ingredients: z.array(z.string()),
-	onSale: z.boolean().optional(),
-	
+	onSale: z.boolean().optional()
 })
 
 export type CreateProductSchema = z.infer<typeof createProductSchema>

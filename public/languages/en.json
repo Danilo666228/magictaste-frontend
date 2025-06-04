@@ -4,9 +4,9 @@
 			"title": "Restorante Russian Cookie",
 			"description": "Delivery eat"
 		},
-		"navigation" : {
-			"main" : "Main",
-			"menu" : "Menu"
+		"navigation": {
+			"main": "Main",
+			"menu": "Menu"
 		}
 	}
 }

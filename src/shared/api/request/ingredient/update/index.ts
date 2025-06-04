@@ -5,5 +5,4 @@ interface UpdateIngredientParams {
 }
 export type UpdateIngredientRequestConfig = RequestConfig<UpdateIngredientParams>
 
-export const updateIngredient = ({ params, config }: UpdateIngredientRequestConfig) =>
-	api.put(`/ingredients`, params, config)
+export const updateIngredient = ({ params, config }: UpdateIngredientRequestConfig) => api.put(`/ingredients`, params, config)

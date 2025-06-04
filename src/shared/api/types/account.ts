@@ -22,7 +22,7 @@ export interface Account {
 	favorites: Favorite[]
 	roles: Role[]
 	orders: Order[]
-	accountLoyalty : Loyalty
+	accountLoyalty: Loyalty
 	// receivedMessages: Message[]
 	// sentMessages: Message[]
 }

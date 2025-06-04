@@ -6,6 +6,6 @@ export const useDeleteProductMutation = (settings?: MutationSettings<DeleteProdu
 	useMutation({
 		mutationKey: ['deleteProduct'],
 		mutationFn: ({ config }) => deleteProduct({ config }),
-		
+
 		...settings?.options
 	})

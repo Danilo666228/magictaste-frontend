@@ -1,13 +1,12 @@
 {
-	"header" : {
-		"logo" : {
-			"title" : "Ресторан русской кухни",
-			"description" : "Доставка еды"
+	"header": {
+		"logo": {
+			"title": "Ресторан русской кухни",
+			"description": "Доставка еды"
 		},
-		"navigation" : {
-			"main" : "Главная",
-			"menu" : "Меню"
+		"navigation": {
+			"main": "Главная",
+			"menu": "Меню"
 		}
 	}
-
 }

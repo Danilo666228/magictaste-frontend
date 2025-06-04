@@ -1,54 +1,53 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react'
 
 /* The use storage initial value type */
-export type UseStorageInitialValue<Value> = (() => Value) | Value;
+export type UseStorageInitialValue<Value> = (() => Value) | Value
 
 /* The use storage options type */
 export interface UseStorageOptions<Value> {
-  /* The initial value of the storage */
-  initialValue?: UseStorageInitialValue<Value>;
-  /* The storage to be used */
-  storage?: Storage;
-  /* The deserializer function to be invoked */
-  deserializer?: (value: string) => Value;
-  /* The serializer function to be invoked */
-  serializer?: (value: Value) => string;
+	/* The initial value of the storage */
+	initialValue?: UseStorageInitialValue<Value>
+	/* The storage to be used */
+	storage?: Storage
+	/* The deserializer function to be invoked */
+	deserializer?: (value: string) => Value
+	/* The serializer function to be invoked */
+	serializer?: (value: Value) => string
 }
 
 /* The use storage return type */
 export interface UseStorageReturn<Value> {
-  /* The value of the storage */
-  value: Value;
-  /* The error state of the storage */
-  remove: () => void;
-  /* The loading state of the storage */
-  set: (value: Value) => void;
+	/* The value of the storage */
+	value: Value
+	/* The error state of the storage */
+	remove: () => void
+	/* The loading state of the storage */
+	set: (value: Value) => void
 }
 
-export const STORAGE_EVENT = 'reactuse-storage';
+export const STORAGE_EVENT = 'reactuse-storage'
 
-export const dispatchStorageEvent = (params: Partial<StorageEvent>) =>
-  window.dispatchEvent(new StorageEvent(STORAGE_EVENT, params));
+export const dispatchStorageEvent = (params: Partial<StorageEvent>) => window.dispatchEvent(new StorageEvent(STORAGE_EVENT, params))
 
 const setStorageItem = (storage: Storage, key: string, value: string) => {
-  const oldValue = storage.getItem(key);
+	const oldValue = storage.getItem(key)
 
-  storage.setItem(key, value);
-  dispatchStorageEvent({ key, oldValue, newValue: value, storageArea: storage });
-};
+	storage.setItem(key, value)
+	dispatchStorageEvent({ key, oldValue, newValue: value, storageArea: storage })
+}
 
 const removeStorageItem = (storage: Storage, key: string) => {
-  const oldValue = storage.getItem(key);
+	const oldValue = storage.getItem(key)
 
-  storage.removeItem(key);
-  dispatchStorageEvent({ key, oldValue, newValue: null, storageArea: storage });
-};
+	storage.removeItem(key)
+	dispatchStorageEvent({ key, oldValue, newValue: null, storageArea: storage })
+}
 
 const getStorageItem = (storage: Storage, key: string) => {
-  const value = storage.getItem(key);
-  if (!value) return undefined;
-  return value;
-};
+	const value = storage.getItem(key)
+	if (!value) return undefined
+	return value
+}
 
 /**
  * @name useStorage
@@ -71,72 +70,65 @@ const getStorageItem = (storage: Storage, key: string) => {
  * @example
  * const { value, set, remove } = useStorage('key', 'value');
  */
-export const useStorage = <Value>(
-  key: string,
-  params?: UseStorageInitialValue<Value> | UseStorageOptions<Value>
-) => {
-  const options = (
-    typeof params === 'object' &&
-    params &&
-    ('serializer' in params ||
-      'deserializer' in params ||
-      'initialValue' in params ||
-      'storage' in params)
-      ? params
-      : undefined
-  ) as UseStorageOptions<Value>;
-  const initialValue = (options ? options?.initialValue : params) as UseStorageInitialValue<Value>;
+export const useStorage = <Value>(key: string, params?: UseStorageInitialValue<Value> | UseStorageOptions<Value>) => {
+	const options = (
+		typeof params === 'object' &&
+		params &&
+		('serializer' in params || 'deserializer' in params || 'initialValue' in params || 'storage' in params)
+			? params
+			: undefined
+	) as UseStorageOptions<Value>
+	const initialValue = (options ? options?.initialValue : params) as UseStorageInitialValue<Value>
 
-  if (typeof window === 'undefined')
-    return {
-      value: typeof initialValue === 'function' ? (initialValue as () => Value)() : initialValue
-    } as UseStorageReturn<Value>;
+	if (typeof window === 'undefined')
+		return {
+			value: typeof initialValue === 'function' ? (initialValue as () => Value)() : initialValue
+		} as UseStorageReturn<Value>
 
-  const serializer = (value: Value) => {
-    if (options?.serializer) return options.serializer(value);
-    if (typeof value === 'string') return value;
-    return JSON.stringify(value);
-  };
+	const serializer = (value: Value) => {
+		if (options?.serializer) return options.serializer(value)
+		if (typeof value === 'string') return value
+		return JSON.stringify(value)
+	}
 
-  const storage = options?.storage ?? window?.localStorage;
+	const storage = options?.storage ?? window?.localStorage
 
-  const set = (value: Value) => setStorageItem(storage, key, serializer(value));
-  const remove = () => removeStorageItem(storage, key);
+	const set = (value: Value) => setStorageItem(storage, key, serializer(value))
+	const remove = () => removeStorageItem(storage, key)
 
-  const deserializer = (value: string) => {
-    if (options?.deserializer) return options.deserializer(value);
-    if (value === 'undefined') return undefined as unknown as Value;
+	const deserializer = (value: string) => {
+		if (options?.deserializer) return options.deserializer(value)
+		if (value === 'undefined') return undefined as unknown as Value
 
-    try {
-      return JSON.parse(value) as Value;
-    } catch {
-      return value as Value;
-    }
-  };
+		try {
+			return JSON.parse(value) as Value
+		} catch {
+			return value as Value
+		}
+	}
 
-  const [value, setValue] = useState<Value | undefined>(() => {
-    const storageValue = getStorageItem(storage, key);
-    if (storageValue === undefined && initialValue !== undefined) {
-      const value =
-        typeof initialValue === 'function' ? (initialValue as () => Value)() : initialValue;
-      setStorageItem(storage, key, serializer(value));
-      return value;
-    }
-    return storageValue ? deserializer(storageValue) : undefined;
-  });
+	const [value, setValue] = useState<Value | undefined>(() => {
+		const storageValue = getStorageItem(storage, key)
+		if (storageValue === undefined && initialValue !== undefined) {
+			const value = typeof initialValue === 'function' ? (initialValue as () => Value)() : initialValue
+			setStorageItem(storage, key, serializer(value))
+			return value
+		}
+		return storageValue ? deserializer(storageValue) : undefined
+	})
 
-  useEffect(() => {
-    const onChange = () => {
-      const storageValue = getStorageItem(storage, key);
-      setValue(storageValue ? deserializer(storageValue) : undefined);
-    };
-    window.addEventListener(STORAGE_EVENT, onChange);
-    return () => window.removeEventListener(STORAGE_EVENT, onChange);
-  }, [key]);
+	useEffect(() => {
+		const onChange = () => {
+			const storageValue = getStorageItem(storage, key)
+			setValue(storageValue ? deserializer(storageValue) : undefined)
+		}
+		window.addEventListener(STORAGE_EVENT, onChange)
+		return () => window.removeEventListener(STORAGE_EVENT, onChange)
+	}, [key])
 
-  return {
-    value,
-    set,
-    remove
-  };
-};
+	return {
+		value,
+		set,
+		remove
+	}
+}

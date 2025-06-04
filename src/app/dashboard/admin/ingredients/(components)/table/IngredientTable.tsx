@@ -4,13 +4,13 @@ import { Plus } from 'lucide-react'
 import { useState } from 'react'
 
 import { Button } from '@/components/ui/common'
+import { Modal } from '@/components/ui/elements/modal/Default/Modal'
 import { DataTable } from '@/components/ui/elements/table/DataTable'
 
 import { useGetIngredientsQuery } from '@/shared/api/hooks/ingredient/useGetIngredientsQuery'
 
 import { IngredientForm } from './IngredientForm'
 import { columns } from './columns'
-import { Modal } from '@/components/ui/elements/modal/Default/Modal'
 
 export function IngredientTable() {
 	const [pageSize, setPageSize] = useState(10)
@@ -30,8 +30,8 @@ export function IngredientTable() {
 
 	return (
 		<DataTable
-			title="Ингредиенты"
-			filterKey="title"
+			title='Ингредиенты'
+			filterKey='title'
 			isLoading={isLoading}
 			columns={columns}
 			data={ingredients?.data.ingredients}
@@ -42,7 +42,7 @@ export function IngredientTable() {
 			totalCount={ingredients?.data.total}
 			createModal={
 				<Modal
-					title="Добавление ингредиента"
+					title='Добавление ингредиента'
 					trigger={
 						<Button variant={'outline'}>
 							<Plus /> Добавить ингредиент
@@ -50,16 +50,16 @@ export function IngredientTable() {
 					}
 					open={isOpen.create}
 					onOpenChange={() => setIsOpen({ ...isOpen, create: !isOpen.create })}>
-					<IngredientForm mode="create" />
+					<IngredientForm mode='create' />
 				</Modal>
 			}
 			editModal={ingredient => (
 				<Modal
-					title="Редактирование ингредиента"
+					title='Редактирование ингредиента'
 					trigger={<Button variant={'outline'}>Редактировать</Button>}
 					open={isOpen.edit}
 					onOpenChange={() => setIsOpen({ ...isOpen, edit: !isOpen.edit })}>
-					<IngredientForm mode="edit" initialData={ingredient} />
+					<IngredientForm mode='edit' initialData={ingredient} />
 				</Modal>
 			)}
 		/>

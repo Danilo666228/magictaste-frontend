@@ -18,7 +18,7 @@ import {
 
 import { cn } from '@/lib/utils/twMerge'
 
-import { Button } from './Button/Button'
+import { Button } from './Button'
 
 type Tag = {
 	id: string

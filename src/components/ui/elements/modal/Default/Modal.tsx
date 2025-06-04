@@ -1,12 +1,6 @@
-import {
-	Dialog,
-	DialogContent,
-	DialogDescription,
-	DialogHeader,
-	DialogTitle,
-	DialogTrigger
-} from '@/components/ui/common'
 import React, { ComponentProps, ReactNode } from 'react'
+
+import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from '@/components/ui/common'
 import { ModalContext } from '@/components/ui/elements/modal/Default/ModalContext'
 
 interface ModalProps extends ComponentProps<typeof Dialog> {
@@ -23,11 +17,10 @@ export const Modal = ({ title, description, trigger, children, open, onOpenChang
 	return (
 		<Dialog {...props} open={open} onOpenChange={onOpenChange}>
 			<DialogTrigger asChild>{trigger}</DialogTrigger>
-			<DialogContent className="sm:max-w-md">
-				<DialogHeader className="relative">
-					{title && <DialogTitle className="text-center text-xl font-semibold">{title}</DialogTitle>}
-					{description &&
-			  <DialogDescription className="text-center text-muted-foreground">{description}</DialogDescription>}
+			<DialogContent className='sm:max-w-md'>
+				<DialogHeader className='relative'>
+					{title && <DialogTitle className='text-center text-xl font-semibold'>{title}</DialogTitle>}
+					{description && <DialogDescription className='text-center text-muted-foreground'>{description}</DialogDescription>}
 				</DialogHeader>
 				<ModalContext.Provider value={{ closeModal }}>{children}</ModalContext.Provider>
 			</DialogContent>

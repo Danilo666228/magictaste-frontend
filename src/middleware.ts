@@ -1,8 +1,8 @@
 import { type NextRequest, NextResponse } from 'next/server'
 
-import { ROUTE } from './config/route.config'
-import { API_URL } from './lib/constants/url.constants'
 import { Account, RoleName } from './shared/api/types'
+import { API_URL } from './shared/utils/constants/env'
+import { ROUTE } from './shared/utils/constants/route'
 
 export default async function middleware(request: NextRequest) {
 	const { nextUrl, cookies } = request

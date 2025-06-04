@@ -128,27 +128,25 @@ interface StepperTriggerProps extends React.ButtonHTMLAttributes<HTMLButtonEleme
 	asChild?: boolean
 }
 
-const StepperTrigger = React.forwardRef<HTMLButtonElement, StepperTriggerProps>(
-	({ asChild = false, className, children, ...props }, ref) => {
-		const { setActiveStep } = useStepper()
-		const { step, isDisabled } = useStepItem()
+const StepperTrigger = React.forwardRef<HTMLButtonElement, StepperTriggerProps>(({ asChild = false, className, children, ...props }, ref) => {
+	const { setActiveStep } = useStepper()
+	const { step, isDisabled } = useStepItem()
 
-		if (asChild) {
-			return <div className={className}>{children}</div>
-		}
-
-		return (
-			<button
-				ref={ref}
-				className={cn('inline-flex items-center gap-3 disabled:pointer-events-none disabled:opacity-50', className)}
-				onClick={() => setActiveStep(step)}
-				disabled={isDisabled}
-				{...props}>
-				{children}
-			</button>
-		)
+	if (asChild) {
+		return <div className={className}>{children}</div>
 	}
-)
+
+	return (
+		<button
+			ref={ref}
+			className={cn('inline-flex items-center gap-3 disabled:pointer-events-none disabled:opacity-50', className)}
+			onClick={() => setActiveStep(step)}
+			disabled={isDisabled}
+			{...props}>
+			{children}
+		</button>
+	)
+})
 StepperTrigger.displayName = 'StepperTrigger'
 
 // StepperIndicator
@@ -156,43 +154,41 @@ interface StepperIndicatorProps extends React.HTMLAttributes<HTMLDivElement> {
 	asChild?: boolean
 }
 
-const StepperIndicator = React.forwardRef<HTMLDivElement, StepperIndicatorProps>(
-	({ asChild = false, className, children, ...props }, ref) => {
-		const { state, step, isLoading } = useStepItem()
+const StepperIndicator = React.forwardRef<HTMLDivElement, StepperIndicatorProps>(({ asChild = false, className, children, ...props }, ref) => {
+	const { state, step, isLoading } = useStepItem()
 
-		return (
-			<div
-				ref={ref}
-				className={cn(
-					'relative flex size-6 shrink-0 items-center justify-center rounded-full bg-muted text-xs font-medium text-muted-foreground data-[state=active]:bg-primary data-[state=completed]:bg-primary data-[state=active]:text-primary-foreground data-[state=completed]:text-primary-foreground',
-					className
-				)}
-				data-state={state}
-				{...props}>
-				{asChild ? (
-					children
-				) : (
-					<>
-						<span className='transition-all group-data-[loading=true]/step:scale-0 group-data-[state=completed]/step:scale-0 group-data-[loading=true]/step:opacity-0 group-data-[state=completed]/step:opacity-0 group-data-[loading=true]/step:transition-none'>
-							{step}
+	return (
+		<div
+			ref={ref}
+			className={cn(
+				'relative flex size-6 shrink-0 items-center justify-center rounded-full bg-muted text-xs font-medium text-muted-foreground data-[state=active]:bg-primary data-[state=completed]:bg-primary data-[state=active]:text-primary-foreground data-[state=completed]:text-primary-foreground',
+				className
+			)}
+			data-state={state}
+			{...props}>
+			{asChild ? (
+				children
+			) : (
+				<>
+					<span className='transition-all group-data-[loading=true]/step:scale-0 group-data-[state=completed]/step:scale-0 group-data-[loading=true]/step:opacity-0 group-data-[state=completed]/step:opacity-0 group-data-[loading=true]/step:transition-none'>
+						{step}
+					</span>
+					<CheckIcon
+						className='absolute scale-0 opacity-0 transition-all group-data-[state=completed]/step:scale-100 group-data-[state=completed]/step:opacity-100'
+						size={16}
+						strokeWidth={2}
+						aria-hidden='true'
+					/>
+					{isLoading && (
+						<span className='absolute transition-all'>
+							<LoaderCircle className='animate-spin' size={14} strokeWidth={2} aria-hidden='true' />
 						</span>
-						<CheckIcon
-							className='absolute scale-0 opacity-0 transition-all group-data-[state=completed]/step:scale-100 group-data-[state=completed]/step:opacity-100'
-							size={16}
-							strokeWidth={2}
-							aria-hidden='true'
-						/>
-						{isLoading && (
-							<span className='absolute transition-all'>
-								<LoaderCircle className='animate-spin' size={14} strokeWidth={2} aria-hidden='true' />
-							</span>
-						)}
-					</>
-				)}
-			</div>
-		)
-	}
-)
+					)}
+				</>
+			)}
+		</div>
+	)
+})
 StepperIndicator.displayName = 'StepperIndicator'
 
 // StepperTitle
@@ -202,9 +198,9 @@ const StepperTitle = React.forwardRef<HTMLHeadingElement, React.HTMLAttributes<H
 StepperTitle.displayName = 'StepperTitle'
 
 // StepperDescription
-const StepperDescription = React.forwardRef<HTMLParagraphElement, React.HTMLAttributes<HTMLParagraphElement>>(
-	({ className, ...props }, ref) => <p ref={ref} className={cn('text-sm text-muted-foreground', className)} {...props} />
-)
+const StepperDescription = React.forwardRef<HTMLParagraphElement, React.HTMLAttributes<HTMLParagraphElement>>(({ className, ...props }, ref) => (
+	<p ref={ref} className={cn('text-sm text-muted-foreground', className)} {...props} />
+))
 StepperDescription.displayName = 'StepperDescription'
 
 // StepperSeparator

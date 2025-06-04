@@ -20,6 +20,8 @@ import {
 
 import { useProfile } from '@/hooks/useProfile'
 
+import { cn } from '@/lib/utils'
+
 import { TypeCheckoutSchema } from '@/schemas/checkout/checkout'
 
 import { useOrderStore } from '@/store/useOrderStore'
@@ -30,7 +32,6 @@ import { useCheckoutForm } from '../../(hooks)/useCheckoutForm'
 
 import { ManualAddressFields } from './ManualAddressFields'
 import { SelectAddressField } from './SelectAddressField'
-import { cn } from '@/lib/utils'
 
 interface DeliveryFieldProps {
 	form: UseFormReturn<TypeCheckoutSchema>

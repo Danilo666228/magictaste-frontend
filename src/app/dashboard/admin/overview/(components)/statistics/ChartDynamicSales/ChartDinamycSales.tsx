@@ -40,8 +40,7 @@ export function ChartDinamycSales({ period, isLoading, sales, customers }: Chart
 						<div>
 							<CardTitle className='text-lg font-semibold'>Динамика продаж</CardTitle>
 							<CardDescription className='text-sm opacity-80'>
-								Сравнение продаж за{' '}
-								{period === 'day' ? 'день' : period === 'week' ? 'неделю' : period === 'month' ? 'месяц' : 'год'}
+								Сравнение продаж за {period === 'day' ? 'день' : period === 'week' ? 'неделю' : period === 'month' ? 'месяц' : 'год'}
 							</CardDescription>
 						</div>
 						<ShoppingBag className='h-5 w-5 text-blue-500' />
@@ -54,10 +53,7 @@ export function ChartDinamycSales({ period, isLoading, sales, customers }: Chart
 						</div>
 					) : (
 						<ChartContainer className='' config={chartConfig}>
-							<BarChart
-								className=''
-								accessibilityLayer
-								data={chartData(sales?.totalSales ?? 0, customers?.totalCustomers ?? 0)}>
+							<BarChart className='' accessibilityLayer data={chartData(sales?.totalSales ?? 0, customers?.totalCustomers ?? 0)}>
 								<CartesianGrid vertical={false} />
 								<XAxis dataKey='name' tickLine={false} tickMargin={10} axisLine={false} tickFormatter={value => value} />
 								<ChartTooltip content={<ChartTooltipContent formatter={value => format.number(Number(value))} />} />

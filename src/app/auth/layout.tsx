@@ -7,7 +7,7 @@ import { ReactNode } from 'react'
 
 import { Button, Typography } from '@/components/ui/common'
 
-import { ROUTE } from '@/config/route.config'
+import { ROUTE } from '@/shared/utils/constants/route'
 
 interface LayoutProps {
 	children: ReactNode

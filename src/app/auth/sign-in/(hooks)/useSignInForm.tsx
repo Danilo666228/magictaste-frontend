@@ -10,7 +10,7 @@ import { useAuth } from '@/hooks/useAuth'
 import { SignInSchema, signInSchema } from '@/schemas/auth/signIn'
 
 import { usePostSignInMutation } from '@/shared/api/hooks/auth/usePostSignInMutation'
-import { ROUTE } from '@/config/route.config'
+import { ROUTE } from '@/shared/utils/constants/route'
 
 export function useSignInForm() {
 	const router = useRouter()
@@ -79,8 +79,7 @@ export function useSignInForm() {
 			if (token && form.formState.isValid) {
 				const data = form.getValues()
 
-				const canProceed =
-					!twoFactorType || (twoFactorType === 'totp' && data.totpCode) || (twoFactorType === 'email' && data.emailCode)
+				const canProceed = !twoFactorType || (twoFactorType === 'totp' && data.totpCode) || (twoFactorType === 'email' && data.emailCode)
 
 				if (canProceed) {
 					signIn({

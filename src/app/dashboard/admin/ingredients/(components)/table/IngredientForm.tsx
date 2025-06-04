@@ -1,16 +1,15 @@
 import { zodResolver } from '@hookform/resolvers/zod'
+import { useQueryClient } from '@tanstack/react-query'
 import { useForm } from 'react-hook-form'
 
 import { Button, Form, FormControl, FormField, FormItem, FormLabel, FormMessage, Input } from '@/components/ui/common'
-
+import { useModal } from '@/components/ui/elements/modal/Default/ModalContext'
 
 import { CreateIngredientSchema, createIngredientSchema } from '@/schemas/ingredient/createIngredient'
 
 import { useCreateIngredientMutation } from '@/shared/api/hooks/ingredient/useCreateIngredientMutation'
 import { useUpdateIngredientMutation } from '@/shared/api/hooks/ingredient/useUpdateIngredientMutation'
 import { Ingredient } from '@/shared/api/types'
-import { useModal } from '@/components/ui/elements/modal/Default/ModalContext'
-import { useQueryClient } from '@tanstack/react-query'
 
 interface IngredientFormProps {
 	mode: 'create' | 'edit'
@@ -59,22 +58,22 @@ export function IngredientForm({ mode, initialData }: IngredientFormProps) {
 
 	return (
 		<Form {...form}>
-			<form onSubmit={form.handleSubmit(handleSubmit)} className="space-y-4">
+			<form onSubmit={form.handleSubmit(handleSubmit)} className='space-y-4'>
 				<FormField
 					control={form.control}
-					name="title"
+					name='title'
 					render={({ field }) => (
 						<FormItem>
 							<FormLabel>Название ингредиента</FormLabel>
 							<FormControl>
-								<Input type="text" {...field} />
+								<Input type='text' {...field} />
 							</FormControl>
 							<FormMessage />
 						</FormItem>
 					)}
 				/>
 
-				<Button type="submit" className="w-full">
+				<Button type='submit' className='w-full'>
 					{mode === 'create' ? 'Создать' : 'Обновить'}
 				</Button>
 			</form>

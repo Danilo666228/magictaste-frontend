@@ -1,7 +1,7 @@
 import { create } from 'zustand'
 import { persist } from 'zustand/middleware'
 
-import { BaseColor } from '@/lib/constants/color.constats'
+import { BaseColor } from '@/shared/utils/constants/color'
 
 interface ConfigStore {
 	accentRadius: number

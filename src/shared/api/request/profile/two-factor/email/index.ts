@@ -6,5 +6,4 @@ export interface UpdateTwoFactorEmailParams {
 
 export type UpdateTwoFactorEmailRequestConfig = RequestConfig<UpdateTwoFactorEmailParams>
 
-export const updateTwoFactorEmail = ({ params, config }: UpdateTwoFactorEmailRequestConfig) =>
-	api.put('/profile/two-factor/email', params, config)
+export const updateTwoFactorEmail = ({ params, config }: UpdateTwoFactorEmailRequestConfig) => api.put('/profile/two-factor/email', params, config)

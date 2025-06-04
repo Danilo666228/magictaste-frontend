@@ -7,9 +7,10 @@ import { Skeleton } from '@/components/ui/common/Skeleton'
 
 import { useProfile } from '@/hooks/useProfile'
 
+import { cn } from '@/lib/utils/twMerge'
+
 import { DisableTotp } from './DisableTotp'
 import { EnableTotp } from './EnableTotp'
-import { cn } from '@/lib/utils/twMerge'
 
 export function TotpWrapper() {
 	const { profile, isPending } = useProfile()

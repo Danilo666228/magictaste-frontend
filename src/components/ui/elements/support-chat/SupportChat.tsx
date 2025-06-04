@@ -3,17 +3,17 @@
 import { MessageCircle } from 'lucide-react'
 import { useFormatter } from 'next-intl'
 import { useEffect, useState } from 'react'
-import { io, Socket } from 'socket.io-client'
+import { Socket, io } from 'socket.io-client'
 import { v4 as uuidv4 } from 'uuid'
 
 import { useProfile } from '@/hooks/useProfile'
 
-import { SERVER_URL, SOCKET_SUPPORT_CHAT_URL } from '@/lib/constants/url.constants'
 import { getMediaSource } from '@/lib/utils'
 import { checkAccessRoles } from '@/lib/utils/accessRoles'
 import { cn } from '@/lib/utils/twMerge'
 
 import { Account } from '@/shared/api/types'
+import { SERVER_URL, SOCKET_SUPPORT_CHAT_URL } from '@/shared/utils/constants/env'
 
 import { Avatar, AvatarFallback, AvatarImage, Button, Input } from '../../common'
 import { Typography } from '../../common/Typography'
@@ -174,8 +174,7 @@ export function SupportChat() {
 		return (
 			<ExpandableChat icon={<MessageCircle />}>
 				<ExpandableChatBody>
-					<Typography className="flex h-full items-center justify-center text-gray-500">Необходима
-						авторизация</Typography>
+					<Typography className='flex h-full items-center justify-center text-gray-500'>Необходима авторизация</Typography>
 				</ExpandableChatBody>
 			</ExpandableChat>
 		)
@@ -193,10 +192,9 @@ export function SupportChat() {
 		<ExpandableChat icon={<MessageCircle className='text-white' />}>
 			<ExpandableChatHeader className='bg-primary text-white'>
 				{support ? (
-					<div className="flex items-center gap-3">
-						<Avatar className="h-8 w-8 border-2 border-white/30">
-							<AvatarFallback
-								className="bg-blue-400 text-white">{support.userName.slice(0, 2).toUpperCase()}</AvatarFallback>
+					<div className='flex items-center gap-3'>
+						<Avatar className='h-8 w-8 border-2 border-white/30'>
+							<AvatarFallback className='bg-blue-400 text-white'>{support.userName.slice(0, 2).toUpperCase()}</AvatarFallback>
 						</Avatar>
 						<div className='flex flex-col'>
 							<Typography className='font-medium'>{support.userName}</Typography>
@@ -204,9 +202,9 @@ export function SupportChat() {
 						</div>
 					</div>
 				) : chatStarted ? (
-					<div className="flex items-center gap-3">
-						<div className="flex h-8 w-8 items-center justify-center rounded-full bg-blue-400/30">
-							<div className="h-3 w-3 animate-pulse rounded-full bg-blue-200" />
+					<div className='flex items-center gap-3'>
+						<div className='flex h-8 w-8 items-center justify-center rounded-full bg-blue-400/30'>
+							<div className='h-3 w-3 animate-pulse rounded-full bg-blue-200' />
 						</div>
 						<div className='flex flex-col'>
 							<Typography className='font-medium'>Ожидание подключения</Typography>
@@ -214,8 +212,8 @@ export function SupportChat() {
 						</div>
 					</div>
 				) : (
-					<div className="flex w-full items-center justify-between">
-						<Typography className="font-medium">Чат поддержки</Typography>
+					<div className='flex w-full items-center justify-between'>
+						<Typography className='font-medium'>Чат поддержки</Typography>
 						<button
 							onClick={requestSupport}
 							disabled={!isConnected || isLoading}
@@ -226,7 +224,7 @@ export function SupportChat() {
 				)}
 			</ExpandableChatHeader>
 
-			<ExpandableChatBody className="bg-gray-50">
+			<ExpandableChatBody className='bg-gray-50'>
 				{isLoading ? (
 					<div className='flex h-full flex-col items-center justify-center gap-3 text-gray-500'>
 						<div className='h-8 w-8 animate-spin rounded-full border-4 border-primary'></div>
@@ -237,12 +235,11 @@ export function SupportChat() {
 						<div className='rounded-full bg-blue-100 p-4'>
 							<MessageCircle className='h-10 w-10 text-primary' />
 						</div>
-						<Typography className="font-medium text-gray-800">Добро пожаловать в чат поддержки</Typography>
-						<Typography className="text-gray-500">Нажмите "Запросить поддержку", чтобы начать общение с
-							менеджером</Typography>
+						<Typography className='font-medium text-gray-800'>Добро пожаловать в чат поддержки</Typography>
+						<Typography className='text-gray-500'>Нажмите "Запросить поддержку", чтобы начать общение с менеджером</Typography>
 					</div>
 				) : (
-					<div className="flex flex-col space-y-4 p-4">
+					<div className='flex flex-col space-y-4 p-4'>
 						{messages.map(msg => (
 							<div
 								key={msg.id}
@@ -266,7 +263,7 @@ export function SupportChat() {
 														: getMediaSource(support?.picture)
 												}
 											/>
-											<AvatarFallback className="bg-indigo-600 text-white">
+											<AvatarFallback className='bg-indigo-600 text-white'>
 												{msg.sender?.userName?.slice(0, 2).toUpperCase()}
 											</AvatarFallback>
 										</Avatar>
@@ -284,7 +281,7 @@ export function SupportChat() {
 												)}>
 												{msg.message}
 											</div>
-											<div className="mt-1 text-xs text-gray-500">
+											<div className='mt-1 text-xs text-gray-500'>
 												{formatter.dateTime(new Date(msg.createdAt), { hour: 'numeric', minute: 'numeric' })}
 											</div>
 										</div>
@@ -310,7 +307,7 @@ export function SupportChat() {
 						<Button
 							type='submit'
 							disabled={!support || !message}
-							className=' bg-blue-600 px-4 py-2.5 text-white transition-colors hover:bg-blue-700 disabled:bg-gray-300'>
+							className='bg-blue-600 px-4 py-2.5 text-white transition-colors hover:bg-blue-700 disabled:bg-gray-300'>
 							Отправить
 						</Button>
 					</div>

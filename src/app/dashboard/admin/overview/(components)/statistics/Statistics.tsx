@@ -50,18 +50,8 @@ export function Statisctics() {
 			</div>
 
 			<div className='grid gap-4 md:grid-cols-2 lg:grid-cols-3'>
-				<CardStatistic
-					title='Доход'
-					Icon={DollarSign}
-					value={statistics?.data.sales.salesAmount || 0}
-					percentage={changes.revenue}
-				/>
-				<CardStatistic
-					title='Продажи'
-					Icon={ShoppingCart}
-					value={statistics?.data.sales.totalSales || 0}
-					percentage={changes.sales}
-				/>
+				<CardStatistic title='Доход' Icon={DollarSign} value={statistics?.data.sales.salesAmount || 0} percentage={changes.revenue} />
+				<CardStatistic title='Продажи' Icon={ShoppingCart} value={statistics?.data.sales.totalSales || 0} percentage={changes.sales} />
 				<CardStatistic
 					title='Клиенты'
 					Icon={UserRound}

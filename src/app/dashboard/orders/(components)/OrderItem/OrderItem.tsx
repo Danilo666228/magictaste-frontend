@@ -16,11 +16,12 @@ import {
 	Typography
 } from '@/components/ui/common'
 
+import { getMediaSource } from '@/lib/utils'
+
 import { useGetPaymentDetailsQuery } from '@/shared/api/hooks/order/useGetPaymentDetailsQuery'
 import { Order } from '@/shared/api/types'
 
 import { statusInfo } from './statusInfo'
-import { getMediaSource } from '@/lib/utils'
 
 interface OrderItemProps {
 	order: Order

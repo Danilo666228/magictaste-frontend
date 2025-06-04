@@ -4,7 +4,7 @@ import { ReactNode } from 'react'
 
 import { ScrollArea, Separator, SidebarInset, SidebarProvider, SidebarTrigger } from '@/components/ui/common'
 
-import { NO_INDEX_PAGE } from '@/lib/constants/seo.constants'
+import { NO_INDEX_PAGE } from '@/shared/utils/constants/seo'
 
 import { DashboardSidebar } from './(components)/sidebar/DashboardSidebar'
 

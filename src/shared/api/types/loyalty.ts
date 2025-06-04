@@ -5,7 +5,7 @@ export interface Loyalty {
 	lastActivity: Date
 	loyaltyLevelId: string
 	loyaltyLevel: LoyaltyLevel
-	pointsToNextLevel : number
+	pointsToNextLevel: number
 	ordersCount: number
 	points: number
 	totalSpent: number

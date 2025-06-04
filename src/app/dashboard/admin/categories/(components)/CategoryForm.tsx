@@ -1,4 +1,5 @@
 import { zodResolver } from '@hookform/resolvers/zod'
+import { useQueryClient } from '@tanstack/react-query'
 import { useForm } from 'react-hook-form'
 
 import { Button, Form, FormControl, FormField, FormItem, FormLabel, FormMessage, Input } from '@/components/ui/common'
@@ -9,7 +10,6 @@ import { CreateCategorySchema, createCategorySchema } from '@/schemas/category/c
 import { useCreateCategoryMutation } from '@/shared/api/hooks/category/useCreateCategoryMutation'
 import { useUpdateCategoryMutation } from '@/shared/api/hooks/category/useUpdateCategoryMutation'
 import { Category } from '@/shared/api/types'
-import { useQueryClient } from '@tanstack/react-query'
 
 interface CategoryFormProps {
 	mode: 'create' | 'edit'
@@ -56,22 +56,22 @@ export function CategoryForm({ mode, initialData }: CategoryFormProps) {
 
 	return (
 		<Form {...form}>
-			<form onSubmit={form.handleSubmit(handleSubmit)} className="space-y-4">
+			<form onSubmit={form.handleSubmit(handleSubmit)} className='space-y-4'>
 				<FormField
 					control={form.control}
-					name="title"
+					name='title'
 					render={({ field }) => (
 						<FormItem>
 							<FormLabel>Название категории</FormLabel>
 							<FormControl>
-								<Input type="text"  {...field} />
+								<Input type='text' {...field} />
 							</FormControl>
 							<FormMessage />
 						</FormItem>
 					)}
 				/>
 
-				<Button type="submit" className="w-full">
+				<Button type='submit' className='w-full'>
 					{mode === 'create' ? 'Создать' : 'Обновить'}
 				</Button>
 			</form>

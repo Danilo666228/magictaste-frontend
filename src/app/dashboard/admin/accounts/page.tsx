@@ -1,6 +1,6 @@
-import { AccountTable } from "./(components)/table/AccountTable";
+import { AccountTable } from './(components)/table/AccountTable'
 
-export default function AccountsPage(){
+export default function AccountsPage() {
 	return (
 		<div>
 			<AccountTable />

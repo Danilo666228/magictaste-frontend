@@ -25,21 +25,13 @@ export function CardStatistic({ title, Icon, value, percentage }: CardStatisticP
 					)}
 				</CardHeader>
 				<CardContent>
-					<motion.div
-						initial={{ scale: 0.9 }}
-						animate={{ scale: 1 }}
-						transition={{ duration: 0.5 }}
-						className='mb-2 text-3xl font-bold'>
+					<motion.div initial={{ scale: 0.9 }} animate={{ scale: 1 }} transition={{ duration: 0.5 }} className='mb-2 text-3xl font-bold'>
 						{value.toLocaleString()}
 					</motion.div>
 					<div className='flex items-center gap-2 text-sm'>
 						<div
 							className={`flex items-center justify-center rounded-md p-1 ${isPositive ? 'bg-emerald-100 dark:bg-emerald-900/30' : 'bg-rose-100 dark:bg-rose-900/30'}`}>
-							{isPositive ? (
-								<ArrowUp className='h-3 w-3 text-emerald-500' />
-							) : (
-								<ArrowDown className='h-3 w-3 text-rose-500' />
-							)}
+							{isPositive ? <ArrowUp className='h-3 w-3 text-emerald-500' /> : <ArrowDown className='h-3 w-3 text-rose-500' />}
 							<span
 								className={`ml-1 px-1 text-xs font-medium ${isPositive ? 'text-emerald-600 dark:text-emerald-400' : 'text-rose-600 dark:text-rose-400'}`}>
 								{Math.abs(percentage)}%

@@ -8,9 +8,8 @@ import { SearchInput } from '@/components/ui/elements/input/SearchInput'
 
 import { useProfile } from '@/hooks/useProfile'
 
-import { SERVER_URL, SOCKET_SUPPORT_CHAT_URL } from '@/lib/constants/url.constants'
-
 import { Account } from '@/shared/api/types'
+import { SERVER_URL, SOCKET_SUPPORT_CHAT_URL } from '@/shared/utils/constants/env'
 
 import { SupportTicketChat } from './SupportTicketChat/SupportTicketChat'
 import { SupportTicketList } from './SupportTicketList'

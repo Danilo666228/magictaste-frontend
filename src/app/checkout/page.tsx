@@ -4,7 +4,7 @@ import Image from 'next/image'
 
 import { Typography } from '@/components/ui/common'
 
-import { NO_INDEX_PAGE } from '@/lib/constants/seo.constants'
+import { NO_INDEX_PAGE } from '@/shared/utils/constants/seo'
 
 import { CheckoutForm } from './(components)/CheckoutForm/CheckoutForm'
 import { OrderList } from './(components)/OrderList'

@@ -8,13 +8,13 @@ import { Button, Container, Form } from '@/components/ui/common'
 import { OrderStep, useOrderStore } from '@/store/useOrderStore'
 
 import { useUnmount } from '@/shared/hooks'
+import { ROUTE } from '@/shared/utils/constants/route'
 
 import { useCheckoutForm } from '../../(hooks)/useCheckoutForm'
 
 import { AboutUserField } from './AboutUserField'
 import { DeliveryField } from './DeliveryField'
 import { PaymentField } from './PaymentField'
-import { ROUTE } from '@/config/route.config'
 
 const steps = [
 	{ id: 'user', title: 'Личные данные', icon: User },

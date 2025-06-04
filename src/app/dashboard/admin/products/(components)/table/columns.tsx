@@ -4,10 +4,11 @@ import { useFormatter } from 'next-intl'
 import { Avatar, AvatarFallback, AvatarImage, Badge, Checkbox } from '@/components/ui/common'
 import { SortableHeader } from '@/components/ui/elements/table/SortableHeader'
 
+import { getMediaSource } from '@/lib/utils'
+
 import { Product } from '@/shared/api/types'
 
 import { ProductsActions } from './ProductAction'
-import { getMediaSource } from '@/lib/utils'
 
 export interface ProductColumn extends Product {
 	actions?: string
@@ -23,9 +24,7 @@ export const columns: ColumnDef<ProductColumn>[] = [
 				aria-label='Select all'
 			/>
 		),
-		cell: ({ row }) => (
-			<Checkbox checked={row.getIsSelected()} onCheckedChange={value => row.toggleSelected(!!value)} aria-label='Select row' />
-		),
+		cell: ({ row }) => <Checkbox checked={row.getIsSelected()} onCheckedChange={value => row.toggleSelected(!!value)} aria-label='Select row' />,
 		size: 28,
 		enableSorting: false,
 		enableHiding: false

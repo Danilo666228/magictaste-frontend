@@ -3,17 +3,7 @@
 import { REGEXP_ONLY_DIGITS } from 'input-otp'
 import { UseFormReturn } from 'react-hook-form'
 
-import {
-	Form,
-	FormControl,
-	FormField,
-	FormItem,
-	FormMessage,
-	InputOTP,
-	InputOTPGroup,
-	InputOTPSeparator,
-	InputOTPSlot
-} from '@/components/ui/common'
+import { Form, FormControl, FormField, FormItem, FormMessage, InputOTP, InputOTPGroup, InputOTPSeparator, InputOTPSlot } from '@/components/ui/common'
 
 import { SignInSchema } from '@/schemas/auth/signIn'
 
@@ -34,12 +24,7 @@ export function TwoFactorForm({ form, onComplete, isPending, fieldName }: TwoFac
 					render={({ field }) => (
 						<FormItem className='flex flex-col items-center'>
 							<FormControl>
-								<InputOTP
-									disabled={isPending}
-									pattern={REGEXP_ONLY_DIGITS}
-									onComplete={onComplete}
-									maxLength={6}
-									{...field}>
+								<InputOTP disabled={isPending} pattern={REGEXP_ONLY_DIGITS} onComplete={onComplete} maxLength={6} {...field}>
 									<InputOTPGroup>
 										<InputOTPSlot index={0} className='' />
 										<InputOTPSlot index={1} className='' />

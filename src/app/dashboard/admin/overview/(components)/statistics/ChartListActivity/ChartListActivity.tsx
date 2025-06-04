@@ -1,21 +1,11 @@
 import { Star } from 'lucide-react'
 import { useFormatter } from 'next-intl'
 
-import {
-	Avatar,
-	AvatarFallback,
-	AvatarImage,
-	Card,
-	CardContent,
-	CardDescription,
-	CardHeader,
-	CardTitle,
-	ScrollArea
-} from '@/components/ui/common'
-
-import { DashboardStatisticsData } from '@/shared/api/types/statistics'
+import { Avatar, AvatarFallback, AvatarImage, Card, CardContent, CardDescription, CardHeader, CardTitle, ScrollArea } from '@/components/ui/common'
 
 import { cn, getMediaSource } from '@/lib/utils'
+
+import { DashboardStatisticsData } from '@/shared/api/types/statistics'
 
 interface ChartListActivityProps {
 	activityFeed: DashboardStatisticsData['activityFeed']
@@ -66,9 +56,7 @@ export function ChartListActivity({ activityFeed }: ChartListActivityProps) {
 													)}
 												/>
 											))}
-											{activity.comment && (
-												<p className='ml-2 text-xs italic'>"{activity.comment.substring(0, 50)}..."</p>
-											)}
+											{activity.comment && <p className='ml-2 text-xs italic'>"{activity.comment.substring(0, 50)}..."</p>}
 										</div>
 									)}
 								</div>

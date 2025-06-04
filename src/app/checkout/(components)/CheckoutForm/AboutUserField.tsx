@@ -2,17 +2,7 @@ import { UseFormReturn } from 'react-hook-form'
 import { PhoneInput } from 'react-international-phone'
 import 'react-international-phone/style.css'
 
-import {
-	Container,
-	FormBlock,
-	FormControl,
-	FormDescription,
-	FormField,
-	FormItem,
-	FormLabel,
-	FormMessage,
-	Input
-} from '@/components/ui/common'
+import { Container, FormBlock, FormControl, FormDescription, FormField, FormItem, FormLabel, FormMessage, Input } from '@/components/ui/common'
 
 import { TypeCheckoutSchema } from '@/schemas/checkout/checkout'
 
@@ -23,7 +13,6 @@ interface AboutUserProps {
 }
 
 export function AboutUserField({ form }: AboutUserProps) {
-	
 	return (
 		<FormBlock title='Личные данные'>
 			<Container className='flex flex-col gap-5'>

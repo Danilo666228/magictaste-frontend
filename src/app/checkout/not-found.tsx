@@ -3,7 +3,7 @@ import Link from 'next/link'
 
 import { Typography } from '@/components/ui/common'
 
-import { ROUTE } from '@/config/route.config'
+import { ROUTE } from '@/shared/utils/constants/route'
 
 export default function NotFound() {
 	return (

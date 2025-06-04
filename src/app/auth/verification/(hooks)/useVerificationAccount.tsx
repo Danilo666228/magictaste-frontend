@@ -4,8 +4,7 @@ import { toast } from 'sonner'
 import { useAuth } from '@/hooks/useAuth'
 
 import { useGetVerificationQuery } from '@/shared/api/hooks/auth/useGetVerificationQuery'
-
-import { ROUTE } from '@/config/route.config'
+import { ROUTE } from '@/shared/utils/constants/route'
 
 export function useVerificationAccount(token: string | null) {
 	const router = useRouter()

@@ -1,9 +1,8 @@
 import { Socket, io } from 'socket.io-client'
 import { create } from 'zustand'
 
-import { SERVER_URL, SOCKET_NOTIFICATIONS_URL } from '@/lib/constants/url.constants'
-
 import { Notification } from '@/shared/api/types'
+import { SERVER_URL, SOCKET_NOTIFICATIONS_URL } from '@/shared/utils/constants/env'
 
 interface ToastMessage {
 	type: 'success' | 'error' | 'warning' | 'info'

@@ -8,5 +8,4 @@ export type GenerateQrCodeResponse = {
 	remainingSeconds: number
 }
 
-export const generateQrCode = (requestConfig?: GenerateQrCodeRequestConfig) =>
-	api.get<GenerateQrCodeResponse>('/totp/qr-code', requestConfig?.config)
+export const generateQrCode = (requestConfig?: GenerateQrCodeRequestConfig) => api.get<GenerateQrCodeResponse>('/totp/qr-code', requestConfig?.config)

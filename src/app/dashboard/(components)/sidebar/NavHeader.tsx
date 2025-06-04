@@ -5,7 +5,7 @@ import { useRouter } from 'next/navigation'
 
 import { DropdownMenu, DropdownMenuTrigger, SidebarMenu, SidebarMenuButton, SidebarMenuItem, Typography } from '@/components/ui/common'
 
-import { ROUTE } from '@/config/route.config'
+import { ROUTE } from '@/shared/utils/constants/route'
 
 export function NavHeader() {
 	const router = useRouter()

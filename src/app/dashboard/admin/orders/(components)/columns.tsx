@@ -21,9 +21,7 @@ export const columns: ColumnDef<OrderColumn>[] = [
 				aria-label='Select all'
 			/>
 		),
-		cell: ({ row }) => (
-			<Checkbox checked={row.getIsSelected()} onCheckedChange={value => row.toggleSelected(!!value)} aria-label='Select row' />
-		),
+		cell: ({ row }) => <Checkbox checked={row.getIsSelected()} onCheckedChange={value => row.toggleSelected(!!value)} aria-label='Select row' />,
 		size: 28,
 		enableSorting: false,
 		enableHiding: false

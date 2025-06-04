@@ -5,7 +5,6 @@ import { UpdateCategoryRequestConfig, updateCategory } from '../../request/categ
 export const useUpdateCategoryMutation = (settings?: MutationSettings<UpdateCategoryRequestConfig, typeof updateCategory>) =>
 	useMutation({
 		mutationKey: ['updateCategory'],
-		mutationFn: ({ params, config }: UpdateCategoryRequestConfig) =>
-			updateCategory({ params, config: { ...settings?.config, ...config } }),
+		mutationFn: ({ params, config }: UpdateCategoryRequestConfig) => updateCategory({ params, config: { ...settings?.config, ...config } }),
 		...settings?.options
 	})

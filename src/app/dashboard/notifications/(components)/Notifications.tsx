@@ -40,7 +40,7 @@ export function Notifications() {
 			<div className='mb-8 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between'>
 				<div className='flex items-center gap-4'>
 					<div className='relative'>
-						<div className='rounded-xl p-2 border'>
+						<div className='rounded-xl border p-2'>
 							<Bell size={32} />
 						</div>
 						{!!unreadCount && (
@@ -137,7 +137,9 @@ export function Notifications() {
 					<div className='mb-4 rounded-full bg-background p-3 shadow-md'>
 						<Bell className='text-primary' size={32} />
 					</div>
-					<Typography tag='h3' className='mb-2 text-lg font-medium'>{filter === 'all' ? 'Нет уведомлений' : 'Нет непрочитанных уведомлений'}</Typography>
+					<Typography tag='h3' className='mb-2 text-lg font-medium'>
+						{filter === 'all' ? 'Нет уведомлений' : 'Нет непрочитанных уведомлений'}
+					</Typography>
 					<p className='max-w-md text-sm text-gray-500'>
 						{filter === 'all'
 							? 'У вас пока нет новых уведомлений. Они появятся здесь, когда что-то произойдет.'

@@ -1,12 +1,11 @@
 'use client'
 
 import { ArrowLeft, ArrowRight } from 'lucide-react'
-import { ComponentProps, ReactNode, createContext, useContext, useState } from 'react'
-import React from 'react'
-
-import { Button, Typography } from '../common'
+import React, { ComponentProps, ReactNode, createContext, useContext, useState } from 'react'
 
 import { cn } from '@/lib/utils'
+
+import { Button } from '../common'
 
 interface CarouselContextProps {
 	item: number

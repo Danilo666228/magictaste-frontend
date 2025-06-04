@@ -4,13 +4,7 @@ import { Heart, ShoppingCart } from 'lucide-react'
 import { useFormatter } from 'next-intl'
 import Link from 'next/link'
 
-import {
-	ProductCard,
-	ProductCardContent,
-	ProductCardFooter,
-	ProductCardImage,
-	ProductCardLink
-} from '@/components/shared/product-card/ProductCard'
+import { ProductCard, ProductCardContent, ProductCardFooter, ProductCardImage, ProductCardLink } from '@/components/shared/product-card/ProductCard'
 import { Button, Typography } from '@/components/ui/common'
 
 import { useCart } from '@/hooks/useCart'
@@ -20,8 +14,7 @@ import { useProfile } from '@/hooks/useProfile'
 import { cn } from '@/lib/utils/twMerge'
 
 import { Favorite } from '@/shared/api/types'
-
-import { ROUTE } from '@/config/route.config'
+import { ROUTE } from '@/shared/utils/constants/route'
 
 interface FavoriteListProps {
 	favorites: Favorite[] | undefined
@@ -89,8 +82,7 @@ export function FavoriteList({ favorites }: FavoriteListProps) {
 										size={20}
 										className={cn(
 											'transition-transform',
-											profile?.data.favorites.some(fav => fav.product.id === favorite.product.id) &&
-												'fill-red-500 text-red-500'
+											profile?.data.favorites.some(fav => fav.product.id === favorite.product.id) && 'fill-red-500 text-red-500'
 										)}
 									/>
 								</Button>

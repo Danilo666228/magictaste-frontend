@@ -265,8 +265,7 @@ function getPayloadConfigFromPayload(config: ChartConfig, payload: unknown, key:
 		return undefined
 	}
 
-	const payloadPayload =
-		'payload' in payload && typeof payload.payload === 'object' && payload.payload !== null ? payload.payload : undefined
+	const payloadPayload = 'payload' in payload && typeof payload.payload === 'object' && payload.payload !== null ? payload.payload : undefined
 
 	let configLabelKey: string = key
 

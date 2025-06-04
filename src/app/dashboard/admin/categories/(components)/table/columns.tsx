@@ -8,7 +8,6 @@ import { Category } from '@/shared/api/types'
 
 import { CategoryActions } from './CategoryAction'
 
-
 export interface CategoryColumn extends Category {
 	actions?: string
 }
@@ -20,13 +19,10 @@ export const columns: ColumnDef<CategoryColumn>[] = [
 			<Checkbox
 				checked={table.getIsAllPageRowsSelected() || (table.getIsSomePageRowsSelected() && 'indeterminate')}
 				onCheckedChange={value => table.toggleAllPageRowsSelected(!!value)}
-				aria-label="Select all"
+				aria-label='Select all'
 			/>
 		),
-		cell: ({ row }) => (
-			<Checkbox checked={row.getIsSelected()} onCheckedChange={value => row.toggleSelected(!!value)}
-								aria-label="Select row" />
-		),
+		cell: ({ row }) => <Checkbox checked={row.getIsSelected()} onCheckedChange={value => row.toggleSelected(!!value)} aria-label='Select row' />,
 		size: 28,
 		enableSorting: false,
 		enableHiding: false

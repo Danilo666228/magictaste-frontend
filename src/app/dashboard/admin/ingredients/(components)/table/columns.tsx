@@ -4,10 +4,11 @@ import { useFormatter } from 'next-intl'
 
 import { Avatar, AvatarFallback, AvatarImage, Button, Checkbox } from '@/components/ui/common'
 
+import { getMediaSource } from '@/lib/utils'
+
 import { Ingredient } from '@/shared/api/types'
 
 import { IngredientActions } from './IngredientAction'
-import { getMediaSource } from '@/lib/utils'
 
 export interface IngredientColumn extends Ingredient {
 	actions?: string
@@ -30,9 +31,7 @@ export const columns: ColumnDef<IngredientColumn>[] = [
 				aria-label='Select all'
 			/>
 		),
-		cell: ({ row }) => (
-			<Checkbox checked={row.getIsSelected()} onCheckedChange={value => row.toggleSelected(!!value)} aria-label='Select row' />
-		),
+		cell: ({ row }) => <Checkbox checked={row.getIsSelected()} onCheckedChange={value => row.toggleSelected(!!value)} aria-label='Select row' />,
 		size: 28,
 		enableSorting: false,
 		enableHiding: false

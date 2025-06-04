@@ -26,7 +26,6 @@ interface SupportTicketItemProps {
 export function SupportTicketItem({ ticket, onClick }: SupportTicketItemProps) {
 	const formatter = useFormatter()
 
-	
 	const statusConfig = {
 		new: { color: 'bg-red-100 text-red-800', text: 'Новый' },
 		active: { color: 'bg-green-100 text-green-800', text: 'Активный' },

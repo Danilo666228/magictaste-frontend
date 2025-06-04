@@ -4,18 +4,7 @@ import { Bell, BellOff, LucideIcon, MessageSquare } from 'lucide-react'
 
 import { useChangeNotificationForm } from '@/app/dashboard/settings/(hooks)/useChangeNotificationForm'
 
-import {
-	Badge,
-	Card,
-	CardContent,
-	CardDescription,
-	CardHeader,
-	CardTitle,
-	Form,
-	FormField,
-	Label,
-	Typography
-} from '@/components/ui/common'
+import { Badge, Card, CardContent, CardDescription, CardHeader, CardTitle, Form, FormField, Label, Typography } from '@/components/ui/common'
 import { Switch } from '@/components/ui/common/Switch'
 
 import { cn } from '@/lib/utils'
@@ -40,8 +29,7 @@ function NotificationToggle({
 	iconColor?: string
 }) {
 	return (
-		<div
-			className={cn('flex w-full items-center justify-between gap-4 rounded-lg border p-4 transition-all hover:bg-muted/10', className)}>
+		<div className={cn('flex w-full items-center justify-between gap-4 rounded-lg border p-4 transition-all hover:bg-muted/10', className)}>
 			<div className='flex items-start gap-3'>
 				<div className={`rounded-full p-2 ${value ? 'bg-primary/10' : 'bg-muted/30'}`}>
 					<Icon size={18} className={value ? iconColor : 'text-muted-foreground'} />
@@ -120,7 +108,9 @@ export function ChangeNotificationForm() {
 									/>
 								)}
 							/>
-							<Badge className='absolute -top-2 -left-2 font-semibold' variant={'default'}>Beta</Badge>
+							<Badge className='absolute -left-2 -top-2 font-semibold' variant={'default'}>
+								Beta
+							</Badge>
 						</div>
 					</div>
 

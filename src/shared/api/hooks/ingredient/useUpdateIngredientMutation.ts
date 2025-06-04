@@ -6,5 +6,5 @@ export const useUpdateIngredientMutation = (settings?: MutationSettings<UpdateIn
 	useMutation({
 		mutationKey: ['updateIngredient'],
 		mutationFn: ({ params, config }) => updateIngredient({ params, config: { ...settings?.config, ...config } }),
-			...settings?.options
-		})
+		...settings?.options
+	})

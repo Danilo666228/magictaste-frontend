@@ -15,6 +15,15 @@ export type AddressDetails = {
 	postalCode?: string
 }
 
+interface AddressComponent {
+	kind: 'street' | 'house' | 'locality' | 'country' | string
+	name: string
+}
+
+interface YandexMapClickEvent {
+	get: (key: 'coords') => [number, number]
+}
+
 interface YandexMapProps {
 	initialCoordinates?: Coordinates
 	defaultZoom?: number
@@ -50,32 +59,41 @@ export function YandexMap({
 	}, [ymaps, onLoad])
 
 	const parseAddressDetails = useCallback((result: any): AddressDetails => {
-		const geoObject = result.geoObjects.get(0)
-		const components = geoObject.properties.get('metaDataProperty.GeocoderMetaData.Address.Components')
+		try {
+			const geoObject = result.geoObjects.get(0)
+			const components = geoObject.properties.get('metaDataProperty.GeocoderMetaData.Address.Components', []) as AddressComponent[]
 
-		const addressDetails: AddressDetails = {
-			fullAddress: geoObject.properties.get('text'),
-			postalCode: geoObject.properties.get('metaDataProperty.GeocoderMetaData.Address.postal_code')
-		}
-
-		components.forEach((component: any) => {
-			switch (component.kind) {
-				case 'street':
-					addressDetails.street = component.name
-					break
-				case 'house':
-					addressDetails.house = component.name
-					break
-				case 'locality':
-					addressDetails.city = component.name
-					break
-				case 'country':
-					addressDetails.country = component.name
-					break
+			const addressDetails: AddressDetails = {
+				fullAddress: geoObject.properties.get('text', '') as string,
+				postalCode: geoObject.properties.get('metaDataProperty.GeocoderMetaData.Address.postal_code', undefined) as string | undefined
 			}
-		})
 
-		return addressDetails
+			if (Array.isArray(components)) {
+				components.forEach((component: AddressComponent) => {
+					switch (component.kind) {
+						case 'street':
+							addressDetails.street = component.name
+							break
+						case 'house':
+							addressDetails.house = component.name
+							break
+						case 'locality':
+							addressDetails.city = component.name
+							break
+						case 'country':
+							addressDetails.country = component.name
+							break
+					}
+				})
+			}
+
+			return addressDetails
+		} catch (error) {
+			console.error('Ошибка парсинга адреса:', error)
+			return {
+				fullAddress: 'Неизвестный адрес'
+			}
+		}
 	}, [])
 
 	const handleGeocoding = useCallback(
@@ -107,7 +125,7 @@ export function YandexMap({
 	)
 
 	const handleClickMap = useCallback(
-		(e: { get: (key: string) => [number, number] }) => {
+		(e: YandexMapClickEvent) => {
 			if (readonly) return
 			const coords = e.get('coords')
 			setCoordinate(coords)
@@ -119,12 +137,12 @@ export function YandexMap({
 	const handleGeolocation = useCallback(() => {
 		if ('geolocation' in navigator) {
 			navigator.geolocation.getCurrentPosition(
-				position => {
+				(position: GeolocationPosition) => {
 					const userCoords: [number, number] = [position.coords.latitude, position.coords.longitude]
 					setCoordinate(userCoords)
 					handleGeocoding(userCoords)
 				},
-				error => console.error('Ошибка получения геолокации:', error)
+				(error: GeolocationPositionError) => console.error('Ошибка получения геолокации:', error)
 			)
 		}
 	}, [handleGeocoding])

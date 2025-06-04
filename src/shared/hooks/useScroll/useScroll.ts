@@ -1,7 +1,6 @@
 import { useEffect, useRef, useState } from 'react'
 
-
-import { getElement, HookTarget, isTarget } from '@/lib/utils'
+import { HookTarget, getElement, isTarget } from '@/lib/utils'
 
 import type { StateRef } from '@/shared/hooks/useRefState/useRefState'
 import { useRefState } from '@/shared/hooks/useRefState/useRefState'
@@ -10,61 +9,61 @@ const ARRIVED_STATE_THRESHOLD_PIXELS = 1
 
 export interface UseScrollOptions {
 	/** The on scroll callback */
-	onScroll?: (params: UseScrollCallbackParams, event: Event) => void;
+	onScroll?: (params: UseScrollCallbackParams, event: Event) => void
 
 	/** The on end scroll callback */
-	onStop?: (event: Event) => void;
+	onStop?: (event: Event) => void
 
 	/** Offset arrived states by x pixels. */
 	offset?: {
-		left?: number;
-		right?: number;
-		top?: number;
-		bottom?: number;
-	};
+		left?: number
+		right?: number
+		top?: number
+		bottom?: number
+	}
 }
 
 export interface UseScrollCallbackParams {
 	/** The element x position */
-	x: number;
+	x: number
 	/** The element y position */
-	y: number;
+	y: number
 	/** State of scroll arrived */
 	arrived: {
-		left: boolean;
-		right: boolean;
-		top: boolean;
-		bottom: boolean;
-	};
+		left: boolean
+		right: boolean
+		top: boolean
+		bottom: boolean
+	}
 	/** State of scroll direction */
 	directions: {
-		left: boolean;
-		right: boolean;
-		top: boolean;
-		bottom: boolean;
-	};
+		left: boolean
+		right: boolean
+		top: boolean
+		bottom: boolean
+	}
 }
 
 export interface UseScroll {
-	(target: HookTarget, callback?: (params: UseScrollCallbackParams, event: Event) => void): boolean;
+	(target: HookTarget, callback?: (params: UseScrollCallbackParams, event: Event) => void): boolean
 
-	(target: HookTarget, options?: UseScrollOptions): boolean;
+	(target: HookTarget, options?: UseScrollOptions): boolean
 
 	<Target extends Element>(
 		callback?: (params: UseScrollCallbackParams, event: Event) => void,
 		target?: never
 	): {
-		ref: StateRef<Target>;
-		scrolling: boolean;
-	};
+		ref: StateRef<Target>
+		scrolling: boolean
+	}
 
 	<Target extends Element>(
 		options?: UseScrollOptions,
 		target?: never
 	): {
-		ref: StateRef<Target>;
-		scrolling: boolean;
-	};
+		ref: StateRef<Target>
+		scrolling: boolean
+	}
 }
 
 /**
@@ -150,9 +149,7 @@ export const useScroll = ((...params: any[]) => {
 
 		const onScroll = (event: Event) => {
 			setScrolling(true)
-			const target = (
-				event.target === document ? (event.target as Document).documentElement : event.target
-			) as HTMLElement
+			const target = (event.target === document ? (event.target as Document).documentElement : event.target) as HTMLElement
 
 			const { display, flexDirection, direction } = target.style
 			const directionMultiplier = direction === 'rtl' ? -1 : 1
@@ -164,12 +161,9 @@ export const useScroll = ((...params: any[]) => {
 			const offset = internalOptionsRef.current?.offset
 			const left = scrollLeft * directionMultiplier <= (offset?.left ?? 0)
 			const right =
-				scrollLeft * directionMultiplier + target.clientWidth >=
-				target.scrollWidth - (offset?.right ?? 0) - ARRIVED_STATE_THRESHOLD_PIXELS
+				scrollLeft * directionMultiplier + target.clientWidth >= target.scrollWidth - (offset?.right ?? 0) - ARRIVED_STATE_THRESHOLD_PIXELS
 			const top = scrollTop <= (offset?.top ?? 0)
-			const bottom =
-				scrollTop + target.clientHeight >=
-				target.scrollHeight - (offset?.bottom ?? 0) - ARRIVED_STATE_THRESHOLD_PIXELS
+			const bottom = scrollTop + target.clientHeight >= target.scrollHeight - (offset?.bottom ?? 0) - ARRIVED_STATE_THRESHOLD_PIXELS
 
 			const isColumnReverse = display === 'flex' && flexDirection === 'column-reverse'
 			const isRowReverse = display === 'flex' && flexDirection === 'column-reverse'

@@ -8,9 +8,9 @@ import { getMediaSource } from '@/lib/utils'
 import { cn } from '@/lib/utils/twMerge'
 
 import { Product } from '@/shared/api/types'
+import { ROUTE } from '@/shared/utils/constants/route'
 
 import { ProductCardProvider, useProductCard } from './ProductCardContext'
-import { ROUTE } from '@/config/route.config'
 
 interface ProductCardProps extends ComponentProps<'div'> {
 	product: Product

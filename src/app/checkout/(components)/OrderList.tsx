@@ -12,11 +12,11 @@ import { useOrderStore } from '@/store/useOrderStore'
 import { OrderItem } from './OrderItem'
 
 export function OrderList() {
-	const { items, deliveryType, total, discount,deliveryPrice } = useOrderStore()
+	const { items, deliveryType, total, discount, deliveryPrice } = useOrderStore()
 	const formatted = useFormatter()
 	const { profile } = useProfile()
 	const bonusPercentage = profile?.data.accountLoyalty.loyaltyLevel.bonusPercentage ?? 0
-	
+
 	const finalTotal = total + deliveryPrice
 
 	const deliveryTimeMessage = deliveryType === 'COURIER' ? 'Примерное время доставки: 60-90 минут' : 'Готовность заказа: через 30 минут'

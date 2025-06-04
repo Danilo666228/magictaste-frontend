@@ -1,7 +1,6 @@
 import { useEffect, useRef, useState } from 'react'
 
-
-import { getElement, HookTarget, isTarget } from '@/lib/utils'
+import { HookTarget, getElement, isTarget } from '@/lib/utils'
 
 import type { StateRef } from '../useRefState/useRefState'
 import { useRefState } from '../useRefState/useRefState'
@@ -9,29 +8,23 @@ import { useRefState } from '../useRefState/useRefState'
 /** The use hover options type */
 export interface UseHoverOptions {
 	/** The on entry callback */
-	onEntry?: (event: Event) => void;
+	onEntry?: (event: Event) => void
 	/** The on leave callback */
-	onLeave?: (event: Event) => void;
+	onLeave?: (event: Event) => void
 }
 
 export interface UseHoverReturn {
-	value: boolean;
+	value: boolean
 }
 
 export interface UseHover {
-	(target: HookTarget, callback?: (event: Event) => void): boolean;
+	(target: HookTarget, callback?: (event: Event) => void): boolean
 
-	(target: HookTarget, options?: UseHoverOptions): boolean;
+	(target: HookTarget, options?: UseHoverOptions): boolean
 
-	<Target extends Element>(
-		callback?: (event: Event) => void,
-		target?: never
-	): { ref: StateRef<Target> } & UseHoverReturn;
+	<Target extends Element>(callback?: (event: Event) => void, target?: never): { ref: StateRef<Target> } & UseHoverReturn
 
-	<Target extends Element>(
-		options?: UseHoverOptions,
-		target?: never
-	): { ref: StateRef<Target> } & UseHoverReturn;
+	<Target extends Element>(options?: UseHoverOptions, target?: never): { ref: StateRef<Target> } & UseHoverReturn
 }
 
 /**

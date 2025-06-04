@@ -4,21 +4,11 @@ import { Moon, Palette, Sun } from 'lucide-react'
 import { useTheme } from 'next-themes'
 import { useRef, useState } from 'react'
 
-import {
-	Card,
-	CardContent,
-	CardDescription,
-	CardHeader,
-	CardTitle,
-	Label,
-	RadioGroup,
-	RadioGroupItem,
-	Typography
-} from '@/components/ui/common'
-
-import { useMount } from '@/shared/hooks'
+import { Card, CardContent, CardDescription, CardHeader, CardTitle, Label, RadioGroup, RadioGroupItem, Typography } from '@/components/ui/common'
 
 import { cn } from '@/lib/utils/twMerge'
+
+import { useMount } from '@/shared/hooks'
 
 export function ChangeThemeForm() {
 	const lightThemeRef = useRef<HTMLButtonElement>(null)
@@ -192,8 +182,7 @@ export function ChangeThemeForm() {
 
 				<div className='mt-6 rounded-lg border border-primary/20 bg-primary/10 p-3'>
 					<Typography className='text-sm'>
-						Совет: Выбор темы, соответствующей настройкам вашей системы, обеспечивает наиболее комфортный просмотр в любое время
-						суток.
+						Совет: Выбор темы, соответствующей настройкам вашей системы, обеспечивает наиболее комфортный просмотр в любое время суток.
 					</Typography>
 				</div>
 			</CardContent>

@@ -1,6 +1,5 @@
-import type { EffectCallback } from 'react';
-
-import { useEffect } from 'react';
+import type { EffectCallback } from 'react'
+import { useEffect } from 'react'
 
 /**
  * @name useMount
@@ -12,4 +11,4 @@ import { useEffect } from 'react';
  * @example
  * useMount(() => console.log('This effect runs on the initial render'));
  */
-export const useMount = (effect: EffectCallback) => useEffect(effect, []);
+export const useMount = (effect: EffectCallback) => useEffect(effect, [])

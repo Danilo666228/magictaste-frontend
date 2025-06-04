@@ -11,8 +11,7 @@ import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '
 import { PasswordRecoverySchema, passwordRecoverySchema } from '@/schemas/auth/passwordRecovery'
 
 import { usePasswordRecoveryMutation } from '@/shared/api/hooks/auth/usePasswordRecoveryMutation'
-
-import { ROUTE } from '@/config/route.config'
+import { ROUTE } from '@/shared/utils/constants/route'
 
 export function PasswordRecoveryForm() {
 	const router = useRouter()

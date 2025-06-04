@@ -4,9 +4,9 @@ export * from './useEvent/useEvent'
 export * from './useMount/useMount'
 export * from './useShare/useShare'
 export * from './useUnmount/useUnmount'
-export * from './useHover/useHover';
-export * from './useRefState/useRefState';
-export * from './useScroll/useScroll';
+export * from './useHover/useHover'
+export * from './useRefState/useRefState'
+export * from './useScroll/useScroll'
 
-export * from './useLocalStorage/useLocalStorage';
-export * from './useStorage/useStorage';
+export * from './useLocalStorage/useLocalStorage'
+export * from './useStorage/useStorage'

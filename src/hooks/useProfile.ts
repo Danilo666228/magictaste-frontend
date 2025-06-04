@@ -7,8 +7,7 @@ import { useAuth } from '@/hooks/useAuth'
 
 import { useGetProfileQuery } from '@/shared/api/hooks/profile/useGetProfileQuery'
 import { useClearSessionMutation } from '@/shared/api/hooks/session/useClearSessionMutation'
-
-import { ROUTE } from '@/config/route.config'
+import { ROUTE } from '@/shared/utils/constants/route'
 
 export function useProfile() {
 	const { isAuth, unauthorized } = useAuth()

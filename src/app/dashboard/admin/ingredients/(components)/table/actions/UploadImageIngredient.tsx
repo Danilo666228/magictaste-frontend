@@ -1,9 +1,11 @@
+import { useQueryClient } from '@tanstack/react-query'
+import { useState } from 'react'
+
 import { DropdownMenuItem } from '@/components/ui/common'
 import { ImageUpload } from '@/components/ui/elements/image-upload/ImageUpload'
 import { Modal } from '@/components/ui/elements/modal/Default/Modal'
-import { useState } from 'react'
+
 import { useChangeIngredientImageMutation } from '@/shared/api/hooks/ingredient/useChangeIngedientImageMutation'
-import { useQueryClient } from '@tanstack/react-query'
 import { useGetIngredientsQuery } from '@/shared/api/hooks/ingredient/useGetIngredientsQuery'
 
 interface UploadImageIngredientProps {
@@ -27,8 +29,8 @@ export function UploadImageIngredient({ ingredientId }: UploadImageIngredientPro
 	})
 	return (
 		<Modal
-			title="Изменение изображения"
-			description="Выберите изображение для ингредиента"
+			title='Изменение изображения'
+			description='Выберите изображение для ингредиента'
 			trigger={
 				<DropdownMenuItem
 					onSelect={event => {
@@ -39,8 +41,7 @@ export function UploadImageIngredient({ ingredientId }: UploadImageIngredientPro
 				</DropdownMenuItem>
 			}
 			open={isOpen}
-			onOpenChange={setIsOpen}
-		>
+			onOpenChange={setIsOpen}>
 			<ImageUpload
 				onSubmit={async file => {
 					const formData = new FormData()

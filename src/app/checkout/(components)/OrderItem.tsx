@@ -3,9 +3,9 @@ import Image from 'next/image'
 
 import { Container, Typography } from '@/components/ui/common'
 
-import { Product } from '@/shared/api/types/product'
-
 import { getMediaSource } from '@/lib/utils'
+
+import { Product } from '@/shared/api/types/product'
 
 interface OrderItemProps {
 	product: Product
@@ -34,9 +34,7 @@ export function OrderItem({ product, quantity }: OrderItemProps) {
 						{formatted.number(product.price * quantity, { style: 'currency', currency: 'RUB' })}
 					</Typography>
 				</div>
-				<Typography className='text-xs text-gray-500'>
-					{product?.ingredients.map(ingredient => ingredient?.title).join(', ')}
-				</Typography>
+				<Typography className='text-xs text-gray-500'>{product?.ingredients.map(ingredient => ingredient?.title).join(', ')}</Typography>
 				<div className='mt-1 flex items-center text-sm text-gray-600'>
 					<span>{quantity} шт.</span>
 					<span className='mx-1'>×</span>

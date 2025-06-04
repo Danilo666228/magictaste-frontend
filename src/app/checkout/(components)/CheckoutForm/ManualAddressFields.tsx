@@ -2,18 +2,7 @@ import { Loader2, MapPin } from 'lucide-react'
 import { useState } from 'react'
 import { UseFormReturn } from 'react-hook-form'
 
-import {
-	Container,
-	FormControl,
-	FormDescription,
-	FormField,
-	FormItem,
-	FormLabel,
-	FormMessage,
-	Input,
-	Label,
-	Switch
-} from '@/components/ui/common'
+import { Container, FormControl, FormDescription, FormField, FormItem, FormLabel, FormMessage, Input, Label, Switch } from '@/components/ui/common'
 import { YandexMap } from '@/components/ui/elements/yandex-map/YandexMap'
 
 import { TypeCheckoutSchema } from '@/schemas/checkout/checkout'
@@ -31,7 +20,6 @@ const fields = [
 export function ManualAddressFields({ form }: ManualAddressFieldsProps) {
 	const [isLoading, setIsLoading] = useState(false)
 	const [isShowMap, setIsShowMap] = useState(false)
-	
 
 	return (
 		<div className='flex flex-col gap-3'>

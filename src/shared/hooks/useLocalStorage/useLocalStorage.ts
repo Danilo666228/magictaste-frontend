@@ -1,6 +1,5 @@
-import type { UseStorageInitialValue, UseStorageOptions } from '../useStorage/useStorage';
-
-import { useStorage } from '../useStorage/useStorage';
+import type { UseStorageInitialValue, UseStorageOptions } from '../useStorage/useStorage'
+import { useStorage } from '../useStorage/useStorage'
 
 /**
  * @name useLocalStorage
@@ -18,12 +17,12 @@ import { useStorage } from '../useStorage/useStorage';
  * const { value, set, remove } = useLocalStorage('key', 'value');
  */
 export const useLocalStorage = <Value>(
-  key: string,
-  initialValue?: UseStorageInitialValue<Value>,
-  options?: Omit<UseStorageOptions<Value>, 'initialValue' | 'storage'>
+	key: string,
+	initialValue?: UseStorageInitialValue<Value>,
+	options?: Omit<UseStorageOptions<Value>, 'initialValue' | 'storage'>
 ) =>
-  useStorage(key, {
-    ...options,
-    initialValue,
-    storage: typeof window !== 'undefined' ? window.localStorage : undefined
-  });
+	useStorage(key, {
+		...options,
+		initialValue,
+		storage: typeof window !== 'undefined' ? window.localStorage : undefined
+	})

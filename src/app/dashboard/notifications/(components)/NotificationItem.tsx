@@ -54,10 +54,7 @@ export function NotificationItem({ notification, onMarkAsRead, onDelete }: Notif
 							<div />
 						)}
 						<div className='flex items-center gap-2'>
-							<Button
-								onClick={() => onDelete(notification.id)}
-								variant='outline'
-								className='items-center gap-1.5 hover:text-red-700'>
+							<Button onClick={() => onDelete(notification.id)} variant='outline' className='items-center gap-1.5 hover:text-red-700'>
 								<Trash className='' size={14} />
 								<Typography tag='span'>Удалить</Typography>
 							</Button>

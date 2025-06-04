@@ -22,9 +22,9 @@ import {
 	Skeleton
 } from '@/components/ui/common'
 
-import { useChangeProfileForm } from '../../(hooks)/useChangeProfileForm'
-
 import { cn } from '@/lib/utils/twMerge'
+
+import { useChangeProfileForm } from '../../(hooks)/useChangeProfileForm'
 
 export function ChangeProfileForm() {
 	const { form, isPending, isProfilePending, onSubmit } = useChangeProfileForm()

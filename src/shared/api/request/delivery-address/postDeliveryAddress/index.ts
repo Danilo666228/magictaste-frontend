@@ -8,5 +8,4 @@ export interface CreateDeliveryAddressParams {
 }
 export type PostDeliveryAddressRequestConfig = RequestConfig<CreateDeliveryAddressParams>
 
-export const postDeliveryAddress = ({ params, config }: PostDeliveryAddressRequestConfig) =>
-	api.post('/delivery-address', params, config)
+export const postDeliveryAddress = ({ params, config }: PostDeliveryAddressRequestConfig) => api.post('/delivery-address', params, config)

@@ -10,8 +10,7 @@ import { TypeCheckoutSchema, checkoutSchema } from '@/schemas/checkout/checkout'
 import { useOrderStore } from '@/store/useOrderStore'
 
 import { usePostOrderMutation } from '@/shared/api/hooks/order/usePostOrderMutation'
-
-import { ROUTE } from '@/config/route.config'
+import { ROUTE } from '@/shared/utils/constants/route'
 
 export function useCheckoutForm() {
 	const { handleClearCart } = useCart()

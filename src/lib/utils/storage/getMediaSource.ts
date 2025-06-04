@@ -1,5 +1,4 @@
-import { MEDIA_URL } from '@/lib/constants/url.constants'
-
+import { MEDIA_URL } from '@/shared/utils/constants/env'
 
 export function getMediaSource(path: string | undefined | null) {
 	if (!path) return MEDIA_URL + '/imageonline-co-placeholder-image.jpg'

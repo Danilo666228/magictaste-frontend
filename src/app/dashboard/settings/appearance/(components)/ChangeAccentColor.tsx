@@ -6,7 +6,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 
 import { useConfig } from '@/hooks/useConfig'
 
-import { BASE_COLORS } from '@/lib/constants/color.constats'
+import { BASE_COLORS } from '@/shared/utils/constants/color'
 
 export function ChangeAccentColor() {
 	const { accentColor, setAccentColor } = useConfig()
