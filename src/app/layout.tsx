@@ -41,7 +41,7 @@ export const metadata: Metadata = {
 		description: SITE_DESCRIPTION,
 		type: 'website',
 		locale: 'ru-RU',
-		url: new URL(CLIENT_URL),
+		// url: new URL(CLIENT_URL),
 		siteName: SITE_NAME
 	}
 }
