@@ -107,8 +107,7 @@ export const navigationConfig: NavigationItem[] = [
 		title: 'Система лояльности',
 		icon: Cake,
 		roles: ['ADMIN', 'SUPER_ADMIN'],
-		url: ROUTE.dashboard.admin.loyalty,
-		isBeta: true
+		url: ROUTE.dashboard.admin.loyalty
 	},
 	{
 		title: 'Чаты',
