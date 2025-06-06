@@ -5,6 +5,7 @@ import { createContext } from 'react'
 import { AccentColors } from './utils/accent-colors'
 
 export type FontFamily = 'Geist' | 'Inter'
+
 export type RoundedRadius = 'sm' | 'md' | 'lg' | 'xl' | '2xl' | '3xl' | 'full'
 
 export interface ConfigState {
@@ -24,7 +25,7 @@ export interface ConfigState {
 
 export const initialConfig: ConfigState = {
 	accent: {
-		color: 'Zinc',
+		color: 'Orange',
 		setColor: () => {}
 	},
 	font: {

@@ -10,7 +10,6 @@ import { useNotificationsWebSocketStore } from '@/store/useNotificationsWebSocke
 
 import { cn } from '@/shared/utils'
 import { useConfig } from '@/shared/utils/contexts'
-// import { useConfig } from '@/shared/utils/contexts'
 import { fonts } from '@/shared/utils/contexts/config/utils/fonts'
 
 type ToasterProps = React.ComponentProps<typeof Sonner>

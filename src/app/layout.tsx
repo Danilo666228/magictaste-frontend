@@ -5,7 +5,7 @@ import { ReactNode } from 'react'
 
 import '@/styles/globals.css'
 
-import { CLIENT_URL } from '@/shared/utils/constants/env'
+import { CLIENT_URL } from '@/shared/utils/constants'
 import { SITE_DESCRIPTION, SITE_KEYWORDS, SITE_NAME } from '@/shared/utils/constants/seo'
 
 import Providers from './providers'
