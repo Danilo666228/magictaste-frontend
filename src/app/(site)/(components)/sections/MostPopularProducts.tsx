@@ -4,10 +4,9 @@ import Link from 'next/link'
 
 import { Typography } from '@/components/ui/common/Typography'
 
-import { getMediaSource } from '@/lib/utils'
-
 import { api } from '@/shared/api/instance'
 import { Product } from '@/shared/api/types'
+import { getMediaSource } from '@/shared/utils'
 import { ROUTE } from '@/shared/utils/constants/route'
 
 async function getPopularProducts() {

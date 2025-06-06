@@ -1,36 +1,60 @@
 'use client'
 
-import { useEffect } from 'react'
+import * as React from 'react'
+import { useEffect, useState } from 'react'
 
-import { useConfig } from '@/hooks/useConfig'
+import { useLocalStorage } from '@/shared/hooks'
 
-import { fonts } from '@/shared/utils/constants/font'
+import { ConfigContext, ConfigState, FontFamily, RoundedRadius, initialConfig } from './ConfigContext'
+import { AccentColors, setAccentColor } from './utils/accent-colors'
+import { fonts } from './utils/fonts'
+import { getRadiusValue } from './utils/radius'
 
-export function ConfigProvider() {
-	const { accentColor, accentRadius, fontSize, fontFamily } = useConfig()
+export function ConfigProvider({ children }: { children: React.ReactNode }) {
+	const accentColorStorage = useLocalStorage('config.accent.color', initialConfig.accent.color)
+	const fontFamilyStorage = useLocalStorage('config.font.family', initialConfig.font.family)
+	const roundedRadiusStorage = useLocalStorage('config.rounded.radius', initialConfig.rounded.radius)
+	const [isMounted, setIsMounted] = useState(false)
 
 	useEffect(() => {
-		if (typeof window === 'undefined') return
+		setIsMounted(true)
+	}, [])
 
-		const applyThemeConfig = () => {
-			document.documentElement.style.setProperty('--accent-color', accentColor)
-			document.documentElement.style.setProperty('--font-size', `${fontSize}px`)
-			document.documentElement.style.setProperty('--font-size-base', `${fontSize}px`)
-			document.documentElement.setAttribute('data-theme', accentColor)
-			document.documentElement.style.setProperty('--radius', `${accentRadius}px`)
-			document.body.classList.value = fonts[fontFamily as keyof typeof fonts].className
+	useEffect(() => {
+		setAccentColor(accentColorStorage.value as AccentColors)
+	}, [accentColorStorage.value])
+
+	useEffect(() => {
+		const fontFamily = fontFamilyStorage.value as FontFamily
+		const fontConfig = fonts[fontFamily as keyof typeof fonts]
+		if (fontConfig) {
+			document.documentElement.classList.remove(...Object.values(fonts).map(f => f.className))
+			document.documentElement.classList.add(fontConfig.className)
 		}
-		applyThemeConfig()
+	}, [fontFamilyStorage.value])
 
-		return () => {
-			document.documentElement.removeAttribute('data-theme')
-			document.documentElement.style.removeProperty('--accent-color')
-			document.documentElement.style.removeProperty('--font-size')
-			document.documentElement.style.removeProperty('--font-size-base')
-			document.documentElement.style.removeProperty('--radius')
-			document.body.classList.value = ''
+	useEffect(() => {
+		const radius = roundedRadiusStorage.value as RoundedRadius
+		const value = getRadiusValue(radius)
+		document.documentElement.style.setProperty('--radius', `${value}px`)
+	}, [roundedRadiusStorage.value])
+
+	if (!isMounted) return null
+
+	const config: ConfigState = {
+		accent: {
+			color: accentColorStorage.value as AccentColors,
+			setColor: (color: AccentColors) => accentColorStorage.set(color)
+		},
+		font: {
+			family: fontFamilyStorage.value as FontFamily,
+			setFamily: (font: FontFamily) => fontFamilyStorage.set(font)
+		},
+		rounded: {
+			radius: roundedRadiusStorage.value as RoundedRadius,
+			setRadius: (radius: RoundedRadius) => roundedRadiusStorage.set(radius)
 		}
-	}, [accentColor, accentRadius, fontSize, fontFamily])
+	}
 
-	return null
+	return <ConfigContext.Provider value={config}>{children}</ConfigContext.Provider>
 }

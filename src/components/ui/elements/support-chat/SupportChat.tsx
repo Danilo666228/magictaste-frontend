@@ -8,12 +8,11 @@ import { v4 as uuidv4 } from 'uuid'
 
 import { useProfile } from '@/hooks/useProfile'
 
-import { getMediaSource } from '@/lib/utils'
-import { checkAccessRoles } from '@/lib/utils/accessRoles'
-import { cn } from '@/lib/utils/twMerge'
-
 import { Account } from '@/shared/api/types'
+import { getMediaSource } from '@/shared/utils'
+import { checkAccessRoles } from '@/shared/utils/accessRoles'
 import { SERVER_URL, SOCKET_SUPPORT_CHAT_URL } from '@/shared/utils/constants/env'
+import { cn } from '@/shared/utils/twMerge'
 
 import { Avatar, AvatarFallback, AvatarImage, Button, Input } from '../../common'
 import { Typography } from '../../common/Typography'

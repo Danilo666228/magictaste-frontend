@@ -16,7 +16,7 @@ import {
 	Typography
 } from '@/components/ui/common'
 
-import { cn } from '@/lib/utils/twMerge'
+import { cn } from '@/shared/utils/twMerge'
 
 import { Button } from './Button'
 

@@ -21,10 +21,9 @@ import {
 import { ImageUpload } from '@/components/ui/elements/image-upload/ImageUpload'
 import { Modal } from '@/components/ui/elements/modal/Default/Modal'
 
-import { getMediaSource } from '@/lib/utils'
-import { cn } from '@/lib/utils/twMerge'
-
 import { useChangeAvatarMutation } from '@/shared/api/hooks/account/useChangeAvatarMutation'
+import { getMediaSource } from '@/shared/utils'
+import { cn } from '@/shared/utils/twMerge'
 
 import { useChangeAvatarForm } from '../../(hooks)/useChangeAvatarForm'
 

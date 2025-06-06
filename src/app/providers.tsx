@@ -6,6 +6,7 @@ import {
 	ConfigProvider,
 	FramerMotionProvider,
 	NextIntlProvider,
+	ProfileProvider,
 	TanStackQueryProvider,
 	ThemeProvider,
 	YandexMapsProvider
@@ -15,20 +16,24 @@ interface ProvidersProps {
 	children: ReactNode
 }
 
-export const Providers = ({ children }: ProvidersProps) => {
+const Providers = ({ children }: ProvidersProps) => {
 	return (
 		<>
-			<ConfigProvider />
-			<ThemeProvider>
-				<FramerMotionProvider>
-					<NextIntlProvider>
-						<TanStackQueryProvider>
-							<YandexMapsProvider>{children}</YandexMapsProvider>
-							<Toaster />
-						</TanStackQueryProvider>
-					</NextIntlProvider>
-				</FramerMotionProvider>
-			</ThemeProvider>
+			<ConfigProvider>
+				<ThemeProvider>
+					<FramerMotionProvider>
+						<NextIntlProvider>
+							<TanStackQueryProvider>
+								<ProfileProvider>
+									<YandexMapsProvider>{children}</YandexMapsProvider>
+								</ProfileProvider>
+								<Toaster />
+							</TanStackQueryProvider>
+						</NextIntlProvider>
+					</FramerMotionProvider>
+				</ThemeProvider>
+			</ConfigProvider>
 		</>
 	)
 }
+export default Providers

@@ -19,10 +19,9 @@ import {
 } from '@/components/ui/common'
 import { SortableHeader } from '@/components/ui/elements/table/SortableHeader'
 
-import { getMediaSource } from '@/lib/utils'
-
 import { getRoleName } from '@/shared/api/helpers/getRoleName'
 import { Account, Role } from '@/shared/api/types'
+import { getMediaSource } from '@/shared/utils'
 
 export interface AccountColumn extends Account {
 	actions?: string

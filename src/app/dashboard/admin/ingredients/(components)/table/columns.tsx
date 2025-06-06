@@ -4,9 +4,8 @@ import { useFormatter } from 'next-intl'
 
 import { Avatar, AvatarFallback, AvatarImage, Button, Checkbox } from '@/components/ui/common'
 
-import { getMediaSource } from '@/lib/utils'
-
 import { Ingredient } from '@/shared/api/types'
+import { getMediaSource } from '@/shared/utils'
 
 import { IngredientActions } from './IngredientAction'
 

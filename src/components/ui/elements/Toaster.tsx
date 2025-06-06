@@ -4,19 +4,18 @@ import { useTheme } from 'next-themes'
 import { useEffect } from 'react'
 import { Toaster as Sonner, toast } from 'sonner'
 
-import { useConfig } from '@/hooks/useConfig'
 import { useProfile } from '@/hooks/useProfile'
-
-import { cn } from '@/lib/utils'
 
 import { useNotificationsWebSocketStore } from '@/store/useNotificationsWebSocketStore'
 
-import { fonts } from '@/shared/utils/constants/font'
+import { cn } from '@/shared/utils'
+import { useConfig } from '@/shared/utils/contexts'
+import { fonts } from '@/shared/utils/contexts/config/utils/fonts'
 
 type ToasterProps = React.ComponentProps<typeof Sonner>
 
 const Toaster = ({ ...props }: ToasterProps) => {
-	const { fontFamily, accentRadius, accentColor } = useConfig()
+	const { rounded, font } = useConfig()
 	const { theme = 'system' } = useTheme()
 	const { profile } = useProfile()
 	const { initSocket, disconnectSocket, toastMessages, clearToastMessages } = useNotificationsWebSocketStore()
@@ -51,7 +50,7 @@ const Toaster = ({ ...props }: ToasterProps) => {
 			closeButton
 			duration={3000}
 			theme={theme as ToasterProps['theme']}
-			className={cn('toaster group', fonts[fontFamily as keyof typeof fonts].className)}
+			className={cn('toaster group', fonts[font.family as keyof typeof fonts].className)}
 			toastOptions={{
 				style: {
 					gap: '15px',
@@ -60,11 +59,11 @@ const Toaster = ({ ...props }: ToasterProps) => {
 					overflowWrap: 'break-word',
 					whiteSpace: 'break-spaces',
 					accentColor: 'var(--accent-color)',
-					borderRadius: accentRadius
+					borderRadius: rounded.radius
 				},
 				classNames: {
 					toast: 'group toast group-[.toaster]:bg-background group-[.toaster]:text-foreground group-[.toaster]:border-border group-[.toaster]:shadow-xl rounded-lg p-4',
-					title: 'group-[.toast]:font-semibold group-[.toast]:text-lg',
+					title: 'group-[.toast]:font-semibold group-[.toast]:text-sm',
 					icon: 'group-[.toast]:text-primary',
 					description: 'group-[.toast]:text-muted-foreground group-[.toast]:text-sm font-normal',
 					actionButton: 'group-[.toast]:bg-primary group-[.toast]:text-primary-foreground rounded-md px-3 py-1',

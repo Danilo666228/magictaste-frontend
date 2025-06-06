@@ -43,7 +43,7 @@ import {
 
 import { useProfile } from '@/hooks/useProfile'
 
-import { checkAccessRoles } from '@/lib/utils/accessRoles'
+import { checkAccessRoles } from '@/shared/utils/accessRoles'
 
 interface DataTableProps<TData, TValue> {
 	columns: ColumnDef<TData, TValue>[]

@@ -3,7 +3,7 @@ import { HTMLAttributes } from 'react'
 
 import { Tooltip, TooltipContent, TooltipTrigger } from '@/components/ui/common'
 
-import { cn } from '@/lib/utils/twMerge'
+import { cn } from '@/shared/utils/twMerge'
 
 const containerVariants = cva('', {
 	variants: {}

@@ -11,7 +11,7 @@ export default function SiteLayout({ children, modal }: SiteLayoutProps) {
 	return (
 		<>
 			<Header />
-			<main>{children}</main>
+			<main className='mx-[70px]'>{children}</main>
 			{modal}
 			<Footer />
 		</>

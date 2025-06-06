@@ -20,7 +20,7 @@ export function Footer() {
 							<Link href={'#'} className='block transition-colors hover:text-primary'>
 								О нас
 							</Link>
-							<Link href={ROUTE.menu()} className='block transition-colors hover:text-primary'>
+							<Link href={ROUTE.category()} className='block transition-colors hover:text-primary'>
 								Меню
 							</Link>
 						</nav>

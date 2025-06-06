@@ -6,9 +6,8 @@ import { Button, Separator, Typography } from '@/components/ui/common'
 
 import { useCart } from '@/hooks/useCart'
 
-import { getMediaSource } from '@/lib/utils'
-
 import { CartItem as CartItemType } from '@/shared/api/types/cart'
+import { getMediaSource } from '@/shared/utils'
 
 interface CartItemProps {
 	item: CartItemType

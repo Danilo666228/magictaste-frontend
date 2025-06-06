@@ -5,7 +5,7 @@ import { ReCAPTCHA } from 'react-google-recaptcha'
 import { useForm } from 'react-hook-form'
 import { toast } from 'sonner'
 
-import { useAuth } from '@/hooks/useAuth'
+import { useProfile } from '@/hooks/useProfile'
 
 import { SignInSchema, signInSchema } from '@/schemas/auth/signIn'
 
@@ -16,7 +16,7 @@ export function useSignInForm() {
 	const router = useRouter()
 	const [recaptchaValue, setRecaptchaValue] = useState<string | null>(null)
 	const [twoFactorType, setTwoFactorType] = useState<'email' | 'totp' | null>(null)
-	const { authorized } = useAuth()
+	const { setIsAuth } = useProfile()
 	const recaptchaRef = useRef<ReCAPTCHA>(null)
 
 	const form = useForm<SignInSchema>({
@@ -49,7 +49,7 @@ export function useSignInForm() {
 						form.setValue('emailCode', '')
 					}
 				} else {
-					authorized()
+					setIsAuth(true)
 					router.push(ROUTE.dashboard.profile)
 				}
 			},

@@ -15,7 +15,7 @@ export const CallToOrder = () => {
 					Закажите доставку и насладитесь изысканными блюдами нашего ресторана
 				</Typography>
 				<div className='flex flex-col justify-center gap-4 sm:flex-row'>
-					<Link href={ROUTE.menu()}>
+					<Link href={ROUTE.category()}>
 						<Button size='lg' variant='default' className=''>
 							Заказать доставку
 						</Button>

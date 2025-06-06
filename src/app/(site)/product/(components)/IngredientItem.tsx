@@ -2,9 +2,8 @@ import Image from 'next/image'
 
 import { Card, CardContent, Typography } from '@/components/ui/common'
 
-import { getMediaSource } from '@/lib/utils'
-
 import { Ingredient } from '@/shared/api/types'
+import { getMediaSource } from '@/shared/utils'
 
 interface IngredientItemProps {
 	ingredient: Ingredient

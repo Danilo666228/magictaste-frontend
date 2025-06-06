@@ -5,7 +5,6 @@ import Link from 'next/link'
 import { useState } from 'react'
 
 import {
-	Badge,
 	Collapsible,
 	CollapsibleContent,
 	CollapsibleTrigger,
@@ -20,7 +19,7 @@ import {
 	useSidebar
 } from '@/components/ui/common'
 
-import { cn } from '@/lib/utils'
+import { cn } from '@/shared/utils'
 
 import { NavigationItemProps } from './types'
 
@@ -65,7 +64,7 @@ export function NavigationItem({ item, pathname }: NavigationItemProps) {
 
 	return (
 		<Collapsible open={isOpen} onOpenChange={setIsOpen} className='group/collapsible'>
-			<SidebarMenuItem className={cn(isActive && 'rounded-lg bg-muted/50')}>
+			<SidebarMenuItem className={cn('truncate text-lg', isActive && 'rounded-lg bg-muted/50')}>
 				<CollapsibleTrigger asChild>
 					{item.url ? (
 						<Link href={item.url} className='relative w-full'>
@@ -76,11 +75,6 @@ export function NavigationItem({ item, pathname }: NavigationItemProps) {
 									<ChevronRight className='ml-auto transition-transform duration-200 group-data-[state=open]/collapsible:rotate-90' />
 								)}
 							</SidebarMenuButton>
-							{item.isBeta && !isCollapsed && (
-								<Badge variant='destructive' className='absolute -right-2 top-1 text-xs font-medium'>
-									Beta
-								</Badge>
-							)}
 						</Link>
 					) : (
 						<SidebarMenuButton tooltip={item.title} className={cn(isActive && 'text-primary')}>

@@ -20,13 +20,12 @@ import {
 
 import { useProfile } from '@/hooks/useProfile'
 
-import { cn } from '@/lib/utils'
-
 import { TypeCheckoutSchema } from '@/schemas/checkout/checkout'
 
 import { useOrderStore } from '@/store/useOrderStore'
 
 import { DeliveryType } from '@/shared/api/types/payment'
+import { cn } from '@/shared/utils'
 
 import { useCheckoutForm } from '../../(hooks)/useCheckoutForm'
 

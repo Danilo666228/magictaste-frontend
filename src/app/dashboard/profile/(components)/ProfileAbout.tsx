@@ -20,8 +20,8 @@ import {
 
 import { useProfile } from '@/hooks/useProfile'
 
-import { getMediaSource } from '@/lib/utils'
-import { cn } from '@/lib/utils/twMerge'
+import { getMediaSource } from '@/shared/utils'
+import { cn } from '@/shared/utils/twMerge'
 
 export function ProfileAbout() {
 	const { profile, isPending } = useProfile()

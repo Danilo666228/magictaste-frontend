@@ -1,11 +1,10 @@
 'use client'
 
-import { OTPInput, OTPInputContext } from 'input-otp'
-import { REGEXP_ONLY_DIGITS } from 'input-otp'
+import { OTPInput, OTPInputContext, REGEXP_ONLY_DIGITS } from 'input-otp'
 import { Minus } from 'lucide-react'
 import * as React from 'react'
 
-import { cn } from '@/lib/utils/twMerge'
+import { cn } from '@/shared/utils/twMerge'
 
 const InputOTP = React.forwardRef<React.ElementRef<typeof OTPInput>, React.ComponentPropsWithoutRef<typeof OTPInput>>(
 	({ className, containerClassName, pattern = REGEXP_ONLY_DIGITS, ...props }, ref) => (
@@ -35,7 +34,7 @@ const InputOTPSlot = React.forwardRef<React.ElementRef<'div'>, React.ComponentPr
 				ref={ref}
 				className={cn(
 					'relative flex h-9 w-9 items-center justify-center border-y border-r border-input text-sm font-bold shadow-sm transition-all first:rounded-l-md first:border-l last:rounded-r-md',
-					isActive && 'z-10 ring-1 ring-ring',
+					isActive && 'z-10 ring-1 ring-primary',
 					className
 				)}
 				{...props}>

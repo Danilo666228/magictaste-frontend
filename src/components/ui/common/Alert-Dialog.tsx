@@ -5,7 +5,7 @@ import * as React from 'react'
 
 import { buttonVariants } from '@/components/ui/common'
 
-import { cn } from '@/lib/utils/twMerge'
+import { cn } from '@/shared/utils/twMerge'
 
 const AlertDialog = AlertDialogPrimitive.Root
 

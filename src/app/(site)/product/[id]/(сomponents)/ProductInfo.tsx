@@ -13,11 +13,10 @@ import { useCart } from '@/hooks/useCart'
 import { useFavorite } from '@/hooks/useFavorite'
 import { useProfile } from '@/hooks/useProfile'
 
-import { cn, getMediaSource } from '@/lib/utils'
-import { isActiveFavorite } from '@/lib/utils/favorite/is-active-favorite'
-
 import { Product } from '@/shared/api/types'
 import { useShare } from '@/shared/hooks'
+import { cn, getMediaSource } from '@/shared/utils'
+import { isActiveFavorite } from '@/shared/utils/favorite/is-active-favorite'
 
 import { IngredientList } from '../../(components)/IngredientList'
 

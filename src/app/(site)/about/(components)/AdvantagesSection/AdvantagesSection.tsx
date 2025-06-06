@@ -6,18 +6,18 @@ import { sectionDetails } from './advatagesDetails'
 
 export function AdvantagesSection() {
 	return (
-		<section className='container mx-auto mt-5'>
+		<section className='mx-auto mt-5'>
 			<div className='mb-5 flex justify-center'>
 				<Typography className='font-semibold' tag='h1'>
 					Почему выбирают нас
 				</Typography>
 			</div>
-			<div className='mx-auto grid w-fit grid-cols-2 gap-10 max-xl:grid-cols-1'>
+			<div className='mx-auto grid w-fit grid-cols-4 gap-10 max-xl:grid-cols-1'>
 				{sectionDetails.map(section => (
 					<div
 						key={section.id}
 						className='group flex max-w-[560px] flex-col gap-3 rounded-xl border p-3 transition-transform duration-500 hover:-translate-y-1 hover:border-primary'>
-						<div className='relative h-[340px] overflow-hidden rounded-xl'>
+						<div className='relative h-[320px] overflow-hidden rounded-xl'>
 							<Image alt={section.title} src={section.img} className='object-cover' fill />
 						</div>
 						<Typography className='font-semibold group-hover:text-primary'>{section.title}</Typography>

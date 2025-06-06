@@ -3,7 +3,7 @@
 import * as AvatarPrimitive from '@radix-ui/react-avatar'
 import * as React from 'react'
 
-import { cn } from '@/lib/utils/twMerge'
+import { cn } from '@/shared/utils/twMerge'
 
 const Avatar = React.forwardRef<React.ElementRef<typeof AvatarPrimitive.Root>, React.ComponentPropsWithoutRef<typeof AvatarPrimitive.Root>>(
 	({ className, ...props }, ref) => (

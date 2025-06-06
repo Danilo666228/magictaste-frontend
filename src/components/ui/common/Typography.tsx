@@ -1,7 +1,7 @@
 import { VariantProps, cva } from 'class-variance-authority'
 import { ComponentProps } from 'react'
 
-import { cn } from '@/lib/utils/twMerge'
+import { cn } from '@/shared/utils/twMerge'
 
 const typegraphyVariants = cva('', {
 	variants: {

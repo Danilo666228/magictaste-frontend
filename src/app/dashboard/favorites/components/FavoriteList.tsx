@@ -11,10 +11,9 @@ import { useCart } from '@/hooks/useCart'
 import { useFavorite } from '@/hooks/useFavorite'
 import { useProfile } from '@/hooks/useProfile'
 
-import { cn } from '@/lib/utils/twMerge'
-
 import { Favorite } from '@/shared/api/types'
 import { ROUTE } from '@/shared/utils/constants/route'
+import { cn } from '@/shared/utils/twMerge'
 
 interface FavoriteListProps {
 	favorites: Favorite[] | undefined
@@ -51,7 +50,7 @@ export function FavoriteList({ favorites }: FavoriteListProps) {
 				<Typography tag='h3' className='text-muted-foreground'>
 					Добавьте товары в избранное, чтобы просматривать их здесь
 				</Typography>
-				<Link href={ROUTE.menu()} className='text-primary'>
+				<Link href={ROUTE.category()} className='text-primary'>
 					<Typography tag={'h3'}>Перейти в меню</Typography>
 				</Link>
 			</div>

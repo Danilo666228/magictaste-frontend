@@ -1,7 +1,7 @@
 import { Star } from 'lucide-react'
 import { forwardRef } from 'react'
 
-import { cn } from '@/lib/utils/twMerge'
+import { cn } from '@/shared/utils/twMerge'
 
 interface RatingProps {
 	value: number

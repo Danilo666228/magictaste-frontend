@@ -16,18 +16,11 @@ import {
 	SelectValue
 } from '@/components/ui/common'
 
-import { useConfig } from '@/hooks/useConfig'
+import { useConfig } from '@/shared/utils/contexts'
+import { fonts } from '@/shared/utils/contexts/config/utils/fonts'
 
 export function ChangeFontSettings() {
-	const { fontSize, fontFamily, setFontSize, setFontFamily } = useConfig()
-
-	const fonts = [
-		{ value: 'inter', label: 'Inter' },
-		{ value: 'roboto', label: 'Roboto' },
-		{ value: 'montserrat', label: 'Montserrat' },
-		{ value: 'fira-sans', label: 'Fira Sans' },
-		{ value: 'jetBrainsMono', label: 'JetBrains Mono' }
-	]
+	const { font } = useConfig()
 
 	return (
 		<Card>
@@ -45,30 +38,18 @@ export function ChangeFontSettings() {
 			<CardContent className='space-y-6 p-6'>
 				<div className='space-y-2'>
 					<Label>Семейство шрифта</Label>
-					<Select value={fontFamily} onValueChange={setFontFamily}>
+					<Select value={font.family} onValueChange={font.setFamily}>
 						<SelectTrigger>
 							<SelectValue placeholder='Выберите шрифт' />
 						</SelectTrigger>
 						<SelectContent>
-							{fonts.map(font => (
-								<SelectItem key={font.value} value={font.value}>
-									{font.label}
+							{Object.entries(fonts).map(([key, font]) => (
+								<SelectItem key={key} value={font.value}>
+									{font.value}
 								</SelectItem>
 							))}
 						</SelectContent>
 					</Select>
-				</div>
-
-				<div className='space-y-2'>
-					<Label>Размер шрифта</Label>
-					{/* <div className='space-y-4'>
-						<Slider value={[fontSize]} min={12} max={20} step={1} onValueChange={([value]) => setFontSize(value)} />
-						<div className='flex justify-between text-sm'>
-							<span>12px</span>
-							<span className='text-primary'>{fontSize}px</span>
-							<span>20px</span>
-						</div>
-					</div> */}
 				</div>
 
 				<div className='rounded-lg border p-4'>

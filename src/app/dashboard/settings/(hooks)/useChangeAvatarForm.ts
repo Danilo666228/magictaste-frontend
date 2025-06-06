@@ -1,3 +1,4 @@
+import { useQueryClient } from '@tanstack/react-query'
 import { useState } from 'react'
 
 import { useProfile } from '@/hooks/useProfile'
@@ -6,15 +7,16 @@ import { useChangeAvatarMutation } from '@/shared/api/hooks/account/useChangeAva
 import { useDeleteAvatarMutation } from '@/shared/api/hooks/account/useDeleteAvatarMutation'
 
 export function useChangeAvatarForm() {
+	const queryClient = useQueryClient()
 	const [file, setFile] = useState<File | null>(null)
 	const { profile, isPending, refetch } = useProfile()
 
 	const { mutateAsync: deleteAvatar } = useDeleteAvatarMutation({
-		options: { onSuccess: () => refetch() }
+		options: { onSettled: () => queryClient.invalidateQueries({ queryKey: ['getProfile'] }) }
 	})
 
 	const { mutateAsync: changeAvatar, error } = useChangeAvatarMutation({
-		options: { onSuccess: () => refetch() }
+		options: { onSettled: () => queryClient.invalidateQueries({ queryKey: ['getProfile'] }) }
 	})
 
 	const handleFileChange = async (event: React.ChangeEvent<HTMLInputElement>) => {

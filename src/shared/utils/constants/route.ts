@@ -11,7 +11,7 @@ export const ROUTE = {
 		passwordRecovery: '/auth/password-recovery'
 	},
 	product: (productId: string) => `/product/${productId}`,
-	menu: (categoryId?: string) => (categoryId ? `/menu/${categoryId}` : '/menu'),
+	category: (categoryName?: string) => (categoryName ? `/category/${categoryName}` : '/category'),
 	dashboard: {
 		favorites: '/dashboard/favorites',
 		notifications: '/dashboard/notifications',

@@ -36,7 +36,7 @@ export function BenefitsSection() {
 			<div className='px-4 sm:px-6 lg:px-8'>
 				<div className='grid grid-cols-1 gap-8 md:grid-cols-3'>
 					{cardInfo.map(card => (
-						<Card key={card.id} className='group border-2 shadow transition-colors duration-300'>
+						<Card key={card.id} className='transition-all duration-500 hover:shadow-xl'>
 							<CardHeader className='flex flex-row items-center gap-3'>
 								<div className='flex size-10 items-center justify-center rounded-full bg-primary/30'>
 									<card.icon className='text-primary' size={26} />

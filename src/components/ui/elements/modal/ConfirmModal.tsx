@@ -12,7 +12,7 @@ import {
 	AlertDialogTrigger
 } from '@/components/ui/common'
 
-import { cn } from '@/lib/utils/twMerge'
+import { cn } from '@/shared/utils/twMerge'
 
 interface ConfirmModalProps {
 	open?: boolean

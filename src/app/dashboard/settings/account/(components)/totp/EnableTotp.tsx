@@ -26,7 +26,13 @@ import { useGetGenerateTotpQuery } from '@/shared/api/hooks/totp/useGetGenerateT
 export function EnableTotp() {
 	const { refetch } = useProfile()
 	const { data: twoFactorAuth, refetch: refetchGenerateTotp } = useGetGenerateTotpQuery()
-	const { mutateAsync: enableTotp, isPending } = useEnableTotpMutation({ options: { onSuccess: () => refetch() } })
+	const { mutateAsync: enableTotp, isPending } = useEnableTotpMutation({
+		options: {
+			onSettled: () => {
+				refetch()
+			}
+		}
+	})
 	const [code, setCode] = useState('')
 	const [seconds, setSeconds] = useState(twoFactorAuth?.data.remainingSeconds || 30)
 

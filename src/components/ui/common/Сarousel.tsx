@@ -6,7 +6,7 @@ import * as React from 'react'
 
 import { Button } from '@/components/ui/common'
 
-import { cn } from '@/lib/utils/twMerge'
+import { cn } from '@/shared/utils/twMerge'
 
 type CarouselApi = UseEmblaCarouselType[1]
 type UseCarouselParameters = Parameters<typeof useEmblaCarousel>

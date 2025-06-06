@@ -3,7 +3,7 @@ import * as React from 'react'
 
 import { ButtonProps, buttonVariants } from '@/components/ui/common'
 
-import { cn } from '@/lib/utils'
+import { cn } from '@/shared/utils'
 
 const Pagination = ({ className, ...props }: React.ComponentProps<'nav'>) => (
 	<nav role='navigation' aria-label='pagination' className={cn('mx-auto flex w-full justify-center', className)} {...props} />
@@ -64,4 +64,4 @@ const PaginationEllipsis = ({ className, ...props }: React.ComponentProps<'span'
 )
 PaginationEllipsis.displayName = 'PaginationEllipsis'
 
-export { Pagination, PaginationContent, PaginationLink, PaginationItem, PaginationPrevious, PaginationNext, PaginationEllipsis }
+export { Pagination, PaginationContent, PaginationEllipsis, PaginationItem, PaginationLink, PaginationNext, PaginationPrevious }

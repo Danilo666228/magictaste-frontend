@@ -9,7 +9,6 @@ export interface NavigationItem {
 	isActive?: boolean
 	items?: NavigationSubItem[]
 	roles?: RoleName[]
-	isBeta?: boolean
 }
 
 interface NavigationSubItem {
@@ -17,7 +16,6 @@ interface NavigationSubItem {
 	url?: string
 	icon?: LucideIcon
 	roles?: RoleName[]
-	isBeta?: boolean
 }
 
 export interface NavigationItemProps {

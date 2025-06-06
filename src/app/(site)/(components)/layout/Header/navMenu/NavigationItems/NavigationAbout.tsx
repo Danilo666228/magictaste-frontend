@@ -5,8 +5,7 @@ import { usePathname } from 'next/navigation'
 
 import { NavigationMenuItem } from '@/components/ui/common'
 
-import { cn } from '@/lib/utils'
-
+import { cn } from '@/shared/utils'
 import { ROUTE } from '@/shared/utils/constants/route'
 
 export function NavigationAbout() {
@@ -15,13 +14,20 @@ export function NavigationAbout() {
 		<NavigationMenuItem className='relative'>
 			<Link
 				className={cn(
-					'block rounded p-1 transition-all duration-300',
-					'after:absolute after:bottom-[-4px] after:left-1/2 after:h-0.5 after:origin-center after:bg-primary after:transition-all after:duration-300',
-					pathname === '/about' ? 'after:left-0 after:w-full' : 'after:w-0',
-					'hover:after:left-0 hover:after:w-full'
+					'block rounded-lg px-3 py-2 transition-all duration-300',
+					'relative transform-gpu overflow-hidden',
+					'hover:bg-primary/5',
+					'before:absolute before:inset-0 before:bg-primary/0 before:transition-colors before:duration-300',
+					'hover:before:bg-primary/5'
 				)}
 				href={ROUTE.about}>
-				О нас
+				<span className='relative z-10 font-medium'>О нас</span>
+				<div
+					className={cn(
+						'absolute bottom-0 left-0 h-[2px] bg-primary transition-all duration-300',
+						pathname === '/about' ? 'w-full' : 'w-0'
+					)}
+				/>
 			</Link>
 		</NavigationMenuItem>
 	)

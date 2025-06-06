@@ -6,7 +6,6 @@ import { ImageUpload } from '@/components/ui/elements/image-upload/ImageUpload'
 import { Modal } from '@/components/ui/elements/modal/Default/Modal'
 
 import { useChangeIngredientImageMutation } from '@/shared/api/hooks/ingredient/useChangeIngedientImageMutation'
-import { useGetIngredientsQuery } from '@/shared/api/hooks/ingredient/useGetIngredientsQuery'
 
 interface UploadImageIngredientProps {
 	ingredientId: string
@@ -14,12 +13,12 @@ interface UploadImageIngredientProps {
 
 export function UploadImageIngredient({ ingredientId }: UploadImageIngredientProps) {
 	const queryClient = useQueryClient()
-	const { refetch } = useGetIngredientsQuery()
+
 	const [isOpen, setIsOpen] = useState(false)
 
 	const { mutateAsync: uploadImage } = useChangeIngredientImageMutation({
 		options: {
-			onSuccess: () => refetch()
+			onSettled: () => queryClient.invalidateQueries({ queryKey: ['getIngredients'] })
 		},
 		config: {
 			headers: {

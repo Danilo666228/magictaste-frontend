@@ -25,7 +25,7 @@ export function AboutMe() {
 					<div className='ml-auto flex flex-col items-center gap-4 sm:flex-row'>
 						<div className='flex items-center gap-2'>
 							<MapPin className='h-5 w-5 text-primary' />
-							<Typography>ул. Ресторанная, 123</Typography>
+							<Typography>ул. Маркина 7</Typography>
 						</div>
 						<div className='flex items-center gap-2'>
 							<Phone className='h-5 w-5 text-primary' />

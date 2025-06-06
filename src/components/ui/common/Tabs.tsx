@@ -3,7 +3,7 @@
 import * as TabsPrimitive from '@radix-ui/react-tabs'
 import * as React from 'react'
 
-import { cn } from '@/lib/utils/twMerge'
+import { cn } from '@/shared/utils/twMerge'
 
 const Tabs = TabsPrimitive.Root
 

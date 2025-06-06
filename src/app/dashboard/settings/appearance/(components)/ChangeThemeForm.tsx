@@ -6,9 +6,8 @@ import { useRef, useState } from 'react'
 
 import { Card, CardContent, CardDescription, CardHeader, CardTitle, Label, RadioGroup, RadioGroupItem, Typography } from '@/components/ui/common'
 
-import { cn } from '@/lib/utils/twMerge'
-
 import { useMount } from '@/shared/hooks'
+import { cn } from '@/shared/utils/twMerge'
 
 export function ChangeThemeForm() {
 	const lightThemeRef = useRef<HTMLButtonElement>(null)

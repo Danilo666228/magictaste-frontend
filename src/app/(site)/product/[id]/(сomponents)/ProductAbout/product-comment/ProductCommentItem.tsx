@@ -11,9 +11,8 @@ import { Modal } from '@/components/ui/elements/modal/Default/Modal'
 import { useAuth } from '@/hooks/useAuth'
 import { useProfile } from '@/hooks/useProfile'
 
-import { getMediaSource } from '@/lib/utils'
-
 import { ProductComment } from '@/shared/api/types/product-comment'
+import { getMediaSource } from '@/shared/utils'
 
 import { useProductComments } from '../../../(hooks)/useProductComment'
 

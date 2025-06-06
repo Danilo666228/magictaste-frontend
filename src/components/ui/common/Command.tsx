@@ -7,7 +7,7 @@ import * as React from 'react'
 
 import { Dialog, DialogContent } from '@/components/ui/common'
 
-import { cn } from '@/lib/utils/twMerge'
+import { cn } from '@/shared/utils/twMerge'
 
 const Command = React.forwardRef<React.ElementRef<typeof CommandPrimitive>, React.ComponentPropsWithoutRef<typeof CommandPrimitive>>(
 	({ className, ...props }, ref) => (

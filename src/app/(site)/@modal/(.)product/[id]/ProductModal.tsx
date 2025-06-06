@@ -13,12 +13,11 @@ import { useAuth } from '@/hooks/useAuth'
 import { useCart } from '@/hooks/useCart'
 import { useProfile } from '@/hooks/useProfile'
 
-import { cn, getMediaSource } from '@/lib/utils'
-import { isActiveFavorite } from '@/lib/utils/favorite/is-active-favorite'
-
 import { useToggleFavoriteMutation } from '@/shared/api/hooks/favorite/useToggleFavoriteMutation'
 import { Product } from '@/shared/api/types'
+import { cn, getMediaSource } from '@/shared/utils'
 import { ROUTE } from '@/shared/utils/constants/route'
+import { isActiveFavorite } from '@/shared/utils/favorite/is-active-favorite'
 
 interface ProductModalProps {
 	product: Product

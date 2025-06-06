@@ -4,9 +4,8 @@ import { Moon, Sun } from 'lucide-react'
 import { useTheme } from 'next-themes'
 import { ComponentProps, useState } from 'react'
 
-import { cn } from '@/lib/utils'
-
 import { useMount } from '@/shared/hooks'
+import { cn } from '@/shared/utils'
 
 import { Button } from '../../common'
 

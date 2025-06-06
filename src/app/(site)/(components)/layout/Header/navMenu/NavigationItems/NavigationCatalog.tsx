@@ -5,9 +5,8 @@ import { usePathname } from 'next/navigation'
 
 import { NavigationMenuContent, NavigationMenuItem, NavigationMenuTrigger, Typography } from '@/components/ui/common'
 
-import { cn } from '@/lib/utils'
-
 import { useGetCategoryQuery } from '@/shared/api/hooks/category/useGetCategoryQuery'
+import { cn } from '@/shared/utils'
 import { ROUTE } from '@/shared/utils/constants/route'
 
 export function NavigationCatalog() {
@@ -18,13 +17,20 @@ export function NavigationCatalog() {
 			<NavigationMenuTrigger>
 				<Link
 					className={cn(
-						'relative rounded p-1 transition-all duration-300',
-						'after:absolute after:bottom-[-4px] after:left-1/2 after:h-0.5 after:origin-center after:bg-primary after:transition-all after:duration-300',
-						pathname.startsWith('/menu') ? 'after:left-0 after:w-full' : 'after:w-0',
-						'hover:after:left-0 hover:after:w-full'
+						'block rounded-lg px-3 py-2 transition-all duration-300',
+						'relative transform-gpu overflow-hidden',
+						'hover:bg-primary/5',
+						'before:absolute before:inset-0 before:bg-primary/0 before:transition-colors before:duration-300',
+						'hover:before:bg-primary/5'
 					)}
-					href={ROUTE.menu()}>
-					Меню
+					href={ROUTE.category()}>
+					<span className='relative z-10 font-medium'>Меню</span>
+					<div
+						className={cn(
+							'absolute bottom-0 left-0 h-[2px] bg-primary transition-all duration-300',
+							pathname === '/category' ? 'w-full' : 'w-0'
+						)}
+					/>
 				</Link>
 			</NavigationMenuTrigger>
 			<NavigationMenuContent>
@@ -42,7 +48,7 @@ export function NavigationCatalog() {
 								category.products?.length > 0 && (
 									<li key={category.id}>
 										<Link
-											href={ROUTE.menu(category.id)}
+											href={ROUTE.category(category.id)}
 											className={cn(
 												'flex items-center justify-between rounded-lg border p-2 ring-offset-background transition-all duration-300 hover:border-ring hover:shadow-md hover:ring-primary'
 											)}>

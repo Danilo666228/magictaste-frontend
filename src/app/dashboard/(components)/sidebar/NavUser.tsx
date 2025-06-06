@@ -1,6 +1,7 @@
 'use client'
 
 import { Bell, ChevronsUpDown, LogOut } from 'lucide-react'
+import { useRouter } from 'next/navigation'
 
 import {
 	Avatar,
@@ -20,15 +21,17 @@ import {
 	useSidebar
 } from '@/components/ui/common'
 
-import { useAuth } from '@/hooks/useAuth'
-import { useProfile } from '@/hooks/useProfile'
-
-import { getMediaSource } from '@/lib/utils'
+import { getMediaSource } from '@/shared/utils'
+import { ROUTE } from '@/shared/utils/constants'
+import { useProfile } from '@/shared/utils/contexts'
 
 export function NavUser() {
+	const router = useRouter()
 	const { isMobile } = useSidebar()
-	const { handleLogout } = useAuth()
-	const { profile, isPending } = useProfile()
+	// const { handleLogout } = useAuth()
+	// const { profile, isPending, logout } = useProfile()
+
+	const { profile, logout, isPending } = useProfile()
 
 	if (isPending) return <NavUserSkeleton />
 
@@ -39,12 +42,12 @@ export function NavUser() {
 					<DropdownMenuTrigger asChild>
 						<SidebarMenuButton size='lg' className='data-[state=open]:bg-sidebar-accent data-[state=open]:text-sidebar-accent-foreground'>
 							<Avatar className='h-8 w-8 rounded-lg'>
-								<AvatarImage src={getMediaSource(profile?.data.picture)} alt={profile?.data.userName} />
-								<AvatarFallback className='rounded-lg'>{profile?.data.userName?.slice(0, 2)?.toUpperCase()}</AvatarFallback>
+								<AvatarImage src={getMediaSource(profile?.picture)} alt={profile?.userName} />
+								<AvatarFallback className='rounded-lg'>{profile?.userName?.slice(0, 2)?.toUpperCase()}</AvatarFallback>
 							</Avatar>
 							<div className='grid flex-1 text-left text-sm'>
-								<span className='truncate font-semibold'>{profile?.data.userName}</span>
-								<span className='truncate text-xs'>{profile?.data.email}</span>
+								<span className='truncate font-semibold'>{profile?.userName}</span>
+								<span className='truncate text-xs'>{profile?.email}</span>
 							</div>
 							<ChevronsUpDown className='ml-auto size-4' />
 						</SidebarMenuButton>
@@ -57,24 +60,24 @@ export function NavUser() {
 						<DropdownMenuLabel className='p-0 font-normal'>
 							<div className='flex items-center gap-2 px-1 py-1.5 text-left text-sm'>
 								<Avatar className='h-8 w-8 rounded-lg'>
-									<AvatarImage src={profile?.data.picture ?? ''} alt={profile?.data.userName} />
-									<AvatarFallback className='rounded-lg'>{profile?.data.userName.slice(0, 2)?.toUpperCase()}</AvatarFallback>
+									<AvatarImage src={getMediaSource(profile?.picture)} alt={profile?.userName} />
+									<AvatarFallback className='rounded-lg'>{profile?.userName.slice(0, 2)?.toUpperCase()}</AvatarFallback>
 								</Avatar>
 								<div className='grid flex-1 text-left text-sm leading-tight'>
-									<span className='truncate font-semibold'>{profile?.data.userName}</span>
-									<span className='truncate text-xs'>{profile?.data.email}</span>
+									<span className='truncate font-semibold'>{profile?.userName}</span>
+									<span className='truncate text-xs'>{profile?.email}</span>
 								</div>
 							</div>
 						</DropdownMenuLabel>
 						<DropdownMenuSeparator />
 						<DropdownMenuGroup>
-							<DropdownMenuItem>
+							<DropdownMenuItem onClick={() => router.push(ROUTE.dashboard.notifications)}>
 								<Bell />
 								Уведомления
 							</DropdownMenuItem>
 						</DropdownMenuGroup>
 						<DropdownMenuSeparator />
-						<DropdownMenuItem onClick={handleLogout}>
+						<DropdownMenuItem onClick={logout}>
 							<LogOut />
 							Выйти из аккаунта
 						</DropdownMenuItem>

@@ -1,9 +1,8 @@
 import { useEffect, useRef, useState } from 'react'
 
-import { HookTarget, getElement, isTarget } from '@/lib/utils'
-
 import type { StateRef } from '@/shared/hooks/useRefState/useRefState'
 import { useRefState } from '@/shared/hooks/useRefState/useRefState'
+import { HookTarget, getElement, isTarget } from '@/shared/utils'
 
 const ARRIVED_STATE_THRESHOLD_PIXELS = 1
 

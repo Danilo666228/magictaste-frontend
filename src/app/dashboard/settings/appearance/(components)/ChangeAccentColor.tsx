@@ -1,16 +1,49 @@
 'use client'
 
 import { Check, Paintbrush } from 'lucide-react'
+import { useTheme } from 'next-themes'
 
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/common'
+import { Button, Card, CardContent, CardDescription, CardHeader, CardTitle, Typography } from '@/components/ui/common'
 
-import { useConfig } from '@/hooks/useConfig'
+import { cn } from '@/shared/utils'
+import { useConfig } from '@/shared/utils/contexts'
+import { AccentColors } from '@/shared/utils/contexts/config/utils/accent-colors'
 
-import { BASE_COLORS } from '@/shared/utils/constants/color'
-
+const availableColor = [
+	{
+		name: 'Zinc',
+		label: 'Чёрный',
+		light: 'bg-zinc-900',
+		dark: 'bg-zinc-700'
+	},
+	{
+		name: 'Rose',
+		label: 'Розовый',
+		light: 'bg-rose-600',
+		dark: 'bg-rose-700'
+	},
+	{
+		name: 'Blue',
+		label: 'Синий',
+		light: 'bg-blue-600',
+		dark: 'bg-blue-700'
+	},
+	{
+		name: 'Green',
+		label: 'Зелёный',
+		light: 'bg-green-600',
+		dark: 'bg-green-700'
+	},
+	{
+		name: 'Orange',
+		label: 'Оранжевый',
+		light: 'bg-orange-600',
+		dark: 'bg-orange-700'
+	}
+]
 export function ChangeAccentColor() {
-	const { accentColor, setAccentColor } = useConfig()
-
+	const { accent } = useConfig()
+	const { theme } = useTheme()
 	return (
 		<Card className=''>
 			<CardHeader className='bg-muted/50'>
@@ -26,36 +59,23 @@ export function ChangeAccentColor() {
 			</CardHeader>
 			<CardContent className='p-6'>
 				<div className='grid grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-4'>
-					{BASE_COLORS.map((color, index) => {
-						const isActive = accentColor === color.name
+					{availableColor.map((color, index) => {
+						const isActive = accent.color === color.name
 
 						return (
-							<button
+							<Button
+								className={cn('flex h-[60px] items-center justify-start gap-3 border', isActive && 'bg-primary/10 shadow-inner')}
 								key={index}
-								onClick={() => setAccentColor(color.name)}
-								className={`group relative flex items-center gap-3 rounded-lg border bg-card p-4 transition-all duration-200 hover:bg-accent/50 hover:shadow-lg ${isActive ? 'border-primary' : 'border-border hover:border-primary/50'} `}>
-								<div
-									className='size-6 rounded-full shadow-sm'
-									style={{
-										background: `hsl(${color.color})`
-									}}
-								/>
-
-								<span className='text-sm font-medium'>{color.label}</span>
-
+								onClick={() => accent.setColor?.(color.name as AccentColors)}
+								variant={'ghost'}>
+								<div className={cn('size-6 rounded-full shadow-sm', theme === 'light' ? color.light : color.dark)} />
+								<Typography className='text-sm font-medium'>{color.label}</Typography>
 								{isActive && (
 									<div className='ml-auto flex size-5 items-center justify-center rounded-full bg-primary text-primary-foreground'>
 										<Check className='size-3.5' />
 									</div>
 								)}
-
-								<div
-									className='absolute inset-0 -z-10 opacity-0 blur transition-opacity group-hover:opacity-10'
-									style={{
-										backgroundColor: `hsl(${color.color})`
-									}}
-								/>
-							</button>
+							</Button>
 						)
 					})}
 				</div>

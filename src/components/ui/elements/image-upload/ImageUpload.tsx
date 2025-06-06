@@ -6,7 +6,7 @@ import { Button, Input } from '@/components/ui/common'
 import { useImageUpload } from '@/components/ui/elements/image-upload/useImageUpload'
 import { useModal } from '@/components/ui/elements/modal/Default/ModalContext'
 
-import { cn } from '@/lib/utils/twMerge'
+import { cn } from '@/shared/utils/twMerge'
 
 interface ImageUploadProps {
 	onUpload?: (file: File) => void

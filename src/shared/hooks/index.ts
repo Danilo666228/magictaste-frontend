@@ -7,6 +7,6 @@ export * from './useUnmount/useUnmount'
 export * from './useHover/useHover'
 export * from './useRefState/useRefState'
 export * from './useScroll/useScroll'
-
 export * from './useLocalStorage/useLocalStorage'
 export * from './useStorage/useStorage'
+export * from './useWindowScroll/useWindowScroll'

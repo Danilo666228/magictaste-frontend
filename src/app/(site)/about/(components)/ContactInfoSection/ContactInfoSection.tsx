@@ -7,7 +7,7 @@ import { contactItems } from './contactItems'
 
 export function ContactInfoSection() {
 	return (
-		<div className='mx-3 mt-7 rounded-xl bg-muted p-5 shadow-inner'>
+		<div className='mt-7 rounded-xl bg-muted p-5 shadow-inner'>
 			<div className='max-w-[calc(w-full - 100px)] mx-auto mb-5 flex flex-col'>
 				<Typography className='mb-10 text-center font-semibold' tag='h1'>
 					Контакты

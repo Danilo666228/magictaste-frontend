@@ -9,9 +9,8 @@ import { ThemeToggle } from '@/components/ui/elements/theme/ThemeToggle'
 
 import { useAuth } from '@/hooks/useAuth'
 
-import { cn } from '@/lib/utils/twMerge'
-
 import { ROUTE } from '@/shared/utils/constants/route'
+import { cn } from '@/shared/utils/twMerge'
 
 import { Notifications } from './Notifications'
 import { ProfileMenu } from './ProfileMenu'

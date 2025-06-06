@@ -1,9 +1,9 @@
 import { VariantProps, cva } from 'class-variance-authority'
 import { ComponentProps } from 'react'
 
-import { Container, Typography } from '@/components/ui/common'
+import { Typography } from '@/components/ui/common'
 
-import { cn } from '@/lib/utils/twMerge'
+import { cn } from '@/shared/utils/twMerge'
 
 const headingSizes = cva('', {
 	variants: {

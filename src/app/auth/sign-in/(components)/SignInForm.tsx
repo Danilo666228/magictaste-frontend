@@ -38,19 +38,19 @@ export function SignInForm() {
 							name='email'
 							render={({ field }) => (
 								<FormItem className='space-y-1.5'>
-									<Container className='flex items-center justify-between'>
+									<div className='flex items-center justify-between'>
 										<FormLabel className='flex items-center gap-2'>
 											<Mail className='h-4 w-4 text-muted-foreground' />
 											Электронная почта
 										</FormLabel>
 										<FormMessage />
-									</Container>
+									</div>
 									<FormControl>
 										<Input
-											type='email'
-											placeholder='myemail@mail.ru'
-											{...field}
 											className='h-11 px-4 transition-all focus-visible:ring-primary/70'
+											type='email'
+											placeholder='username@mail.ru'
+											{...field}
 										/>
 									</FormControl>
 								</FormItem>
@@ -69,12 +69,14 @@ export function SignInForm() {
 										<FormMessage />
 									</Container>
 									<FormControl>
-										<Input
-											type='password'
-											placeholder='******'
-											{...field}
-											className='h-11 px-4 transition-all focus-visible:ring-primary/70'
-										/>
+										<div className='relative'>
+											<Input
+												type='password'
+												placeholder='Пароль'
+												{...field}
+												className='h-11 px-4 pr-10 transition-all focus-visible:ring-primary/70'
+											/>
+										</div>
 									</FormControl>
 								</FormItem>
 							)}
@@ -100,7 +102,7 @@ export function SignInForm() {
 						<Button
 							disabled={!form.formState.isValid || isPending}
 							type='submit'
-							className='group mt-2 h-12 w-full font-medium'
+							className='group mt-2 h-12 w-full'
 							onClick={e => {
 								if (form.formState.isValid && !isPending) {
 									e.preventDefault()

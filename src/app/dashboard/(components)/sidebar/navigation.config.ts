@@ -28,7 +28,7 @@ export const navigationConfig: NavigationItem[] = [
 	},
 	{
 		title: 'Меню',
-		url: ROUTE.menu(),
+		url: ROUTE.category(),
 		icon: BookOpenCheck,
 		isActive: true,
 		roles: ['REGULAR']

@@ -8,7 +8,7 @@ import '@/styles/theme.css'
 import { CLIENT_URL } from '@/shared/utils/constants/env'
 import { SITE_DESCRIPTION, SITE_KEYWORDS, SITE_NAME } from '@/shared/utils/constants/seo'
 
-import { Providers } from './providers'
+import Providers from './providers'
 
 interface RootLayoutProps {
 	children: ReactNode

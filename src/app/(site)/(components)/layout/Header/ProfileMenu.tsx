@@ -16,12 +16,12 @@ import {
 	DropdownMenuTrigger,
 	Typography
 } from '@/components/ui/common'
+import { ThemeToggle } from '@/components/ui/elements/theme/ThemeToggle'
 
 import { useAuth } from '@/hooks/useAuth'
 import { useProfile } from '@/hooks/useProfile'
 
-import { getMediaSource } from '@/lib/utils'
-
+import { getMediaSource } from '@/shared/utils'
 import { ROUTE } from '@/shared/utils/constants/route'
 
 export function ProfileMenu() {
@@ -30,7 +30,7 @@ export function ProfileMenu() {
 	const { profile, isPending } = useProfile()
 
 	return isPending || !profile ? (
-		<Loader2 size={32} className='animate-spin' />
+		<Loader2 size={32} className='animate-spin text-primary' />
 	) : (
 		<DropdownMenu>
 			<DropdownMenuTrigger>
@@ -41,21 +41,22 @@ export function ProfileMenu() {
 			</DropdownMenuTrigger>
 			<DropdownMenuContent align='center' className='min-w-[200px]'>
 				<DropdownMenuLabel>
-					<div className='flex items-center gap-2'>
+					<div className='flex items-center gap-3'>
 						<div>
 							<Avatar className=''>
 								<AvatarImage className='' src={getMediaSource(profile.data.picture)} />
 								<AvatarFallback>{profile.data.userName.slice(0, 2).toUpperCase()}</AvatarFallback>
 							</Avatar>
 						</div>
-						<div className='font-medium'>
+						<div className='max-w-[150px] truncate font-medium'>
 							<Typography tag='h3' className='text-sm'>
 								{profile.data.userName}
 							</Typography>
-							<Typography tag='span' className='break-words text-xs text-muted-foreground'>
+							<Typography tag='span' className='text-xs text-muted-foreground'>
 								{profile.data.email}
 							</Typography>
 						</div>
+						<ThemeToggle />
 					</div>
 				</DropdownMenuLabel>
 				<DropdownMenuSeparator />

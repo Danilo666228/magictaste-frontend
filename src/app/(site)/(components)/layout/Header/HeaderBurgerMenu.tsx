@@ -31,7 +31,7 @@ export function HeaderBurgerMenu() {
 				</SheetHeader>
 				<div className='my-auto flex flex-col justify-center gap-5'>
 					<Button onClick={() => handleNavigate(ROUTE.home)}>Главная</Button>
-					<Button onClick={() => handleNavigate(ROUTE.menu())}>Меню</Button>
+					<Button onClick={() => handleNavigate(ROUTE.category())}>Меню</Button>
 					<Button onClick={() => handleNavigate(ROUTE.about)}>О нас</Button>
 				</div>
 			</SheetContent>

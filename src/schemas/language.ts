@@ -1,6 +1,6 @@
 import { z } from 'zod'
 
-import { languages } from '@/lib/i18n/i18n.config'
+import { languages } from '@/shared/utils/contexts/intl/utils/i18n.config'
 
 export const changeLanguageSchema = z.object({
 	language: z.enum(languages)

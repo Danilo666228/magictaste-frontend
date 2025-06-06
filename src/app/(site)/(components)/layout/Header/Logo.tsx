@@ -1,29 +1,9 @@
-import Image from 'next/image'
-import Link from 'next/link'
 import { ComponentProps } from 'react'
 
-import { Typography } from '@/components/ui/common'
+import { cn } from '@/shared/utils/twMerge'
 
-import { cn } from '@/lib/utils'
+interface LogoProps extends ComponentProps<'img'> {}
 
-import { ROUTE } from '@/shared/utils/constants/route'
-
-interface LogoProps extends ComponentProps<'div'> {}
-
-export function Logo({ className }: LogoProps) {
-	return (
-		<Link href={ROUTE.home} className={cn('flex items-center gap-2 transition-all duration-500', className)}>
-			<div className='relative'>
-				<Image src='/logo.png' alt='Logo' width={80} height={80} className='dark:invert' />
-			</div>
-			<div className='flex flex-col gap-2 max-lg:hidden'>
-				<Typography className='font-semibold' tag='h4'>
-					Волшебный вкус
-				</Typography>
-				<Typography tag='span' className='text-muted-foreground'>
-					Ресторан русской кухни
-				</Typography>
-			</div>
-		</Link>
-	)
+export const Logo = ({ className, width = 100, height = 100, ...props }: LogoProps) => {
+	return <img src='/logo.png' width={width} height={height} alt='Logo' className={cn('dark:invert', className)} {...props} />
 }

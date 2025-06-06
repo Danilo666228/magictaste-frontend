@@ -4,11 +4,10 @@ import { ComponentProps } from 'react'
 
 import { Card, CardContent, CardFooter } from '@/components/ui/common'
 
-import { getMediaSource } from '@/lib/utils'
-import { cn } from '@/lib/utils/twMerge'
-
 import { Product } from '@/shared/api/types'
+import { getMediaSource } from '@/shared/utils'
 import { ROUTE } from '@/shared/utils/constants/route'
+import { cn } from '@/shared/utils/twMerge'
 
 import { ProductCardProvider, useProductCard } from './ProductCardContext'
 

@@ -7,7 +7,7 @@ import { useChangeNotificationForm } from '@/app/dashboard/settings/(hooks)/useC
 import { Badge, Card, CardContent, CardDescription, CardHeader, CardTitle, Form, FormField, Label, Typography } from '@/components/ui/common'
 import { Switch } from '@/components/ui/common/Switch'
 
-import { cn } from '@/lib/utils'
+import { cn } from '@/shared/utils'
 
 function NotificationToggle({
 	icon: Icon,

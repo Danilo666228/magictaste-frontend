@@ -8,11 +8,10 @@ import { Avatar, AvatarFallback, AvatarImage, Button, Textarea, Typography } fro
 
 import { useProfile } from '@/hooks/useProfile'
 
-import { getMediaSource } from '@/lib/utils'
-import { cn } from '@/lib/utils/twMerge'
-
 import { Account } from '@/shared/api/types'
 import { Message } from '@/shared/api/types/supportChat'
+import { getMediaSource } from '@/shared/utils'
+import { cn } from '@/shared/utils/twMerge'
 
 interface SupportTicketChatProps {
 	socket: Socket | null

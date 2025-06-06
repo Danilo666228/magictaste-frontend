@@ -1,7 +1,6 @@
 'use client'
 
-import { AnimatePresence, motion } from 'framer-motion'
-import { EditIcon, Loader2, XIcon } from 'lucide-react'
+import { motion } from 'framer-motion'
 
 import {
 	Button,
@@ -21,8 +20,6 @@ import {
 	Input,
 	Skeleton
 } from '@/components/ui/common'
-
-import { cn } from '@/lib/utils/twMerge'
 
 import { useChangeProfileForm } from '../../(hooks)/useChangeProfileForm'
 

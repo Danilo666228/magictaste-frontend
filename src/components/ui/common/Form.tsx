@@ -8,7 +8,7 @@ import { Controller, ControllerProps, FieldPath, FieldValues, FormProvider, useF
 
 import { Card, Container, Label, Typography } from '@/components/ui/common'
 
-import { cn } from '@/lib/utils/twMerge'
+import { cn } from '@/shared/utils/twMerge'
 
 const Form = FormProvider
 
