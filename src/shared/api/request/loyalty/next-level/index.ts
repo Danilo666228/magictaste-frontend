@@ -1,5 +1,5 @@
 import { api } from '@/shared/api/instance'
-import { Loyalty, LoyaltyLevel, LoyaltyTransaction } from '@/shared/api/types/loyalty'
+import { LoyaltyLevel } from '@/shared/api/types/loyalty'
 
 export type GetNextLevelLoyaltyAccount = RequestConfig
 

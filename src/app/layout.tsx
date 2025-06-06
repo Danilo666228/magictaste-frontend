@@ -1,11 +1,11 @@
 import type { Metadata } from 'next'
-import { getLocale } from 'next-intl/server'
+import { NextIntlClientProvider } from 'next-intl'
+import { getLocale, getMessages } from 'next-intl/server'
 import { ReactNode } from 'react'
 
 import '@/styles/globals.css'
-import '@/styles/theme.css'
 
-// import { CLIENT_URL } from '@/shared/utils/constants/env'
+import { CLIENT_URL } from '@/shared/utils/constants/env'
 import { SITE_DESCRIPTION, SITE_KEYWORDS, SITE_NAME } from '@/shared/utils/constants/seo'
 
 import Providers from './providers'
@@ -19,7 +19,7 @@ export const metadata: Metadata = {
 		template: `%s | ${SITE_NAME}`
 	},
 	description: SITE_DESCRIPTION,
-	// metadataBase: new URL(CLIENT_URL),
+	metadataBase: new URL(CLIENT_URL),
 	applicationName: SITE_NAME,
 	authors: [{ name: 'Danil Kovinskiy', url: new URL('https://github.com/Danilo666228') }],
 	keywords: SITE_KEYWORDS,
@@ -41,18 +41,21 @@ export const metadata: Metadata = {
 		description: SITE_DESCRIPTION,
 		type: 'website',
 		locale: 'ru-RU',
-		// url: new URL(CLIENT_URL),
+		url: new URL(CLIENT_URL),
 		siteName: SITE_NAME
 	}
 }
 
 export default async function RootLayout({ children }: RootLayoutProps) {
 	const locale = await getLocale()
+	const messages = await getMessages()
 
 	return (
 		<html lang={locale} suppressHydrationWarning>
 			<body>
-				<Providers>{children}</Providers>
+				<NextIntlClientProvider messages={messages}>
+					<Providers>{children}</Providers>
+				</NextIntlClientProvider>
 			</body>
 		</html>
 	)

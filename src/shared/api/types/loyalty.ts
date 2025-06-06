@@ -39,7 +39,7 @@ export interface LoyaltyTransaction {
 	type: LoyaltyTransactionType
 	orderId?: string | undefined
 	description: string
-	metadata: Record<string, any>
+	metadata: Record<string, unknown>
 	createdAt: Date
 }
 

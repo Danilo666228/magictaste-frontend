@@ -1,7 +1,7 @@
 import type { Config } from 'tailwindcss'
 
 export default {
-	darkMode: ['class'],
+	darkMode: 'class',
 	content: ['./src/components/**/*.{js,ts,jsx,tsx,mdx}', './src/app/**/*.{js,ts,jsx,tsx,mdx}'],
 	theme: {
 		extend: {
@@ -37,11 +37,6 @@ export default {
 				'accordion-up': 'accordion-up 0.2s ease-out'
 			},
 			colors: {
-				// white: '#FFFFFF',
-				// layout: {
-				// 	white: '#F5F5F7'
-				// },
-
 				sidebar: {
 					DEFAULT: 'hsl(var(--sidebar-background))',
 					foreground: 'hsl(var(--sidebar-foreground))',

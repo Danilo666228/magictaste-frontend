@@ -1,9 +1,7 @@
 'use client'
 
-import { useMotionValueEvent, useScroll } from 'framer-motion'
 import Link from 'next/link'
 import { useRouter } from 'next/navigation'
-import { useState } from 'react'
 
 import { Button, Typography } from '@/components/ui/common'
 
@@ -19,21 +17,21 @@ import { CartButton } from './cart/CartButton'
 import { NavMenu } from './navMenu/NavMenu'
 
 export const Header = () => {
-	const { scrollY } = useScroll()
-	const [isScrolled, setIsScrolled] = useState(false)
+	// const { scrollY } = useScroll()
+	// const [isScrolled, setIsScrolled] = useState(false)
 
-	const { isAuth } = useProfile()
+	const { profile } = useProfile()
 	const router = useRouter()
 
-	useMotionValueEvent(scrollY, 'change', latest => {
-		setIsScrolled(latest > 50)
-	})
+	// useMotionValueEvent(scrollY, 'change', latest => {
+	// 	setIsScrolled(latest > 50)
+	// })
 
 	return (
 		<header
 			className={cn(
-				'sticky top-0 z-20 m-5 rounded-lg bg-muted p-2 transition-all duration-500 dark:bg-muted/80',
-				isScrolled && 'bg-background/95 shadow-xl backdrop-blur-sm'
+				'sticky top-0 z-20 m-5 rounded-lg bg-muted p-2 transition-all duration-500 dark:bg-muted/80'
+				// isScrolled && 'bg-background/95 shadow-xl backdrop-blur-sm'
 			)}>
 			<div className='grid grid-cols-3 gap-3 px-4'>
 				<Link href={ROUTE.home} className='flex items-center gap-3'>
@@ -48,7 +46,7 @@ export const Header = () => {
 
 				<div className='ml-auto flex items-center gap-2 max-sm:ml-auto'>
 					<ul className={cn('flex items-center gap-2 max-sm:ml-auto')}>
-						{isAuth ? (
+						{profile ? (
 							<>
 								<Notifications />
 								<ProfileMenu />

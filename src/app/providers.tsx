@@ -1,39 +1,31 @@
+import { ThemeProvider } from 'next-themes'
 import { ReactNode } from 'react'
 
 import { Toaster } from '@/components/ui/elements/Toaster'
 
-import {
-	ConfigProvider,
-	FramerMotionProvider,
-	NextIntlProvider,
-	ProfileProvider,
-	TanStackQueryProvider,
-	ThemeProvider,
-	YandexMapsProvider
-} from '@/shared/utils/contexts'
+import { ConfigProvider, FramerMotionProvider, ProfileProvider, TanStackQueryProvider, YandexMapsProvider } from '@/shared/utils/contexts'
 
 interface ProvidersProps {
 	children: ReactNode
 }
 
-const Providers = ({ children }: ProvidersProps) => {
+export const Providers = ({ children }: ProvidersProps) => {
 	return (
-		<>
-			<ConfigProvider>
-				<ThemeProvider>
-					<FramerMotionProvider>
-						<NextIntlProvider>
-							<TanStackQueryProvider>
-								<ProfileProvider>
-									<YandexMapsProvider>{children}</YandexMapsProvider>
-								</ProfileProvider>
+		<ConfigProvider>
+			<ThemeProvider attribute={'class'} defaultTheme='system' enableSystem disableTransitionOnChange>
+				<FramerMotionProvider>
+					<TanStackQueryProvider>
+						<ProfileProvider>
+							<YandexMapsProvider>
+								{children}
 								<Toaster />
-							</TanStackQueryProvider>
-						</NextIntlProvider>
-					</FramerMotionProvider>
-				</ThemeProvider>
-			</ConfigProvider>
-		</>
+							</YandexMapsProvider>
+						</ProfileProvider>
+					</TanStackQueryProvider>
+				</FramerMotionProvider>
+			</ThemeProvider>
+		</ConfigProvider>
 	)
 }
+
 export default Providers

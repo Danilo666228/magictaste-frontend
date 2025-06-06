@@ -17,7 +17,7 @@ interface ProfileProviderProps {
 
 export const ProfileProvider = ({ children }: ProfileProviderProps) => {
 	const router = useRouter()
-	const isAuthStorage = useLocalStorage('isAuth', localStorage.getItem('isAuth') || 'false')
+	const isAuthStorage = useLocalStorage('isAuth', 'false')
 	const profileQuery = useGetProfileQuery()
 	const clearSessionMutation = useClearSessionMutation()
 	const logoutMutation = useLogoutMutation()
