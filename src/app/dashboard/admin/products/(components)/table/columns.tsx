@@ -5,7 +5,7 @@ import { Avatar, AvatarFallback, AvatarImage, Badge, Checkbox } from '@/componen
 import { SortableHeader } from '@/components/ui/elements/table/SortableHeader'
 
 import { Product } from '@/shared/api/types'
-import { getMediaSource } from '@/shared/utils'
+import { getMediaSource } from '@/shared/hooks/helpers'
 
 import { ProductsActions } from './ProductAction'
 

@@ -9,11 +9,11 @@ import { Button, Skeleton, Typography } from '@/components/ui/common'
 import { useAuth } from '@/hooks/useAuth'
 import { useCart } from '@/hooks/useCart'
 import { useFavorite } from '@/hooks/useFavorite'
-import { useProfile } from '@/hooks/useProfile'
 
+import { isActiveFavorite } from '@/shared/api/helpers/is-active-favorite'
 import { Product } from '@/shared/api/types'
 import { ROUTE } from '@/shared/utils/constants/route'
-import { isActiveFavorite } from '@/shared/utils/favorite/is-active-favorite'
+import { useProfile } from '@/shared/utils/contexts'
 import { cn } from '@/shared/utils/twMerge'
 
 interface ProductListProps extends ComponentProps<'div'> {
@@ -48,7 +48,7 @@ export function ProductList({ products = [], take, className, ...props }: Produc
 										}}
 										size={'icon'}
 										className='absolute right-3 top-3 z-10 h-9 w-9 rounded-full border-none bg-background/20 text-gray-600 shadow-sm backdrop-blur-[2px] transition-all hover:scale-110 hover:bg-background/30 hover:text-red-500 hover:shadow-md active:scale-95'>
-										<Heart size={20} className={cn(isActiveFavorite(profile?.data, product) && 'fill-red-500 text-red-500')} />
+										<Heart size={20} className={cn(isActiveFavorite(profile, product) && 'fill-red-500 text-red-500')} />
 									</Button>
 								)}
 								<div className='absolute inset-0 bg-gradient-to-t from-black/40 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100' />

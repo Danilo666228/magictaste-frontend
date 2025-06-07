@@ -1,3 +1,4 @@
+import { useQueryClient } from '@tanstack/react-query'
 import { Loader2, QrCode, Smartphone } from 'lucide-react'
 import Image from 'next/image'
 import { useEffect, useState } from 'react'
@@ -18,18 +19,16 @@ import {
 	InputOTPSlot
 } from '@/components/ui/common'
 
-import { useProfile } from '@/hooks/useProfile'
-
 import { useEnableTotpMutation } from '@/shared/api/hooks/totp/useEnableTotpMutation'
 import { useGetGenerateTotpQuery } from '@/shared/api/hooks/totp/useGetGenerateTotpQuery'
 
 export function EnableTotp() {
-	const { refetch } = useProfile()
+	const queryClient = useQueryClient()
 	const { data: twoFactorAuth, refetch: refetchGenerateTotp } = useGetGenerateTotpQuery()
 	const { mutateAsync: enableTotp, isPending } = useEnableTotpMutation({
 		options: {
 			onSettled: () => {
-				refetch()
+				queryClient.invalidateQueries({ queryKey: ['getProfile'] })
 			}
 		}
 	})

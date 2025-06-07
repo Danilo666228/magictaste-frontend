@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'react'
 
-import { HookTarget, getElement, isTarget } from '@/shared/utils'
+import { HookTarget, getElement, isTarget } from '@/shared/hooks/helpers'
 
 import type { StateRef } from '../useRefState/useRefState'
 import { useRefState } from '../useRefState/useRefState'

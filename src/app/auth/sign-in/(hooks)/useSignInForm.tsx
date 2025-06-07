@@ -11,12 +11,13 @@ import { useAuthStore } from '@/store/useAuthStore'
 
 import { usePostSignInMutation } from '@/shared/api/hooks/auth/usePostSignInMutation'
 import { ROUTE } from '@/shared/utils/constants/route'
+import { useProfile } from '@/shared/utils/contexts'
 
 export function useSignInForm() {
 	const router = useRouter()
 	const [recaptchaValue, setRecaptchaValue] = useState<string | null>(null)
 	const [twoFactorType, setTwoFactorType] = useState<'email' | 'totp' | null>(null)
-	const { setAuth } = useAuthStore()
+	const { setIsAuth } = useProfile()
 	const recaptchaRef = useRef<ReCAPTCHA>(null)
 
 	const form = useForm<SignInSchema>({
@@ -49,7 +50,7 @@ export function useSignInForm() {
 						form.setValue('emailCode', '')
 					}
 				} else {
-					setAuth(true)
+					setIsAuth(true)
 					router.push(ROUTE.dashboard.profile)
 				}
 			},

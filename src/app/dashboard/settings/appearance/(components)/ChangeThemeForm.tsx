@@ -30,7 +30,7 @@ export function ChangeThemeForm() {
 						<Palette className='text-primary' />
 					</div>
 					<div>
-						<CardTitle className='text-xl font-medium'>Настройки темы</CardTitle>
+						<CardTitle className='text-xl'>Настройки темы</CardTitle>
 						<CardDescription>Выберите предпочитаемую тему оформления</CardDescription>
 					</div>
 				</div>

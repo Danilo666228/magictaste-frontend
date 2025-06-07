@@ -5,7 +5,7 @@ import { ComponentProps } from 'react'
 import { Card, CardContent, CardFooter } from '@/components/ui/common'
 
 import { Product } from '@/shared/api/types'
-import { getMediaSource } from '@/shared/utils'
+import { getMediaSource } from '@/shared/hooks/helpers'
 import { ROUTE } from '@/shared/utils/constants/route'
 import { cn } from '@/shared/utils/twMerge'
 

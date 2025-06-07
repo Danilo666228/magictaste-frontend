@@ -18,7 +18,7 @@ import {
 
 import { useGetPaymentDetailsQuery } from '@/shared/api/hooks/order/useGetPaymentDetailsQuery'
 import { Order } from '@/shared/api/types'
-import { getMediaSource } from '@/shared/utils'
+import { getMediaSource } from '@/shared/hooks/helpers'
 
 import { statusInfo } from './statusInfo'
 

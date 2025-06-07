@@ -18,15 +18,14 @@ import {
 	Typography
 } from '@/components/ui/common'
 
-import { useProfile } from '@/hooks/useProfile'
-
-import { getMediaSource } from '@/shared/utils'
+import { getMediaSource } from '@/shared/hooks/helpers'
+import { useProfile } from '@/shared/utils/contexts'
 import { cn } from '@/shared/utils/twMerge'
 
 export function ProfileAbout() {
-	const { profile, isPending } = useProfile()
+	const { profile, profileQuery } = useProfile()
 	const formatter = useFormatter()
-	return isPending ? (
+	return profileQuery.isPending ? (
 		<ProfileAboutSkeleton />
 	) : (
 		<Card className='overflow-hidden border shadow-sm'>
@@ -41,7 +40,7 @@ export function ProfileAbout() {
 				<div className='flex flex-col items-start gap-8 md:flex-row'>
 					<div className='flex flex-col items-center gap-3'>
 						<Avatar className={cn('h-[150px] w-[150px] border-2 shadow-md')}>
-							<AvatarImage width={300} height={300} src={getMediaSource(profile?.data.picture)} alt='Фото профиля' />
+							<AvatarImage width={300} height={300} src={getMediaSource(profile?.picture)} alt='Фото профиля' />
 							<AvatarFallback className='bg-primary/10'>
 								<User size={50} className='text-primary/60' />
 							</AvatarFallback>
@@ -53,13 +52,13 @@ export function ProfileAbout() {
 							<Label htmlFor='email' className='text-sm font-medium'>
 								Электронная почта
 							</Label>
-							<Input id='email' type='text' defaultValue={profile?.data.email} readOnly className='bg-muted/30' />
+							<Input id='email' type='text' defaultValue={profile?.email} readOnly className='bg-muted/30' />
 						</div>
 						<div className='space-y-2'>
 							<Label htmlFor='username' className='text-sm font-medium'>
 								Имя пользователя
 							</Label>
-							<Input id='username' type='text' defaultValue={profile?.data.userName} readOnly className='bg-muted/30' />
+							<Input id='username' type='text' defaultValue={profile?.userName} readOnly className='bg-muted/30' />
 						</div>
 
 						<Separator className='my-4' />
@@ -67,7 +66,7 @@ export function ProfileAbout() {
 						<div className='flex flex-wrap gap-4 pt-2'>
 							<div className='rounded-md bg-muted/20 px-4 py-2'>
 								<p className='text-xs text-muted-foreground'>Дата регистрации</p>
-								<p className='font-medium'>{formatter.dateTime(new Date(profile?.data.createdAt ?? ''), { dateStyle: 'short' })}</p>
+								<p className='font-medium'>{formatter.dateTime(new Date(profile?.createdAt ?? ''), { dateStyle: 'short' })}</p>
 							</div>
 							<div className='rounded-md bg-muted/20 px-4 py-2'>
 								<p className='text-xs text-muted-foreground'>Статус</p>

@@ -5,9 +5,9 @@ import { useFormatter } from 'next-intl'
 
 import { Card, CardContent, CardFooter, CardHeader, CardTitle, Container, Separator, Typography } from '@/components/ui/common'
 
-import { useProfile } from '@/hooks/useProfile'
-
 import { useOrderStore } from '@/store/useOrderStore'
+
+import { useProfile } from '@/shared/utils/contexts'
 
 import { OrderItem } from './OrderItem'
 
@@ -15,7 +15,7 @@ export function OrderList() {
 	const { items, deliveryType, total, discount, deliveryPrice } = useOrderStore()
 	const formatted = useFormatter()
 	const { profile } = useProfile()
-	const bonusPercentage = profile?.data.accountLoyalty.loyaltyLevel.bonusPercentage ?? 0
+	const bonusPercentage = profile?.accountLoyalty.loyaltyLevel.bonusPercentage ?? 0
 
 	const finalTotal = total + deliveryPrice
 

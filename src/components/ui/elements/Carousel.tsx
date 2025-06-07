@@ -3,7 +3,7 @@
 import { ArrowLeft, ArrowRight } from 'lucide-react'
 import React, { ComponentProps, ReactNode, createContext, useContext, useState } from 'react'
 
-import { cn } from '@/shared/utils'
+import { cn } from '@/shared/hooks/helpers'
 
 import { Button } from '../common'
 

@@ -6,11 +6,11 @@ import { ReactNode } from 'react'
 import { Button, Sheet, SheetContent, SheetDescription, SheetFooter, SheetHeader, SheetTitle, SheetTrigger, Typography } from '@/components/ui/common'
 
 import { useCart } from '@/hooks/useCart'
-import { useProfile } from '@/hooks/useProfile'
 
 import { useOrderStore } from '@/store/useOrderStore'
 
 import { ROUTE } from '@/shared/utils/constants/route'
+import { useProfile } from '@/shared/utils/contexts'
 
 import { CartItem } from './CartItem'
 
@@ -28,7 +28,7 @@ export function Cart({ children }: CartProps) {
 	const isEmpty = !cart?.data.items.length
 
 	const totalPrice = cart?.data.items.reduce((acc, item) => acc + item.product.price * item.quantity, 0)
-	const bonusPercentage = profile?.data.accountLoyalty.loyaltyLevel.bonusPercentage ?? 0
+	const bonusPercentage = profile?.accountLoyalty.loyaltyLevel.bonusPercentage ?? 0
 	const discount = totalPrice ? totalPrice * (bonusPercentage / 100) : 0
 	const totalWithDiscount = totalPrice ? totalPrice - discount : 0
 

@@ -32,8 +32,8 @@ export const setAccentColor = (color: AccentColors) => {
 
 	document.documentElement.style.setProperty(`--primary`, accentColor)
 
-	for (const color in accentColors) {
-		document.documentElement.style.setProperty(`--${color}-primary`, accentColors[color as AccentColors].primary)
-		document.documentElement.style.setProperty(`--${color}-primary-foreground`, accentColors[color as AccentColors].primaryForeground)
-	}
+	// for (const color in accentColors) {
+	// 	document.documentElement.style.setProperty(`--${color}-primary`, accentColors[color as AccentColors].primary)
+	// 	// document.documentElement.style.setProperty(`--${color}-primary-foreground`, accentColors[color as AccentColors].primaryForeground)
+	// }
 }

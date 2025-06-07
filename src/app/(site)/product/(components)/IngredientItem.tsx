@@ -3,7 +3,7 @@ import Image from 'next/image'
 import { Card, CardContent, Typography } from '@/components/ui/common'
 
 import { Ingredient } from '@/shared/api/types'
-import { getMediaSource } from '@/shared/utils'
+import { getMediaSource } from '@/shared/hooks/helpers'
 
 interface IngredientItemProps {
 	ingredient: Ingredient

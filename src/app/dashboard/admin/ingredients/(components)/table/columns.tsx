@@ -5,7 +5,7 @@ import { useFormatter } from 'next-intl'
 import { Avatar, AvatarFallback, AvatarImage, Button, Checkbox } from '@/components/ui/common'
 
 import { Ingredient } from '@/shared/api/types'
-import { getMediaSource } from '@/shared/utils'
+import { getMediaSource } from '@/shared/hooks/helpers'
 
 import { IngredientActions } from './IngredientAction'
 

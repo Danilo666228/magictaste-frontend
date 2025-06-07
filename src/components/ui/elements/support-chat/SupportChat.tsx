@@ -6,12 +6,11 @@ import { useEffect, useState } from 'react'
 import { Socket, io } from 'socket.io-client'
 import { v4 as uuidv4 } from 'uuid'
 
-import { useProfile } from '@/hooks/useProfile'
-
+import { checkAccessRoles } from '@/shared/api/helpers/accessRoles'
 import { Account } from '@/shared/api/types'
-import { getMediaSource } from '@/shared/utils'
-import { checkAccessRoles } from '@/shared/utils/accessRoles'
+import { getMediaSource } from '@/shared/hooks/helpers'
 import { SERVER_URL, SOCKET_SUPPORT_CHAT_URL } from '@/shared/utils/constants/env'
+import { useProfile } from '@/shared/utils/contexts'
 import { cn } from '@/shared/utils/twMerge'
 
 import { Avatar, AvatarFallback, AvatarImage, Button, Input } from '../../common'
@@ -42,11 +41,11 @@ export function SupportChat() {
 	const [isLoading, setIsLoading] = useState(true)
 
 	useEffect(() => {
-		if (!profile?.data?.id) return
+		if (!profile?.id) return
 
 		const socketInstance = io(SERVER_URL, {
 			path: SOCKET_SUPPORT_CHAT_URL,
-			auth: { userId: profile.data.id },
+			auth: { userId: profile.id },
 			withCredentials: true,
 			transports: ['websocket']
 		})
@@ -75,14 +74,14 @@ export function SupportChat() {
 		socketInstance.on('chatFinished', handleChatEnd('Чат завершен. Вы можете запросить поддержку снова.'))
 		socketInstance.on('chatClosed', handleChatEnd('Чат был закрыт администратором. Вы можете запросить поддержку снова.'))
 
-		socketInstance.emit('getUserChat', { userId: profile.data.id }, handleChatResponse)
+		socketInstance.emit('getUserChat', { userId: profile.id }, handleChatResponse)
 
-		socketInstance.emit('getChatHistory', { userId: profile.data.id }, handleChatHistoryResponse)
+		socketInstance.emit('getChatHistory', { userId: profile.id }, handleChatHistoryResponse)
 
 		return () => {
 			socketInstance.disconnect()
 		}
-	}, [profile?.data?.id])
+	}, [profile?.id])
 
 	const handleChatEnd = (messageText: string) => () => {
 		setSupport(null)
@@ -128,10 +127,10 @@ export function SupportChat() {
 	}
 
 	const requestSupport = () => {
-		if (!socket || !isConnected || !profile?.data?.id) return
+		if (!socket || !isConnected || !profile?.id) return
 
 		setIsLoading(true)
-		socket.emit('startChat', { userId: profile.data.id }, (response: { success: boolean; chat: any }) => {
+		socket.emit('startChat', { userId: profile.id }, (response: { success: boolean; chat: any }) => {
 			setIsLoading(false)
 			if (response.success) {
 				setChatStarted(true)
@@ -142,12 +141,12 @@ export function SupportChat() {
 
 	const handleSubmit = (e: React.FormEvent) => {
 		e.preventDefault()
-		if (!message.trim() || !socket || !isConnected || !profile?.data?.id) return
+		if (!message.trim() || !socket || !isConnected || !profile?.id) return
 
 		const messageId = uuidv4()
 		const messageData = {
 			content: message,
-			sender: profile.data,
+			sender: profile,
 			receiver: support || { id: 'support' },
 			createdAt: new Date(),
 			updatedAt: new Date()
@@ -156,8 +155,8 @@ export function SupportChat() {
 		const localMessage: Message = {
 			id: messageId,
 			message: message,
-			senderId: profile.data.id,
-			sender: profile.data,
+			senderId: profile.id,
+			sender: profile,
 			receiverId: support?.id || 'support',
 			createdAt: new Date(),
 			updatedAt: new Date()
@@ -169,7 +168,7 @@ export function SupportChat() {
 		socket.emit('sendMessage', messageData, (response: { success: boolean; message: Message }) => {})
 	}
 
-	if (!profile?.data) {
+	if (!profile) {
 		return (
 			<ExpandableChat icon={<MessageCircle />}>
 				<ExpandableChatBody>
@@ -181,7 +180,7 @@ export function SupportChat() {
 
 	if (
 		checkAccessRoles(
-			profile.data.roles.map(role => role.name),
+			profile.roles.map(role => role.name),
 			['SUPER_ADMIN']
 		)
 	)
@@ -244,7 +243,7 @@ export function SupportChat() {
 								key={msg.id}
 								className={cn(
 									'flex items-start gap-2',
-									msg.senderId === 'system' ? 'justify-center' : msg.senderId === profile.data.id ? 'flex-row-reverse' : 'flex-row'
+									msg.senderId === 'system' ? 'justify-center' : msg.senderId === profile.id ? 'flex-row-reverse' : 'flex-row'
 								)}>
 								{msg.senderId === 'system' ? (
 									<div className='my-2 rounded-lg bg-gray-100 px-4 py-2 text-center text-sm text-gray-600'>{msg.message}</div>
@@ -253,14 +252,10 @@ export function SupportChat() {
 										<Avatar
 											className={cn(
 												'flex-shrink-0 border',
-												msg.senderId === profile.data.id ? 'border-blue-200' : 'border-indigo-200 bg-indigo-100'
+												msg.senderId === profile.id ? 'border-blue-200' : 'border-indigo-200 bg-indigo-100'
 											)}>
 											<AvatarImage
-												src={
-													msg.senderId === profile.data.id
-														? getMediaSource(profile.data?.picture)
-														: getMediaSource(support?.picture)
-												}
+												src={msg.senderId === profile.id ? getMediaSource(profile.picture) : getMediaSource(support?.picture)}
 											/>
 											<AvatarFallback className='bg-indigo-600 text-white'>
 												{msg.sender?.userName?.slice(0, 2).toUpperCase()}
@@ -269,12 +264,12 @@ export function SupportChat() {
 										<div
 											className={cn(
 												'flex max-w-[75%] flex-col text-sm',
-												msg.senderId === profile.data.id ? 'items-end' : 'items-start'
+												msg.senderId === profile.id ? 'items-end' : 'items-start'
 											)}>
 											<div
 												className={cn(
 													'w-fit max-w-full break-words rounded-2xl p-3 shadow-sm',
-													msg.senderId === profile.data.id
+													msg.senderId === profile.id
 														? 'rounded-tr-none bg-blue-600 text-white'
 														: 'rounded-tl-none bg-white text-gray-800'
 												)}>

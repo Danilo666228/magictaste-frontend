@@ -95,6 +95,8 @@ export function DeliveryAddressForm() {
 							className='overflow-hidden'>
 							<div className='mt-4 overflow-hidden rounded-xl border border-gray-200'>
 								<YandexMap
+									initialCoordinates={{ latitude: 59.9386, longitude: 30.3141 }}
+									showGeolocationControl
 									onLocationSelect={data => {
 										form.setValue('city', data.address?.city ?? '')
 										form.setValue('street', data.address?.street ?? '')

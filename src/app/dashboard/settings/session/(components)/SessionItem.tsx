@@ -5,10 +5,10 @@ import { ComponentProps } from 'react'
 
 import { Badge, Button, Card, CardContent } from '@/components/ui/common'
 
+import { getBrowserIcon } from '@/shared/api/helpers/getBrowseIcon'
 import { useDeleteSessionMutation } from '@/shared/api/hooks/session/useDeleteSessionMutation'
 import { Session } from '@/shared/api/types'
-import { cn } from '@/shared/utils'
-import { getBrowserIcon } from '@/shared/utils/getBrowseIcon'
+import { cn } from '@/shared/hooks/helpers'
 
 import { SessionInfo } from './SessionInfo'
 

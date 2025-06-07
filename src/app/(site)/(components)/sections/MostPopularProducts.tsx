@@ -6,7 +6,7 @@ import { Typography } from '@/components/ui/common/Typography'
 
 import { api } from '@/shared/api/instance'
 import { Product } from '@/shared/api/types'
-import { getMediaSource } from '@/shared/utils'
+import { getMediaSource } from '@/shared/hooks/helpers'
 import { ROUTE } from '@/shared/utils/constants/route'
 
 async function getPopularProducts() {

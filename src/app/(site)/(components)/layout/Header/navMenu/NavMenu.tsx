@@ -4,7 +4,7 @@ import { ComponentProps } from 'react'
 
 import { NavigationMenu, NavigationMenuList } from '@/components/ui/common'
 
-import { cn } from '@/shared/utils'
+import { cn } from '@/shared/hooks/helpers'
 
 import { NavigationAbout } from './NavigationItems/NavigationAbout'
 import { NavigationCatalog } from './NavigationItems/NavigationCatalog'

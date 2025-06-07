@@ -41,9 +41,8 @@ import {
 	Typography
 } from '@/components/ui/common'
 
-import { useProfile } from '@/hooks/useProfile'
-
-import { checkAccessRoles } from '@/shared/utils/accessRoles'
+import { checkAccessRoles } from '@/shared/api/helpers/accessRoles'
+import { useProfile } from '@/shared/utils/contexts'
 
 interface DataTableProps<TData, TValue> {
 	columns: ColumnDef<TData, TValue>[]
@@ -104,7 +103,7 @@ export function DataTable<TData, TValue>({
 		}
 	})
 
-	if (!profile?.data) return null
+	if (!profile) return null
 
 	return (
 		<div className='space-y-4'>
@@ -119,7 +118,7 @@ export function DataTable<TData, TValue>({
 							{filterKey && (
 								<>
 									{checkAccessRoles(
-										profile?.data.roles.map(role => role.name),
+										profile.roles.map(role => role.name),
 										['SUPER_ADMIN', 'ADMIN']
 									) && <div className='flex items-center gap-2'>{createModal}</div>}
 
@@ -186,7 +185,7 @@ export function DataTable<TData, TValue>({
 												<TableCell key={cell.id}>{flexRender(cell.column.columnDef.cell, cell.getContext())}</TableCell>
 											))}
 											{checkAccessRoles(
-												(profile?.data.roles ?? []).map(role => role.name),
+												(profile.roles ?? []).map(role => role.name),
 												['SUPER_ADMIN', 'ADMIN']
 											) && (
 												<TableCell className='text-right'>

@@ -4,7 +4,7 @@ import { useFormatter } from 'next-intl'
 import { Avatar, AvatarFallback, AvatarImage, Card, CardContent, CardDescription, CardHeader, CardTitle, ScrollArea } from '@/components/ui/common'
 
 import { DashboardStatisticsData } from '@/shared/api/types/statistics'
-import { cn, getMediaSource } from '@/shared/utils'
+import { cn, getMediaSource } from '@/shared/hooks/helpers'
 
 interface ChartListActivityProps {
 	activityFeed: DashboardStatisticsData['activityFeed']

@@ -21,7 +21,7 @@ import { SortableHeader } from '@/components/ui/elements/table/SortableHeader'
 
 import { getRoleName } from '@/shared/api/helpers/getRoleName'
 import { Account, Role } from '@/shared/api/types'
-import { getMediaSource } from '@/shared/utils'
+import { getMediaSource } from '@/shared/hooks/helpers'
 
 export interface AccountColumn extends Account {
 	actions?: string

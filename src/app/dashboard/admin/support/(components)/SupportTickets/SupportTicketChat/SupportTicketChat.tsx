@@ -6,11 +6,10 @@ import { Socket } from 'socket.io-client'
 
 import { Avatar, AvatarFallback, AvatarImage, Button, Textarea, Typography } from '@/components/ui/common'
 
-import { useProfile } from '@/hooks/useProfile'
-
 import { Account } from '@/shared/api/types'
 import { Message } from '@/shared/api/types/supportChat'
-import { getMediaSource } from '@/shared/utils'
+import { getMediaSource } from '@/shared/hooks/helpers'
+import { useProfile } from '@/shared/utils/contexts'
 import { cn } from '@/shared/utils/twMerge'
 
 interface SupportTicketChatProps {
@@ -29,7 +28,7 @@ export function SupportTicketChat({ socket, selectedTicket, onClose }: SupportTi
 	const messagesEndRef = useRef<HTMLDivElement>(null)
 
 	useEffect(() => {
-		if (!socket || !selectedTicket || !profile?.data) return
+		if (!socket || !selectedTicket || !profile) return
 
 		setIsLoading(true)
 
@@ -57,18 +56,18 @@ export function SupportTicketChat({ socket, selectedTicket, onClose }: SupportTi
 		return () => {
 			socket.off('newMessage', handleNewMessage)
 		}
-	}, [socket, selectedTicket, profile?.data])
+	}, [socket, selectedTicket, profile])
 
 	const handleSubmit = async (e: React.FormEvent) => {
 		e.preventDefault()
-		if (!socket || !newMessage.trim() || !profile?.data || isSending) return
+		if (!socket || !newMessage.trim() || !profile || isSending) return
 
 		try {
 			setIsSending(true)
 
 			const messageData = {
 				content: newMessage.trim(),
-				sender: profile.data,
+				sender: profile,
 				receiver: selectedTicket,
 				createdAt: new Date(),
 				updatedAt: new Date()
@@ -146,12 +145,12 @@ export function SupportTicketChat({ socket, selectedTicket, onClose }: SupportTi
 							key={message.id || index}
 							className={cn(
 								'mb-2 flex flex-wrap items-start gap-2',
-								message.senderId === profile?.data.id ? 'flex-row-reverse' : 'flex-row'
+								message.senderId === profile?.id ? 'flex-row-reverse' : 'flex-row'
 							)}>
-							{message.senderId === profile?.data.id ? (
+							{message.senderId === profile?.id ? (
 								<Avatar className='flex-shrink-0'>
-									<AvatarImage src={getMediaSource(profile.data.picture)} />
-									<AvatarFallback>{profile.data.userName.slice(0, 2)}</AvatarFallback>
+									<AvatarImage src={getMediaSource(profile.picture)} />
+									<AvatarFallback>{profile.userName.slice(0, 2)}</AvatarFallback>
 								</Avatar>
 							) : (
 								<Avatar className='flex-shrink-0'>
@@ -159,11 +158,11 @@ export function SupportTicketChat({ socket, selectedTicket, onClose }: SupportTi
 									<AvatarFallback>{selectedTicket.userName.slice(0, 2)}</AvatarFallback>
 								</Avatar>
 							)}
-							<div className={cn('flex max-w-[75%] flex-col', message.senderId === profile?.data.id ? 'items-end' : 'items-start')}>
+							<div className={cn('flex max-w-[75%] flex-col', message.senderId === profile?.id ? 'items-end' : 'items-start')}>
 								<div
 									className={cn(
 										'w-fit max-w-full break-words rounded-t-2xl p-2 text-sm',
-										message.senderId === profile?.data.id ? 'rounded-bl-2xl bg-blue-100' : 'rounded-br-2xl bg-gray-200'
+										message.senderId === profile?.id ? 'rounded-bl-2xl bg-blue-100' : 'rounded-br-2xl bg-gray-200'
 									)}>
 									{message.message}
 								</div>

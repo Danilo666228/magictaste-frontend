@@ -18,22 +18,26 @@ interface ProfileProviderProps {
 export const ProfileProvider = ({ children }: ProfileProviderProps) => {
 	const router = useRouter()
 	const isAuthStorage = useLocalStorage('isAuth', 'false')
-	const profileQuery = useGetProfileQuery()
+
+	const profileQuery = useGetProfileQuery({
+		options: {
+			enabled: Boolean(isAuthStorage.value)
+		}
+	})
 	const clearSessionMutation = useClearSessionMutation()
 	const logoutMutation = useLogoutMutation()
 
 	const setIsAuth = (value: boolean) => {
-		isAuthStorage.set(value ? 'true' : 'false')
+		isAuthStorage.set(value.toString())
 	}
 
-	const logout = () => {
-		logoutMutation.mutate({})
+	const logout = async () => {
+		await logoutMutation.mutateAsync({})
 		isAuthStorage.set('false')
 		router.push(ROUTE.auth.signIn)
 	}
 
 	useEffect(() => {
-		isAuthStorage.set('true')
 		if (profileQuery.error) {
 			isAuthStorage.set('false')
 			clearSessionMutation.mutate({})
@@ -42,12 +46,12 @@ export const ProfileProvider = ({ children }: ProfileProviderProps) => {
 	}, [profileQuery.error])
 
 	const value: ProfileContextProps = {
+		profileQuery,
 		profile: profileQuery.data?.data,
-		isPending: profileQuery.isPending,
 		isAuth: Boolean(isAuthStorage.value),
 		setIsAuth,
 		logout
 	}
 
-	return <ProfileContext.Provider value={value}>{children}</ProfileContext.Provider>
+	return <ProfileContext value={value}>{children}</ProfileContext>
 }

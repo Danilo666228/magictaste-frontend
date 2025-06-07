@@ -29,7 +29,7 @@ interface YandexMapProps {
 	defaultZoom?: number
 	height?: string | number
 	width?: string | number
-	onLocationSelect?: (data: { coordinates: Coordinates; address: AddressDetails | null }) => void
+	onLocationSelect?: (data: { coordinates: Coordinates; address: AddressDetails | undefined }) => void
 	markerPreset?: string
 	showGeolocationControl?: boolean
 	readonly?: boolean
@@ -117,7 +117,7 @@ export function YandexMap({
 						latitude: coords[0],
 						longitude: coords[1]
 					},
-					address: null
+					address: undefined
 				})
 			}
 		},

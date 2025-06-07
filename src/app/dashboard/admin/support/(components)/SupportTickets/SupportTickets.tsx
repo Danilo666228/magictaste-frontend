@@ -6,10 +6,9 @@ import { Socket, io } from 'socket.io-client'
 import { Heading, ResizableHandle, ResizablePanel, ResizablePanelGroup } from '@/components/ui/common'
 import { SearchInput } from '@/components/ui/elements/input/SearchInput'
 
-import { useProfile } from '@/hooks/useProfile'
-
 import { Account } from '@/shared/api/types'
 import { SERVER_URL, SOCKET_SUPPORT_CHAT_URL } from '@/shared/utils/constants/env'
+import { useProfile } from '@/shared/utils/contexts'
 
 import { SupportTicketChat } from './SupportTicketChat/SupportTicketChat'
 import { SupportTicketList } from './SupportTicketList'
@@ -21,12 +20,12 @@ export function SupportTickets() {
 	const { profile } = useProfile()
 
 	useEffect(() => {
-		if (!profile?.data.id) return
+		if (!profile?.id) return
 
 		const socket = io(SERVER_URL, {
 			path: SOCKET_SUPPORT_CHAT_URL,
 			auth: {
-				userId: profile.data.id
+				userId: profile.id
 			},
 			withCredentials: true,
 			transports: ['websocket']
@@ -39,15 +38,15 @@ export function SupportTickets() {
 		return () => {
 			socket.disconnect()
 		}
-	}, [profile?.data.id])
+	}, [profile?.id])
 
 	const handleTicketClick = (ticket: Account) => {
 		setSelectedTicket(ticket)
 
-		if (socket && profile?.data.id) {
+		if (socket && profile?.id) {
 			socket.emit('assignChat', {
 				userId: ticket.id,
-				supportId: profile.data.id
+				supportId: profile.id
 			})
 		}
 	}

@@ -7,7 +7,7 @@ import { Typography } from '@/components/ui/common'
 import { Carousel, CarouselContent, CarouselDots, CarouselItem, CarouselNext, CarouselPrevious } from '@/components/ui/common/Сarousel'
 
 import { Ingredient } from '@/shared/api/types'
-import { cn } from '@/shared/utils'
+import { cn } from '@/shared/hooks/helpers'
 
 import { IngredientItem } from './IngredientItem'
 

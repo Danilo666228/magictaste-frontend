@@ -5,7 +5,7 @@ import { Typography } from '@/components/ui/common'
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/common/Avatar'
 
 import { ProductComment } from '@/shared/api/types/product-comment'
-import { getMediaSource } from '@/shared/utils'
+import { getMediaSource } from '@/shared/hooks/helpers'
 
 interface ReplyItemProps {
 	comment: ProductComment

@@ -5,7 +5,7 @@ import { usePathname } from 'next/navigation'
 
 import { NavigationMenuItem } from '@/components/ui/common'
 
-import { cn } from '@/shared/utils'
+import { cn } from '@/shared/hooks/helpers'
 import { ROUTE } from '@/shared/utils/constants/route'
 
 export function NavigationMain() {

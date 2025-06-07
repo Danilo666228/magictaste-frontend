@@ -11,12 +11,12 @@ import { Button, Container, Typography } from '@/components/ui/common'
 import { useAuth } from '@/hooks/useAuth'
 import { useCart } from '@/hooks/useCart'
 import { useFavorite } from '@/hooks/useFavorite'
-import { useProfile } from '@/hooks/useProfile'
 
+import { isActiveFavorite } from '@/shared/api/helpers/is-active-favorite'
 import { Product } from '@/shared/api/types'
 import { useShare } from '@/shared/hooks'
-import { cn, getMediaSource } from '@/shared/utils'
-import { isActiveFavorite } from '@/shared/utils/favorite/is-active-favorite'
+import { cn, getMediaSource } from '@/shared/hooks/helpers'
+import { useProfile } from '@/shared/utils/contexts'
 
 import { IngredientList } from '../../(components)/IngredientList'
 
@@ -143,7 +143,7 @@ export function ProductInfo({ product }: ProductInfoProps) {
 									variant='outline'
 									className={cn(
 										'dark:hover:bg-rose-950/30) aspect-square p-0 transition-colors hover:border-rose-200 hover:bg-rose-50 hover:text-rose-500',
-										isActiveFavorite(profile?.data, product) && 'bg-rose-50 text-rose-500'
+										isActiveFavorite(profile, product) && 'bg-rose-50 text-rose-500'
 									)}>
 									<Heart className='h-5 w-5' />
 								</Button>

@@ -22,7 +22,7 @@ import { ImageUpload } from '@/components/ui/elements/image-upload/ImageUpload'
 import { Modal } from '@/components/ui/elements/modal/Default/Modal'
 
 import { useChangeAvatarMutation } from '@/shared/api/hooks/account/useChangeAvatarMutation'
-import { getMediaSource } from '@/shared/utils'
+import { getMediaSource } from '@/shared/hooks/helpers'
 import { cn } from '@/shared/utils/twMerge'
 
 import { useChangeAvatarForm } from '../../(hooks)/useChangeAvatarForm'
@@ -40,7 +40,7 @@ export function ChangeAvatarForm() {
 
 	const handleAvatarClick = () => inputRef.current?.click()
 
-	const hasAvatar = Boolean(profile?.data.picture)
+	const hasAvatar = Boolean(profile?.picture)
 
 	const [isOpen, setIsOpen] = useState(false)
 	if (isPending) return <ChangeAvatarFormSkeleton />
@@ -73,7 +73,7 @@ export function ChangeAvatarForm() {
 								}}
 							/>
 						</Modal>
-						<AvatarImage src={getMediaSource(profile?.data.picture)} />
+						<AvatarImage src={getMediaSource(profile?.picture)} />
 						<AvatarFallback className='bg-muted/50'>
 							<Typography className='text-center text-sm text-muted-foreground'>Фото отсутствует</Typography>
 						</AvatarFallback>

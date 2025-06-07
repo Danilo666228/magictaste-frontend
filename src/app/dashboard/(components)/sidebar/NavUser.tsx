@@ -21,19 +21,17 @@ import {
 	useSidebar
 } from '@/components/ui/common'
 
-import { getMediaSource } from '@/shared/utils'
+import { getMediaSource } from '@/shared/hooks/helpers'
 import { ROUTE } from '@/shared/utils/constants'
 import { useProfile } from '@/shared/utils/contexts'
 
 export function NavUser() {
 	const router = useRouter()
 	const { isMobile } = useSidebar()
-	// const { handleLogout } = useAuth()
-	// const { profile, isPending, logout } = useProfile()
 
-	const { profile, logout, isPending } = useProfile()
+	const { profile, logout, profileQuery } = useProfile()
 
-	if (isPending) return <NavUserSkeleton />
+	if (profileQuery.isPending) return <NavUserSkeleton />
 
 	return (
 		<SidebarMenu>

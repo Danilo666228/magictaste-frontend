@@ -4,7 +4,7 @@ import { useFormatter } from 'next-intl'
 
 import { Avatar, AvatarFallback, AvatarImage, Badge, Typography } from '@/components/ui/common'
 
-import { getMediaSource } from '@/shared/utils'
+import { getMediaSource } from '@/shared/hooks/helpers'
 import { cn } from '@/shared/utils/twMerge'
 
 interface SupportTicketItemProps {

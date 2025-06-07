@@ -9,10 +9,11 @@ import { Button, Typography } from '@/components/ui/common'
 
 import { useCart } from '@/hooks/useCart'
 import { useFavorite } from '@/hooks/useFavorite'
-import { useProfile } from '@/hooks/useProfile'
 
+import { isActiveFavorite } from '@/shared/api/helpers/is-active-favorite'
 import { Favorite } from '@/shared/api/types'
 import { ROUTE } from '@/shared/utils/constants/route'
+import { useProfile } from '@/shared/utils/contexts'
 import { cn } from '@/shared/utils/twMerge'
 
 interface FavoriteListProps {
@@ -20,7 +21,6 @@ interface FavoriteListProps {
 }
 
 export function FavoriteList({ favorites }: FavoriteListProps) {
-	const queryClient = useQueryClient()
 	const formatter = useFormatter()
 	const { profile } = useProfile()
 	const { toggleFavorite } = useFavorite()
@@ -81,7 +81,7 @@ export function FavoriteList({ favorites }: FavoriteListProps) {
 										size={20}
 										className={cn(
 											'transition-transform',
-											profile?.data.favorites.some(fav => fav.product.id === favorite.product.id) && 'fill-red-500 text-red-500'
+											isActiveFavorite(profile, favorite.product) && 'fill-red-500 text-red-500'
 										)}
 									/>
 								</Button>

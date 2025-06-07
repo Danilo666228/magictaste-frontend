@@ -4,7 +4,7 @@ import { usePathname } from 'next/navigation'
 
 import { SidebarGroup, SidebarGroupLabel, SidebarMenu } from '@/components/ui/common'
 
-import { useProfile } from '@/hooks/useProfile'
+import { useProfile } from '@/shared/utils/contexts'
 
 import { navigationConfig } from '../navigation.config'
 
@@ -12,9 +12,9 @@ import { NavigationItem } from './NavigationItem'
 import { filterItemsByRole, getGroupLabel, groupNavigationItems } from './utils'
 
 export function Navigation() {
-	const { profile, isPending } = useProfile()
+	const { profile } = useProfile()
 	const pathname = usePathname()
-	const userRoles = profile?.data.roles.map(role => role.name) || []
+	const userRoles = profile?.roles.map(role => role.name) || []
 
 	const filteredItems = filterItemsByRole(navigationConfig, userRoles)
 	const groupedItems = groupNavigationItems(filteredItems)

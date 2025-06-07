@@ -9,10 +9,10 @@ import { Avatar, AvatarFallback, AvatarImage, Button, Popover, PopoverContent, P
 import { Modal } from '@/components/ui/elements/modal/Default/Modal'
 
 import { useAuth } from '@/hooks/useAuth'
-import { useProfile } from '@/hooks/useProfile'
 
 import { ProductComment } from '@/shared/api/types/product-comment'
-import { getMediaSource } from '@/shared/utils'
+import { getMediaSource } from '@/shared/hooks/helpers'
+import { useProfile } from '@/shared/utils/contexts'
 
 import { useProductComments } from '../../../(hooks)/useProductComment'
 
@@ -29,7 +29,7 @@ export function ProductCommentItem({ comment, index }: ProductCommentItemProps) 
 	const formatter = useFormatter()
 	const { removeComment } = useProductComments(comment.product.id)
 	const { isAuth } = useAuth()
-	const isOwnerComment = comment.account.id === profile?.data.id
+	const isOwnerComment = comment.account.id === profile?.id
 	const [isShowReplyComment, setIsShowReplyComment] = useState(false)
 	const [isOpenReplyForm, setIsOpenReplyForm] = useState(false)
 

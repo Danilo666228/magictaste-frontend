@@ -6,7 +6,7 @@ import { usePathname } from 'next/navigation'
 import { NavigationMenuContent, NavigationMenuItem, NavigationMenuTrigger, Typography } from '@/components/ui/common'
 
 import { useGetCategoryQuery } from '@/shared/api/hooks/category/useGetCategoryQuery'
-import { cn } from '@/shared/utils'
+import { cn } from '@/shared/hooks/helpers'
 import { ROUTE } from '@/shared/utils/constants/route'
 
 export function NavigationCatalog() {

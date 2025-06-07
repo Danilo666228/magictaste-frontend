@@ -11,13 +11,13 @@ import { Button, Dialog, DialogContent, DialogDescription, DialogTitle, Typograp
 
 import { useAuth } from '@/hooks/useAuth'
 import { useCart } from '@/hooks/useCart'
-import { useProfile } from '@/hooks/useProfile'
 
+import { isActiveFavorite } from '@/shared/api/helpers/is-active-favorite'
 import { useToggleFavoriteMutation } from '@/shared/api/hooks/favorite/useToggleFavoriteMutation'
 import { Product } from '@/shared/api/types'
-import { cn, getMediaSource } from '@/shared/utils'
+import { cn, getMediaSource } from '@/shared/hooks/helpers'
 import { ROUTE } from '@/shared/utils/constants/route'
-import { isActiveFavorite } from '@/shared/utils/favorite/is-active-favorite'
+import { useProfile } from '@/shared/utils/contexts'
 
 interface ProductModalProps {
 	product: Product
@@ -77,12 +77,9 @@ export function ProductModal({ product }: ProductModalProps) {
 							<Button
 								onClick={handleClickAddFavorite}
 								variant='outline'
-								className={cn(
-									'group h-9 w-full hover:bg-red-300/20 sm:w-12',
-									isActiveFavorite(profile?.data, product) && 'bg-red-300/20'
-								)}
+								className={cn('group h-9 w-full hover:bg-red-300/20 sm:w-12', isActiveFavorite(profile, product) && 'bg-red-300/20')}
 								size='icon'>
-								<Heart className={cn('group-hover:text-red-500', isActiveFavorite(profile?.data, product) && 'text-red-500')} />
+								<Heart className={cn('group-hover:text-red-500', isActiveFavorite(profile, product) && 'text-red-500')} />
 							</Button>
 						</div>
 						<div className='flex flex-col justify-between gap-3 sm:flex-row sm:gap-10'>

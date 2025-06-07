@@ -19,7 +19,7 @@ import {
 	useSidebar
 } from '@/components/ui/common'
 
-import { cn } from '@/shared/utils'
+import { cn } from '@/shared/hooks/helpers'
 
 import { NavigationItemProps } from './types'
 

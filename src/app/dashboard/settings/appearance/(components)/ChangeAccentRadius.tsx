@@ -4,7 +4,7 @@ import { SquareRoundCorner } from 'lucide-react'
 
 import { Button, Card, CardContent, CardDescription, CardHeader, CardTitle, Slider } from '@/components/ui/common'
 
-import { cn } from '@/shared/utils'
+import { cn } from '@/shared/hooks/helpers'
 import { RoundedRadius, useConfig } from '@/shared/utils/contexts'
 import { getRadiusName, getRadiusValue } from '@/shared/utils/contexts/config/utils/radius'
 
@@ -31,7 +31,7 @@ export function ChangeAccentRadius() {
 						<SquareRoundCorner className='text-primary' />
 					</div>
 					<div>
-						<CardTitle className='text-xl font-medium'>Закругление углов</CardTitle>
+						<CardTitle className='text-xl'>Закругление углов</CardTitle>
 						<CardDescription>Выберите предпочитаемый радиус закругления для вашего приложения</CardDescription>
 					</div>
 				</div>

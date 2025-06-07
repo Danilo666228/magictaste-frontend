@@ -1,5 +1,5 @@
+import { checkAccessRoles } from '@/shared/api/helpers/accessRoles'
 import { RoleName } from '@/shared/api/types'
-import { checkAccessRoles } from '@/shared/utils/accessRoles'
 
 import { NavigationGroup, NavigationItem } from './types'
 

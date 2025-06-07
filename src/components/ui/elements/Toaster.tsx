@@ -4,11 +4,10 @@ import { useTheme } from 'next-themes'
 import { useEffect } from 'react'
 import { Toaster as Sonner, toast } from 'sonner'
 
-import { useProfile } from '@/hooks/useProfile'
-
 import { useNotificationsWebSocketStore } from '@/store/useNotificationsWebSocketStore'
 
-import { cn } from '@/shared/utils'
+import { cn } from '@/shared/hooks/helpers'
+import { useProfile } from '@/shared/utils/contexts'
 import { useConfig } from '@/shared/utils/contexts'
 import { fonts } from '@/shared/utils/contexts/config/utils/fonts'
 
@@ -21,14 +20,14 @@ const Toaster = ({ ...props }: ToasterProps) => {
 	const { initSocket, disconnectSocket, toastMessages, clearToastMessages } = useNotificationsWebSocketStore()
 
 	useEffect(() => {
-		if (profile?.data.id) {
-			initSocket(profile.data.id)
+		if (profile?.id) {
+			initSocket(profile.id)
 		}
 
 		return () => {
 			disconnectSocket()
 		}
-	}, [profile?.data.id, initSocket, disconnectSocket])
+	}, [profile?.id, initSocket, disconnectSocket])
 
 	useEffect(() => {
 		if (toastMessages.length > 0) {

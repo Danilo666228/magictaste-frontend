@@ -7,7 +7,7 @@ import { Button, Typography } from '@/components/ui/common'
 import { useCart } from '@/hooks/useCart'
 
 import { useHover } from '@/shared/hooks'
-import { cn } from '@/shared/utils'
+import { cn } from '@/shared/hooks/helpers'
 
 import { Cart } from './Cart'
 

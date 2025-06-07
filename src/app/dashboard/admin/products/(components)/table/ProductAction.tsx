@@ -15,9 +15,8 @@ import {
 import { ImageUpload } from '@/components/ui/elements/image-upload/ImageUpload'
 import { Modal } from '@/components/ui/elements/modal/Default/Modal'
 
-import { useProfile } from '@/hooks/useProfile'
-
 import { useChangeProductImageMutation } from '@/shared/api/hooks/products/useChangeProductImageMutation'
+import { useProfile } from '@/shared/utils/contexts'
 
 import { ChangeStatusSale } from './actions/ChangeStatusSale'
 import { DeleteProductMenuItem } from './actions/DeleteProductMenuItem'
@@ -52,7 +51,7 @@ export function ProductsActions({ row }: ProductsActions) {
 			<DropdownMenuContent align='center'>
 				<DropdownMenuLabel>Действие</DropdownMenuLabel>
 				<DropdownMenuSeparator />
-				{profile?.data?.roles.some(role => role.name === 'SUPER_ADMIN') && <DeleteProductMenuItem productId={row.original.id} />}
+				{profile?.roles.some(role => role.name === 'SUPER_ADMIN') && <DeleteProductMenuItem productId={row.original.id} />}
 				<Modal
 					title='Изменение изображения'
 					description='Выберите изображение для категории'

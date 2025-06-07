@@ -18,14 +18,13 @@ import {
 	Typography
 } from '@/components/ui/common'
 
-import { useProfile } from '@/hooks/useProfile'
-
 import { TypeCheckoutSchema } from '@/schemas/checkout/checkout'
 
 import { useOrderStore } from '@/store/useOrderStore'
 
 import { DeliveryType } from '@/shared/api/types/payment'
-import { cn } from '@/shared/utils'
+import { cn } from '@/shared/hooks/helpers'
+import { useProfile } from '@/shared/utils/contexts'
 
 import { useCheckoutForm } from '../../(hooks)/useCheckoutForm'
 
@@ -40,7 +39,7 @@ export function DeliveryField({ form }: DeliveryFieldProps) {
 	const { profile } = useProfile()
 	const checkoutForm = useCheckoutForm()
 	const { setDeliveryPrice, setDeliveryType } = useOrderStore()
-	const bonusPecrentage = profile?.data.accountLoyalty.loyaltyLevel.bonusPercentage ?? 0
+	const bonusPecrentage = profile?.accountLoyalty.loyaltyLevel.bonusPercentage ?? 0
 	const isDeliveryFree = bonusPecrentage >= 3
 
 	const [isDeliveryAddress, setIsDeliveryAddress] = useState(true)

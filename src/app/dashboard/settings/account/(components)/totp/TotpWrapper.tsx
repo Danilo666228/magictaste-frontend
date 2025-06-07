@@ -5,18 +5,17 @@ import { ShieldCheck, ShieldX, Smartphone } from 'lucide-react'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle, Typography } from '@/components/ui/common'
 import { Skeleton } from '@/components/ui/common/Skeleton'
 
-import { useProfile } from '@/hooks/useProfile'
-
+import { useProfile } from '@/shared/utils/contexts'
 import { cn } from '@/shared/utils/twMerge'
 
 import { DisableTotp } from './DisableTotp'
 import { EnableTotp } from './EnableTotp'
 
 export function TotpWrapper() {
-	const { profile, isPending } = useProfile()
-	const isEnabled = profile?.data.accountSettings.isTwoFactorTotpEnabled
+	const { profile, profileQuery } = useProfile()
+	const isEnabled = profile?.accountSettings.isTwoFactorTotpEnabled
 
-	return isPending ? (
+	return profileQuery.isPending ? (
 		<WrapperTotpSkeleton />
 	) : (
 		<Card className='flex h-full flex-col border shadow-sm transition-all hover:shadow-md'>

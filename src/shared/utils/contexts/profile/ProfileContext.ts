@@ -1,12 +1,14 @@
 'use client'
 
+import { FetchesResponse } from '@siberiacancode/fetches'
+import { UseQueryResult } from '@tanstack/react-query'
 import { createContext } from 'react'
 
 import { Account } from '@/shared/api/types'
 
 export interface ProfileContextProps {
+	profileQuery: UseQueryResult<FetchesResponse<Account>, Error>
 	profile: Account | undefined
-	isPending: boolean
 	isAuth: boolean
 	setIsAuth: (value: boolean) => void
 	logout: () => void

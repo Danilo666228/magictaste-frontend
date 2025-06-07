@@ -1,6 +1,6 @@
 import { useMemo } from 'react'
 
-import { debounce } from '@/shared/utils'
+import { debounce } from '@/shared/hooks/helpers'
 
 import { useEvent } from '../useEvent/useEvent'
 

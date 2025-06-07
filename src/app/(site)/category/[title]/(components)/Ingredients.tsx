@@ -5,7 +5,7 @@ import { ComponentProps } from 'react'
 import { Badge, Button, Popover, PopoverContent, PopoverTrigger, Skeleton } from '@/components/ui/common'
 
 import { Ingredient } from '@/shared/api/types'
-import { getMediaSource } from '@/shared/utils'
+import { getMediaSource } from '@/shared/hooks/helpers'
 import { cn } from '@/shared/utils/twMerge'
 
 interface IngredientsProps extends ComponentProps<'div'> {

@@ -30,7 +30,7 @@ export function ChangeFontSettings() {
 						<TypeOutline className='text-primary' />
 					</div>
 					<div>
-						<CardTitle className='text-xl font-medium'>Настройки шрифта</CardTitle>
+						<CardTitle className='text-xl'>Настройки шрифта</CardTitle>
 						<CardDescription>Выберите предпочитаемый шрифт для вашего приложения</CardDescription>
 					</div>
 				</div>
