@@ -1,6 +1,7 @@
+import { useMutation } from '@tanstack/react-query'
+
 import { CreateCategoryRequestConfig } from '../../request'
 import { createCategory } from '../../request/category'
-import { useMutation } from '@tanstack/react-query'
 
 export const useCreateCategoryMutation = (settings?: MutationSettings<CreateCategoryRequestConfig, typeof createCategory>) =>
 	useMutation({

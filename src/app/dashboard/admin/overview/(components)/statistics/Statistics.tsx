@@ -1,13 +1,16 @@
 'use client'
 
+import { DollarSign, ShoppingCart, UserRound } from 'lucide-react'
+import { useState } from 'react'
+
+import { Tabs, TabsList, TabsTrigger } from '@/components/ui/common'
+
+import { useGetDashboardStatistics } from '@/shared/api/hooks/statisctics/useGetDashboardStatisctics'
+
 import { CardStatistic } from './CardStatistic'
 import { ChartDinamycSales } from './ChartDynamicSales/ChartDinamycSales'
 import { ChartDynamicStatistics } from './ChartDynamicStatistics'
 import { ChartListActivity } from './ChartListActivity/ChartListActivity'
-import { Tabs, TabsList, TabsTrigger } from '@/components/ui/common'
-import { useGetDashboardStatistics } from '@/shared/api/hooks/statisctics/useGetDashboardStatisctics'
-import { DollarSign, ShoppingCart, UserRound } from 'lucide-react'
-import { useState } from 'react'
 
 export function Statisctics() {
 	const [period, setPeriod] = useState<string>('week')

@@ -1,5 +1,7 @@
 'use client'
 
+import { TypeOutline } from 'lucide-react'
+
 import {
 	Card,
 	CardContent,
@@ -13,9 +15,9 @@ import {
 	SelectTrigger,
 	SelectValue
 } from '@/components/ui/common'
+
 import { useConfig } from '@/shared/utils/contexts'
 import { fonts } from '@/shared/utils/contexts/config/utils/fonts'
-import { TypeOutline } from 'lucide-react'
 
 export function ChangeFontSettings() {
 	const { font } = useConfig()

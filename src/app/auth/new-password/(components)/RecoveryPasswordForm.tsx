@@ -1,6 +1,9 @@
 'use client'
 
-import { AuthWrapper } from '../../AuthWrapper'
+import { zodResolver } from '@hookform/resolvers/zod'
+import { Loader2 } from 'lucide-react'
+import { useForm } from 'react-hook-form'
+
 import {
 	Alert,
 	AlertDescription,
@@ -15,11 +18,12 @@ import {
 	FormMessage,
 	Input
 } from '@/components/ui/common'
+
 import { NewPasswordSchema, newPasswordSchema } from '@/schemas/auth/newPassword'
+
 import { useResetPasswordMutation } from '@/shared/api/hooks/auth/useResetPasswordMutation'
-import { zodResolver } from '@hookform/resolvers/zod'
-import { Loader2 } from 'lucide-react'
-import { useForm } from 'react-hook-form'
+
+import { AuthWrapper } from '../../AuthWrapper'
 
 export function RecoveryPasswordForm() {
 	const { mutate: resetPassword, isPending, isSuccess } = useResetPasswordMutation()

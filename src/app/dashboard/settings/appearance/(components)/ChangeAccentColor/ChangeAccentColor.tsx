@@ -1,12 +1,15 @@
 'use client'
 
-import { availableColor } from './availableColors'
+import { Check, Paintbrush } from 'lucide-react'
+import { useTheme } from 'next-themes'
+
 import { Button, Card, CardContent, CardDescription, CardHeader, CardTitle, Typography } from '@/components/ui/common'
+
 import { cn } from '@/shared/hooks/helpers'
 import { useConfig } from '@/shared/utils/contexts'
 import { AccentColors } from '@/shared/utils/contexts/config/utils/accent-colors'
-import { Check, Paintbrush } from 'lucide-react'
-import { useTheme } from 'next-themes'
+
+import { availableColor } from './availableColors'
 
 export function ChangeAccentColor() {
 	const { accent } = useConfig()

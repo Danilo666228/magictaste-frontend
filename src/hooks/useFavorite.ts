@@ -1,6 +1,7 @@
+import { useQueryClient } from '@tanstack/react-query'
+
 import { useGetFavoriteProductsQuery } from '@/shared/api/hooks/favorite/useGetFavoriteProductsQuery'
 import { useToggleFavoriteMutation } from '@/shared/api/hooks/favorite/useToggleFavoriteMutation'
-import { useQueryClient } from '@tanstack/react-query'
 
 export function useFavorite(search?: string) {
 	const queryClient = useQueryClient()

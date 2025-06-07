@@ -1,7 +1,9 @@
-import { Tooltip, TooltipContent, TooltipTrigger } from '@/components/ui/common'
-import { cn } from '@/shared/utils/twMerge'
 import { VariantProps, cva } from 'class-variance-authority'
 import { HTMLAttributes } from 'react'
+
+import { Tooltip, TooltipContent, TooltipTrigger } from '@/components/ui/common'
+
+import { cn } from '@/shared/utils/twMerge'
 
 const containerVariants = cva('', {
 	variants: {}

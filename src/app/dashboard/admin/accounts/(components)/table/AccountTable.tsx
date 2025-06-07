@@ -1,9 +1,12 @@
 'use client'
 
-import { columns } from './columns'
-import { DataTable } from '@/components/ui/elements/table/DataTable'
-import { useGetAccountsQuery } from '@/shared/api/hooks/account/useGetAccountsQuery'
 import { useState } from 'react'
+
+import { DataTable } from '@/components/ui/elements/table/DataTable'
+
+import { useGetAccountsQuery } from '@/shared/api/hooks/account/useGetAccountsQuery'
+
+import { columns } from './columns'
 
 export function AccountTable() {
 	const [page, setPage] = useState(1)

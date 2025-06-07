@@ -1,6 +1,7 @@
-import { Input } from '@/components/ui/common'
 import { Search, X } from 'lucide-react'
 import { ComponentProps } from 'react'
+
+import { Input } from '@/components/ui/common'
 
 interface SearchInputProps extends ComponentProps<'input'> {
 	searchValue: string
@@ -16,7 +17,7 @@ export const SearchInput = ({ searchValue, setSearchValue, placeholder = 'Пои
 			</div>
 			<Input
 				type='search'
-				className='focus:primary w-full border-gray-200 py-2 pl-10 pr-10 focus:ring-1 focus:ring-primary focus:ring-opacity-50 [&::-webkit-search-cancel-button]:hidden [&::-webkit-search-decoration]:hidden [&::-webkit-search-results-button]:hidden [&::-webkit-search-results-decoration]:hidden'
+				className='focus:primary w-full py-2 pl-10 pr-10 focus:ring-1 focus:ring-primary focus:ring-opacity-50 [&::-webkit-search-cancel-button]:hidden [&::-webkit-search-decoration]:hidden [&::-webkit-search-results-button]:hidden [&::-webkit-search-results-decoration]:hidden'
 				placeholder={placeholder}
 				value={searchValue}
 				onChange={e => setSearchValue(e.target.value)}

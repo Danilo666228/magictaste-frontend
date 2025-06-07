@@ -1,5 +1,6 @@
-import { getPaymentLink } from '@/shared/api/request'
 import { useQuery } from '@tanstack/react-query'
+
+import { getPaymentLink } from '@/shared/api/request'
 
 export const useGetPaymentDetailsQuery = (settings?: QuerySettings<typeof getPaymentLink>) =>
 	useQuery({

@@ -1,5 +1,6 @@
-import { OrderStatus } from '@/shared/api/types'
 import { AlertTriangle, CheckCircle, Clock, LucideIcon, Package, RefreshCcw, Truck, XCircle } from 'lucide-react'
+
+import { OrderStatus } from '@/shared/api/types'
 
 interface StatusInfo {
 	icon: LucideIcon

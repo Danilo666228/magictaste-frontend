@@ -1,9 +1,12 @@
-import { LoyaltyForm } from './LoyaltyForm'
-import { Button, Card, CardContent, CardHeader, CardTitle, Typography } from '@/components/ui/common'
-import { Modal } from '@/components/ui/elements/modal/Default/Modal'
-import { LoyaltyLevel } from '@/shared/api/types/loyalty'
 import { Cake, Edit } from 'lucide-react'
 import { useState } from 'react'
+
+import { Button, Card, CardContent, CardHeader, CardTitle, Typography } from '@/components/ui/common'
+import { Modal } from '@/components/ui/elements/modal/Default/Modal'
+
+import { LoyaltyLevel } from '@/shared/api/types/loyalty'
+
+import { LoyaltyForm } from './LoyaltyForm'
 
 interface LoyaltyLevelCardProps {
 	loyaltyLevel: LoyaltyLevel

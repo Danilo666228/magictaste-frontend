@@ -1,5 +1,6 @@
-import { AboutMe, BenefitsSection, CallToOrder, HeroCarousel, MostPopularProducts } from './(components)/sections'
 import { Metadata } from 'next'
+
+import { AboutMe, BenefitsSection, CallToOrder, HeroCarousel, MostPopularProducts } from './(components)/sections'
 
 export const metadata: Metadata = {
 	title: 'Главная'

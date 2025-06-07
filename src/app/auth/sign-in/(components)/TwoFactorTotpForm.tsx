@@ -1,8 +1,10 @@
 'use client'
 
-import { TwoFactorForm } from '@/app/auth/sign-in/(components)/TwoFactorForm'
-import { SignInSchema } from '@/schemas/auth/signIn'
 import { UseFormReturn } from 'react-hook-form'
+
+import { TwoFactorForm } from '@/app/auth/sign-in/(components)/TwoFactorForm'
+
+import { SignInSchema } from '@/schemas/auth/signIn'
 
 interface TwoFactorTotpFormProps {
 	form: UseFormReturn<SignInSchema>

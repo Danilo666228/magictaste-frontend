@@ -1,7 +1,8 @@
-import { cn } from '@/shared/utils/twMerge'
 import { Slot } from '@radix-ui/react-slot'
 import { ChevronRight, MoreHorizontal } from 'lucide-react'
 import * as React from 'react'
+
+import { cn } from '@/shared/utils/twMerge'
 
 const Breadcrumb = React.forwardRef<
 	HTMLElement,

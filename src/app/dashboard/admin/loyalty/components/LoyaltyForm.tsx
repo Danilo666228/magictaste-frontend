@@ -1,9 +1,11 @@
 'use client'
 
-import { Button, Card, Form, FormControl, FormField, FormItem, FormLabel, FormMessage, Input } from '@/components/ui/common'
-import { LoyaltySchema } from '@/schemas/loyalty/lotalty'
 import { ComponentProps } from 'react'
 import { useForm } from 'react-hook-form'
+
+import { Button, Card, Form, FormControl, FormField, FormItem, FormLabel, FormMessage, Input } from '@/components/ui/common'
+
+import { LoyaltySchema } from '@/schemas/loyalty/lotalty'
 
 interface LoyaltyFormProps extends ComponentProps<typeof Card> {
 	initialDate?: LoyaltySchema

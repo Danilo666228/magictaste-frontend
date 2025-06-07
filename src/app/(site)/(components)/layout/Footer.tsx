@@ -1,8 +1,10 @@
 'use client'
 
-import { Typography } from '@/components/ui/common'
-import { ROUTE } from '@/shared/utils/constants/route'
 import Link from 'next/link'
+
+import { Typography } from '@/components/ui/common'
+
+import { ROUTE } from '@/shared/utils/constants/route'
 
 export function Footer() {
 	return (

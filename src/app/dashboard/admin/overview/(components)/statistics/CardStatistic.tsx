@@ -1,6 +1,7 @@
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/common'
 import { motion } from 'framer-motion'
 import { ArrowDown, ArrowUp, LucideIcon } from 'lucide-react'
+
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/common'
 
 interface CardStatisticProps {
 	title: string

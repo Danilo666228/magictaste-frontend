@@ -1,7 +1,10 @@
 'use client'
 
-import { chartConfig } from './chart.config'
-import { chartData } from './chart.data'
+import { motion } from 'framer-motion'
+import { ShoppingBag } from 'lucide-react'
+import { useFormatter } from 'next-intl'
+import { Bar, BarChart, CartesianGrid, Rectangle, XAxis } from 'recharts'
+
 import {
 	Card,
 	CardContent,
@@ -13,11 +16,11 @@ import {
 	ChartTooltipContent,
 	Skeleton
 } from '@/components/ui/common'
+
 import { DashboardStatisticsData } from '@/shared/api/types/statistics'
-import { motion } from 'framer-motion'
-import { ShoppingBag } from 'lucide-react'
-import { useFormatter } from 'next-intl'
-import { Bar, BarChart, CartesianGrid, Rectangle, XAxis } from 'recharts'
+
+import { chartConfig } from './chart.config'
+import { chartData } from './chart.data'
 
 interface ChartDinamycSalesProps {
 	period: 'day' | 'week' | 'month' | 'year'

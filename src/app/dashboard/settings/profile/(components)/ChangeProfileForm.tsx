@@ -1,6 +1,7 @@
 'use client'
 
-import { useChangeProfileForm } from '../../(hooks)/useChangeProfileForm'
+import { motion } from 'framer-motion'
+
 import {
 	Button,
 	Card,
@@ -19,7 +20,8 @@ import {
 	Input,
 	Skeleton
 } from '@/components/ui/common'
-import { motion } from 'framer-motion'
+
+import { useChangeProfileForm } from '../../(hooks)/useChangeProfileForm'
 
 export function ChangeProfileForm() {
 	const { form, isPending, onSubmit } = useChangeProfileForm()

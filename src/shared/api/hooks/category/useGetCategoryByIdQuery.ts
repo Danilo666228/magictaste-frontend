@@ -1,5 +1,6 @@
-import { GetCategoryByIdParams, getCategoryById } from '@/shared/api/request'
 import { useQuery } from '@tanstack/react-query'
+
+import { GetCategoryByIdParams, getCategoryById } from '@/shared/api/request'
 
 export const useGetCategoryByIdQuery = (params: GetCategoryByIdParams, settings?: QuerySettings<typeof getCategoryById>) =>
 	useQuery({

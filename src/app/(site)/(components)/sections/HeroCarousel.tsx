@@ -1,15 +1,16 @@
 'use client'
 
-import { Typography } from '@/components/ui/common'
-import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from '@/components/ui/common/Сarousel'
 import Autoplay from 'embla-carousel-autoplay'
 import Image from 'next/image'
+
+import { Typography } from '@/components/ui/common'
+import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from '@/components/ui/common/Сarousel'
 
 const AUTOPLAY_DELAY = 5000
 
 export function HeroCarousel() {
 	return (
-		<section className='mt-4 h-[400px] overflow-hidden rounded-3xl sm:mx-6 lg:mx-8'>
+		<section className='mt-4 h-[400px] overflow-hidden rounded-3xl'>
 			<Carousel
 				className={'h-[400px] w-full'}
 				plugins={[

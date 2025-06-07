@@ -1,8 +1,10 @@
 'use client'
 
-import { LoyaltyLevelCard } from './LoyaltyLevelCard'
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from '@/components/ui/common/Сarousel'
+
 import { useGetLoyaltyLevelsQuery } from '@/shared/api/hooks/loyalty/useGetLotaltyLevelsQuery'
+
+import { LoyaltyLevelCard } from './LoyaltyLevelCard'
 
 export function CarouselLotalty() {
 	const { data: levels } = useGetLoyaltyLevelsQuery()

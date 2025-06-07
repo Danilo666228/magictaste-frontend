@@ -1,9 +1,12 @@
-import { DeleteIngredient } from './actions/DeleteIngredient'
-import { IngredientColumn } from './columns'
-import { UploadImageIngredient } from '@/app/dashboard/admin/ingredients/(components)/table/actions/UploadImageIngredient'
-import { Button, DropdownMenu, DropdownMenuContent, DropdownMenuLabel, DropdownMenuSeparator, DropdownMenuTrigger } from '@/components/ui/common'
 import { Row } from '@tanstack/react-table'
 import { MoreHorizontal } from 'lucide-react'
+
+import { UploadImageIngredient } from '@/app/dashboard/admin/ingredients/(components)/table/actions/UploadImageIngredient'
+
+import { Button, DropdownMenu, DropdownMenuContent, DropdownMenuLabel, DropdownMenuSeparator, DropdownMenuTrigger } from '@/components/ui/common'
+
+import { DeleteIngredient } from './actions/DeleteIngredient'
+import { IngredientColumn } from './columns'
 
 interface IngredientActions {
 	row: Row<IngredientColumn>

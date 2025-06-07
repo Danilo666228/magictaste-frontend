@@ -1,12 +1,15 @@
-import { ProductCardProvider, useProductCard } from './ProductCardContext'
+import Image from 'next/image'
+import Link from 'next/link'
+import { ComponentProps } from 'react'
+
 import { Card, CardContent, CardFooter } from '@/components/ui/common'
+
 import { Product } from '@/shared/api/types'
 import { getMediaSource } from '@/shared/hooks/helpers'
 import { ROUTE } from '@/shared/utils/constants/route'
 import { cn } from '@/shared/utils/twMerge'
-import Image from 'next/image'
-import Link from 'next/link'
-import { ComponentProps } from 'react'
+
+import { ProductCardProvider, useProductCard } from './ProductCardContext'
 
 interface ProductCardProps extends ComponentProps<'div'> {
 	product: Product

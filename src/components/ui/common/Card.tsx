@@ -1,5 +1,6 @@
-import { cn } from '@/shared/utils/twMerge'
 import * as React from 'react'
+
+import { cn } from '@/shared/utils/twMerge'
 
 const Card = React.forwardRef<HTMLDivElement, React.HTMLAttributes<HTMLDivElement>>(({ className, ...props }, ref) => (
 	<div ref={ref} className={cn('overflow-hidden rounded-lg border bg-card text-card-foreground shadow', className)} {...props} />

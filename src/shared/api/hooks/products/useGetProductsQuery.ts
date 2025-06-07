@@ -1,5 +1,6 @@
-import { getProducts } from '@/shared/api/request'
 import { useQuery } from '@tanstack/react-query'
+
+import { getProducts } from '@/shared/api/request'
 
 export const useGetProductsQuery = (settings?: QuerySettings<typeof getProducts>) =>
 	useQuery({

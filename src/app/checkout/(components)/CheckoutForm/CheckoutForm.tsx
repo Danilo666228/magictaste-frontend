@@ -1,15 +1,20 @@
 'use client'
 
+import { CreditCard, Loader, MapPin, User } from 'lucide-react'
+import { useRouter } from 'next/navigation'
+
+import { Button, Container, Form } from '@/components/ui/common'
+
+import { OrderStep, useOrderStore } from '@/store/useOrderStore'
+
+import { useUnmount } from '@/shared/hooks'
+import { ROUTE } from '@/shared/utils/constants/route'
+
 import { useCheckoutForm } from '../../(hooks)/useCheckoutForm'
+
 import { AboutUserField } from './AboutUserField'
 import { DeliveryField } from './DeliveryField'
 import { PaymentField } from './PaymentField'
-import { Button, Container, Form } from '@/components/ui/common'
-import { useUnmount } from '@/shared/hooks'
-import { ROUTE } from '@/shared/utils/constants/route'
-import { OrderStep, useOrderStore } from '@/store/useOrderStore'
-import { CreditCard, Loader, MapPin, User } from 'lucide-react'
-import { useRouter } from 'next/navigation'
 
 const steps = [
 	{ id: 'user', title: 'Личные данные', icon: User },

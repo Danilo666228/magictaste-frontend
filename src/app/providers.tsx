@@ -1,8 +1,10 @@
-import { ErrorBoundary } from '@/components/ErrorBoundary'
-import { Toaster } from '@/components/ui/elements/Toaster'
-import { ConfigProvider, FramerMotionProvider, ProfileProvider, TanStackQueryProvider, YandexMapsProvider } from '@/shared/utils/contexts'
 import { ThemeProvider } from 'next-themes'
 import { ReactNode } from 'react'
+
+import { ErrorBoundary } from '@/components/ErrorBoundary'
+import { Toaster } from '@/components/ui/elements/Toaster'
+
+import { ConfigProvider, FramerMotionProvider, ProfileProvider, TanStackQueryProvider, YandexMapsProvider } from '@/shared/utils/contexts'
 
 interface ProvidersProps {
 	children: ReactNode
@@ -12,7 +14,7 @@ export const Providers = ({ children }: ProvidersProps) => {
 	return (
 		<ErrorBoundary>
 			<ConfigProvider>
-				<ThemeProvider attribute={'class'} defaultTheme='system' enableSystem>
+				<ThemeProvider attribute={'class'} defaultTheme='system' enableSystem disableTransitionOnChange>
 					<FramerMotionProvider>
 						<TanStackQueryProvider>
 							<ProfileProvider>

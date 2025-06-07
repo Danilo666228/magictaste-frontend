@@ -1,5 +1,6 @@
-import { ChangeAvatarRequestConfig, changeAvatar } from '@/shared/api/request'
 import { useMutation } from '@tanstack/react-query'
+
+import { ChangeAvatarRequestConfig, changeAvatar } from '@/shared/api/request'
 
 export const useChangeAvatarMutation = (settings?: MutationSettings<ChangeAvatarRequestConfig, typeof changeAvatar>) =>
 	useMutation({

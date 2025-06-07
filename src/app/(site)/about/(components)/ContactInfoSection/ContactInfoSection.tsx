@@ -1,8 +1,9 @@
 'use client'
 
-import { contactItems } from './contactItems'
 import { Typography } from '@/components/ui/common'
 import { YandexMap } from '@/components/ui/elements/yandex-map/YandexMap'
+
+import { contactItems } from './contactItems'
 
 export function ContactInfoSection() {
 	return (

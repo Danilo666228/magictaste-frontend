@@ -1,8 +1,9 @@
 'use client'
 
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/common'
+
 import { CarouselLotalty } from './CarouselLotalty'
 import { LoyaltyForm } from './LoyaltyForm'
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/common'
 
 export function Loyalty() {
 	return (

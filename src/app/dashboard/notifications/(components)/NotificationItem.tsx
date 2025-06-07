@@ -1,8 +1,10 @@
-import { Button, Typography } from '@/components/ui/common'
-import { Notification } from '@/shared/api/types'
 import { motion } from 'framer-motion'
 import { Bell, CheckCheck, Clock, ExternalLink, Trash } from 'lucide-react'
 import { useFormatter } from 'next-intl'
+
+import { Button, Typography } from '@/components/ui/common'
+
+import { Notification } from '@/shared/api/types'
 
 interface NotificationProps {
 	notification: Notification

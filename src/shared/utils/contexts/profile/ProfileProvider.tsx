@@ -1,13 +1,15 @@
 'use client'
 
-import { ProfileContext, ProfileContextProps } from './ProfileContext'
+import { useRouter } from 'next/navigation'
+import { ReactNode, useEffect } from 'react'
+
 import { useLogoutMutation } from '@/shared/api/hooks/auth/useLogoutMutation'
 import { useGetProfileQuery } from '@/shared/api/hooks/profile/useGetProfileQuery'
 import { useClearSessionMutation } from '@/shared/api/hooks/session/useClearSessionMutation'
 import { useLocalStorage } from '@/shared/hooks'
 import { ROUTE } from '@/shared/utils/constants'
-import { useRouter } from 'next/navigation'
-import { ReactNode, useEffect } from 'react'
+
+import { ProfileContext, ProfileContextProps } from './ProfileContext'
 
 interface ProfileProviderProps {
 	children: ReactNode

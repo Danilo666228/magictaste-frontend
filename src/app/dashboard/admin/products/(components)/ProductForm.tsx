@@ -1,5 +1,9 @@
 'use client'
 
+import { zodResolver } from '@hookform/resolvers/zod'
+import { useQueryClient } from '@tanstack/react-query'
+import { useForm } from 'react-hook-form'
+
 import {
 	Button,
 	Form,
@@ -19,15 +23,14 @@ import {
 } from '@/components/ui/common'
 import { TagsSelector } from '@/components/ui/common/TagsSelector'
 import { useModal } from '@/components/ui/elements/modal/Default/ModalContext'
+
 import { CreateProductSchema, createProductSchema } from '@/schemas/product/createProduct'
+
 import { useGetCategoryQuery } from '@/shared/api/hooks/category/useGetCategoryQuery'
 import { useGetIngredientsQuery } from '@/shared/api/hooks/ingredient/useGetIngredientsQuery'
 import { useCreateProductMutation } from '@/shared/api/hooks/products/useCreateProductMutation'
 import { useUpdateProductMutation } from '@/shared/api/hooks/products/useUpdateProductMutation'
 import { Product } from '@/shared/api/types'
-import { zodResolver } from '@hookform/resolvers/zod'
-import { useQueryClient } from '@tanstack/react-query'
-import { useForm } from 'react-hook-form'
 
 interface ProductFormProps {
 	mode: 'create' | 'edit'

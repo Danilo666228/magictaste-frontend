@@ -1,5 +1,6 @@
-import { getSimilarProduct } from '../../request'
 import { useQuery } from '@tanstack/react-query'
+
+import { getSimilarProduct } from '../../request'
 
 export const useGetSimilarProducts = (settings?: QuerySettings<typeof getSimilarProduct>) =>
 	useQuery({

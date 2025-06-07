@@ -1,5 +1,6 @@
-import { getDashboardStatistics } from '../../request'
 import { useQuery } from '@tanstack/react-query'
+
+import { getDashboardStatistics } from '../../request'
 
 export const useGetDashboardStatistics = (settings?: QuerySettings<typeof getDashboardStatistics>) =>
 	useQuery({

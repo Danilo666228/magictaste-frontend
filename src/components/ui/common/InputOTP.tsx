@@ -1,9 +1,10 @@
 'use client'
 
-import { cn } from '@/shared/utils/twMerge'
 import { OTPInput, OTPInputContext, REGEXP_ONLY_DIGITS } from 'input-otp'
 import { Minus } from 'lucide-react'
 import * as React from 'react'
+
+import { cn } from '@/shared/utils/twMerge'
 
 const InputOTP = React.forwardRef<React.ElementRef<typeof OTPInput>, React.ComponentPropsWithoutRef<typeof OTPInput>>(
 	({ className, containerClassName, pattern = REGEXP_ONLY_DIGITS, ...props }, ref) => (

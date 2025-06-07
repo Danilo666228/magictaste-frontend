@@ -1,5 +1,6 @@
-import { UpdateTwoFactorEmailRequestConfig, updateTwoFactorEmail } from '../../request/profile'
 import { useMutation } from '@tanstack/react-query'
+
+import { UpdateTwoFactorEmailRequestConfig, updateTwoFactorEmail } from '../../request/profile'
 
 export const useChangeTwoFactorEmailMutation = (settings?: MutationSettings<UpdateTwoFactorEmailRequestConfig, typeof updateTwoFactorEmail>) =>
 	useMutation({

@@ -1,7 +1,8 @@
 'use client'
 
-import { AccentColors } from './utils/accent-colors'
 import { createContext } from 'react'
+
+import { AccentColors } from './utils/accent-colors'
 
 export type FontFamily = 'Geist' | 'Inter'
 

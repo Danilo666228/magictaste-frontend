@@ -1,9 +1,11 @@
-import { Container, FormControl, FormDescription, FormField, FormItem, FormLabel, FormMessage, Input, Label, Switch } from '@/components/ui/common'
-import { YandexMap } from '@/components/ui/elements/yandex-map/YandexMap'
-import { TypeCheckoutSchema } from '@/schemas/checkout/checkout'
 import { Loader2, MapPin } from 'lucide-react'
 import { useState } from 'react'
 import { UseFormReturn } from 'react-hook-form'
+
+import { Container, FormControl, FormDescription, FormField, FormItem, FormLabel, FormMessage, Input, Label, Switch } from '@/components/ui/common'
+import { YandexMap } from '@/components/ui/elements/yandex-map/YandexMap'
+
+import { TypeCheckoutSchema } from '@/schemas/checkout/checkout'
 
 interface ManualAddressFieldsProps {
 	form: UseFormReturn<TypeCheckoutSchema>
@@ -56,6 +58,8 @@ export function ManualAddressFields({ form }: ManualAddressFieldsProps) {
 					<div className='overflow-hidden rounded-lg border'>
 						<YandexMap
 							onLoad={() => setIsLoading(false)}
+							showGeolocationControl
+							initialCoordinates={{ latitude: 59.9386, longitude: 30.3141 }}
 							onLocationSelect={data => {
 								form.setValue('deliveryAddress.city', data.address?.city || '')
 								form.setValue('deliveryAddress.street', data.address?.street || '')

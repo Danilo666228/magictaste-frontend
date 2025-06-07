@@ -1,16 +1,21 @@
 'use client'
 
-import { useProductComments } from '../../../(hooks)/useProductComment'
-import { ProductCommentForm } from './ProductCommentForm'
-import { ProductCommentList } from './ProductCommentList'
-import { ProductCommentStatistic } from '@/app/(site)/product/[id]/(сomponents)/ProductAbout/product-comment/ProductCommentStatistic'
-import { Button, Typography } from '@/components/ui/common'
-import { Modal } from '@/components/ui/elements/modal/Default/Modal'
-import { Product } from '@/shared/api/types'
-import { useProfile } from '@/shared/utils/contexts'
 import { AnimatePresence } from 'framer-motion'
 import { MessageSquare } from 'lucide-react'
 import { useState } from 'react'
+
+import { ProductCommentStatistic } from '@/app/(site)/product/[id]/(сomponents)/ProductAbout/product-comment/ProductCommentStatistic'
+
+import { Button, Typography } from '@/components/ui/common'
+import { Modal } from '@/components/ui/elements/modal/Default/Modal'
+
+import { Product } from '@/shared/api/types'
+import { useProfile } from '@/shared/utils/contexts'
+
+import { useProductComments } from '../../../(hooks)/useProductComment'
+
+import { ProductCommentForm } from './ProductCommentForm'
+import { ProductCommentList } from './ProductCommentList'
 
 interface ProductCommentsProps {
 	product: Product

@@ -1,8 +1,10 @@
-import { Container, Typography } from '@/components/ui/common'
-import { Product } from '@/shared/api/types/product'
-import { getMediaSource } from '@/shared/hooks/helpers'
 import { useFormatter } from 'next-intl'
 import Image from 'next/image'
+
+import { Container, Typography } from '@/components/ui/common'
+
+import { Product } from '@/shared/api/types/product'
+import { getMediaSource } from '@/shared/hooks/helpers'
 
 interface OrderItemProps {
 	product: Product

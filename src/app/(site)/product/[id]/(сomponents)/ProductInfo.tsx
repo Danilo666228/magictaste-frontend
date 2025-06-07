@@ -1,19 +1,23 @@
 'use client'
 
-import { IngredientList } from '../../(components)/IngredientList'
-import { Button, Container, Typography } from '@/components/ui/common'
-import { useCart } from '@/hooks/useCart'
-import { useFavorite } from '@/hooks/useFavorite'
-import { isActiveFavorite } from '@/shared/api/helpers/is-active-favorite'
-import { Product } from '@/shared/api/types'
-import { useShare } from '@/shared/hooks'
-import { cn, getMediaSource } from '@/shared/hooks/helpers'
-import { useProfile } from '@/shared/utils/contexts'
 import { ChevronDown, Heart, Minus, Plus, Share2, ShoppingCart } from 'lucide-react'
 import { useFormatter } from 'next-intl'
 import Image from 'next/image'
 import { usePathname } from 'next/navigation'
 import { useEffect, useState } from 'react'
+
+import { Button, Container, Typography } from '@/components/ui/common'
+
+import { useCart } from '@/hooks/useCart'
+import { useFavorite } from '@/hooks/useFavorite'
+
+import { isActiveFavorite } from '@/shared/api/helpers/is-active-favorite'
+import { Product } from '@/shared/api/types'
+import { useShare } from '@/shared/hooks'
+import { cn, getMediaSource } from '@/shared/hooks/helpers'
+import { useProfile } from '@/shared/utils/contexts'
+
+import { IngredientList } from '../../(components)/IngredientList'
 
 interface ProductInfoProps {
 	product: Product

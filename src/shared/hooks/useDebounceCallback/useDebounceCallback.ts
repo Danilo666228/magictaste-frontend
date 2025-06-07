@@ -1,6 +1,8 @@
-import { useEvent } from '../useEvent/useEvent'
-import { debounce } from '@/shared/hooks/helpers'
 import { useMemo } from 'react'
+
+import { debounce } from '@/shared/hooks/helpers'
+
+import { useEvent } from '../useEvent/useEvent'
 
 /**
  * @name useDebounceCallback

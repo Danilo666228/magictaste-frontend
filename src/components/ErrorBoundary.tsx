@@ -1,7 +1,8 @@
 'use client'
 
-import { MODE } from '@/shared/utils/constants'
 import { Component, ErrorInfo, ReactNode } from 'react'
+
+import { MODE } from '@/shared/utils/constants'
 
 interface Props {
 	children?: ReactNode

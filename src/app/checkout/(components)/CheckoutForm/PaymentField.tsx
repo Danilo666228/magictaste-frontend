@@ -1,3 +1,6 @@
+import { Banknote, CreditCard } from 'lucide-react'
+import { UseFormReturn } from 'react-hook-form'
+
 import {
 	Container,
 	FormBlock,
@@ -10,9 +13,8 @@ import {
 	RadioGroup,
 	RadioGroupItem
 } from '@/components/ui/common'
+
 import { TypeCheckoutSchema } from '@/schemas/checkout/checkout'
-import { Banknote, CreditCard } from 'lucide-react'
-import { UseFormReturn } from 'react-hook-form'
 
 interface PaymentFieldProps {
 	form: UseFormReturn<TypeCheckoutSchema>

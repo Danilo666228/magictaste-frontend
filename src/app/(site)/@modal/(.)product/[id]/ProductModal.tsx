@@ -1,18 +1,22 @@
 'use client'
 
+import { useQueryClient } from '@tanstack/react-query'
+import { Heart } from 'lucide-react'
+import Image from 'next/image'
+import { useRouter } from 'next/navigation'
+
 import { IngredientList } from '@/app/(site)/product/(components)/IngredientList'
+
 import { Button, Dialog, DialogContent, DialogDescription, DialogTitle, Typography } from '@/components/ui/common'
+
 import { useCart } from '@/hooks/useCart'
+
 import { isActiveFavorite } from '@/shared/api/helpers/is-active-favorite'
 import { useToggleFavoriteMutation } from '@/shared/api/hooks/favorite/useToggleFavoriteMutation'
 import { Product } from '@/shared/api/types'
 import { cn, getMediaSource } from '@/shared/hooks/helpers'
 import { ROUTE } from '@/shared/utils/constants/route'
 import { useProfile } from '@/shared/utils/contexts'
-import { useQueryClient } from '@tanstack/react-query'
-import { Heart } from 'lucide-react'
-import Image from 'next/image'
-import { useRouter } from 'next/navigation'
 
 interface ProductModalProps {
 	product: Product

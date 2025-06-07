@@ -1,5 +1,6 @@
-import { ChangeCategoryImageRequestConfig, changeCategoryImage } from '@/shared/api/request'
 import { useMutation } from '@tanstack/react-query'
+
+import { ChangeCategoryImageRequestConfig, changeCategoryImage } from '@/shared/api/request'
 
 export const useChangeCategoryImageMutation = (settings?: MutationSettings<ChangeCategoryImageRequestConfig, typeof changeCategoryImage>) =>
 	useMutation({

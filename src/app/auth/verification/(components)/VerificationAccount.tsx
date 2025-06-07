@@ -1,18 +1,19 @@
 'use client'
 
-import { useVerificationAccount } from '../(hooks)/useVerificationAccount'
-import { Alert, AlertDescription, Button, Card, CardContent, CardDescription, CardHeader, CardTitle, Typography } from '@/components/ui/common'
-import { ROUTE } from '@/shared/utils/constants/route'
 import { CheckCircle2, Loader2, XCircle } from 'lucide-react'
 import Link from 'next/link'
-import { useState } from 'react'
+
+import { Alert, AlertDescription, Button, Card, CardContent, CardDescription, CardHeader, CardTitle, Typography } from '@/components/ui/common'
+
+import { ROUTE } from '@/shared/utils/constants/route'
+
+import { useVerificationAccount } from '../(hooks)/useVerificationAccount'
 
 export function VerificationAccount({ token }: { token: string }) {
 	const { isPending, isSuccess } = useVerificationAccount(token)
-	const [showAnimation, setShowAnimation] = useState(true)
 
 	return (
-		<Card className='w-full max-w-md shadow-lg'>
+		<Card className='mx-auto w-full max-w-md border-none bg-transparent'>
 			<CardHeader className='space-y-2 text-center'>
 				<CardTitle className='text-2xl font-bold'>Верификация аккаунта</CardTitle>
 				<CardDescription>
@@ -24,7 +25,7 @@ export function VerificationAccount({ token }: { token: string }) {
 				</CardDescription>
 			</CardHeader>
 			<CardContent className='flex flex-col items-center justify-center space-y-6 pb-8 pt-4'>
-				{isPending || showAnimation ? (
+				{isPending ? (
 					<div className='flex flex-col items-center space-y-4'>
 						<Loader2 className='h-16 w-16 animate-spin text-primary' />
 						<Typography tag='p' className='text-muted-foreground'>

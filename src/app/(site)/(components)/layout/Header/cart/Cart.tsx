@@ -1,13 +1,18 @@
-import { CartItem } from './CartItem'
-import { Button, Sheet, SheetContent, SheetDescription, SheetFooter, SheetHeader, SheetTitle, SheetTrigger, Typography } from '@/components/ui/common'
-import { useCart } from '@/hooks/useCart'
-import { ROUTE } from '@/shared/utils/constants/route'
-import { useProfile } from '@/shared/utils/contexts'
-import { useOrderStore } from '@/store/useOrderStore'
 import { MoveRight, Trash2 } from 'lucide-react'
 import { useFormatter } from 'next-intl'
 import { useRouter } from 'next/navigation'
 import { ReactNode } from 'react'
+
+import { Button, Sheet, SheetContent, SheetDescription, SheetFooter, SheetHeader, SheetTitle, SheetTrigger, Typography } from '@/components/ui/common'
+
+import { useCart } from '@/hooks/useCart'
+
+import { useOrderStore } from '@/store/useOrderStore'
+
+import { ROUTE } from '@/shared/utils/constants/route'
+import { useProfile } from '@/shared/utils/contexts'
+
+import { CartItem } from './CartItem'
 
 interface CartProps {
 	children: ReactNode

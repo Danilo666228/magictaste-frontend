@@ -1,16 +1,21 @@
 'use client'
 
-import { Button, Popover, PopoverContent, PopoverTrigger } from '@/components/ui/common'
-import { ROUTE } from '@/shared/utils/constants/route'
-import { cn } from '@/shared/utils/twMerge'
-import { useNotificationsWebSocketStore } from '@/store/useNotificationsWebSocketStore'
 import { Bell, Check, CheckCheck } from 'lucide-react'
 import { useFormatter } from 'next-intl'
 import Link from 'next/link'
 import { useRouter } from 'next/navigation'
-import { useCallback, useEffect, useMemo } from 'react'
+import { ComponentProps, useCallback, useEffect, useMemo } from 'react'
 
-export function Notifications() {
+import { Button, Popover, PopoverContent, PopoverTrigger } from '@/components/ui/common'
+
+import { useNotificationsWebSocketStore } from '@/store/useNotificationsWebSocketStore'
+
+import { ROUTE } from '@/shared/utils/constants/route'
+import { cn } from '@/shared/utils/twMerge'
+
+interface NotificationsProps extends ComponentProps<typeof Button> {}
+
+export function Notifications({ className, ...props }: NotificationsProps) {
 	const { notifications, markAllAsRead, checkConnection, isConnected, fetchNotifications, markAsRead } = useNotificationsWebSocketStore()
 	const router = useRouter()
 	const formatter = useFormatter()
@@ -35,8 +40,8 @@ export function Notifications() {
 
 	return (
 		<Popover>
-			<PopoverTrigger asChild>
-				<Button variant='ghost' size='icon' className='relative h-10 w-10 border'>
+			<PopoverTrigger asChild className='max-lg:hidden'>
+				<Button variant='ghost' size='icon' className={cn('relative h-10 w-10 border', className)} {...props}>
 					<Bell />
 					{unreadCount > 0 && (
 						<span className='absolute -right-1 -top-1 flex h-4 w-4 items-center justify-center rounded-full bg-primary text-[10px] font-medium text-background'>

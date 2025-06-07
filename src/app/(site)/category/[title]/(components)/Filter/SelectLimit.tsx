@@ -1,6 +1,8 @@
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/common'
-import { cn } from '@/shared/hooks/helpers'
 import { ComponentProps } from 'react'
+
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/common'
+
+import { cn } from '@/shared/hooks/helpers'
 
 interface SelectLimitProps extends ComponentProps<typeof Select> {
 	setLimit: (limit: number) => void
@@ -16,7 +18,7 @@ export const SelectLimit = ({ setLimit, className, ...props }: SelectLimitProps)
 			<SelectContent>
 				{[5, 10, 15, 20].map(limit => (
 					<SelectItem key={limit} value={String(limit)}>
-						{limit + ' товаров'}
+						{limit}
 					</SelectItem>
 				))}
 			</SelectContent>

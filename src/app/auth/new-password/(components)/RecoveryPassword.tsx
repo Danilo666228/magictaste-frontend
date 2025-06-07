@@ -1,5 +1,6 @@
-import { RecoveryPasswordForm } from './RecoveryPasswordForm'
 import { Form, FormField, Typography } from '@/components/ui/common'
+
+import { RecoveryPasswordForm } from './RecoveryPasswordForm'
 
 export function RecoveryPassword() {
 	return (

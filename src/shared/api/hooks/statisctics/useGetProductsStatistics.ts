@@ -1,5 +1,6 @@
-import { getProductsStatistics } from '../../request/statistics/products'
 import { useQuery } from '@tanstack/react-query'
+
+import { getProductsStatistics } from '../../request/statistics/products'
 
 export const useGetProductsStatisticsQuery = (settings?: QuerySettings<typeof getProductsStatistics>) =>
 	useQuery({

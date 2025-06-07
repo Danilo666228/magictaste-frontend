@@ -1,12 +1,15 @@
 'use client'
 
-import { DisableTotp } from './DisableTotp'
-import { EnableTotp } from './EnableTotp'
+import { ShieldCheck, ShieldX, Smartphone } from 'lucide-react'
+
 import { Card, CardContent, CardDescription, CardHeader, CardTitle, Typography } from '@/components/ui/common'
 import { Skeleton } from '@/components/ui/common/Skeleton'
+
 import { useProfile } from '@/shared/utils/contexts'
 import { cn } from '@/shared/utils/twMerge'
-import { ShieldCheck, ShieldX, Smartphone } from 'lucide-react'
+
+import { DisableTotp } from './DisableTotp'
+import { EnableTotp } from './EnableTotp'
 
 export function TotpWrapper() {
 	const { profile, profileQuery } = useProfile()

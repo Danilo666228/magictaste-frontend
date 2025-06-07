@@ -1,9 +1,11 @@
-import { Button } from '@/components/ui/common/Button'
-import { ConfirmModal } from '@/components/ui/elements/modal/ConfirmModal'
-import { useDisableTotpMutation } from '@/shared/api/hooks/totp/useDisableTotpMutation'
 import { useQueryClient } from '@tanstack/react-query'
 import { Loader2, ShieldOff } from 'lucide-react'
 import { useState } from 'react'
+
+import { Button } from '@/components/ui/common/Button'
+import { ConfirmModal } from '@/components/ui/elements/modal/ConfirmModal'
+
+import { useDisableTotpMutation } from '@/shared/api/hooks/totp/useDisableTotpMutation'
 
 export function DisableTotp() {
 	const queryClient = useQueryClient()

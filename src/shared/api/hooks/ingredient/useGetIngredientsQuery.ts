@@ -1,5 +1,6 @@
-import { getIngredients } from '@/shared/api/request'
 import { useQuery } from '@tanstack/react-query'
+
+import { getIngredients } from '@/shared/api/request'
 
 export const useGetIngredientsQuery = (settings?: QuerySettings<typeof getIngredients>) =>
 	useQuery({

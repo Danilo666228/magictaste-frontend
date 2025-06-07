@@ -1,9 +1,10 @@
 'use client'
 
-import { cn } from '@/shared/utils/twMerge'
 import { CheckIcon, LoaderCircle } from 'lucide-react'
 import * as React from 'react'
 import { createContext, useContext } from 'react'
+
+import { cn } from '@/shared/utils/twMerge'
 
 // Types
 type StepperContextValue = {

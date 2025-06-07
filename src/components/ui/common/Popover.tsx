@@ -1,8 +1,9 @@
 'use client'
 
-import { cn } from '@/shared/utils/twMerge'
 import * as PopoverPrimitive from '@radix-ui/react-popover'
 import * as React from 'react'
+
+import { cn } from '@/shared/utils/twMerge'
 
 const Popover = PopoverPrimitive.Root
 

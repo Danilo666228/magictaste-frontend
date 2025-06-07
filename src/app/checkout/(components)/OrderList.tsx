@@ -1,11 +1,15 @@
 'use client'
 
-import { OrderItem } from './OrderItem'
-import { Card, CardContent, CardFooter, CardHeader, CardTitle, Container, Separator, Typography } from '@/components/ui/common'
-import { useProfile } from '@/shared/utils/contexts'
-import { useOrderStore } from '@/store/useOrderStore'
 import { Clock, ShoppingBag } from 'lucide-react'
 import { useFormatter } from 'next-intl'
+
+import { Card, CardContent, CardFooter, CardHeader, CardTitle, Container, Separator, Typography } from '@/components/ui/common'
+
+import { useOrderStore } from '@/store/useOrderStore'
+
+import { useProfile } from '@/shared/utils/contexts'
+
+import { OrderItem } from './OrderItem'
 
 export function OrderList() {
 	const { items, deliveryType, total, discount, deliveryPrice } = useOrderStore()

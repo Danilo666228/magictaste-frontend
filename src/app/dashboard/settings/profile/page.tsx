@@ -1,7 +1,8 @@
+import { Heading } from '@/components/ui/common'
+
 import { ChangeAvatarForm } from './(components)/ChangeAvatarForm'
 import { ChangePasswordForm } from './(components)/ChangePasswordForm'
 import { ChangeProfileForm } from './(components)/ChangeProfileForm'
-import { Heading } from '@/components/ui/common'
 
 export default function ProfileSettingsPage() {
 	return (

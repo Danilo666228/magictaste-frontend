@@ -1,5 +1,6 @@
-import { cn } from '@/shared/hooks/helpers'
 import * as React from 'react'
+
+import { cn } from '@/shared/hooks/helpers'
 
 export interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {}
 

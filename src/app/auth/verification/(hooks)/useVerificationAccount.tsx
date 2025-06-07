@@ -1,9 +1,9 @@
+import { useRouter } from 'next/navigation'
+import { toast } from 'sonner'
 
 import { useGetVerificationQuery } from '@/shared/api/hooks/auth/useGetVerificationQuery'
 import { ROUTE } from '@/shared/utils/constants/route'
 import { useProfile } from '@/shared/utils/contexts'
-import { useRouter } from 'next/navigation'
-import { toast } from 'sonner'
 
 export function useVerificationAccount(token: string | null) {
 	const router = useRouter()

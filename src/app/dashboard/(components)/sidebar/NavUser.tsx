@@ -1,5 +1,8 @@
 'use client'
 
+import { Bell, ChevronsUpDown, LogOut } from 'lucide-react'
+import { useRouter } from 'next/navigation'
+
 import {
 	Avatar,
 	AvatarFallback,
@@ -17,11 +20,10 @@ import {
 	Skeleton,
 	useSidebar
 } from '@/components/ui/common'
+
 import { getMediaSource } from '@/shared/hooks/helpers'
 import { ROUTE } from '@/shared/utils/constants'
 import { useProfile } from '@/shared/utils/contexts'
-import { Bell, ChevronsUpDown, LogOut } from 'lucide-react'
-import { useRouter } from 'next/navigation'
 
 export function NavUser() {
 	const router = useRouter()

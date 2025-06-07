@@ -1,9 +1,10 @@
 'use client'
 
-import { Account } from '@/shared/api/types'
 import { FetchesResponse } from '@siberiacancode/fetches'
 import { UseQueryResult } from '@tanstack/react-query'
 import { createContext } from 'react'
+
+import { Account } from '@/shared/api/types'
 
 export interface ProfileContextProps {
 	profileQuery: UseQueryResult<FetchesResponse<Account>, Error>

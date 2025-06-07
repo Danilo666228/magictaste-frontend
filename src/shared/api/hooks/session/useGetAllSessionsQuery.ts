@@ -1,5 +1,6 @@
-import { getAllSession } from '@/shared/api/request'
 import { useQuery } from '@tanstack/react-query'
+
+import { getAllSession } from '@/shared/api/request'
 
 export const useGetAllSessionsQuery = (settings?: QuerySettings<typeof getAllSession>) =>
 	useQuery({

@@ -1,13 +1,16 @@
-import { SessionInfo } from './SessionInfo'
-import { Badge, Button, Card, CardContent } from '@/components/ui/common'
-import { getBrowserIcon } from '@/shared/api/helpers/getBrowseIcon'
-import { useDeleteSessionMutation } from '@/shared/api/hooks/session/useDeleteSessionMutation'
-import { Session } from '@/shared/api/types'
-import { cn } from '@/shared/hooks/helpers'
 import { useQueryClient } from '@tanstack/react-query'
 import { Clock, MapPin, Trash2 } from 'lucide-react'
 import { useFormatter } from 'next-intl'
 import { ComponentProps } from 'react'
+
+import { Badge, Button, Card, CardContent } from '@/components/ui/common'
+
+import { getBrowserIcon } from '@/shared/api/helpers/getBrowseIcon'
+import { useDeleteSessionMutation } from '@/shared/api/hooks/session/useDeleteSessionMutation'
+import { Session } from '@/shared/api/types'
+import { cn } from '@/shared/hooks/helpers'
+
+import { SessionInfo } from './SessionInfo'
 
 interface SessionItemProps extends ComponentProps<typeof Card> {
 	session: Session | undefined

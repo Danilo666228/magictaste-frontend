@@ -1,11 +1,15 @@
 'use client'
 
-import { Cart } from './Cart'
+import { ArrowRight, ShoppingCart } from 'lucide-react'
+
 import { Button, Typography } from '@/components/ui/common'
+
 import { useCart } from '@/hooks/useCart'
+
 import { useHover } from '@/shared/hooks'
 import { cn } from '@/shared/hooks/helpers'
-import { ArrowRight, ShoppingCart } from 'lucide-react'
+
+import { Cart } from './Cart'
 
 export function CartButton() {
 	const { cart } = useCart()

@@ -1,5 +1,6 @@
-import { CreateOrderConfig, createOrder } from '@/shared/api/request'
 import { useMutation } from '@tanstack/react-query'
+
+import { CreateOrderConfig, createOrder } from '@/shared/api/request'
 
 export const usePostOrderMutation = (settings?: MutationSettings<CreateOrderConfig, typeof createOrder>) =>
 	useMutation({

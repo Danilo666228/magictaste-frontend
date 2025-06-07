@@ -1,9 +1,11 @@
-import { Typography } from '@/components/ui/common'
-import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/common/Avatar'
-import { ProductComment } from '@/shared/api/types/product-comment'
-import { getMediaSource } from '@/shared/hooks/helpers'
 import { motion } from 'framer-motion'
 import { useFormatter } from 'next-intl'
+
+import { Typography } from '@/components/ui/common'
+import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/common/Avatar'
+
+import { ProductComment } from '@/shared/api/types/product-comment'
+import { getMediaSource } from '@/shared/hooks/helpers'
 
 interface ReplyItemProps {
 	comment: ProductComment

@@ -2,7 +2,7 @@ import { Loader2 } from 'lucide-react'
 
 export default function Loading() {
 	return (
-		<div className='flex h-screen items-center justify-center'>
+		<div className='flex h-[calc(100vh-200px)] items-center justify-center'>
 			<div className='flex flex-col items-center space-y-8'>
 				<div className='flex space-x-2'>
 					{[0, 1, 2].map(index => (

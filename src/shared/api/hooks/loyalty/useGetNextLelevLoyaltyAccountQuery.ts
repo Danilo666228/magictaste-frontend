@@ -1,5 +1,6 @@
-import { getNextLevelLoyaltyAccount } from '@/shared/api/request'
 import { useQuery } from '@tanstack/react-query'
+
+import { getNextLevelLoyaltyAccount } from '@/shared/api/request'
 
 export const useGetNextLevelLoyaltyAccountQuery = (settings?: QuerySettings<typeof getNextLevelLoyaltyAccount>) =>
 	useQuery({

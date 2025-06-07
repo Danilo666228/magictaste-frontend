@@ -1,5 +1,6 @@
-import { getFavoriteProducts } from '@/shared/api/request'
 import { useQuery } from '@tanstack/react-query'
+
+import { getFavoriteProducts } from '@/shared/api/request'
 
 export const useGetFavoriteProductsQuery = (settings?: QuerySettings<typeof getFavoriteProducts>) =>
 	useQuery({

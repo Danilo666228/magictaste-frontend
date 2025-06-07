@@ -1,7 +1,8 @@
-import { Button } from '@/components/ui/common'
 import { Column } from '@tanstack/react-table'
 import { ArrowUpDown } from 'lucide-react'
 import { ReactNode } from 'react'
+
+import { Button } from '@/components/ui/common'
 
 interface SortableHeaderProps<T> {
 	column: Column<T>

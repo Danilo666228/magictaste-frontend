@@ -1,32 +1,46 @@
-'use client'
-
-import { Button } from '../../common'
-import { useMount } from '@/shared/hooks'
-import { cn } from '@/shared/hooks/helpers'
-import { Moon, Sun } from 'lucide-react'
+import { MoonIcon, SunIcon } from 'lucide-react'
 import { useTheme } from 'next-themes'
-import { ComponentProps, useState, useTransition } from 'react'
+import { ComponentProps } from 'react'
 
-interface ThemeToggleProps extends ComponentProps<'div'> {}
+import { Button } from '@/components/ui/common'
 
-export function ThemeToggle({ className }: ThemeToggleProps) {
-	const [mounted, setMounted] = useState(false)
-	const { theme, setTheme } = useTheme()
-	const [, startTransition] = useTransition()
+type ThemeButtonProps = ComponentProps<typeof Button>
 
-	useMount(() => {
-		setMounted(true)
-	})
+export const ThemeToggle = (props: ThemeButtonProps) => {
+	const { setTheme, theme } = useTheme()
 
-	if (!mounted) {
-		return null
+	const onThemeClick = async (event: React.MouseEvent<HTMLButtonElement>) => {
+		const x = event.clientX
+		const y = event.clientY
+		const radius = Math.hypot(window.innerWidth, window.innerHeight)
+
+		if (document.startViewTransition) {
+			await document.startViewTransition(() => {
+				setTheme(theme === 'dark' ? 'light' : 'dark')
+			}).ready
+
+			document.documentElement.animate(
+				{
+					clipPath: [`circle(0px at ${x}px ${y}px)`, `circle(${radius}px at ${x}px ${y}px)`]
+				},
+				{
+					duration: 700,
+					easing: 'ease-in-out',
+					pseudoElement: '::view-transition-new(root)'
+				}
+			)
+		} else {
+			setTheme(theme === 'dark' ? 'light' : 'dark')
+		}
 	}
 
 	return (
-		<div className={cn('flex items-center gap-2', className)}>
-			<Button variant={'outline'} className='size-9' onClick={() => startTransition(() => setTheme(theme === 'dark' ? 'light' : 'dark'))}>
-				{theme === 'dark' ? <Moon /> : <Sun />}
-			</Button>
-		</div>
+		<Button size='icon' variant='ghost' onClick={onThemeClick} className='transition-all duration-200 hover:bg-primary/5' {...props}>
+			{theme === 'dark' ? (
+				<SunIcon className='h-4 w-4 transition-transform duration-300 hover:rotate-12' />
+			) : (
+				<MoonIcon className='h-4 w-4 transition-transform duration-300 hover:-rotate-12' />
+			)}
+		</Button>
 	)
 }

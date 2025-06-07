@@ -1,8 +1,9 @@
+import { useQueryClient } from '@tanstack/react-query'
+import { useState } from 'react'
+
 import { useChangeAvatarMutation } from '@/shared/api/hooks/account/useChangeAvatarMutation'
 import { useDeleteAvatarMutation } from '@/shared/api/hooks/account/useDeleteAvatarMutation'
 import { useProfile } from '@/shared/utils/contexts'
-import { useQueryClient } from '@tanstack/react-query'
-import { useState } from 'react'
 
 export function useChangeAvatarForm() {
 	const queryClient = useQueryClient()

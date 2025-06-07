@@ -1,9 +1,12 @@
-import { ProductList } from '../ProductList'
-import { Button, Typography } from '@/components/ui/common'
-import { Category } from '@/shared/api/types/category'
-import { ROUTE } from '@/shared/utils/constants/route'
 import { ChevronRight } from 'lucide-react'
 import Link from 'next/link'
+
+import { Button, Typography } from '@/components/ui/common'
+
+import { Category } from '@/shared/api/types/category'
+import { ROUTE } from '@/shared/utils/constants/route'
+
+import { ProductList } from '../ProductList'
 
 interface CategoryItemProps {
 	category: Category

@@ -1,5 +1,8 @@
 'use client'
 
+import { DollarSign } from 'lucide-react'
+import { Area, AreaChart, CartesianGrid, XAxis } from 'recharts'
+
 import {
 	Badge,
 	Card,
@@ -12,9 +15,8 @@ import {
 	ChartTooltip,
 	ChartTooltipContent
 } from '@/components/ui/common'
+
 import { useGetStatisticSale } from '@/shared/api/hooks/statisctics/useGetStatisticSale'
-import { DollarSign } from 'lucide-react'
-import { Area, AreaChart, CartesianGrid, XAxis } from 'recharts'
 
 const chartConfig = {
 	sale: {

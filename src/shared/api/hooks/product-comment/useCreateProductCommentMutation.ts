@@ -1,5 +1,6 @@
-import { CreateProductCommentRequestConfig, createProductComment } from '@/shared/api/request'
 import { useMutation } from '@tanstack/react-query'
+
+import { CreateProductCommentRequestConfig, createProductComment } from '@/shared/api/request'
 
 export const useCreateProductCommentMutation = (settings?: MutationSettings<CreateProductCommentRequestConfig, typeof createProductComment>) =>
 	useMutation({

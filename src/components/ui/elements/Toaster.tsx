@@ -1,13 +1,15 @@
 'use client'
 
+import { useTheme } from 'next-themes'
+import { useEffect } from 'react'
+import { Toaster as Sonner, toast } from 'sonner'
+
+import { useNotificationsWebSocketStore } from '@/store/useNotificationsWebSocketStore'
+
 import { cn } from '@/shared/hooks/helpers'
 import { useProfile } from '@/shared/utils/contexts'
 import { useConfig } from '@/shared/utils/contexts'
 import { fonts } from '@/shared/utils/contexts/config/utils/fonts'
-import { useNotificationsWebSocketStore } from '@/store/useNotificationsWebSocketStore'
-import { useTheme } from 'next-themes'
-import { useEffect } from 'react'
-import { Toaster as Sonner, toast } from 'sonner'
 
 type ToasterProps = React.ComponentProps<typeof Sonner>
 

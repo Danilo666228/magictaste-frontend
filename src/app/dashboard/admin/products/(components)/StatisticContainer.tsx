@@ -1,9 +1,11 @@
 'use client'
 
-import { Card, CardContent, CardHeader, CardTitle, Skeleton, Typography } from '@/components/ui/common'
-import { useGetProductsStatisticsQuery } from '@/shared/api/hooks/statisctics/useGetProductsStatistics'
 import { DollarSign, MessageSquareMore, ShoppingBasket } from 'lucide-react'
 import { ComponentProps } from 'react'
+
+import { Card, CardContent, CardHeader, CardTitle, Skeleton, Typography } from '@/components/ui/common'
+
+import { useGetProductsStatisticsQuery } from '@/shared/api/hooks/statisctics/useGetProductsStatistics'
 
 interface StatisticContainerProps extends ComponentProps<'section'> {}
 

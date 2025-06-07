@@ -1,11 +1,13 @@
+import { ChevronRight } from 'lucide-react'
+import Image from 'next/image'
+import Link from 'next/link'
+
 import { Typography } from '@/components/ui/common/Typography'
+
 import { api } from '@/shared/api/instance'
 import { Product } from '@/shared/api/types'
 import { getMediaSource } from '@/shared/hooks/helpers'
 import { ROUTE } from '@/shared/utils/constants/route'
-import { ChevronRight } from 'lucide-react'
-import Image from 'next/image'
-import Link from 'next/link'
 
 async function getPopularProducts() {
 	try {

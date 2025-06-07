@@ -1,5 +1,6 @@
-import { getLoyaltyByAccount } from '@/shared/api/request'
 import { useQuery } from '@tanstack/react-query'
+
+import { getLoyaltyByAccount } from '@/shared/api/request'
 
 export const useGetLoyaltyByAccountQuery = (settings?: QuerySettings<typeof getLoyaltyByAccount>) =>
 	useQuery({

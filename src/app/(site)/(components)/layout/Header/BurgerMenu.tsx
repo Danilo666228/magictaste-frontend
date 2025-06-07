@@ -1,12 +1,14 @@
 'use client'
 
-import { Button, Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from '@/components/ui/common'
-import { ROUTE } from '@/shared/utils/constants/route'
 import { Menu } from 'lucide-react'
 import { useRouter } from 'next/navigation'
 import { useState } from 'react'
 
-export function HeaderBurgerMenu() {
+import { Button, Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from '@/components/ui/common'
+
+import { ROUTE } from '@/shared/utils/constants/route'
+
+export function BurgerMenu() {
 	const router = useRouter()
 	const [open, setOpen] = useState<boolean>(false)
 
@@ -18,8 +20,8 @@ export function HeaderBurgerMenu() {
 	}
 	return (
 		<Sheet open={open} onOpenChange={onOpenChange}>
-			<SheetTrigger className='sm:hidden' asChild>
-				<Button variant='outline' size='icon'>
+			<SheetTrigger className='' asChild>
+				<Button variant='outline' size='icon' className='sm:hidden'>
 					<Menu />
 				</Button>
 			</SheetTrigger>

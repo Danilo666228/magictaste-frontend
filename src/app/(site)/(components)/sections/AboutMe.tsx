@@ -1,6 +1,7 @@
-import { Typography } from '@/components/ui/common'
 import { Clock, MapPin, Phone } from 'lucide-react'
 import Image from 'next/image'
+
+import { Typography } from '@/components/ui/common'
 
 export function AboutMe() {
 	return (

@@ -1,7 +1,12 @@
 'use client'
 
-import { useSignUpForm } from '../(hooks)/useSignUpForm'
+import { motion } from 'framer-motion'
+import { CheckCircle, Loader, Lock, Mail, User } from 'lucide-react'
+import { useTheme } from 'next-themes'
+import ReCAPTCHA from 'react-google-recaptcha'
+
 import { AuthWrapper } from '@/app/auth/AuthWrapper'
+
 import {
 	Alert,
 	AlertDescription,
@@ -17,12 +22,11 @@ import {
 	FormMessage,
 	Input
 } from '@/components/ui/common'
+
 import { RECAPTCHA_SITE_KEY } from '@/shared/utils/constants/env'
 import { ROUTE } from '@/shared/utils/constants/route'
-import { motion } from 'framer-motion'
-import { CheckCircle, Loader, Lock, Mail, User } from 'lucide-react'
-import { useTheme } from 'next-themes'
-import ReCAPTCHA from 'react-google-recaptcha'
+
+import { useSignUpForm } from '../(hooks)/useSignUpForm'
 
 export function SignUpForm() {
 	const { form, isPending, isSuccess, onSubmit, recaptchaRef, handleRecaptchaChange, handleRecaptchaExpired } = useSignUpForm()
@@ -50,7 +54,7 @@ export function SignUpForm() {
 			backLabelHref='Войти в аккаунт'>
 			{isSuccess ? (
 				<motion.div variants={successVariants} initial='hidden' animate='visible'>
-					<Alert className='flex flex-col items-center gap-5 rounded-xl border-2 border-green-200 bg-green-50/50 py-8 shadow-md dark:bg-green-950/30'>
+					<Alert className='flex flex-col items-center gap-5 rounded-xl border-2 py-8'>
 						<motion.div
 							animate={{
 								scale: [1, 1.2, 1],

@@ -1,13 +1,17 @@
 'use client'
 
-import { CategoryForm } from '../CategoryForm'
-import { columns } from './columns'
+import { Plus } from 'lucide-react'
+import { useState } from 'react'
+
 import { Button } from '@/components/ui/common'
 import { Modal } from '@/components/ui/elements/modal/Default/Modal'
 import { DataTable } from '@/components/ui/elements/table/DataTable'
+
 import { useGetCategoryQuery } from '@/shared/api/hooks/category/useGetCategoryQuery'
-import { Plus } from 'lucide-react'
-import { useState } from 'react'
+
+import { CategoryForm } from '../CategoryForm'
+
+import { columns } from './columns'
 
 export function CategoryTable() {
 	const [page, setPage] = useState(1)

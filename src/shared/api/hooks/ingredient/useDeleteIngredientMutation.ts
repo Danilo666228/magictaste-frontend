@@ -1,5 +1,6 @@
-import { DeleteIngredientRequestConfig, deleteIngredient } from '../../request/ingredient/delete'
 import { useMutation } from '@tanstack/react-query'
+
+import { DeleteIngredientRequestConfig, deleteIngredient } from '../../request/ingredient/delete'
 
 export const useDeleteIngredientMutation = (settings?: MutationSettings<DeleteIngredientRequestConfig, typeof deleteIngredient>) =>
 	useMutation({

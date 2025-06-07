@@ -1,5 +1,6 @@
-import { ROUTE } from '@/shared/utils/constants/route'
 import Link from 'next/link'
+
+import { ROUTE } from '@/shared/utils/constants/route'
 
 export default function ThanksPage() {
 	return (

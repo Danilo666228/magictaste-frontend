@@ -1,11 +1,13 @@
 'use client'
 
-import { Button, Typography } from '@/components/ui/common'
-import { ROUTE } from '@/shared/utils/constants/route'
 import { ArrowLeft, GalleryVerticalEnd } from 'lucide-react'
 import Link from 'next/link'
 import { useRouter } from 'next/navigation'
 import { ReactNode } from 'react'
+
+import { Button, Typography } from '@/components/ui/common'
+
+import { ROUTE } from '@/shared/utils/constants/route'
 
 interface LayoutProps {
 	children: ReactNode

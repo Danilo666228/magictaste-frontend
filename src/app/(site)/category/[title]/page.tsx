@@ -1,7 +1,9 @@
-import { Category } from './(components)/Category'
+import { Metadata } from 'next'
+
 import { api } from '@/shared/api/instance'
 import { Category as CategoryType } from '@/shared/api/types/category'
-import { Metadata } from 'next'
+
+import { Category } from './(components)/Category'
 
 type Params = Promise<{ title: string }>
 

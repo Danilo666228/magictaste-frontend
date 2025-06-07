@@ -1,5 +1,6 @@
-import { Card, CardContent, CardHeader, Typography } from '@/components/ui/common'
 import { Clock, LucideIcon, Star, Utensils } from 'lucide-react'
+
+import { Card, CardContent, CardHeader, Typography } from '@/components/ui/common'
 
 interface CardInfo {
 	id: number
@@ -32,7 +33,7 @@ const cardInfo: CardInfo[] = [
 export function BenefitsSection() {
 	return (
 		<section className='py-12'>
-			<div className='px-4 sm:px-6 lg:px-8'>
+			<div className=''>
 				<div className='grid grid-cols-1 gap-8 md:grid-cols-3'>
 					{cardInfo.map(card => (
 						<Card key={card.id} className='transition-all duration-500 hover:shadow-xl'>

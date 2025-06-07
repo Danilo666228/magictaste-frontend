@@ -1,9 +1,11 @@
+import { useQueryClient } from '@tanstack/react-query'
+import { useState } from 'react'
+
 import { DropdownMenuItem } from '@/components/ui/common'
 import { ImageUpload } from '@/components/ui/elements/image-upload/ImageUpload'
 import { Modal } from '@/components/ui/elements/modal/Default/Modal'
+
 import { useChangeIngredientImageMutation } from '@/shared/api/hooks/ingredient/useChangeIngedientImageMutation'
-import { useQueryClient } from '@tanstack/react-query'
-import { useState } from 'react'
 
 interface UploadImageIngredientProps {
 	ingredientId: string

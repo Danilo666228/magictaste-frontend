@@ -1,10 +1,13 @@
 'use client'
 
-import { SupportTicketItem } from './SupportTicketItem'
-import { Typography } from '@/components/ui/common'
-import { Account } from '@/shared/api/types'
 import { useEffect, useState } from 'react'
 import { Socket } from 'socket.io-client'
+
+import { Typography } from '@/components/ui/common'
+
+import { Account } from '@/shared/api/types'
+
+import { SupportTicketItem } from './SupportTicketItem'
 
 export interface ActiveChat {
 	account: Account

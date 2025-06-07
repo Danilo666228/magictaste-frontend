@@ -1,8 +1,9 @@
 'use client'
 
-import { cn } from '@/shared/utils/twMerge'
 import * as React from 'react'
 import * as RechartsPrimitive from 'recharts'
+
+import { cn } from '@/shared/utils/twMerge'
 
 // Format: { THEME_NAME: CSS_SELECTOR }
 const THEMES = { light: '', dark: '.dark' } as const

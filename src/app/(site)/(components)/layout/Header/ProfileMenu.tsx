@@ -1,5 +1,8 @@
 'use client'
 
+import { Loader2 } from 'lucide-react'
+import { useRouter } from 'next/navigation'
+
 import {
 	Avatar,
 	AvatarFallback,
@@ -13,12 +16,10 @@ import {
 	DropdownMenuTrigger,
 	Typography
 } from '@/components/ui/common'
-import { ThemeToggle } from '@/components/ui/elements/theme/ThemeToggle'
+
 import { getMediaSource } from '@/shared/hooks/helpers'
 import { ROUTE } from '@/shared/utils/constants/route'
 import { useProfile } from '@/shared/utils/contexts'
-import { Loader2 } from 'lucide-react'
-import { useRouter } from 'next/navigation'
 
 export function ProfileMenu() {
 	const router = useRouter()
@@ -50,7 +51,6 @@ export function ProfileMenu() {
 								{profile?.email}
 							</Typography>
 						</div>
-						<ThemeToggle />
 					</div>
 				</DropdownMenuLabel>
 				<DropdownMenuSeparator />

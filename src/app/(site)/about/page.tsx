@@ -1,5 +1,6 @@
-import { AdvantagesSection, ContactInfoSection } from './(components)'
 import { Metadata } from 'next'
+
+import { AdvantagesSection, ContactInfoSection } from './(components)'
 
 export const metadata: Metadata = {
 	title: 'О нас'

@@ -1,9 +1,11 @@
 'use client'
 
-import { Button } from '@/components/ui/common'
-import { cn } from '@/shared/utils/twMerge'
 import { MessageCircle, X } from 'lucide-react'
 import React, { useEffect, useRef, useState } from 'react'
+
+import { Button } from '@/components/ui/common'
+
+import { cn } from '@/shared/utils/twMerge'
 
 export type ChatPosition = 'bottom-right' | 'bottom-left'
 export type ChatSize = 'sm' | 'md' | 'lg' | 'xl' | 'full'

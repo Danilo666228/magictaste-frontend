@@ -1,10 +1,11 @@
+import { useCallback } from 'react'
+
 import { useCreateProductCommentMutation } from '@/shared/api/hooks/product-comment/useCreateProductCommentMutation'
 import { useCreateReplyProductCommentMutation } from '@/shared/api/hooks/product-comment/useCreateReplyProductCommentMutation'
 import { useDeleteProductCommentMutation } from '@/shared/api/hooks/product-comment/useDeleteProductCommentMutation'
 import { useGetProductCommentsQuery } from '@/shared/api/hooks/product-comment/useGetProductCommentsQuery'
 import { useUpdateProductCommentMutation } from '@/shared/api/hooks/product-comment/useUpdateProductCommentMutation'
 import { ProductComment } from '@/shared/api/types/product-comment'
-import { useCallback } from 'react'
 
 export function useProductComments(productId: string, includeReplies: boolean = true) {
 	const {

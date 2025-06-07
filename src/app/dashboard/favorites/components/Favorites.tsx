@@ -1,12 +1,16 @@
 'use client'
 
-import { FavoriteList } from './FavoriteList'
-import { Typography } from '@/components/ui/common'
-import { SearchInput } from '@/components/ui/elements/input/SearchInput'
-import { useFavorite } from '@/hooks/useFavorite'
-import { useDebounceValue } from '@/shared/hooks'
 import { Heart } from 'lucide-react'
 import { useState } from 'react'
+
+import { Typography } from '@/components/ui/common'
+import { SearchInput } from '@/components/ui/elements/input/SearchInput'
+
+import { useFavorite } from '@/hooks/useFavorite'
+
+import { useDebounceValue } from '@/shared/hooks'
+
+import { FavoriteList } from './FavoriteList'
 
 export function Favorites() {
 	const [searchValue, setSearchValue] = useState<string>('')

@@ -1,8 +1,10 @@
-import { Accordion, AccordionContent, AccordionItem, AccordionTrigger, Button, Separator, Typography } from '@/components/ui/common'
-import { useDeleteDeliveryAddressMutation } from '@/shared/api/hooks/delivery-address/useDeleteDeliveryAddressMutation'
-import type { DeliveryAddress } from '@/shared/api/types'
 import { useQueryClient } from '@tanstack/react-query'
 import { Building2, Home, MapPin, Trash2 } from 'lucide-react'
+
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger, Button, Separator, Typography } from '@/components/ui/common'
+
+import { useDeleteDeliveryAddressMutation } from '@/shared/api/hooks/delivery-address/useDeleteDeliveryAddressMutation'
+import type { DeliveryAddress } from '@/shared/api/types'
 
 interface DeliveryAddressItemProps {
 	deliveryAddress: DeliveryAddress

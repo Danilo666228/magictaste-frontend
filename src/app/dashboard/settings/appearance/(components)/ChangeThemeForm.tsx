@@ -1,25 +1,44 @@
 'use client'
 
-import { Card, CardContent, CardDescription, CardHeader, CardTitle, Label, RadioGroup, RadioGroupItem, Typography } from '@/components/ui/common'
-import { useMount } from '@/shared/hooks'
-import { cn } from '@/shared/utils/twMerge'
 import { Moon, Palette, Sun } from 'lucide-react'
 import { useTheme } from 'next-themes'
-import { useRef, useState } from 'react'
+import { useRef } from 'react'
+
+import { Card, CardContent, CardDescription, CardHeader, CardTitle, Label, RadioGroup, RadioGroupItem, Typography } from '@/components/ui/common'
+
+import { cn } from '@/shared/utils/twMerge'
 
 export function ChangeThemeForm() {
 	const lightThemeRef = useRef<HTMLButtonElement>(null)
 	const darkThemeRef = useRef<HTMLButtonElement>(null)
 	const systemThemeRef = useRef<HTMLButtonElement>(null)
 	const { theme, setTheme } = useTheme()
-	const [mounted, setMounted] = useState(false)
-	useMount(() => {
-		setMounted(true)
-	})
 
-	if (!mounted) {
-		return null
+	const handleThemeChange = async (newTheme: string, event: React.MouseEvent) => {
+		const x = event.clientX
+		const y = event.clientY
+		const radius = Math.hypot(window.innerWidth, window.innerHeight)
+
+		if (document.startViewTransition) {
+			await document.startViewTransition(() => {
+				setTheme(newTheme)
+			}).ready
+
+			document.documentElement.animate(
+				{
+					clipPath: [`circle(0px at ${x}px ${y}px)`, `circle(${radius}px at ${x}px ${y}px)`]
+				},
+				{
+					duration: 700,
+					easing: 'ease-in-out',
+					pseudoElement: '::view-transition-new(root)'
+				}
+			)
+		} else {
+			setTheme(newTheme)
+		}
 	}
+
 	return (
 		<Card>
 			<CardHeader className='bg-muted/30'>
@@ -40,10 +59,10 @@ export function ChangeThemeForm() {
 					</Typography>
 				</div>
 
-				<RadioGroup defaultValue={theme} onValueChange={value => setTheme(value)} className='grid grid-cols-1 gap-6 md:grid-cols-3'>
+				<RadioGroup defaultValue={theme} className='grid grid-cols-1 gap-6 md:grid-cols-3'>
 					<div className='flex flex-col'>
 						<div
-							onClick={() => setTheme('light')}
+							onClick={e => handleThemeChange('light', e)}
 							className={cn(
 								'relative flex cursor-pointer flex-col items-center rounded-lg border-2 p-2 transition-all',
 								theme === 'light' ? 'border-primary bg-primary/5' : 'border-muted hover:border-muted-foreground/20'
@@ -89,7 +108,7 @@ export function ChangeThemeForm() {
 
 					<div className='flex flex-col'>
 						<div
-							onClick={() => setTheme('dark')}
+							onClick={e => handleThemeChange('dark', e)}
 							className={cn(
 								'relative flex cursor-pointer flex-col items-center rounded-lg border-2 p-2 transition-all',
 								theme === 'dark' ? 'border-primary bg-primary/5' : 'border-muted hover:border-muted-foreground/20'
@@ -135,7 +154,7 @@ export function ChangeThemeForm() {
 
 					<div className='flex flex-col'>
 						<div
-							onClick={() => setTheme('system')}
+							onClick={e => handleThemeChange('system', e)}
 							className={cn(
 								'relative flex cursor-pointer flex-col items-center rounded-lg border-2 p-2 transition-all',
 								theme === 'system' ? 'border-primary bg-primary/5' : 'border-muted hover:border-muted-foreground/20'

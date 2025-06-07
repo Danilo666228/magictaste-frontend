@@ -1,12 +1,15 @@
 'use client'
 
-import { IngredientItem } from './IngredientItem'
-import { Typography } from '@/components/ui/common'
-import { Carousel, CarouselContent, CarouselDots, CarouselItem, CarouselNext, CarouselPrevious } from '@/components/ui/common/Сarousel'
-import { Ingredient } from '@/shared/api/types'
-import { cn } from '@/shared/hooks/helpers'
 import Autoplay from 'embla-carousel-autoplay'
 import { ComponentProps } from 'react'
+
+import { Typography } from '@/components/ui/common'
+import { Carousel, CarouselContent, CarouselDots, CarouselItem, CarouselNext, CarouselPrevious } from '@/components/ui/common/Сarousel'
+
+import { Ingredient } from '@/shared/api/types'
+import { cn } from '@/shared/hooks/helpers'
+
+import { IngredientItem } from './IngredientItem'
 
 interface IngredientItemProps extends ComponentProps<'section'> {
 	ingredients: Ingredient[]

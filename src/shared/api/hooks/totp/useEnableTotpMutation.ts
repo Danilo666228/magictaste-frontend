@@ -1,5 +1,6 @@
-import { EnableTotpRequestConfig, enableTotp } from '../../request'
 import { useMutation } from '@tanstack/react-query'
+
+import { EnableTotpRequestConfig, enableTotp } from '../../request'
 
 export const useEnableTotpMutation = (settings?: MutationSettings<EnableTotpRequestConfig, typeof enableTotp>) =>
 	useMutation({

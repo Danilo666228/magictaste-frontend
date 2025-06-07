@@ -1,5 +1,5 @@
+export * from './BurgerMenu'
 export * from './Header'
-export * from './HeaderBurgerMenu'
 export * from './Logo'
 export * from './Notifications'
 export * from './ProfileMenu'

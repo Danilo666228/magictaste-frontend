@@ -1,6 +1,7 @@
+import { useMutation } from '@tanstack/react-query'
+
 import type { RemoveDeliveryAddressRequestConfig } from '@/shared/api/request'
 import { removeDeliveryAddress } from '@/shared/api/request'
-import { useMutation } from '@tanstack/react-query'
 
 export const useDeleteDeliveryAddressMutation = (settings?: MutationSettings<RemoveDeliveryAddressRequestConfig, typeof removeDeliveryAddress>) =>
 	useMutation({

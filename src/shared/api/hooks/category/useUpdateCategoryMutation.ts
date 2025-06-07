@@ -1,5 +1,6 @@
-import { UpdateCategoryRequestConfig, updateCategory } from '../../request/category/update'
 import { useMutation } from '@tanstack/react-query'
+
+import { UpdateCategoryRequestConfig, updateCategory } from '../../request/category/update'
 
 export const useUpdateCategoryMutation = (settings?: MutationSettings<UpdateCategoryRequestConfig, typeof updateCategory>) =>
 	useMutation({

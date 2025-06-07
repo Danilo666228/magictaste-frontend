@@ -1,5 +1,8 @@
 'use client'
 
+import { User } from 'lucide-react'
+import { useFormatter } from 'next-intl'
+
 import {
 	Avatar,
 	AvatarFallback,
@@ -14,11 +17,10 @@ import {
 	Skeleton,
 	Typography
 } from '@/components/ui/common'
+
 import { getMediaSource } from '@/shared/hooks/helpers'
 import { useProfile } from '@/shared/utils/contexts'
 import { cn } from '@/shared/utils/twMerge'
-import { User } from 'lucide-react'
-import { useFormatter } from 'next-intl'
 
 export function ProfileAbout() {
 	const { profile, profileQuery } = useProfile()

@@ -1,6 +1,8 @@
-import { NavigationItem } from './Navigation/types'
-import { ROUTE } from '@/shared/utils/constants/route'
 import { BarChart3, Bell, BookOpenCheck, Cake, CircleUser, Heart, MessageSquare, Settings, SquareChartGantt, Truck } from 'lucide-react'
+
+import { ROUTE } from '@/shared/utils/constants/route'
+
+import { NavigationItem } from './Navigation/types'
 
 export const navigationConfig: NavigationItem[] = [
 	{
