@@ -1,7 +1,6 @@
+import { ProductModal } from './ProductModal'
 import { Product } from '@/shared/api/types'
 import { API_URL } from '@/shared/utils/constants/env'
-
-import { ProductModal } from './ProductModal'
 
 async function getProduct(id: string) {
 	try {

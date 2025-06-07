@@ -1,11 +1,9 @@
+import { Button, Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from '@/components/ui/common'
+import { YandexMap } from '@/components/ui/elements/yandex-map/YandexMap'
+import { Session } from '@/shared/api/types'
 import { Clock, Info, Loader2, MapPin, MapPinHouse, MonitorSmartphone } from 'lucide-react'
 import { useFormatter } from 'next-intl'
 import { useState } from 'react'
-
-import { Button, Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from '@/components/ui/common'
-import { YandexMap } from '@/components/ui/elements/yandex-map/YandexMap'
-
-import { Session } from '@/shared/api/types'
 
 interface SessionInfoProps {
 	session: Session | undefined

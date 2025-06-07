@@ -1,6 +1,5 @@
-import { Heading } from '@/components/ui/common'
-
 import { ChangeNotificationForm } from './(components)/ChangeNotificationForm'
+import { Heading } from '@/components/ui/common'
 
 export default function NotificationSettingsPage() {
 	return (

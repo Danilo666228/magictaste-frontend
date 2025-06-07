@@ -1,6 +1,5 @@
-import { Heading } from '@/components/ui/common'
-
 import { OrderList } from './(components)/OrderList'
+import { Heading } from '@/components/ui/common'
 
 export default function OrdersPage() {
 	return (

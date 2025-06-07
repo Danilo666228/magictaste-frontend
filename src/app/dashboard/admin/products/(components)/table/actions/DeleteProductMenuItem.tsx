@@ -1,8 +1,6 @@
-import { useQueryClient } from '@tanstack/react-query'
-
 import { DropdownMenuItem } from '@/components/ui/common'
-
 import { useDeleteProductMutation } from '@/shared/api/hooks/products/useDeleteProductMutation'
+import { useQueryClient } from '@tanstack/react-query'
 
 export function DeleteProductMenuItem({ productId }: { productId: string }) {
 	const queryClient = useQueryClient()

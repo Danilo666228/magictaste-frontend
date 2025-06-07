@@ -1,16 +1,14 @@
 'use client'
 
-import { useFormatter } from 'next-intl'
-import { useEffect, useRef, useState } from 'react'
-import { Socket } from 'socket.io-client'
-
 import { Avatar, AvatarFallback, AvatarImage, Button, Textarea, Typography } from '@/components/ui/common'
-
 import { Account } from '@/shared/api/types'
 import { Message } from '@/shared/api/types/supportChat'
 import { getMediaSource } from '@/shared/hooks/helpers'
 import { useProfile } from '@/shared/utils/contexts'
 import { cn } from '@/shared/utils/twMerge'
+import { useFormatter } from 'next-intl'
+import { useEffect, useRef, useState } from 'react'
+import { Socket } from 'socket.io-client'
 
 interface SupportTicketChatProps {
 	socket: Socket | null

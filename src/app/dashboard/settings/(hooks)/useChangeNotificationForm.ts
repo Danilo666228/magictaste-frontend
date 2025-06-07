@@ -1,11 +1,9 @@
+import { ChangeNotificationSettingsSchema, changeNotificationSettingsSchema } from '@/schemas/account/changeNotificationSettings'
+import { useChangeNotificationSettingsMutation } from '@/shared/api/hooks/profile/useChangeNotificationMutation'
+import { useProfile } from '@/shared/utils/contexts'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useQueryClient } from '@tanstack/react-query'
 import { useForm } from 'react-hook-form'
-
-import { ChangeNotificationSettingsSchema, changeNotificationSettingsSchema } from '@/schemas/account/changeNotificationSettings'
-
-import { useChangeNotificationSettingsMutation } from '@/shared/api/hooks/profile/useChangeNotificationMutation'
-import { useProfile } from '@/shared/utils/contexts'
 
 export function useChangeNotificationForm() {
 	const queryClient = useQueryClient()

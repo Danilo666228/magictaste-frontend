@@ -1,16 +1,13 @@
 'use client'
 
-import { Plus } from 'lucide-react'
-import { useState } from 'react'
-
+import { IngredientForm } from './IngredientForm'
+import { columns } from './columns'
 import { Button } from '@/components/ui/common'
 import { Modal } from '@/components/ui/elements/modal/Default/Modal'
 import { DataTable } from '@/components/ui/elements/table/DataTable'
-
 import { useGetIngredientsQuery } from '@/shared/api/hooks/ingredient/useGetIngredientsQuery'
-
-import { IngredientForm } from './IngredientForm'
-import { columns } from './columns'
+import { Plus } from 'lucide-react'
+import { useState } from 'react'
 
 export function IngredientTable() {
 	const [pageSize, setPageSize] = useState(10)

@@ -1,17 +1,14 @@
 'use client'
 
+import { Button, Popover, PopoverContent, PopoverTrigger } from '@/components/ui/common'
+import { ROUTE } from '@/shared/utils/constants/route'
+import { cn } from '@/shared/utils/twMerge'
+import { useNotificationsWebSocketStore } from '@/store/useNotificationsWebSocketStore'
 import { Bell, Check, CheckCheck } from 'lucide-react'
 import { useFormatter } from 'next-intl'
 import Link from 'next/link'
 import { useRouter } from 'next/navigation'
 import { useCallback, useEffect, useMemo } from 'react'
-
-import { Button, Popover, PopoverContent, PopoverTrigger } from '@/components/ui/common'
-
-import { useNotificationsWebSocketStore } from '@/store/useNotificationsWebSocketStore'
-
-import { ROUTE } from '@/shared/utils/constants/route'
-import { cn } from '@/shared/utils/twMerge'
 
 export function Notifications() {
 	const { notifications, markAllAsRead, checkConnection, isConnected, fetchNotifications, markAsRead } = useNotificationsWebSocketStore()

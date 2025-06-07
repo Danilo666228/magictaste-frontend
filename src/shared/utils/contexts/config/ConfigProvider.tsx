@@ -1,14 +1,12 @@
 'use client'
 
-import * as React from 'react'
-import { useEffect, useState } from 'react'
-
-import { useLocalStorage } from '@/shared/hooks'
-
 import { ConfigContext, ConfigState, FontFamily, RoundedRadius, initialConfig } from './ConfigContext'
 import { AccentColors, setAccentColor } from './utils/accent-colors'
 import { fonts } from './utils/fonts'
 import { getRadiusValue } from './utils/radius'
+import { useLocalStorage } from '@/shared/hooks'
+import * as React from 'react'
+import { useEffect, useState } from 'react'
 
 export function ConfigProvider({ children }: { children: React.ReactNode }) {
 	const accentColorStorage = useLocalStorage('config.accent.color', initialConfig.accent.color)

@@ -1,12 +1,10 @@
 'use client'
 
-import { SquareRoundCorner } from 'lucide-react'
-
 import { Button, Card, CardContent, CardDescription, CardHeader, CardTitle, Slider } from '@/components/ui/common'
-
 import { cn } from '@/shared/hooks/helpers'
 import { RoundedRadius, useConfig } from '@/shared/utils/contexts'
 import { getRadiusName, getRadiusValue } from '@/shared/utils/contexts/config/utils/radius'
+import { SquareRoundCorner } from 'lucide-react'
 
 const presets = [
 	{ name: 'Квадрат', value: 'sm' },

@@ -1,8 +1,6 @@
-import { Container, Heading, Tabs, TabsContent, TabsList, TabsTrigger, Typography } from '@/components/ui/common'
-
-import { Product } from '@/shared/api/types'
-
 import { ProductComments } from './product-comment/ProductComments'
+import { Container, Heading, Tabs, TabsContent, TabsList, TabsTrigger, Typography } from '@/components/ui/common'
+import { Product } from '@/shared/api/types'
 
 interface ProductAboutProps {
 	product: Product

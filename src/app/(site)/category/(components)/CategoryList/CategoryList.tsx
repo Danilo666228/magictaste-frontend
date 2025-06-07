@@ -1,14 +1,10 @@
 'use client'
 
-import { Utensils } from 'lucide-react'
-
-import { Skeleton, Typography } from '@/components/ui/common'
-
-import { useGetCategoryQuery } from '@/shared/api/hooks/category/useGetCategoryQuery'
-
 import { ProductListSkeleton } from '../ProductList'
-
 import { CategoryItem } from './CategoryItem'
+import { Skeleton, Typography } from '@/components/ui/common'
+import { useGetCategoryQuery } from '@/shared/api/hooks/category/useGetCategoryQuery'
+import { Utensils } from 'lucide-react'
 
 export function CategoryList() {
 	const { data: categories, isPending } = useGetCategoryQuery()

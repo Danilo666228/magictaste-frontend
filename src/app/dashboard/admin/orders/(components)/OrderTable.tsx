@@ -1,12 +1,9 @@
 'use client'
 
-import { useState } from 'react'
-
-import { DataTable } from '@/components/ui/elements/table/DataTable'
-
-import { useGetOrdersQuery } from '@/shared/api/hooks/order/useGetOrdersQuery'
-
 import { columns } from './columns'
+import { DataTable } from '@/components/ui/elements/table/DataTable'
+import { useGetOrdersQuery } from '@/shared/api/hooks/order/useGetOrdersQuery'
+import { useState } from 'react'
 
 export function OrderTable() {
 	const [page, setPage] = useState(1)

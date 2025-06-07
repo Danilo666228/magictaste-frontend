@@ -1,6 +1,5 @@
-import { Clock, LucideIcon, Star, Utensils } from 'lucide-react'
-
 import { Card, CardContent, CardHeader, Typography } from '@/components/ui/common'
+import { Clock, LucideIcon, Star, Utensils } from 'lucide-react'
 
 interface CardInfo {
 	id: number

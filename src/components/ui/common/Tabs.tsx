@@ -1,9 +1,8 @@
 'use client'
 
+import { cn } from '@/shared/utils/twMerge'
 import * as TabsPrimitive from '@radix-ui/react-tabs'
 import * as React from 'react'
-
-import { cn } from '@/shared/utils/twMerge'
 
 const Tabs = TabsPrimitive.Root
 

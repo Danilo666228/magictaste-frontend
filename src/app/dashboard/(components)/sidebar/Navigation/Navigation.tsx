@@ -1,15 +1,11 @@
 'use client'
 
-import { usePathname } from 'next/navigation'
-
-import { SidebarGroup, SidebarGroupLabel, SidebarMenu } from '@/components/ui/common'
-
-import { useProfile } from '@/shared/utils/contexts'
-
 import { navigationConfig } from '../navigation.config'
-
 import { NavigationItem } from './NavigationItem'
 import { filterItemsByRole, getGroupLabel, groupNavigationItems } from './utils'
+import { SidebarGroup, SidebarGroupLabel, SidebarMenu } from '@/components/ui/common'
+import { useProfile } from '@/shared/utils/contexts'
+import { usePathname } from 'next/navigation'
 
 export function Navigation() {
 	const { profile } = useProfile()

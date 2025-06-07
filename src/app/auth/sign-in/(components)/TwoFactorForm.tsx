@@ -1,11 +1,9 @@
 'use client'
 
+import { Form, FormControl, FormField, FormItem, FormMessage, InputOTP, InputOTPGroup, InputOTPSeparator, InputOTPSlot } from '@/components/ui/common'
+import { SignInSchema } from '@/schemas/auth/signIn'
 import { REGEXP_ONLY_DIGITS } from 'input-otp'
 import { UseFormReturn } from 'react-hook-form'
-
-import { Form, FormControl, FormField, FormItem, FormMessage, InputOTP, InputOTPGroup, InputOTPSeparator, InputOTPSlot } from '@/components/ui/common'
-
-import { SignInSchema } from '@/schemas/auth/signIn'
 
 interface TwoFactorFormProps {
 	form: UseFormReturn<SignInSchema>

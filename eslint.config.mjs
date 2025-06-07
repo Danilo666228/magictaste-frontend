@@ -1,16 +1,45 @@
-// import { dirname } from 'path'
-// import { fileURLToPath } from 'url'
-// import { FlatCompat } from '@eslint/eslintrc'
+import * as pluginReatom from '@reatom/eslint-plugin'
+import { eslint } from '@siberiacancode/eslint'
+import pluginTanstackQuery from '@tanstack/eslint-plugin-query'
 
-// const __filename = fileURLToPath(import.meta.url)
-// const __dirname = dirname(__filename)
+export default eslint(
+	{
+		typescript: true,
+		react: true,
+		jsx: true,
 
-// const compat = new FlatCompat({
-// 	baseDirectory: __dirname
-// })
-
-// const eslintConfig = [
-// 	...compat.extends('next/core-web-vitals', 'next/typescript')
-// ]
-
-// export default eslintConfig
+		plugins: ['simple-import-sort'],
+		rules: {
+			'simple-import-sort/imports': {
+				group: ['^@', '^[./]'],
+				alphabetize: {
+					order: 'asc',
+					caseInsensitive: true
+				}
+			}
+		}
+	},
+	{
+		name: 'cooljs/tanstack-query',
+		plugins: {
+			'@tanstack/query': pluginTanstackQuery
+		},
+		rules: {
+			...pluginTanstackQuery.configs.recommended.rules
+		}
+	},
+	{
+		name: 'cooljs/reatom',
+		plugins: {
+			'@reatom': pluginReatom
+		},
+		...pluginReatom.configs.recommended
+	},
+	{
+		name: 'cooljs/rewrite',
+		rules: {
+			'no-restricted-syntax': 'off',
+			'promise/always-return': 'off'
+		}
+	}
+)

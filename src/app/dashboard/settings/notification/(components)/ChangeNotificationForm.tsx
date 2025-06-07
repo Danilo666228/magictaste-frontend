@@ -1,13 +1,10 @@
 'use client'
 
-import { Bell, BellOff, LucideIcon, MessageSquare } from 'lucide-react'
-
 import { useChangeNotificationForm } from '@/app/dashboard/settings/(hooks)/useChangeNotificationForm'
-
 import { Badge, Card, CardContent, CardDescription, CardHeader, CardTitle, Form, FormField, Label, Typography } from '@/components/ui/common'
 import { Switch } from '@/components/ui/common/Switch'
-
 import { cn } from '@/shared/hooks/helpers'
+import { Bell, BellOff, LucideIcon, MessageSquare } from 'lucide-react'
 
 function NotificationToggle({
 	icon: Icon,

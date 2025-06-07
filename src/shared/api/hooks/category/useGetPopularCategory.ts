@@ -1,6 +1,5 @@
-import { useQuery } from '@tanstack/react-query'
-
 import { getPopularCategory } from '../../request'
+import { useQuery } from '@tanstack/react-query'
 
 export const useGetPopularCategory = (settings?: QuerySettings<typeof getPopularCategory>) =>
 	useQuery({

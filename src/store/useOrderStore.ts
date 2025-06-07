@@ -1,8 +1,7 @@
+import type { OrderItem } from '@/shared/api/types'
+import type { DeliveryType } from '@/shared/api/types/payment'
 import { create } from 'zustand'
 import { persist } from 'zustand/middleware'
-
-import { OrderItem } from '@/shared/api/types'
-import { DeliveryType } from '@/shared/api/types/payment'
 
 export type OrderStep = 'user' | 'delivery' | 'payment'
 

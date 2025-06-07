@@ -1,12 +1,10 @@
 'use client'
 
-import Link from 'next/link'
-import { usePathname } from 'next/navigation'
-
 import { NavigationMenuItem } from '@/components/ui/common'
-
 import { cn } from '@/shared/hooks/helpers'
 import { ROUTE } from '@/shared/utils/constants/route'
+import Link from 'next/link'
+import { usePathname } from 'next/navigation'
 
 export function NavigationMain() {
 	const pathname = usePathname()

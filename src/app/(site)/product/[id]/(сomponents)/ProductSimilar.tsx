@@ -1,9 +1,7 @@
 'use client'
 
 import { ProductList } from '@/app/(site)/category/(components)/ProductList'
-
 import { Container, Typography } from '@/components/ui/common'
-
 import { Product } from '@/shared/api/types'
 
 interface ProductSimilarProps {

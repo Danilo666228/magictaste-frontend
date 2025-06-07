@@ -1,6 +1,5 @@
-import { useMutation } from '@tanstack/react-query'
-
 import { ChangeIngredientImageRequestConfig, changeIngredientImage } from '../../request/ingredient/change/image'
+import { useMutation } from '@tanstack/react-query'
 
 export const useChangeIngredientImageMutation = (settings?: MutationSettings<ChangeIngredientImageRequestConfig, typeof changeIngredientImage>) =>
 	useMutation({

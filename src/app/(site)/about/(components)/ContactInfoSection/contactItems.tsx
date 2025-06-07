@@ -1,7 +1,6 @@
+import { Typography } from '@/components/ui/common'
 import { Clock, Instagram, LucideIcon, Map, PhoneOutgoing } from 'lucide-react'
 import Link from 'next/link'
-
-import { Typography } from '@/components/ui/common'
 
 interface ContactItem {
 	icon: LucideIcon

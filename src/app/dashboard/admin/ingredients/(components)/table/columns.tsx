@@ -1,13 +1,10 @@
+import { IngredientActions } from './IngredientAction'
+import { Avatar, AvatarFallback, AvatarImage, Button, Checkbox } from '@/components/ui/common'
+import { Ingredient } from '@/shared/api/types'
+import { getMediaSource } from '@/shared/hooks/helpers'
 import { Column, ColumnDef } from '@tanstack/react-table'
 import { ArrowUpDown } from 'lucide-react'
 import { useFormatter } from 'next-intl'
-
-import { Avatar, AvatarFallback, AvatarImage, Button, Checkbox } from '@/components/ui/common'
-
-import { Ingredient } from '@/shared/api/types'
-import { getMediaSource } from '@/shared/hooks/helpers'
-
-import { IngredientActions } from './IngredientAction'
 
 export interface IngredientColumn extends Ingredient {
 	actions?: string

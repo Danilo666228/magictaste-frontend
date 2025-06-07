@@ -1,6 +1,5 @@
-import { useMutation } from '@tanstack/react-query'
-
 import { DeleteProductRequestConfig, deleteProduct } from '@/shared/api/request'
+import { useMutation } from '@tanstack/react-query'
 
 export const useDeleteProductMutation = (settings?: MutationSettings<DeleteProductRequestConfig, typeof deleteProduct>) =>
 	useMutation({

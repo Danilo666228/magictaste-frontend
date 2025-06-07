@@ -1,10 +1,9 @@
 'use client'
 
+import { cn } from '@/shared/utils/twMerge'
 import * as AccordionPrimitive from '@radix-ui/react-accordion'
 import { ChevronDown } from 'lucide-react'
 import * as React from 'react'
-
-import { cn } from '@/shared/utils/twMerge'
 
 const Accordion = AccordionPrimitive.Root
 

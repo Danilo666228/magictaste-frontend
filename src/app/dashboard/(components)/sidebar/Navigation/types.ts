@@ -1,6 +1,5 @@
-import { LucideIcon } from 'lucide-react'
-
 import { RoleName } from '@/shared/api/types'
+import { LucideIcon } from 'lucide-react'
 
 export interface NavigationItem {
 	title: string

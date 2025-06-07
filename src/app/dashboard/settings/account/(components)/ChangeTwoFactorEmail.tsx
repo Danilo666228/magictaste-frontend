@@ -1,12 +1,10 @@
 'use client'
 
-import { useQueryClient } from '@tanstack/react-query'
-import { Mail, ShieldCheck, ShieldX } from 'lucide-react'
-
 import { Card, CardContent, CardDescription, CardHeader, CardTitle, Switch, Typography } from '@/components/ui/common'
-
 import { useChangeTwoFactorEmailMutation } from '@/shared/api/hooks/profile/useChangeTwoFactorEmailMutation'
 import { useProfile } from '@/shared/utils/contexts'
+import { useQueryClient } from '@tanstack/react-query'
+import { Mail, ShieldCheck, ShieldX } from 'lucide-react'
 
 export function ChangeTwoFactorEmail() {
 	const queryClient = useQueryClient()

@@ -1,8 +1,6 @@
 'use client'
 
-import { Image as ImageIcon, Trash2 } from 'lucide-react'
-import React, { useState } from 'react'
-
+import { useChangeAvatarForm } from '../../(hooks)/useChangeAvatarForm'
 import {
 	Avatar,
 	AvatarFallback,
@@ -20,12 +18,11 @@ import {
 } from '@/components/ui/common'
 import { ImageUpload } from '@/components/ui/elements/image-upload/ImageUpload'
 import { Modal } from '@/components/ui/elements/modal/Default/Modal'
-
 import { useChangeAvatarMutation } from '@/shared/api/hooks/account/useChangeAvatarMutation'
 import { getMediaSource } from '@/shared/hooks/helpers'
 import { cn } from '@/shared/utils/twMerge'
-
-import { useChangeAvatarForm } from '../../(hooks)/useChangeAvatarForm'
+import { Image as ImageIcon, Trash2 } from 'lucide-react'
+import React, { useState } from 'react'
 
 export function ChangeAvatarForm() {
 	const inputRef = React.useRef<HTMLInputElement>(null)

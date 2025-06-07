@@ -1,10 +1,7 @@
-import { ComponentProps } from 'react'
-
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/common'
-
-import { cn } from '@/shared/hooks/helpers'
-
 import { SortType } from './sort.type'
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/common'
+import { cn } from '@/shared/hooks/helpers'
+import { ComponentProps } from 'react'
 
 interface SelectFilterProps extends ComponentProps<typeof Select> {
 	sort: SortType['sortByPrice']

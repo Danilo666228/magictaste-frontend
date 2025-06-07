@@ -1,4 +1,4 @@
-export type AccentColors = 'Zinc' | 'Rose' | 'Blue' | 'Green' | 'Orange'
+export type AccentColors = 'Zinc' | 'Rose' | 'Blue' | 'Green' | 'Orange' | 'Red' | 'Yellow' | 'Purple'
 
 export interface AccentColor {
 	accentColor: AccentColors
@@ -23,6 +23,18 @@ const accentColors: Record<AccentColors, Record<'primary' | 'primaryForeground',
 	},
 	Zinc: {
 		primary: '240 5.9% 10%',
+		primaryForeground: '210 40% 98%'
+	},
+	Red: {
+		primary: '0 72.2% 50.6%',
+		primaryForeground: '210 40% 98%'
+	},
+	Yellow: {
+		primary: '47.9 95.8% 53.1%',
+		primaryForeground: '210 40% 98%'
+	},
+	Purple: {
+		primary: '262.1 83.3% 57.8%',
 		primaryForeground: '210 40% 98%'
 	}
 }

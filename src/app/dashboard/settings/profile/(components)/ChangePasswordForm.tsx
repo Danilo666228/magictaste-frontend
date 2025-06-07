@@ -1,8 +1,6 @@
 'use client'
 
-import { Eye, EyeOff } from 'lucide-react'
-import { useState } from 'react'
-
+import { useChangePasswordForm } from '../../(hooks)/useChangePasswordForm'
 import {
 	Button,
 	Card,
@@ -20,8 +18,8 @@ import {
 	Input,
 	Typography
 } from '@/components/ui/common'
-
-import { useChangePasswordForm } from '../../(hooks)/useChangePasswordForm'
+import { Eye, EyeOff } from 'lucide-react'
+import { useState } from 'react'
 
 interface ChangePasswordState {
 	oldPassword: boolean

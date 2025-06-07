@@ -1,8 +1,6 @@
-import { useQueryClient } from '@tanstack/react-query'
-import { Row } from '@tanstack/react-table'
-import { MoreHorizontal } from 'lucide-react'
-import { useState } from 'react'
-
+import { ChangeStatusSale } from './actions/ChangeStatusSale'
+import { DeleteProductMenuItem } from './actions/DeleteProductMenuItem'
+import { ProductColumn } from './columns'
 import {
 	Button,
 	DropdownMenu,
@@ -14,13 +12,12 @@ import {
 } from '@/components/ui/common'
 import { ImageUpload } from '@/components/ui/elements/image-upload/ImageUpload'
 import { Modal } from '@/components/ui/elements/modal/Default/Modal'
-
 import { useChangeProductImageMutation } from '@/shared/api/hooks/products/useChangeProductImageMutation'
 import { useProfile } from '@/shared/utils/contexts'
-
-import { ChangeStatusSale } from './actions/ChangeStatusSale'
-import { DeleteProductMenuItem } from './actions/DeleteProductMenuItem'
-import { ProductColumn } from './columns'
+import { useQueryClient } from '@tanstack/react-query'
+import { Row } from '@tanstack/react-table'
+import { MoreHorizontal } from 'lucide-react'
+import { useState } from 'react'
 
 interface ProductsActions {
 	row: Row<ProductColumn>

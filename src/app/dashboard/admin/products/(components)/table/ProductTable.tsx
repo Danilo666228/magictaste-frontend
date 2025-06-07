@@ -1,17 +1,13 @@
 'use client'
 
-import { Plus } from 'lucide-react'
-import { useState } from 'react'
-
+import { ProductForm } from '../ProductForm'
+import { columns } from './columns'
 import { Button } from '@/components/ui/common'
 import { Modal } from '@/components/ui/elements/modal/Default/Modal'
 import { DataTable } from '@/components/ui/elements/table/DataTable'
-
 import { useGetProductsQuery } from '@/shared/api/hooks/products/useGetProductsQuery'
-
-import { ProductForm } from '../ProductForm'
-
-import { columns } from './columns'
+import { Plus } from 'lucide-react'
+import { useState } from 'react'
 
 export function ProductTable() {
 	const [page, setPage] = useState(1)

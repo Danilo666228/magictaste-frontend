@@ -1,23 +1,18 @@
 'use client'
 
-import { useQueryClient } from '@tanstack/react-query'
-import { Heart } from 'lucide-react'
-import Image from 'next/image'
-import { useRouter } from 'next/navigation'
-
 import { IngredientList } from '@/app/(site)/product/(components)/IngredientList'
-
 import { Button, Dialog, DialogContent, DialogDescription, DialogTitle, Typography } from '@/components/ui/common'
-
-import { useAuth } from '@/hooks/useAuth'
 import { useCart } from '@/hooks/useCart'
-
 import { isActiveFavorite } from '@/shared/api/helpers/is-active-favorite'
 import { useToggleFavoriteMutation } from '@/shared/api/hooks/favorite/useToggleFavoriteMutation'
 import { Product } from '@/shared/api/types'
 import { cn, getMediaSource } from '@/shared/hooks/helpers'
 import { ROUTE } from '@/shared/utils/constants/route'
 import { useProfile } from '@/shared/utils/contexts'
+import { useQueryClient } from '@tanstack/react-query'
+import { Heart } from 'lucide-react'
+import Image from 'next/image'
+import { useRouter } from 'next/navigation'
 
 interface ProductModalProps {
 	product: Product
@@ -26,14 +21,13 @@ interface ProductModalProps {
 export function ProductModal({ product }: ProductModalProps) {
 	const queryClient = useQueryClient()
 	const router = useRouter()
-	const { profile } = useProfile()
+	const { profile, isAuth } = useProfile()
 	const { mutate: toggleFavorite } = useToggleFavoriteMutation({
 		options: {
 			onSettled: () => queryClient.invalidateQueries({ queryKey: ['getProfile'] })
 		}
 	})
 	const { handleAddProduct } = useCart()
-	const { isAuth } = useAuth()
 
 	const handleClickAddInCart = () => {
 		if (!isAuth) router.push(ROUTE.auth.signIn)

@@ -1,13 +1,10 @@
-import { ColumnDef } from '@tanstack/react-table'
-import { useFormatter } from 'next-intl'
-
+import { ProductsActions } from './ProductAction'
 import { Avatar, AvatarFallback, AvatarImage, Badge, Checkbox } from '@/components/ui/common'
 import { SortableHeader } from '@/components/ui/elements/table/SortableHeader'
-
 import { Product } from '@/shared/api/types'
 import { getMediaSource } from '@/shared/hooks/helpers'
-
-import { ProductsActions } from './ProductAction'
+import { ColumnDef } from '@tanstack/react-table'
+import { useFormatter } from 'next-intl'
 
 export interface ProductColumn extends Product {
 	actions?: string

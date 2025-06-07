@@ -1,16 +1,13 @@
-import { useQueryClient } from '@tanstack/react-query'
-import { Clock, MapPin, Trash2 } from 'lucide-react'
-import { useFormatter } from 'next-intl'
-import { ComponentProps } from 'react'
-
+import { SessionInfo } from './SessionInfo'
 import { Badge, Button, Card, CardContent } from '@/components/ui/common'
-
 import { getBrowserIcon } from '@/shared/api/helpers/getBrowseIcon'
 import { useDeleteSessionMutation } from '@/shared/api/hooks/session/useDeleteSessionMutation'
 import { Session } from '@/shared/api/types'
 import { cn } from '@/shared/hooks/helpers'
-
-import { SessionInfo } from './SessionInfo'
+import { useQueryClient } from '@tanstack/react-query'
+import { Clock, MapPin, Trash2 } from 'lucide-react'
+import { useFormatter } from 'next-intl'
+import { ComponentProps } from 'react'
 
 interface SessionItemProps extends ComponentProps<typeof Card> {
 	session: Session | undefined
@@ -24,7 +21,7 @@ export function SessionItem({ session, isCurrentSession, ...props }: SessionItem
 	const { mutate: deleteSession, isPending } = useDeleteSessionMutation({
 		options: {
 			onSuccess: () => {
-				queryClient.invalidateQueries({ queryKey: ['getAllSessions'] })
+				queryClient.invalidateQueries({ queryKey: ['getAllSession'] })
 			}
 		}
 	})

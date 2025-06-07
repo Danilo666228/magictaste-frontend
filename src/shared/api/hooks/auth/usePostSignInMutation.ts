@@ -1,6 +1,5 @@
-import { useMutation } from '@tanstack/react-query'
-
 import { SignInRequestConfig, signIn } from '@/shared/api/request'
+import { useMutation } from '@tanstack/react-query'
 
 export const usePostSignInMutation = (settngs?: MutationSettings<SignInRequestConfig, typeof signIn>) =>
 	useMutation({

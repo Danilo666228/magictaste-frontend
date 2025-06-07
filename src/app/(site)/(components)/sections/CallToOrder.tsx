@@ -1,12 +1,10 @@
-import Link from 'next/link'
-
 import { Button, Typography } from '@/components/ui/common'
-
 import { ROUTE } from '@/shared/utils/constants/route'
+import Link from 'next/link'
 
 export const CallToOrder = () => {
 	return (
-		<section className='rounded-xl bg-muted py-16'>
+		<section className='rounded-xl py-16'>
 			<div className='px-4 text-center sm:px-6 lg:px-8'>
 				<Typography tag='h2' className='mb-4 text-3xl font-bold'>
 					Готовы попробовать наши блюда?

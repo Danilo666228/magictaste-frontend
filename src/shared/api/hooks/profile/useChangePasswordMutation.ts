@@ -1,6 +1,5 @@
-import { useMutation } from '@tanstack/react-query'
-
 import { ChangePasswordRequestConfig, changePassword } from '../../request/profile'
+import { useMutation } from '@tanstack/react-query'
 
 export const useChangePasswordMutation = (settings?: MutationSettings<ChangePasswordRequestConfig, typeof changePassword>) =>
 	useMutation({

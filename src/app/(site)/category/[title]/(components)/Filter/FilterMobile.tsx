@@ -1,15 +1,11 @@
-import { Filter } from 'lucide-react'
-import { ComponentProps } from 'react'
-
-import { Button, Sheet, SheetContent, SheetTitle, SheetTrigger } from '@/components/ui/common'
-
-import { Ingredient } from '@/shared/api/types'
-
 import { Ingredients } from '../Ingredients'
-
 import { SelectFilter } from './SelectFilter'
 import { SelectLimit } from './SelectLimit'
 import { SortType } from './sort.type'
+import { Button, Sheet, SheetContent, SheetTitle, SheetTrigger } from '@/components/ui/common'
+import { Ingredient } from '@/shared/api/types'
+import { Filter } from 'lucide-react'
+import { ComponentProps } from 'react'
 
 interface FilterMobileProps extends ComponentProps<typeof Sheet> {
 	sort: SortType

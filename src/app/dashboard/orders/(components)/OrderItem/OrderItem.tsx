@@ -1,7 +1,4 @@
-import { useFormatter } from 'next-intl'
-import Image from 'next/image'
-import { useState } from 'react'
-
+import { statusInfo } from './statusInfo'
 import {
 	Accordion,
 	AccordionContent,
@@ -15,12 +12,12 @@ import {
 	CardTitle,
 	Typography
 } from '@/components/ui/common'
-
 import { useGetPaymentDetailsQuery } from '@/shared/api/hooks/order/useGetPaymentDetailsQuery'
 import { Order } from '@/shared/api/types'
 import { getMediaSource } from '@/shared/hooks/helpers'
-
-import { statusInfo } from './statusInfo'
+import { useFormatter } from 'next-intl'
+import Image from 'next/image'
+import { useState } from 'react'
 
 interface OrderItemProps {
 	order: Order

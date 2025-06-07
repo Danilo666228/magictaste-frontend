@@ -1,6 +1,5 @@
-import { createContext, useContext } from 'react'
-
 import { Product } from '@/shared/api/types/product'
+import { createContext, useContext } from 'react'
 
 interface ProductCardContextValue {
 	product: Product

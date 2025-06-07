@@ -1,10 +1,8 @@
-import { AnimatePresence, motion } from 'framer-motion'
-import { Cake, ChevronRight, CircleCheckBig, Sparkles, X } from 'lucide-react'
-
 import { Card, CardContent, CardHeader, CardTitle, Typography } from '@/components/ui/common'
-
 import { useGetLoyaltyByAccountQuery } from '@/shared/api/hooks/loyalty/useGetLoyaltyByAccountQuery'
 import { useGetNextLevelLoyaltyAccountQuery } from '@/shared/api/hooks/loyalty/useGetNextLelevLoyaltyAccountQuery'
+import { AnimatePresence, motion } from 'framer-motion'
+import { Cake, ChevronRight, CircleCheckBig, Sparkles, X } from 'lucide-react'
 
 export function ProfileLoyalty() {
 	const { data: loyalty } = useGetLoyaltyByAccountQuery()

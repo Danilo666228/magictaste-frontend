@@ -1,11 +1,9 @@
+import { Container, FormControl, FormDescription, FormField, FormItem, FormLabel, FormMessage, Input, Label, Switch } from '@/components/ui/common'
+import { YandexMap } from '@/components/ui/elements/yandex-map/YandexMap'
+import { TypeCheckoutSchema } from '@/schemas/checkout/checkout'
 import { Loader2, MapPin } from 'lucide-react'
 import { useState } from 'react'
 import { UseFormReturn } from 'react-hook-form'
-
-import { Container, FormControl, FormDescription, FormField, FormItem, FormLabel, FormMessage, Input, Label, Switch } from '@/components/ui/common'
-import { YandexMap } from '@/components/ui/elements/yandex-map/YandexMap'
-
-import { TypeCheckoutSchema } from '@/schemas/checkout/checkout'
 
 interface ManualAddressFieldsProps {
 	form: UseFormReturn<TypeCheckoutSchema>

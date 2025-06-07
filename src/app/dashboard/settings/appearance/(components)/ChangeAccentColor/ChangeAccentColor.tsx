@@ -1,46 +1,13 @@
 'use client'
 
-import { Check, Paintbrush } from 'lucide-react'
-import { useTheme } from 'next-themes'
-
+import { availableColor } from './availableColors'
 import { Button, Card, CardContent, CardDescription, CardHeader, CardTitle, Typography } from '@/components/ui/common'
-
 import { cn } from '@/shared/hooks/helpers'
 import { useConfig } from '@/shared/utils/contexts'
 import { AccentColors } from '@/shared/utils/contexts/config/utils/accent-colors'
+import { Check, Paintbrush } from 'lucide-react'
+import { useTheme } from 'next-themes'
 
-const availableColor = [
-	{
-		name: 'Zinc',
-		label: 'Чёрный',
-		light: 'bg-zinc-900',
-		dark: 'bg-zinc-700'
-	},
-	{
-		name: 'Rose',
-		label: 'Розовый',
-		light: 'bg-rose-600',
-		dark: 'bg-rose-700'
-	},
-	{
-		name: 'Blue',
-		label: 'Синий',
-		light: 'bg-blue-600',
-		dark: 'bg-blue-700'
-	},
-	{
-		name: 'Green',
-		label: 'Зелёный',
-		light: 'bg-green-600',
-		dark: 'bg-green-700'
-	},
-	{
-		name: 'Orange',
-		label: 'Оранжевый',
-		light: 'bg-orange-600',
-		dark: 'bg-orange-700'
-	}
-]
 export function ChangeAccentColor() {
 	const { accent } = useConfig()
 	const { theme } = useTheme()
@@ -64,7 +31,10 @@ export function ChangeAccentColor() {
 
 						return (
 							<Button
-								className={cn('flex h-[60px] items-center justify-start gap-3 border', isActive && 'bg-primary/10 shadow-inner')}
+								className={cn(
+									'flex h-[60px] cursor-pointer items-center justify-start gap-3 border',
+									isActive && 'bg-primary/10 shadow-inner'
+								)}
 								key={index}
 								onClick={() => accent.setColor?.(color.name as AccentColors)}
 								variant={'ghost'}>

@@ -1,6 +1,5 @@
-import { useMutation } from '@tanstack/react-query'
-
 import { ChangeProfileRequestConfig, changeProfile } from '../../request/profile'
+import { useMutation } from '@tanstack/react-query'
 
 export const useChangeProfileMutation = (settings?: MutationSettings<ChangeProfileRequestConfig, typeof changeProfile>) =>
 	useMutation({

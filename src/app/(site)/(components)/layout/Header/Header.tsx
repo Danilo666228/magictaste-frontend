@@ -1,21 +1,18 @@
 'use client'
 
-import { useMotionValueEvent, useScroll } from 'framer-motion'
-import Link from 'next/link'
-import { useRouter } from 'next/navigation'
-import { useState } from 'react'
-
-import { Button, Typography } from '@/components/ui/common'
-
-import { cn } from '@/shared/hooks/helpers'
-import { ROUTE } from '@/shared/utils/constants/route'
-import { useProfile } from '@/shared/utils/contexts'
-
 import { Logo } from './Logo'
 import { Notifications } from './Notifications'
 import { ProfileMenu } from './ProfileMenu'
 import { CartButton } from './cart/CartButton'
 import { NavMenu } from './navMenu/NavMenu'
+import { Button, Typography } from '@/components/ui/common'
+import { cn } from '@/shared/hooks/helpers'
+import { ROUTE } from '@/shared/utils/constants/route'
+import { useProfile } from '@/shared/utils/contexts'
+import { useMotionValueEvent, useScroll } from 'framer-motion'
+import Link from 'next/link'
+import { useRouter } from 'next/navigation'
+import { useState } from 'react'
 
 export const Header = () => {
 	const { scrollY } = useScroll()

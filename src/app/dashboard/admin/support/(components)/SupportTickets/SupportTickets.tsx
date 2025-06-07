@@ -1,17 +1,14 @@
 'use client'
 
-import { useEffect, useState } from 'react'
-import { Socket, io } from 'socket.io-client'
-
+import { SupportTicketChat } from './SupportTicketChat/SupportTicketChat'
+import { SupportTicketList } from './SupportTicketList'
 import { Heading, ResizableHandle, ResizablePanel, ResizablePanelGroup } from '@/components/ui/common'
 import { SearchInput } from '@/components/ui/elements/input/SearchInput'
-
 import { Account } from '@/shared/api/types'
 import { SERVER_URL, SOCKET_SUPPORT_CHAT_URL } from '@/shared/utils/constants/env'
 import { useProfile } from '@/shared/utils/contexts'
-
-import { SupportTicketChat } from './SupportTicketChat/SupportTicketChat'
-import { SupportTicketList } from './SupportTicketList'
+import { useEffect, useState } from 'react'
+import { Socket, io } from 'socket.io-client'
 
 export function SupportTickets() {
 	const [selectedTicket, setSelectedTicket] = useState<Account | null>(null)

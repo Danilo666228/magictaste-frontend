@@ -1,6 +1,6 @@
+import type { PostDeliveryAddressRequestConfig } from '@/shared/api/request'
+import { postDeliveryAddress } from '@/shared/api/request'
 import { useMutation } from '@tanstack/react-query'
-
-import { PostDeliveryAddressRequestConfig, postDeliveryAddress } from '@/shared/api/request'
 
 export const usePostDeliveryAddress = (settings?: MutationSettings<PostDeliveryAddressRequestConfig, typeof postDeliveryAddress>) =>
 	useMutation({

@@ -1,6 +1,5 @@
-import { useMutation } from '@tanstack/react-query'
-
 import { ChangeProductImageRequestConfig, changeProductImage } from '@/shared/api/request'
+import { useMutation } from '@tanstack/react-query'
 
 export const useChangeProductImageMutation = (settings?: MutationSettings<ChangeProductImageRequestConfig, typeof changeProductImage>) =>
 	useMutation({

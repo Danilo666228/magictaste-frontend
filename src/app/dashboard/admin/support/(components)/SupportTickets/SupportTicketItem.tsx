@@ -1,11 +1,9 @@
 'use client'
 
-import { useFormatter } from 'next-intl'
-
 import { Avatar, AvatarFallback, AvatarImage, Badge, Typography } from '@/components/ui/common'
-
 import { getMediaSource } from '@/shared/hooks/helpers'
 import { cn } from '@/shared/utils/twMerge'
+import { useFormatter } from 'next-intl'
 
 interface SupportTicketItemProps {
 	ticket: {

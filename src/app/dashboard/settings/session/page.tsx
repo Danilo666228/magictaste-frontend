@@ -1,8 +1,7 @@
 'use client'
 
-import { Heading } from '@/components/ui/common'
-
 import { SessionList } from './(components)/SessionList'
+import { Heading } from '@/components/ui/common'
 
 export default function SessionSettingsPage() {
 	return (

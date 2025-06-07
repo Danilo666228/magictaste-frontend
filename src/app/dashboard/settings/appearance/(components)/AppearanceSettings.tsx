@@ -1,4 +1,4 @@
-import { ChangeAccentColor } from './ChangeAccentColor'
+import { ChangeAccentColor } from './ChangeAccentColor/ChangeAccentColor'
 import { ChangeAccentRadius } from './ChangeAccentRadius'
 import { ChangeFontSettings } from './ChangeFontSettings'
 import { ChangeThemeForm } from './ChangeThemeForm'

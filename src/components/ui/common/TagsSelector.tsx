@@ -1,9 +1,6 @@
 'use client'
 
-import { motion } from 'framer-motion'
-import { Check, ChevronsUpDown, X } from 'lucide-react'
-import { useState } from 'react'
-
+import { Button } from './Button'
 import {
 	Command,
 	CommandEmpty,
@@ -15,10 +12,10 @@ import {
 	PopoverTrigger,
 	Typography
 } from '@/components/ui/common'
-
 import { cn } from '@/shared/utils/twMerge'
-
-import { Button } from './Button'
+import { motion } from 'framer-motion'
+import { Check, ChevronsUpDown, X } from 'lucide-react'
+import { useState } from 'react'
 
 type Tag = {
 	id: string

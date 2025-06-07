@@ -1,6 +1,5 @@
-import { useQuery } from '@tanstack/react-query'
-
 import { getStatisticSaleV2 } from '../../request/statistics/sales-v2'
+import { useQuery } from '@tanstack/react-query'
 
 export const useGetStatisticSale = (settings?: QuerySettings<typeof getStatisticSaleV2>) =>
 	useQuery({

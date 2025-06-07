@@ -1,15 +1,11 @@
 'use client'
 
-import { ArrowRight, ShoppingCart } from 'lucide-react'
-
+import { Cart } from './Cart'
 import { Button, Typography } from '@/components/ui/common'
-
 import { useCart } from '@/hooks/useCart'
-
 import { useHover } from '@/shared/hooks'
 import { cn } from '@/shared/hooks/helpers'
-
-import { Cart } from './Cart'
+import { ArrowRight, ShoppingCart } from 'lucide-react'
 
 export function CartButton() {
 	const { cart } = useCart()
@@ -17,7 +13,7 @@ export function CartButton() {
 
 	return (
 		<Cart>
-			<Button ref={hover.ref} variant='outline' className='relative transition-all duration-300 hover:text-primary'>
+			<Button ref={hover.ref} variant={'outline'} className='relative transition-all duration-300 hover:text-primary'>
 				<Typography className='mr-2'>Корзина</Typography>
 				<div className={cn(hover.value && 'translate-x-1 transform transition-transform duration-300')}>
 					{hover.value ? <ArrowRight /> : <ShoppingCart />}

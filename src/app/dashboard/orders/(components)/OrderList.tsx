@@ -1,14 +1,11 @@
 'use client'
 
-import { SearchX } from 'lucide-react'
-import { useState } from 'react'
-
+import { OrderItem } from './OrderItem/OrderItem'
 import { Select, SelectContent, SelectGroup, SelectItem, SelectLabel, SelectTrigger, SelectValue, Typography } from '@/components/ui/common'
 import { SearchInput } from '@/components/ui/elements/input/SearchInput'
-
 import { useGetOrdersQuery } from '@/shared/api/hooks/order/useGetOrdersQuery'
-
-import { OrderItem } from './OrderItem/OrderItem'
+import { SearchX } from 'lucide-react'
+import { useState } from 'react'
 
 type SearchByDate = 'date-desc' | 'date-asc'
 

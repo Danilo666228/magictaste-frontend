@@ -1,14 +1,11 @@
 'use client'
 
-import { ComponentProps } from 'react'
-
-import { NavigationMenu, NavigationMenuList } from '@/components/ui/common'
-
-import { cn } from '@/shared/hooks/helpers'
-
 import { NavigationAbout } from './NavigationItems/NavigationAbout'
 import { NavigationCatalog } from './NavigationItems/NavigationCatalog'
 import { NavigationMain } from './NavigationItems/NavigationMain'
+import { NavigationMenu, NavigationMenuList } from '@/components/ui/common'
+import { cn } from '@/shared/hooks/helpers'
+import { ComponentProps } from 'react'
 
 interface NavMenu extends ComponentProps<typeof NavigationMenu> {}
 

@@ -1,12 +1,10 @@
-import { ChevronRight } from 'lucide-react'
-import Image from 'next/image'
-import { ComponentProps } from 'react'
-
 import { Badge, Button, Popover, PopoverContent, PopoverTrigger, Skeleton } from '@/components/ui/common'
-
 import { Ingredient } from '@/shared/api/types'
 import { getMediaSource } from '@/shared/hooks/helpers'
 import { cn } from '@/shared/utils/twMerge'
+import { ChevronRight } from 'lucide-react'
+import Image from 'next/image'
+import { ComponentProps } from 'react'
 
 interface IngredientsProps extends ComponentProps<'div'> {
 	selectedIngredients: string[]

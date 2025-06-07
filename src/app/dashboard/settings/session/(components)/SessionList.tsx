@@ -1,14 +1,11 @@
 'use client'
 
-import { Computer, ShieldAlert } from 'lucide-react'
-
+import { SessionItem } from './SessionItem'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle, Typography } from '@/components/ui/common'
 import { Skeleton } from '@/components/ui/common/Skeleton'
-
 import { useGetAllSessionsQuery } from '@/shared/api/hooks/session/useGetAllSessionsQuery'
 import { useGetCurrentSessionQuery } from '@/shared/api/hooks/session/useGetCurrentSessionQuery'
-
-import { SessionItem } from './SessionItem'
+import { Computer, ShieldAlert } from 'lucide-react'
 
 export function SessionList() {
 	const currentSessionQuery = useGetCurrentSessionQuery()

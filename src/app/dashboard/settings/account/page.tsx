@@ -1,6 +1,5 @@
-import { Heading } from '@/components/ui/common'
-
 import { TwoFactorSettings } from './(components)/TwoFactorSettings'
+import { Heading } from '@/components/ui/common'
 
 export default function AccountSettingsPage() {
 	return (

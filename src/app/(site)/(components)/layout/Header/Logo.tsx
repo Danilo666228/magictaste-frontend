@@ -1,6 +1,5 @@
-import { ComponentProps } from 'react'
-
 import { cn } from '@/shared/utils/twMerge'
+import { ComponentProps } from 'react'
 
 interface LogoProps extends ComponentProps<'img'> {}
 

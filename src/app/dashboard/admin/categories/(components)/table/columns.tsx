@@ -1,12 +1,9 @@
-import { ColumnDef } from '@tanstack/react-table'
-import { useFormatter } from 'next-intl'
-
+import { CategoryActions } from './CategoryAction'
 import { Checkbox } from '@/components/ui/common'
 import { SortableHeader } from '@/components/ui/elements/table/SortableHeader'
-
 import { Category } from '@/shared/api/types'
-
-import { CategoryActions } from './CategoryAction'
+import { ColumnDef } from '@tanstack/react-table'
+import { useFormatter } from 'next-intl'
 
 export interface CategoryColumn extends Category {
 	actions?: string

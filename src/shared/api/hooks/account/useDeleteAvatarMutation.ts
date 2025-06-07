@@ -1,6 +1,5 @@
-import { useMutation } from '@tanstack/react-query'
-
 import { RemoveAvatarRequestConfig, removeAvatar } from '@/shared/api/request'
+import { useMutation } from '@tanstack/react-query'
 
 export const useDeleteAvatarMutation = (settings?: MutationSettings<RemoveAvatarRequestConfig, typeof removeAvatar>) =>
 	useMutation({

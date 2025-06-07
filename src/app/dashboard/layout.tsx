@@ -1,12 +1,9 @@
+import { DashboardSidebar } from './(components)/sidebar/DashboardSidebar'
+import { ScrollArea, Separator, SidebarInset, SidebarProvider, SidebarTrigger } from '@/components/ui/common'
+import { NO_INDEX_PAGE } from '@/shared/utils/constants/seo'
 import { Metadata } from 'next'
 import { cookies } from 'next/headers'
 import { ReactNode } from 'react'
-
-import { ScrollArea, Separator, SidebarInset, SidebarProvider, SidebarTrigger } from '@/components/ui/common'
-
-import { NO_INDEX_PAGE } from '@/shared/utils/constants/seo'
-
-import { DashboardSidebar } from './(components)/sidebar/DashboardSidebar'
 
 export const metadata: Metadata = {
 	...NO_INDEX_PAGE

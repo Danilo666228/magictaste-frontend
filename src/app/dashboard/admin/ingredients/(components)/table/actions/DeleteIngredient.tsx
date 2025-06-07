@@ -1,8 +1,6 @@
-import { useQueryClient } from '@tanstack/react-query'
-
 import { DropdownMenuItem } from '@/components/ui/common'
-
 import { useDeleteIngredientMutation } from '@/shared/api/hooks/ingredient/useDeleteIngredientMutation'
+import { useQueryClient } from '@tanstack/react-query'
 
 interface DeleteIngredientProps {
 	ingredientId: string

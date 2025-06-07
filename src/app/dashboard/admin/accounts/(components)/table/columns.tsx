@@ -1,7 +1,3 @@
-import { ColumnDef } from '@tanstack/react-table'
-import { Check, ChevronDown } from 'lucide-react'
-import { useFormatter } from 'next-intl'
-
 import {
 	Avatar,
 	AvatarFallback,
@@ -18,10 +14,12 @@ import {
 	Typography
 } from '@/components/ui/common'
 import { SortableHeader } from '@/components/ui/elements/table/SortableHeader'
-
 import { getRoleName } from '@/shared/api/helpers/getRoleName'
 import { Account, Role } from '@/shared/api/types'
 import { getMediaSource } from '@/shared/hooks/helpers'
+import { ColumnDef } from '@tanstack/react-table'
+import { Check, ChevronDown } from 'lucide-react'
+import { useFormatter } from 'next-intl'
 
 export interface AccountColumn extends Account {
 	actions?: string

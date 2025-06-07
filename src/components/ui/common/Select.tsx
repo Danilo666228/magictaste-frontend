@@ -1,10 +1,9 @@
 'use client'
 
+import { cn } from '@/shared/utils/twMerge'
 import * as SelectPrimitive from '@radix-ui/react-select'
 import { Check, ChevronDown, ChevronUp } from 'lucide-react'
 import * as React from 'react'
-
-import { cn } from '@/shared/utils/twMerge'
 
 const Select = SelectPrimitive.Root
 

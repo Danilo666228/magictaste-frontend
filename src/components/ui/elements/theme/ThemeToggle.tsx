@@ -1,13 +1,11 @@
 'use client'
 
+import { Button } from '../../common'
+import { useMount } from '@/shared/hooks'
+import { cn } from '@/shared/hooks/helpers'
 import { Moon, Sun } from 'lucide-react'
 import { useTheme } from 'next-themes'
 import { ComponentProps, useState, useTransition } from 'react'
-
-import { useMount } from '@/shared/hooks'
-import { cn } from '@/shared/hooks/helpers'
-
-import { Button } from '../../common'
 
 interface ThemeToggleProps extends ComponentProps<'div'> {}
 

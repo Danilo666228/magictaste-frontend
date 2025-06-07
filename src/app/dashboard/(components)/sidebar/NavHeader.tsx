@@ -1,11 +1,9 @@
 'use client'
 
+import { DropdownMenu, DropdownMenuTrigger, SidebarMenu, SidebarMenuButton, SidebarMenuItem, Typography } from '@/components/ui/common'
+import { ROUTE } from '@/shared/utils/constants/route'
 import { ChevronsUpDown, GalleryVerticalEnd } from 'lucide-react'
 import { useRouter } from 'next/navigation'
-
-import { DropdownMenu, DropdownMenuTrigger, SidebarMenu, SidebarMenuButton, SidebarMenuItem, Typography } from '@/components/ui/common'
-
-import { ROUTE } from '@/shared/utils/constants/route'
 
 export function NavHeader() {
 	const router = useRouter()

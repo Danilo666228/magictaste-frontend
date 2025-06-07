@@ -1,24 +1,19 @@
 'use client'
 
-import { ChevronDown, Heart, Minus, Plus, Share2, ShoppingCart } from 'lucide-react'
-import { useFormatter } from 'next-intl'
-import Image from 'next/image'
-import { usePathname } from 'next/navigation'
-import { useEffect, useState } from 'react'
-
+import { IngredientList } from '../../(components)/IngredientList'
 import { Button, Container, Typography } from '@/components/ui/common'
-
-import { useAuth } from '@/hooks/useAuth'
 import { useCart } from '@/hooks/useCart'
 import { useFavorite } from '@/hooks/useFavorite'
-
 import { isActiveFavorite } from '@/shared/api/helpers/is-active-favorite'
 import { Product } from '@/shared/api/types'
 import { useShare } from '@/shared/hooks'
 import { cn, getMediaSource } from '@/shared/hooks/helpers'
 import { useProfile } from '@/shared/utils/contexts'
-
-import { IngredientList } from '../../(components)/IngredientList'
+import { ChevronDown, Heart, Minus, Plus, Share2, ShoppingCart } from 'lucide-react'
+import { useFormatter } from 'next-intl'
+import Image from 'next/image'
+import { usePathname } from 'next/navigation'
+import { useEffect, useState } from 'react'
 
 interface ProductInfoProps {
 	product: Product
@@ -26,8 +21,7 @@ interface ProductInfoProps {
 
 export function ProductInfo({ product }: ProductInfoProps) {
 	const formatted = useFormatter()
-	const { isAuth } = useAuth()
-	const { profile } = useProfile()
+	const { profile, isAuth } = useProfile()
 	const { handleAddProduct } = useCart()
 	const { toggleFavorite } = useFavorite()
 	const [quantity, setQuantity] = useState(1)

@@ -1,15 +1,12 @@
 'use client'
 
-import { MapPin, Plus } from 'lucide-react'
-import { useState } from 'react'
-
-import { Button, Card, CardContent, CardHeader, CardTitle, Typography } from '@/components/ui/common'
-import { Modal } from '@/components/ui/elements/modal/Default/Modal'
-
-import { useGetDeliveryAddress } from '@/shared/api/hooks/delivery-address/useGetDeliveryAddress'
-
 import { DeliveryAddressForm } from './DeliveryAddressForm'
 import { DeliveryAddressItem } from './DeliveryAddressItem'
+import { Button, Card, CardContent, CardHeader, CardTitle, Typography } from '@/components/ui/common'
+import { Modal } from '@/components/ui/elements/modal/Default/Modal'
+import { useGetDeliveryAddress } from '@/shared/api/hooks/delivery-address/useGetDeliveryAddress'
+import { MapPin, Plus } from 'lucide-react'
+import { useState } from 'react'
 
 export function ProfileDeliveryAddress() {
 	const { data: deliveryAddresses } = useGetDeliveryAddress()

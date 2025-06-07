@@ -1,8 +1,6 @@
-import { useQueryClient } from '@tanstack/react-query'
-
 import { DropdownMenuItem } from '@/components/ui/common'
-
 import { useDeleteCategoryMutation } from '@/shared/api/hooks/category/useDeleteCategoryMutation'
+import { useQueryClient } from '@tanstack/react-query'
 
 interface DeleteCategoryProps {
 	categoryId: string

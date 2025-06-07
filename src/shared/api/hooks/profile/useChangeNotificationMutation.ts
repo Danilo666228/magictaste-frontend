@@ -1,6 +1,5 @@
-import { useMutation } from '@tanstack/react-query'
-
 import { ChangeNotificationSettingsRequestConfig, changeNotificationSettings } from '../../request/profile'
+import { useMutation } from '@tanstack/react-query'
 
 export const useChangeNotificationSettingsMutation = (
 	settings?: MutationSettings<ChangeNotificationSettingsRequestConfig, typeof changeNotificationSettings>

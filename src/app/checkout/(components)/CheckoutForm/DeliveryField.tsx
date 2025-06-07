@@ -1,6 +1,6 @@
-import { useCallback, useState } from 'react'
-import { UseFormReturn } from 'react-hook-form'
-
+import { useCheckoutForm } from '../../(hooks)/useCheckoutForm'
+import { ManualAddressFields } from './ManualAddressFields'
+import { SelectAddressField } from './SelectAddressField'
 import {
 	Container,
 	FormBlock,
@@ -17,19 +17,13 @@ import {
 	Textarea,
 	Typography
 } from '@/components/ui/common'
-
 import { TypeCheckoutSchema } from '@/schemas/checkout/checkout'
-
-import { useOrderStore } from '@/store/useOrderStore'
-
 import { DeliveryType } from '@/shared/api/types/payment'
 import { cn } from '@/shared/hooks/helpers'
 import { useProfile } from '@/shared/utils/contexts'
-
-import { useCheckoutForm } from '../../(hooks)/useCheckoutForm'
-
-import { ManualAddressFields } from './ManualAddressFields'
-import { SelectAddressField } from './SelectAddressField'
+import { useOrderStore } from '@/store/useOrderStore'
+import { useCallback, useState } from 'react'
+import { UseFormReturn } from 'react-hook-form'
 
 interface DeliveryFieldProps {
 	form: UseFormReturn<TypeCheckoutSchema>

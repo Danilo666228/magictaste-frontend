@@ -1,6 +1,5 @@
-import { useMutation } from '@tanstack/react-query'
-
 import { CreateProductRequestConfig, createProduct } from '../../request'
+import { useMutation } from '@tanstack/react-query'
 
 export const useCreateProductMutation = (settings?: MutationSettings<CreateProductRequestConfig, typeof createProduct>) =>
 	useMutation({

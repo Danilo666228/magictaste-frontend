@@ -1,23 +1,17 @@
 'use client'
 
+import { useProductComments } from '../../../(hooks)/useProductComment'
+import { ProductCommentForm } from './ProductCommentForm'
+import { ProductCommentReplyItem } from './ProductCommentReplyItem'
+import { Avatar, AvatarFallback, AvatarImage, Button, Popover, PopoverContent, PopoverTrigger, Typography } from '@/components/ui/common'
+import { Modal } from '@/components/ui/elements/modal/Default/Modal'
+import { ProductComment } from '@/shared/api/types/product-comment'
+import { getMediaSource } from '@/shared/hooks/helpers'
+import { useProfile } from '@/shared/utils/contexts'
 import { motion } from 'framer-motion'
 import { ChevronDown, ChevronUp, Ellipsis, MessageCircle, Star, Trash } from 'lucide-react'
 import { useFormatter } from 'next-intl'
 import { useState } from 'react'
-
-import { Avatar, AvatarFallback, AvatarImage, Button, Popover, PopoverContent, PopoverTrigger, Typography } from '@/components/ui/common'
-import { Modal } from '@/components/ui/elements/modal/Default/Modal'
-
-import { useAuth } from '@/hooks/useAuth'
-
-import { ProductComment } from '@/shared/api/types/product-comment'
-import { getMediaSource } from '@/shared/hooks/helpers'
-import { useProfile } from '@/shared/utils/contexts'
-
-import { useProductComments } from '../../../(hooks)/useProductComment'
-
-import { ProductCommentForm } from './ProductCommentForm'
-import { ProductCommentReplyItem } from './ProductCommentReplyItem'
 
 interface ProductCommentItemProps {
 	comment: ProductComment
@@ -25,10 +19,10 @@ interface ProductCommentItemProps {
 }
 
 export function ProductCommentItem({ comment, index }: ProductCommentItemProps) {
-	const { profile } = useProfile()
+	const { profile, isAuth } = useProfile()
 	const formatter = useFormatter()
 	const { removeComment } = useProductComments(comment.product.id)
-	const { isAuth } = useAuth()
+
 	const isOwnerComment = comment.account.id === profile?.id
 	const [isShowReplyComment, setIsShowReplyComment] = useState(false)
 	const [isOpenReplyForm, setIsOpenReplyForm] = useState(false)

@@ -1,6 +1,5 @@
-import fetches from '@siberiacancode/fetches'
-
 import { API_URL } from '@/shared/utils/constants/env'
+import fetches from '@siberiacancode/fetches'
 
 export const api = fetches.create({
 	baseURL: API_URL

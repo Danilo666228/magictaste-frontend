@@ -1,9 +1,7 @@
+import { CategoryList } from './(components)/CategoryList/CategoryList'
+import { Typography } from '@/components/ui/common'
 import { Utensils } from 'lucide-react'
 import { Metadata } from 'next'
-
-import { Typography } from '@/components/ui/common'
-
-import { CategoryList } from './(components)/CategoryList/CategoryList'
 
 export const metadata: Metadata = {
 	title: 'Меню'

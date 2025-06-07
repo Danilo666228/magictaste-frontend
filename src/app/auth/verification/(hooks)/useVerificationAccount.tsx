@@ -1,14 +1,13 @@
-import { useRouter } from 'next/navigation'
-import { toast } from 'sonner'
-
-import { useAuth } from '@/hooks/useAuth'
 
 import { useGetVerificationQuery } from '@/shared/api/hooks/auth/useGetVerificationQuery'
 import { ROUTE } from '@/shared/utils/constants/route'
+import { useProfile } from '@/shared/utils/contexts'
+import { useRouter } from 'next/navigation'
+import { toast } from 'sonner'
 
 export function useVerificationAccount(token: string | null) {
 	const router = useRouter()
-	const { authorized } = useAuth()
+	const { setIsAuth } = useProfile()
 
 	const { isError, isSuccess, data, isPending } = useGetVerificationQuery({
 		config: {
@@ -20,7 +19,7 @@ export function useVerificationAccount(token: string | null) {
 	})
 
 	if (isSuccess) {
-		authorized()
+		setIsAuth(true)
 		toast.success('Аккаунт успешно верифицирован')
 		router.push(ROUTE.dashboard.profile)
 	}

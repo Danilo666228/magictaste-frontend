@@ -1,10 +1,8 @@
-import { ThemeProvider } from 'next-themes'
-import { ReactNode } from 'react'
-
 import { ErrorBoundary } from '@/components/ErrorBoundary'
 import { Toaster } from '@/components/ui/elements/Toaster'
-
 import { ConfigProvider, FramerMotionProvider, ProfileProvider, TanStackQueryProvider, YandexMapsProvider } from '@/shared/utils/contexts'
+import { ThemeProvider } from 'next-themes'
+import { ReactNode } from 'react'
 
 interface ProvidersProps {
 	children: ReactNode

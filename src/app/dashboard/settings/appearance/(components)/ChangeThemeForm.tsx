@@ -1,13 +1,11 @@
 'use client'
 
+import { Card, CardContent, CardDescription, CardHeader, CardTitle, Label, RadioGroup, RadioGroupItem, Typography } from '@/components/ui/common'
+import { useMount } from '@/shared/hooks'
+import { cn } from '@/shared/utils/twMerge'
 import { Moon, Palette, Sun } from 'lucide-react'
 import { useTheme } from 'next-themes'
 import { useRef, useState } from 'react'
-
-import { Card, CardContent, CardDescription, CardHeader, CardTitle, Label, RadioGroup, RadioGroupItem, Typography } from '@/components/ui/common'
-
-import { useMount } from '@/shared/hooks'
-import { cn } from '@/shared/utils/twMerge'
 
 export function ChangeThemeForm() {
 	const lightThemeRef = useRef<HTMLButtonElement>(null)

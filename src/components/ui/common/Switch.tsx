@@ -1,9 +1,8 @@
 'use client'
 
+import { cn } from '@/shared/utils/twMerge'
 import * as SwitchPrimitives from '@radix-ui/react-switch'
 import * as React from 'react'
-
-import { cn } from '@/shared/utils/twMerge'
 
 const Switch = React.forwardRef<React.ElementRef<typeof SwitchPrimitives.Root>, React.ComponentPropsWithoutRef<typeof SwitchPrimitives.Root>>(
 	({ className, ...props }, ref) => (

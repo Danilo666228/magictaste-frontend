@@ -1,10 +1,8 @@
-import { Star } from 'lucide-react'
-import { useFormatter } from 'next-intl'
-
 import { Avatar, AvatarFallback, AvatarImage, Card, CardContent, CardDescription, CardHeader, CardTitle, ScrollArea } from '@/components/ui/common'
-
 import { DashboardStatisticsData } from '@/shared/api/types/statistics'
 import { cn, getMediaSource } from '@/shared/hooks/helpers'
+import { Star } from 'lucide-react'
+import { useFormatter } from 'next-intl'
 
 interface ChartListActivityProps {
 	activityFeed: DashboardStatisticsData['activityFeed']

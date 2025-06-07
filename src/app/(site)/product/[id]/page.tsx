@@ -1,11 +1,9 @@
-import { notFound } from 'next/navigation'
-
-import { Product } from '@/shared/api/types'
-import { API_URL } from '@/shared/utils/constants/env'
-
 import { ProductAbout } from './(сomponents)/ProductAbout/ProductAbout'
 import { ProductInfo } from './(сomponents)/ProductInfo'
 import { ProductSimilar } from './(сomponents)/ProductSimilar'
+import { Product } from '@/shared/api/types'
+import { API_URL } from '@/shared/utils/constants/env'
+import { notFound } from 'next/navigation'
 
 async function getProduct(id: string) {
 	try {

@@ -1,19 +1,6 @@
 'use client'
 
 import {
-	ColumnDef,
-	ColumnFiltersState,
-	SortingState,
-	flexRender,
-	getCoreRowModel,
-	getFilteredRowModel,
-	getSortedRowModel,
-	useReactTable
-} from '@tanstack/react-table'
-import { ChevronLeftIcon, ChevronRightIcon, ChevronsLeftIcon, ChevronsRightIcon, Filter, Search, Settings } from 'lucide-react'
-import { useState } from 'react'
-
-import {
 	Button,
 	Card,
 	CardContent,
@@ -40,9 +27,20 @@ import {
 	TableRow,
 	Typography
 } from '@/components/ui/common'
-
 import { checkAccessRoles } from '@/shared/api/helpers/accessRoles'
 import { useProfile } from '@/shared/utils/contexts'
+import {
+	ColumnDef,
+	ColumnFiltersState,
+	SortingState,
+	flexRender,
+	getCoreRowModel,
+	getFilteredRowModel,
+	getSortedRowModel,
+	useReactTable
+} from '@tanstack/react-table'
+import { ChevronLeftIcon, ChevronRightIcon, ChevronsLeftIcon, ChevronsRightIcon, Filter, Search, Settings } from 'lucide-react'
+import { useState } from 'react'
 
 interface DataTableProps<TData, TValue> {
 	columns: ColumnDef<TData, TValue>[]

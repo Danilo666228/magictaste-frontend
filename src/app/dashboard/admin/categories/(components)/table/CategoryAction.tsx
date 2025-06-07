@@ -1,10 +1,8 @@
-import { Row } from '@tanstack/react-table'
-import { MoreHorizontal } from 'lucide-react'
-
-import { Button, DropdownMenu, DropdownMenuContent, DropdownMenuLabel, DropdownMenuSeparator, DropdownMenuTrigger } from '@/components/ui/common'
-
 import { DeleteCategory } from './actions/DeleteCategory'
 import { CategoryColumn } from './columns'
+import { Button, DropdownMenu, DropdownMenuContent, DropdownMenuLabel, DropdownMenuSeparator, DropdownMenuTrigger } from '@/components/ui/common'
+import { Row } from '@tanstack/react-table'
+import { MoreHorizontal } from 'lucide-react'
 
 interface CategoryActions {
 	row: Row<CategoryColumn>

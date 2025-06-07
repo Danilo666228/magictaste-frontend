@@ -1,8 +1,7 @@
 'use server'
 
-import { cookies } from 'next/headers'
-
 import { COOKIE_LANGUAGE, Language, defaultLanguage } from './i18n.config'
+import { cookies } from 'next/headers'
 
 export async function getCurrentLanguage() {
 	const cookieStore = await cookies()

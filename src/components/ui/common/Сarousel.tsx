@@ -1,12 +1,10 @@
 'use client'
 
+import { Button } from '@/components/ui/common'
+import { cn } from '@/shared/utils/twMerge'
 import useEmblaCarousel, { type UseEmblaCarouselType } from 'embla-carousel-react'
 import { ChevronLeft, ChevronRight } from 'lucide-react'
 import * as React from 'react'
-
-import { Button } from '@/components/ui/common'
-
-import { cn } from '@/shared/utils/twMerge'
 
 type CarouselApi = UseEmblaCarouselType[1]
 type UseCarouselParameters = Parameters<typeof useEmblaCarousel>

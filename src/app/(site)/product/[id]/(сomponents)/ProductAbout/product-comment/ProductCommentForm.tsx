@@ -1,11 +1,8 @@
-import { Loader2 } from 'lucide-react'
-
+import { useProductCommentForm } from '../../../(hooks)/useProductCommentForm'
 import { Button, Form, FormControl, FormField, FormItem, FormMessage, Textarea } from '@/components/ui/common'
 import { Rating } from '@/components/ui/common/Rating'
-
 import { Product } from '@/shared/api/types'
-
-import { useProductCommentForm } from '../../../(hooks)/useProductCommentForm'
+import { Loader2 } from 'lucide-react'
 
 interface ProductCommentFormProps {
 	product: Product

@@ -1,9 +1,6 @@
 'use client'
 
-import { ChevronRight } from 'lucide-react'
-import Link from 'next/link'
-import { useState } from 'react'
-
+import { NavigationItemProps } from './types'
 import {
 	Collapsible,
 	CollapsibleContent,
@@ -18,10 +15,10 @@ import {
 	SidebarMenuSubItem,
 	useSidebar
 } from '@/components/ui/common'
-
 import { cn } from '@/shared/hooks/helpers'
-
-import { NavigationItemProps } from './types'
+import { ChevronRight } from 'lucide-react'
+import Link from 'next/link'
+import { useState } from 'react'
 
 export function NavigationItem({ item, pathname }: NavigationItemProps) {
 	const [isOpen, setIsOpen] = useState(false)

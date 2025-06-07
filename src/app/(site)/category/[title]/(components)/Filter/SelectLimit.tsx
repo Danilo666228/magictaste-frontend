@@ -1,8 +1,6 @@
-import { ComponentProps } from 'react'
-
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/common'
-
 import { cn } from '@/shared/hooks/helpers'
+import { ComponentProps } from 'react'
 
 interface SelectLimitProps extends ComponentProps<typeof Select> {
 	setLimit: (limit: number) => void

@@ -1,10 +1,7 @@
-import { UseFormReturn } from 'react-hook-form'
-
 import { FormControl, FormField, FormItem, FormLabel, Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/common'
-
 import { TypeCheckoutSchema } from '@/schemas/checkout/checkout'
-
 import { useGetDeliveryAddress } from '@/shared/api/hooks/delivery-address/useGetDeliveryAddress'
+import { UseFormReturn } from 'react-hook-form'
 
 interface SelectAddressFieldProps {
 	form: UseFormReturn<TypeCheckoutSchema>

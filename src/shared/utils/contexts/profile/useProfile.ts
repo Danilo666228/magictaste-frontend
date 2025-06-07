@@ -1,6 +1,5 @@
-import { useContext } from 'react'
-
 import { ProfileContext } from './ProfileContext'
+import { useContext } from 'react'
 
 export const useProfile = () => {
 	const context = useContext(ProfileContext)

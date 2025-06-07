@@ -1,9 +1,8 @@
 'use client'
 
+import { cn } from '@/shared/utils/twMerge'
 import * as TooltipPrimitive from '@radix-ui/react-tooltip'
 import * as React from 'react'
-
-import { cn } from '@/shared/utils/twMerge'
 
 const TooltipProvider = TooltipPrimitive.Provider
 

@@ -1,6 +1,5 @@
-import { useMutation } from '@tanstack/react-query'
-
 import { DeleteCategoryRequestConfig, deleteCategory } from '../../request/category/delete'
+import { useMutation } from '@tanstack/react-query'
 
 export const useDeleteCategoryMutation = (settings?: MutationSettings<DeleteCategoryRequestConfig, typeof deleteCategory>) =>
 	useMutation({

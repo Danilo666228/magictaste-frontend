@@ -1,20 +1,16 @@
-import { Heart, ShoppingCart } from 'lucide-react'
-import { useFormatter } from 'next-intl'
-import { useRouter } from 'next/navigation'
-import { ComponentProps } from 'react'
-
 import { ProductCard, ProductCardContent, ProductCardFooter, ProductCardImage, ProductCardLink } from '@/components/shared/product-card/ProductCard'
 import { Button, Skeleton, Typography } from '@/components/ui/common'
-
-import { useAuth } from '@/hooks/useAuth'
 import { useCart } from '@/hooks/useCart'
 import { useFavorite } from '@/hooks/useFavorite'
-
 import { isActiveFavorite } from '@/shared/api/helpers/is-active-favorite'
 import { Product } from '@/shared/api/types'
 import { ROUTE } from '@/shared/utils/constants/route'
 import { useProfile } from '@/shared/utils/contexts'
 import { cn } from '@/shared/utils/twMerge'
+import { Heart, ShoppingCart } from 'lucide-react'
+import { useFormatter } from 'next-intl'
+import { useRouter } from 'next/navigation'
+import { ComponentProps } from 'react'
 
 interface ProductListProps extends ComponentProps<'div'> {
 	products: Product[] | undefined
@@ -23,8 +19,8 @@ interface ProductListProps extends ComponentProps<'div'> {
 
 export function ProductList({ products = [], take, className, ...props }: ProductListProps) {
 	const { handleAddProduct } = useCart()
-	const { profile } = useProfile()
-	const { isAuth } = useAuth()
+	const { profile, isAuth } = useProfile()
+
 	const formatter = useFormatter()
 	const router = useRouter()
 	const { toggleFavorite } = useFavorite()

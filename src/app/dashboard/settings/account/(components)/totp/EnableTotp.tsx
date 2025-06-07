@@ -1,8 +1,3 @@
-import { useQueryClient } from '@tanstack/react-query'
-import { Loader2, QrCode, Smartphone } from 'lucide-react'
-import Image from 'next/image'
-import { useEffect, useState } from 'react'
-
 import {
 	Button,
 	Container,
@@ -18,9 +13,12 @@ import {
 	InputOTPSeparator,
 	InputOTPSlot
 } from '@/components/ui/common'
-
 import { useEnableTotpMutation } from '@/shared/api/hooks/totp/useEnableTotpMutation'
 import { useGetGenerateTotpQuery } from '@/shared/api/hooks/totp/useGetGenerateTotpQuery'
+import { useQueryClient } from '@tanstack/react-query'
+import { Loader2, QrCode, Smartphone } from 'lucide-react'
+import Image from 'next/image'
+import { useEffect, useState } from 'react'
 
 export function EnableTotp() {
 	const queryClient = useQueryClient()

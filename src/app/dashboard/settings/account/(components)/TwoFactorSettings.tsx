@@ -1,9 +1,7 @@
-import { LockKeyhole } from 'lucide-react'
-
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/common'
-
 import { ChangeTwoFactorEmail } from './ChangeTwoFactorEmail'
 import { TotpWrapper } from './totp/TotpWrapper'
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/common'
+import { LockKeyhole } from 'lucide-react'
 
 export function TwoFactorSettings() {
 	return (

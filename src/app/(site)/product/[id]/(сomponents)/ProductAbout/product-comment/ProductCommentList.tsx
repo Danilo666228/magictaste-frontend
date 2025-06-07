@@ -1,14 +1,11 @@
 'use client'
 
+import { ProductCommentItem } from './ProductCommentItem'
+import { Button, Typography } from '@/components/ui/common'
+import { ProductComment } from '@/shared/api/types/product-comment'
 import { AnimatePresence, m, motion } from 'framer-motion'
 import { ChevronDown, MessageSquare } from 'lucide-react'
 import { useState } from 'react'
-
-import { Button, Typography } from '@/components/ui/common'
-
-import { ProductComment } from '@/shared/api/types/product-comment'
-
-import { ProductCommentItem } from './ProductCommentItem'
 
 interface ProductCommentListProps {
 	comments: ProductComment[]

@@ -1,7 +1,6 @@
+import { Input } from '@/components/ui/common'
 import { Search, X } from 'lucide-react'
 import { ComponentProps } from 'react'
-
-import { Input } from '@/components/ui/common'
 
 interface SearchInputProps extends ComponentProps<'input'> {
 	searchValue: string

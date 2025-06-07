@@ -1,17 +1,14 @@
 'use client'
 
-import { zodResolver } from '@hookform/resolvers/zod'
-import { useRouter, useSearchParams } from 'next/navigation'
-import { useForm } from 'react-hook-form'
-
 import { Button, Input } from '@/components/ui/common'
 import { Container } from '@/components/ui/common/Container'
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/common/Form'
-
 import { PasswordRecoverySchema, passwordRecoverySchema } from '@/schemas/auth/passwordRecovery'
-
 import { usePasswordRecoveryMutation } from '@/shared/api/hooks/auth/usePasswordRecoveryMutation'
 import { ROUTE } from '@/shared/utils/constants/route'
+import { zodResolver } from '@hookform/resolvers/zod'
+import { useRouter, useSearchParams } from 'next/navigation'
+import { useForm } from 'react-hook-form'
 
 export function PasswordRecoveryForm() {
 	const router = useRouter()

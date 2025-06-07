@@ -1,11 +1,9 @@
+import { ChangeProfileSchema, changeProfileSchema } from '@/schemas/account/changeProfile'
+import { useChangeProfileMutation } from '@/shared/api/hooks/profile/useChangeProfileMutation'
+import { useProfile } from '@/shared/utils/contexts'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useQueryClient } from '@tanstack/react-query'
 import { useForm } from 'react-hook-form'
-
-import { ChangeProfileSchema, changeProfileSchema } from '@/schemas/account/changeProfile'
-
-import { useChangeProfileMutation } from '@/shared/api/hooks/profile/useChangeProfileMutation'
-import { useProfile } from '@/shared/utils/contexts'
 
 export function useChangeProfileForm() {
 	const queryClient = useQueryClient()

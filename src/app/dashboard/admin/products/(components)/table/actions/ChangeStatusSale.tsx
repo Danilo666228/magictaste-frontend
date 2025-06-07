@@ -1,8 +1,6 @@
-import { useQueryClient } from '@tanstack/react-query'
-
 import { DropdownMenuItem } from '@/components/ui/common'
-
 import { useChangeProductStatusMutation } from '@/shared/api/hooks/products/useChangeProductStatusMutation'
+import { useQueryClient } from '@tanstack/react-query'
 
 interface ChangeStatusSaleProps {
 	onSale: boolean

@@ -1,9 +1,7 @@
+import { Typography } from '@/components/ui/common'
+import { ProductComment } from '@/shared/api/types/product-comment'
 import { m } from 'framer-motion'
 import { Star } from 'lucide-react'
-
-import { Typography } from '@/components/ui/common'
-
-import { ProductComment } from '@/shared/api/types/product-comment'
 
 interface ProductCommentStatisticProps {
 	comments: ProductComment[]

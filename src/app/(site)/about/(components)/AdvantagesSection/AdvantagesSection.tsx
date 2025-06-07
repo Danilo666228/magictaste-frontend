@@ -1,8 +1,6 @@
-import Image from 'next/image'
-
-import { Typography } from '@/components/ui/common'
-
 import { sectionDetails } from './advatagesDetails'
+import { Typography } from '@/components/ui/common'
+import Image from 'next/image'
 
 export function AdvantagesSection() {
 	return (

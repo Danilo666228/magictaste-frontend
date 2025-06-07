@@ -1,12 +1,9 @@
+import { Container, FormBlock, FormControl, FormDescription, FormField, FormItem, FormLabel, FormMessage, Input } from '@/components/ui/common'
+import { TypeCheckoutSchema } from '@/schemas/checkout/checkout'
+import { useOrderStore } from '@/store/useOrderStore'
 import { UseFormReturn } from 'react-hook-form'
 import { PhoneInput } from 'react-international-phone'
 import 'react-international-phone/style.css'
-
-import { Container, FormBlock, FormControl, FormDescription, FormField, FormItem, FormLabel, FormMessage, Input } from '@/components/ui/common'
-
-import { TypeCheckoutSchema } from '@/schemas/checkout/checkout'
-
-import { useOrderStore } from '@/store/useOrderStore'
 
 interface AboutUserProps {
 	form: UseFormReturn<TypeCheckoutSchema>

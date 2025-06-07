@@ -1,14 +1,11 @@
+import Providers from './providers'
+import { CLIENT_URL } from '@/shared/utils/constants'
+import { SITE_DESCRIPTION, SITE_KEYWORDS, SITE_NAME } from '@/shared/utils/constants/seo'
+import '@/styles/globals.css'
 import type { Metadata } from 'next'
 import { NextIntlClientProvider } from 'next-intl'
 import { getLocale, getMessages } from 'next-intl/server'
 import { ReactNode } from 'react'
-
-import '@/styles/globals.css'
-
-import { CLIENT_URL } from '@/shared/utils/constants'
-import { SITE_DESCRIPTION, SITE_KEYWORDS, SITE_NAME } from '@/shared/utils/constants/seo'
-
-import Providers from './providers'
 
 interface RootLayoutProps {
 	children: ReactNode

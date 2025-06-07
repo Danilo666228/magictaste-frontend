@@ -1,14 +1,11 @@
 'use client'
 
+import { useVerificationAccount } from '../(hooks)/useVerificationAccount'
+import { Alert, AlertDescription, Button, Card, CardContent, CardDescription, CardHeader, CardTitle, Typography } from '@/components/ui/common'
+import { ROUTE } from '@/shared/utils/constants/route'
 import { CheckCircle2, Loader2, XCircle } from 'lucide-react'
 import Link from 'next/link'
 import { useState } from 'react'
-
-import { Alert, AlertDescription, Button, Card, CardContent, CardDescription, CardHeader, CardTitle, Typography } from '@/components/ui/common'
-
-import { ROUTE } from '@/shared/utils/constants/route'
-
-import { useVerificationAccount } from '../(hooks)/useVerificationAccount'
 
 export function VerificationAccount({ token }: { token: string }) {
 	const { isPending, isSuccess } = useVerificationAccount(token)

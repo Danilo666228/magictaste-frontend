@@ -1,14 +1,11 @@
 'use client'
 
+import { NotificationItem } from './NotificationItem'
+import { Button, Typography } from '@/components/ui/common'
+import { useNotificationsWebSocketStore } from '@/store/useNotificationsWebSocketStore'
 import { AnimatePresence, m } from 'framer-motion'
 import { AlertTriangle, Bell, CheckCircle, Clock, Filter, Inbox, RefreshCw, Trash2 } from 'lucide-react'
 import { useEffect, useState } from 'react'
-
-import { Button, Typography } from '@/components/ui/common'
-
-import { useNotificationsWebSocketStore } from '@/store/useNotificationsWebSocketStore'
-
-import { NotificationItem } from './NotificationItem'
 
 export function Notifications() {
 	const {

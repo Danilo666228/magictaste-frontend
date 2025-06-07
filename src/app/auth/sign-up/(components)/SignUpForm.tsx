@@ -1,12 +1,7 @@
 'use client'
 
-import { motion } from 'framer-motion'
-import { CheckCircle, Loader, Lock, Mail, User } from 'lucide-react'
-import { useTheme } from 'next-themes'
-import ReCAPTCHA from 'react-google-recaptcha'
-
+import { useSignUpForm } from '../(hooks)/useSignUpForm'
 import { AuthWrapper } from '@/app/auth/AuthWrapper'
-
 import {
 	Alert,
 	AlertDescription,
@@ -22,11 +17,12 @@ import {
 	FormMessage,
 	Input
 } from '@/components/ui/common'
-
 import { RECAPTCHA_SITE_KEY } from '@/shared/utils/constants/env'
 import { ROUTE } from '@/shared/utils/constants/route'
-
-import { useSignUpForm } from '../(hooks)/useSignUpForm'
+import { motion } from 'framer-motion'
+import { CheckCircle, Loader, Lock, Mail, User } from 'lucide-react'
+import { useTheme } from 'next-themes'
+import ReCAPTCHA from 'react-google-recaptcha'
 
 export function SignUpForm() {
 	const { form, isPending, isSuccess, onSubmit, recaptchaRef, handleRecaptchaChange, handleRecaptchaExpired } = useSignUpForm()

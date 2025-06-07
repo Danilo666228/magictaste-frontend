@@ -1,6 +1,5 @@
-import { useMutation } from '@tanstack/react-query'
-
 import { UpdateIngredientRequestConfig, updateIngredient } from '../../request/ingredient/update'
+import { useMutation } from '@tanstack/react-query'
 
 export const useUpdateIngredientMutation = (settings?: MutationSettings<UpdateIngredientRequestConfig, typeof updateIngredient>) =>
 	useMutation({

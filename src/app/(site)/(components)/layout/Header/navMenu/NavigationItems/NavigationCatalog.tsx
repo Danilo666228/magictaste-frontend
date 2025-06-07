@@ -1,13 +1,11 @@
 'use client'
 
-import Link from 'next/link'
-import { usePathname } from 'next/navigation'
-
 import { NavigationMenuContent, NavigationMenuItem, NavigationMenuTrigger, Typography } from '@/components/ui/common'
-
 import { useGetCategoryQuery } from '@/shared/api/hooks/category/useGetCategoryQuery'
 import { cn } from '@/shared/hooks/helpers'
 import { ROUTE } from '@/shared/utils/constants/route'
+import Link from 'next/link'
+import { usePathname } from 'next/navigation'
 
 export function NavigationCatalog() {
 	const { data: categories } = useGetCategoryQuery()

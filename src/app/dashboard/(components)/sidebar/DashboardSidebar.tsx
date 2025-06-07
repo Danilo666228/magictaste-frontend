@@ -1,12 +1,10 @@
 'use client'
 
-import { ComponentProps } from 'react'
-
-import { Sidebar, SidebarContent, SidebarFooter, SidebarHeader, SidebarRail } from '@/components/ui/common'
-
 import { NavHeader } from './NavHeader'
 import { NavUser } from './NavUser'
 import { Navigation } from './Navigation/Navigation'
+import { Sidebar, SidebarContent, SidebarFooter, SidebarHeader, SidebarRail } from '@/components/ui/common'
+import { ComponentProps } from 'react'
 
 export function DashboardSidebar({ ...props }: ComponentProps<typeof Sidebar>) {
 	return (

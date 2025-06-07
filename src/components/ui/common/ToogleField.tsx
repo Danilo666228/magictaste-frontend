@@ -1,7 +1,6 @@
+import { Container, Skeleton, Switch, Typography } from '@/components/ui/common'
 import type { LucideIcon } from 'lucide-react'
 import type { IconType } from 'react-icons'
-
-import { Container, Skeleton, Switch, Typography } from '@/components/ui/common'
 
 interface ToogleFieldProps {
 	title: string

@@ -1,6 +1,5 @@
-import { useQuery } from '@tanstack/react-query'
-
 import { verification } from '@/shared/api/request'
+import { useQuery } from '@tanstack/react-query'
 
 export const useGetVerificationQuery = (settings?: QuerySettings<typeof verification>) =>
 	useQuery({

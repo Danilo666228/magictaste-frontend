@@ -1,17 +1,14 @@
+import { SignInSchema, signInSchema } from '@/schemas/auth/signIn'
+import { usePostSignInMutation } from '@/shared/api/hooks/auth/usePostSignInMutation'
+import { ROUTE } from '@/shared/utils/constants/route'
+import { useProfile } from '@/shared/utils/contexts'
+import { useAuthStore } from '@/store/useAuthStore'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useRouter } from 'next/navigation'
 import { useCallback, useRef, useState } from 'react'
 import { ReCAPTCHA } from 'react-google-recaptcha'
 import { useForm } from 'react-hook-form'
 import { toast } from 'sonner'
-
-import { SignInSchema, signInSchema } from '@/schemas/auth/signIn'
-
-import { useAuthStore } from '@/store/useAuthStore'
-
-import { usePostSignInMutation } from '@/shared/api/hooks/auth/usePostSignInMutation'
-import { ROUTE } from '@/shared/utils/constants/route'
-import { useProfile } from '@/shared/utils/contexts'
 
 export function useSignInForm() {
 	const router = useRouter()

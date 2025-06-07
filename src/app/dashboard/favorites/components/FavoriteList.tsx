@@ -1,20 +1,17 @@
-import { useQueryClient } from '@tanstack/react-query'
-import { m } from 'framer-motion'
-import { Heart, ShoppingCart } from 'lucide-react'
-import { useFormatter } from 'next-intl'
-import Link from 'next/link'
-
 import { ProductCard, ProductCardContent, ProductCardFooter, ProductCardImage, ProductCardLink } from '@/components/shared/product-card/ProductCard'
 import { Button, Typography } from '@/components/ui/common'
-
 import { useCart } from '@/hooks/useCart'
 import { useFavorite } from '@/hooks/useFavorite'
-
 import { isActiveFavorite } from '@/shared/api/helpers/is-active-favorite'
 import { Favorite } from '@/shared/api/types'
 import { ROUTE } from '@/shared/utils/constants/route'
 import { useProfile } from '@/shared/utils/contexts'
 import { cn } from '@/shared/utils/twMerge'
+import { useQueryClient } from '@tanstack/react-query'
+import { m } from 'framer-motion'
+import { Heart, ShoppingCart } from 'lucide-react'
+import { useFormatter } from 'next-intl'
+import Link from 'next/link'
 
 interface FavoriteListProps {
 	favorites: Favorite[] | undefined

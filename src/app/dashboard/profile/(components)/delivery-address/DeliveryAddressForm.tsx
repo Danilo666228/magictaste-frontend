@@ -1,13 +1,10 @@
+import { useDeliveryAddressForm } from '@/app/dashboard/profile/(hooks)/useDeliveryAddressForm'
+import { Button, Form, FormControl, FormField, FormItem, FormLabel, FormMessage, Input, Label, Switch } from '@/components/ui/common'
+import { YandexMap } from '@/components/ui/elements/yandex-map/YandexMap'
+import { TypeCreateDeliveryAddressSchema } from '@/schemas/delivery-address/delivery-address'
 import { AnimatePresence, motion } from 'framer-motion'
 import { Building2, Home, LucideIcon, MapPin, Navigation } from 'lucide-react'
 import { useState } from 'react'
-
-import { useDeliveryAddressForm } from '@/app/dashboard/profile/(hooks)/useDeliveryAddressForm'
-
-import { Button, Form, FormControl, FormField, FormItem, FormLabel, FormMessage, Input, Label, Switch } from '@/components/ui/common'
-import { YandexMap } from '@/components/ui/elements/yandex-map/YandexMap'
-
-import { TypeCreateDeliveryAddressSchema } from '@/schemas/delivery-address/delivery-address'
 
 type FieldConfig = {
 	name: keyof TypeCreateDeliveryAddressSchema

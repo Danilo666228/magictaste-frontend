@@ -1,11 +1,9 @@
+import { TypeSignUpSchema, signUpSchema } from '@/schemas/auth/signUp'
+import { usePostSignUpMutation } from '@/shared/api/hooks/auth/usePostSignUpMutation'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useCallback, useRef, useState } from 'react'
 import ReCAPTCHA from 'react-google-recaptcha'
 import { useForm } from 'react-hook-form'
-
-import { TypeSignUpSchema, signUpSchema } from '@/schemas/auth/signUp'
-
-import { usePostSignUpMutation } from '@/shared/api/hooks/auth/usePostSignUpMutation'
 
 export function useSignUpForm() {
 	const [recaptchaValue, setRecaptchaValue] = useState<string | null>(null)

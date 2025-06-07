@@ -1,10 +1,5 @@
 'use client'
 
-import { Slot } from '@radix-ui/react-slot'
-import { VariantProps, cva } from 'class-variance-authority'
-import { PanelLeft } from 'lucide-react'
-import * as React from 'react'
-
 import {
 	Button,
 	Input,
@@ -20,10 +15,12 @@ import {
 	TooltipProvider,
 	TooltipTrigger
 } from '@/components/ui/common'
-
 import { useIsMobile } from '@/hooks/useMobile'
-
 import { cn } from '@/shared/utils/twMerge'
+import { Slot } from '@radix-ui/react-slot'
+import { VariantProps, cva } from 'class-variance-authority'
+import { PanelLeft } from 'lucide-react'
+import * as React from 'react'
 
 const SIDEBAR_COOKIE_NAME = 'sidebar_state'
 const SIDEBAR_COOKIE_MAX_AGE = 60 * 60 * 24 * 7
