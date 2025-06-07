@@ -45,7 +45,7 @@ export function RecoveryPasswordForm() {
 			<AlertDescription>Пожалуйста, проверьте ваш email для восстановления пароля.</AlertDescription>
 		</Alert>
 	) : (
-		<AuthWrapper title='Восстоновление пароля' description='Пожалуйста, введите ваш email для восстановления пароля.'>
+		<AuthWrapper title='Восстановление пароля' description='Пожалуйста, введите ваш email для восстановления пароля.'>
 			<Form {...form}>
 				<form onSubmit={form.handleSubmit(onSubmit)} className='space-y-4'>
 					<FormField
