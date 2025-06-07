@@ -5,35 +5,93 @@ import { Typography } from '@/components/ui/common'
 
 export function AboutMe() {
 	return (
-		<section className='my-10'>
-			<div className='grid grid-cols-1 items-center gap-10 lg:grid-cols-2'>
-				<div className='relative h-[400px] overflow-hidden rounded-xl'>
-					<Image src='/about.webp' sizes='(max-width: 768px) 100vw, 33vw' alt='О нашем ресторане' fill className='object-cover' />
+		<section className='relative overflow-hidden py-20'>
+			<div className='container mx-auto px-4'>
+				<div className='mb-16 text-center'>
+					<Typography className='mb-6 inline-flex items-center gap-2 rounded-full bg-primary/10 px-4 py-2 text-sm font-medium text-primary'>
+						🏛️ Наша история
+					</Typography>
+					<Typography tag='h2' className='mb-6 text-4xl font-bold leading-tight lg:text-5xl'>
+						О нашем{' '}
+						<Typography className='bg-gradient-to-r from-primary to-primary/70 bg-clip-text text-transparent'>ресторане</Typography>
+					</Typography>
 				</div>
-				<div>
-					<Typography tag='h2' className='mb-4 text-3xl font-bold'>
-						О нашем ресторане
-					</Typography>
-					<Typography tag='p' className='mb-6'>
-						Наш ресторан был основан в 2010 году с простой идеей: создать место, где каждый гость почувствует себя особенным. Мы стремимся
-						предложить не просто еду, а настоящее гастрономическое путешествие.
-					</Typography>
-					<Typography tag='p' className='mb-6'>
-						Наша команда профессиональных поваров постоянно совершенствует меню, добавляя новые блюда и улучшая классические рецепты. Мы
-						гордимся тем, что используем только свежие и качественные ингредиенты.
-					</Typography>
-					<div className='ml-auto flex flex-col items-center gap-4 sm:flex-row'>
-						<div className='flex items-center gap-2'>
-							<MapPin className='h-5 w-5 text-primary' />
-							<Typography>ул. Маркина 7</Typography>
+
+				<div className='grid grid-cols-1 items-center gap-12 lg:grid-cols-2'>
+					<div className='group relative'>
+						<div className='group-hover:shadow-3xl relative h-[500px] overflow-hidden rounded-3xl shadow-2xl transition-all duration-500 group-hover:shadow-primary/20'>
+							<Image
+								src='/about.webp'
+								sizes='(max-width: 768px) 100vw, 50vw'
+								alt='О нашем ресторане'
+								fill
+								className='object-cover transition-all duration-700 group-hover:scale-105'
+							/>
+
+							<div className='absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent'></div>
+
+							<div className='absolute bottom-6 left-6 rounded-2xl bg-white/90 px-4 py-2 shadow-lg backdrop-blur-sm'>
+								<Typography className='text-sm font-semibold text-primary'>С 2010 года</Typography>
+							</div>
 						</div>
-						<div className='flex items-center gap-2'>
-							<Phone className='h-5 w-5 text-primary' />
-							<Typography>+7 (123) 456-78-90</Typography>
+
+						<div className='absolute -right-4 -top-4 h-24 w-24 rounded-full bg-primary/10 blur-xl'></div>
+						<div className='absolute -bottom-4 -left-4 h-32 w-32 rounded-full bg-primary/5 blur-2xl'></div>
+					</div>
+
+					<div className='space-y-8'>
+						<div className='space-y-6'>
+							<Typography tag='p' className='text-lg leading-relaxed text-muted-foreground'>
+								Наш ресторан был основан в 2010 году с простой идеей: создать место, где каждый гость почувствует себя особенным. Мы
+								стремимся предложить не просто еду, а настоящее{' '}
+								<span className='font-semibold text-primary'>гастрономическое путешествие</span>.
+							</Typography>
+
+							<Typography tag='p' className='text-lg leading-relaxed text-muted-foreground'>
+								Наша команда профессиональных поваров постоянно совершенствует меню, добавляя новые блюда и улучшая классические
+								рецепты. Мы гордимся тем, что используем только{' '}
+								<span className='font-semibold text-primary'>свежие и качественные ингредиенты</span>.
+							</Typography>
 						</div>
-						<div className='flex items-center gap-2'>
-							<Clock className='h-5 w-5 text-primary' />
-							<Typography>10:00 - 22:00</Typography>
+
+						<div className='space-y-4'>
+							{[
+								{ icon: MapPin, label: 'Адрес', value: 'ул. Маркина 7' },
+								{ icon: Phone, label: 'Телефон', value: '+7 (123) 456-78-90' },
+								{ icon: Clock, label: 'Режим работы', value: '10:00 - 22:00' }
+							].map((item, index) => (
+								<div
+									key={index}
+									className='group flex items-center gap-4 rounded-2xl border border-transparent bg-card/50 p-4 backdrop-blur-sm transition-all duration-300 hover:border-primary/20 hover:bg-card/80'
+									style={{
+										animationDelay: `${index * 100}ms`
+									}}>
+									<div className='flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-to-br from-primary/20 to-primary/30 transition-transform duration-300 group-hover:scale-110'>
+										<item.icon className='h-5 w-5 text-primary' />
+									</div>
+									<div className='flex flex-1 items-center gap-3'>
+										<Typography className='text-sm font-medium text-muted-foreground'>{item.label}</Typography>
+										<Typography className='font-semibold transition-colors duration-300 group-hover:text-primary'>
+											{item.value}
+										</Typography>
+									</div>
+								</div>
+							))}
+						</div>
+
+						<div className='mt-8 grid grid-cols-3 gap-4'>
+							{[
+								{ number: '14+', label: 'лет опыта' },
+								{ number: '50k+', label: 'довольных гостей' },
+								{ number: '200+', label: 'блюд в меню' }
+							].map((stat, index) => (
+								<div
+									key={index}
+									className='flex items-center gap-3 rounded-xl border border-primary/20 bg-gradient-to-br from-primary/5 to-primary/10 p-4 text-center'>
+									<Typography className='text-2xl font-bold text-primary'>{stat.number}</Typography>
+									<Typography className='text-sm text-muted-foreground'>{stat.label}</Typography>
+								</div>
+							))}
 						</div>
 					</div>
 				</div>

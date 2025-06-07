@@ -10,7 +10,7 @@ interface ListItemProps extends ComponentProps<'li'> {}
 
 const List = ({ children, className, ...props }: ListProps) => {
 	return (
-		<ul className={cn('', className)} {...props}>
+		<ul className={cn('flex flex-col gap-2', className)} {...props}>
 			{children}
 		</ul>
 	)

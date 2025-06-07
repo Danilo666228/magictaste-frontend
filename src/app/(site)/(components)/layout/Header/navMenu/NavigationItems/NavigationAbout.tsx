@@ -19,8 +19,7 @@ export function NavigationAbout() {
 					'relative transform-gpu overflow-hidden',
 					'hover:bg-primary/5',
 					'before:absolute before:inset-0 before:bg-primary/0 before:transition-colors before:duration-300',
-					'hover:before:bg-primary/20',
-					isActive && 'bg-primary/20'
+					'hover:before:bg-primary/20'
 				)}
 				href={ROUTE.about}>
 				<span className='relative z-10 font-medium'>О нас</span>

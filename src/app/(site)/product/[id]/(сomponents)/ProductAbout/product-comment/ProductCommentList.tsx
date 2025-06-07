@@ -74,7 +74,7 @@ export function ProductCommentListEmpty() {
 			animate={{ opacity: 1, y: 0 }}
 			exit={{ opacity: 0, y: -20 }}
 			transition={{ duration: 0.4 }}
-			className='flex flex-col items-center justify-center gap-4 rounded-2xl border-2 border-dashed bg-white/50 px-6 py-16 text-center backdrop-blur-sm'>
+			className='flex flex-col items-center justify-center gap-4 rounded-2xl border-2 border-dashed px-6 py-16 text-center'>
 			<div className='rounded-full bg-primary/5 p-6'>
 				<MessageSquare className='h-10 w-10 text-primary/50' />
 			</div>

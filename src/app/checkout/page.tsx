@@ -1,4 +1,4 @@
-import { CheckIcon } from 'lucide-react'
+import { CheckIcon, Sparkles } from 'lucide-react'
 import { Metadata } from 'next'
 import Image from 'next/image'
 
@@ -15,44 +15,69 @@ export const metadata: Metadata = {
 
 export default async function CheckoutPage() {
 	return (
-		<div className='flex min-h-screen w-full flex-col bg-gradient-to-br from-[#f8fafc] via-[#f1f5f9] to-[#e0e7ef]'>
-			<header className='sticky top-0 z-20 w-full border-b bg-background px-0 py-4 shadow-sm backdrop-blur-md md:px-0'>
-				<div className='mx-auto flex max-w-4xl items-center justify-between px-4 md:px-0'>
-					<div className='flex items-center gap-3'>
-						<Image src={'/logo.png'} alt='Logo' width={56} height={56} className='rounded-lg shadow-md' />
-						<Typography tag='h3' className='text-lg font-bold tracking-tight text-gray-800'>
-							MagicTaste
-						</Typography>
-					</div>
-					<div className='flex items-center gap-2 rounded-full bg-green-50 px-3 py-1 text-green-600'>
-						<CheckIcon className='h-4 w-4' />
-						<span className='text-xs font-medium text-green-700'>Безопасное оформление</span>
+		<div className='relative min-h-screen w-full bg-gradient-to-br from-background to-background/80'>
+			<header className='sticky top-0 z-20 w-full border-b bg-background/80 px-0 py-6 shadow-lg backdrop-blur-xl'>
+				<div className='mx-auto flex max-w-6xl items-center justify-between px-4 md:px-6'>
+					<div className='flex items-center gap-4'>
+						<div className='relative'>
+							<Image src={'/logo.png'} alt='Logo' width={64} height={64} className='rounded-xl shadow-lg' />
+							<div className='absolute -right-1 -top-1 flex h-6 w-6 animate-pulse items-center justify-center rounded-full bg-primary'>
+								<Sparkles className='h-3 w-3 text-primary-foreground' />
+							</div>
+						</div>
+						<div>
+							<Typography tag='h3' className='text-xl font-bold'>
+								<span className='bg-gradient-to-r from-primary to-primary/70 bg-clip-text text-transparent'>Волшебный вкус</span>
+							</Typography>
+							<Typography className='text-xs text-muted-foreground'>Ресторан русской кухни</Typography>
+						</div>
 					</div>
 				</div>
 			</header>
 
-			<main className='flex flex-1 justify-center px-2 py-8 md:px-0'>
-				<div className='relative flex w-full max-w-[80%] flex-col overflow-hidden rounded-3xl border border-gray-100 bg-white/90 shadow-2xl md:flex-row'>
-					<div className='flex w-full flex-col justify-center gap-6 bg-gradient-to-br from-white via-gray-50 to-gray-100 p-6 md:w-3/5 md:p-10'>
-						<Typography tag='h1' className='mb-2 text-2xl font-bold text-gray-900 md:text-3xl'>
+			<main className='flex flex-1 justify-center px-4 py-12 md:px-6'>
+				<div className='relative w-full max-w-7xl'>
+					<div className='mb-8 flex justify-center'>
+						<div className='inline-flex items-center gap-2 rounded-full bg-primary/10 px-6 py-3 text-sm font-medium text-primary backdrop-blur-sm'>
+							<CheckIcon className='h-4 w-4 animate-pulse' />
 							Оформление заказа
-						</Typography>
-						<Typography className='mb-4 text-sm text-gray-500 md:text-base'>
-							Заполните форму, чтобы мы могли приготовить и доставить ваш заказ как можно быстрее.
-						</Typography>
-						<CheckoutForm />
+						</div>
 					</div>
 
-					<div className='sticky flex w-full flex-col gap-4 border-t border-gray-100 bg-gradient-to-tl from-[#f1f5f9] to-white p-6 md:top-8 md:w-2/5 md:border-l md:border-t-0 md:p-8'>
-						<Typography tag='h2' className='mb-2 text-lg font-semibold text-gray-800'>
-							Ваш заказ
-						</Typography>
-						<OrderList />
+					<div className='relative overflow-hidden rounded-3xl border-0 bg-background/60 shadow-2xl backdrop-blur-sm md:flex'>
+						<div className='flex w-full flex-col justify-center gap-8 p-8 md:w-3/5 md:p-12'>
+							<div className='space-y-4'>
+								<Typography tag='h1' className='text-3xl font-bold md:text-4xl'>
+									<span className='bg-gradient-to-r from-foreground to-foreground/70 bg-clip-text text-transparent'>
+										Последний шаг до вкуса
+									</span>
+								</Typography>
+								<Typography className='max-w-2xl text-lg leading-relaxed text-muted-foreground'>
+									Заполните форму, чтобы мы могли <span className='font-semibold text-primary'>приготовить и доставить</span> ваш
+									заказ как можно быстрее.
+								</Typography>
+							</div>
+
+							<CheckoutForm />
+						</div>
+
+						<div className='sticky flex w-full flex-col gap-6 border-t border-border/50 bg-gradient-to-br from-background/80 to-background/40 p-8 md:top-8 md:w-2/5 md:border-l md:border-t-0 md:p-10'>
+							<OrderList />
+						</div>
 					</div>
 				</div>
 			</main>
-			<footer className='mt-auto w-full py-4 text-center text-xs text-gray-400'>
-				&copy; {new Date().getFullYear()} Ресторан русской кухни. Все права защищены.
+
+			<footer className='mt-auto w-full border-t bg-background/60 py-8 text-center backdrop-blur-sm'>
+				<div className='mx-auto max-w-4xl px-4'>
+					<div className='space-x-2'>
+						<Typography className='text-sm font-medium text-foreground'>
+							&copy; {new Date().getFullYear()} MagicTaste - Ресторан русской кухни
+						</Typography>
+						<Typography className='text-xs text-muted-foreground'>Сделано с ❤️ для наших гостей</Typography>
+					</div>
+					<div className='mx-auto mt-4 h-1 w-24 rounded-full bg-gradient-to-r from-primary/50 to-primary/20'></div>
+				</div>
 			</footer>
 		</div>
 	)

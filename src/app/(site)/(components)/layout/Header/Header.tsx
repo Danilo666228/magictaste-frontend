@@ -37,13 +37,13 @@ export const Header = () => {
 	const router = useRouter()
 
 	useMotionValueEvent(scrollY, 'change', latest => {
-		setIsScrolled(latest > 50)
+		setIsScrolled(latest > 1)
 	})
 
 	return (
 		<header
 			className={cn(
-				'sticky top-0 z-20 m-5 rounded-lg bg-muted p-2 transition-all duration-500 dark:bg-muted/80',
+				'sticky top-0 z-20 m-5 rounded-lg p-2 transition-all duration-300',
 				isScrolled && 'bg-background/95 shadow-xl backdrop-blur-sm'
 			)}>
 			<div className='flex items-center justify-between gap-3 px-4'>
@@ -58,33 +58,31 @@ export const Header = () => {
 
 				<NavMenu className='max-md:hidden' />
 
-				<div className='ml-auto flex items-center gap-2 max-sm:ml-auto'>
-					<List className='flex items-center gap-2 max-sm:ml-auto'>
-						{isAuth ? (
-							<>
-								<ListItem>
-									<Notifications />
-								</ListItem>
-								<ListItem>
-									<ProfileMenu />
-								</ListItem>
-								<ListItem>
-									<CartButton />
-								</ListItem>
-							</>
-						) : (
-							<>
-								<ListItem>
-									<Button onClick={() => router.push(ROUTE.auth.signIn)}>Вход</Button>
-								</ListItem>
-								<ListItem>
-									<Button onClick={() => router.push(ROUTE.auth.signUp)}>Регистрация</Button>
-								</ListItem>
-							</>
-						)}
-					</List>
-				</div>
-				<ThemeToggle />
+				<List className='flex flex-row items-center gap-4 max-sm:ml-auto'>
+					<ThemeToggle />
+					{isAuth ? (
+						<>
+							<ListItem>
+								<Notifications />
+							</ListItem>
+							<ListItem className='flex items-center justify-center'>
+								<ProfileMenu />
+							</ListItem>
+							<ListItem>
+								<CartButton />
+							</ListItem>
+						</>
+					) : (
+						<>
+							<ListItem>
+								<Button onClick={() => router.push(ROUTE.auth.signIn)}>Вход</Button>
+							</ListItem>
+							<ListItem>
+								<Button onClick={() => router.push(ROUTE.auth.signUp)}>Регистрация</Button>
+							</ListItem>
+						</>
+					)}
+				</List>
 			</div>
 		</header>
 	)

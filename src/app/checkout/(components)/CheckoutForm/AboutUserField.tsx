@@ -1,12 +1,11 @@
+import { Mail, Phone, User, UserCheck } from 'lucide-react'
 import { UseFormReturn } from 'react-hook-form'
 import { PhoneInput } from 'react-international-phone'
 import 'react-international-phone/style.css'
 
-import { Container, FormBlock, FormControl, FormDescription, FormField, FormItem, FormLabel, FormMessage, Input } from '@/components/ui/common'
+import { FormControl, FormDescription, FormField, FormItem, FormLabel, FormMessage, Input, Typography } from '@/components/ui/common'
 
 import { TypeCheckoutSchema } from '@/schemas/checkout/checkout'
-
-import { useOrderStore } from '@/store/useOrderStore'
 
 interface AboutUserProps {
 	form: UseFormReturn<TypeCheckoutSchema>
@@ -14,22 +13,37 @@ interface AboutUserProps {
 
 export function AboutUserField({ form }: AboutUserProps) {
 	return (
-		<FormBlock title='Личные данные'>
-			<Container className='flex flex-col gap-5'>
-				<div className='grid grid-cols-1 gap-5 md:grid-cols-2'>
+		<div className='space-y-8'>
+			<div className='flex items-center gap-4 rounded-2xl bg-primary/5 p-6'>
+				<div className='flex h-12 w-12 items-center justify-center rounded-xl bg-primary/10'>
+					<UserCheck className='h-6 w-6 text-primary' />
+				</div>
+				<div>
+					<Typography tag='h3' className='text-xl font-bold text-foreground'>
+						Личные данные
+					</Typography>
+					<Typography className='text-sm text-muted-foreground'>Заполните информацию для связи с вами</Typography>
+				</div>
+			</div>
+
+			<div className='space-y-6'>
+				<div className='grid grid-cols-1 gap-6 md:grid-cols-2'>
 					<FormField
 						control={form.control}
 						name='firstName'
 						render={({ field }) => (
-							<FormItem className='w-full'>
-								<Container className='flex justify-between'>
-									<FormLabel>Имя</FormLabel>
+							<FormItem className='space-y-3'>
+								<div className='flex justify-between'>
+									<FormLabel className='flex items-center gap-2 font-medium'>
+										<User className='h-4 w-4 text-primary' />
+										Имя
+									</FormLabel>
 									<FormMessage />
-								</Container>
+								</div>
 								<FormControl>
-									<Input className='w-full' type='text' placeholder='Даниил' {...field} />
+									<Input className='' type='text' placeholder='Даниил' {...field} />
 								</FormControl>
-								<FormDescription>Введите ваше имя</FormDescription>
+								<FormDescription className='text-xs'>Введите ваше имя</FormDescription>
 							</FormItem>
 						)}
 					/>
@@ -38,15 +52,18 @@ export function AboutUserField({ form }: AboutUserProps) {
 						control={form.control}
 						name='lastName'
 						render={({ field }) => (
-							<FormItem className='w-full'>
-								<Container className='flex justify-between'>
-									<FormLabel>Фамилия</FormLabel>
+							<FormItem className='space-y-3'>
+								<div className='flex justify-between'>
+									<FormLabel className='flex items-center gap-2 font-medium'>
+										<User className='h-4 w-4 text-primary' />
+										Фамилия
+									</FormLabel>
 									<FormMessage />
-								</Container>
+								</div>
 								<FormControl>
-									<Input className='w-full' type='text' placeholder='Иванов' {...field} />
+									<Input type='text' placeholder='Иванов' {...field} />
 								</FormControl>
-								<FormDescription>Введите вашу фамилию</FormDescription>
+								<FormDescription className='text-xs'>Введите вашу фамилию</FormDescription>
 							</FormItem>
 						)}
 					/>
@@ -56,21 +73,21 @@ export function AboutUserField({ form }: AboutUserProps) {
 					control={form.control}
 					name='phone'
 					render={({ field }) => (
-						<FormItem className='w-full'>
-							<Container className='flex justify-between'>
-								<FormLabel>Телефон</FormLabel>
+						<FormItem className='space-y-3'>
+							<div className='flex justify-between'>
+								<FormLabel className='flex items-center gap-2 font-medium'>
+									<Phone className='h-4 w-4 text-primary' />
+									Телефон
+								</FormLabel>
 								<FormMessage />
-							</Container>
+							</div>
 							<FormControl>
-								{/* <PatternFormat
-									className='flex h-9 w-full rounded-md border border-input bg-transparent px-3 py-1 text-base shadow-sm transition-colors file:border-0 file:bg-transparent file:text-sm file:font-medium file:text-foreground placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:cursor-not-allowed disabled:opacity-50 md:text-sm'
-									value={field.value}
-									onChange={field.onChange}
-									format={'+7(###)-###-##-##'}
-								/> */}
 								<PhoneInput countries={[['Russia', 'ru', '7', '(...) ...-..-..', 1]]} defaultCountry='ru' {...field} />
 							</FormControl>
-							<FormDescription>Введите номер телефона для связи</FormDescription>
+							<FormDescription className='flex items-center gap-2 text-xs'>
+								<Typography className='h-1 w-1 rounded-full bg-primary'></Typography>
+								Введите номер телефона для связи с курьером
+							</FormDescription>
 						</FormItem>
 					)}
 				/>
@@ -79,19 +96,21 @@ export function AboutUserField({ form }: AboutUserProps) {
 					control={form.control}
 					name='email'
 					render={({ field }) => (
-						<FormItem className='w-full'>
-							<Container className='flex justify-between'>
-								<FormLabel>Email</FormLabel>
+						<FormItem className='space-y-3'>
+							<div className='flex justify-between'>
+								<FormLabel className='flex items-center gap-2 font-medium'>
+									<Mail className='h-4 w-4 text-primary' />
+									Email
+								</FormLabel>
 								<FormMessage />
-							</Container>
+							</div>
 							<FormControl>
-								<Input className='w-full' type='email' placeholder='example@mail.ru' {...field} />
+								<Input type='email' placeholder='example@mail.ru' {...field} />
 							</FormControl>
-							<FormDescription>Для отправки чека</FormDescription>
 						</FormItem>
 					)}
 				/>
-			</Container>
-		</FormBlock>
+			</div>
+		</div>
 	)
 }

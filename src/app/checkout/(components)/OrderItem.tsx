@@ -13,10 +13,11 @@ interface OrderItemProps {
 
 export function OrderItem({ product, quantity }: OrderItemProps) {
 	const formatted = useFormatter()
+
 	return (
-		<Container className='flex items-start gap-3'>
+		<Container className='group flex items-start gap-4 rounded-xl p-3 transition-colors hover:bg-primary/5'>
 			{product.imageUrl && (
-				<div className='relative h-16 w-16 flex-shrink-0 overflow-hidden rounded-md'>
+				<div className='relative h-16 w-16 flex-shrink-0 overflow-hidden rounded-xl shadow-md transition-transform group-hover:scale-105'>
 					<Image
 						src={getMediaSource(product.imageUrl)}
 						alt={product.title}
@@ -26,18 +27,30 @@ export function OrderItem({ product, quantity }: OrderItemProps) {
 					/>
 				</div>
 			)}
-			<div className='flex flex-1 flex-col'>
-				<div className='flex justify-between'>
-					<Typography className='font-medium'>{product?.title}</Typography>
-					<Typography className='ml-2 font-medium'>
+
+			<div className='flex flex-1 flex-col space-y-2'>
+				<div className='flex items-start justify-between'>
+					<Typography className='font-semibold leading-tight text-foreground transition-colors group-hover:text-primary'>
+						{product?.title}
+					</Typography>
+					<Typography className='ml-3 text-lg font-bold text-primary'>
 						{formatted.number(product.price * quantity, { style: 'currency', currency: 'RUB' })}
 					</Typography>
 				</div>
-				<Typography className='text-xs text-gray-500'>{product?.ingredients.map(ingredient => ingredient?.title).join(', ')}</Typography>
-				<div className='mt-1 flex items-center text-sm text-gray-600'>
-					<span>{quantity} шт.</span>
-					<span className='mx-1'>×</span>
-					<span>{formatted.number(product.price, { style: 'currency', currency: 'RUB' })}</span>
+
+				<Typography className='line-clamp-2 text-xs leading-relaxed text-muted-foreground'>
+					{product?.ingredients.map(ingredient => ingredient?.title).join(', ')}
+				</Typography>
+
+				<div className='flex items-center gap-3 text-sm'>
+					<div className='flex items-center gap-2 rounded-full bg-muted/50 px-3 py-1'>
+						<Typography className='text-muted-foreground'>{quantity} шт.</Typography>
+						<Typography className='text-muted-foreground'>×</Typography>
+						<Typography className='font-medium text-foreground'>
+							{formatted.number(product.price, { style: 'currency', currency: 'RUB' })}
+						</Typography>
+					</div>
+					<div className='text-xs text-muted-foreground'>{product.weight}г</div>
 				</div>
 			</div>
 		</Container>

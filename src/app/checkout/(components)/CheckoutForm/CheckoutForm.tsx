@@ -1,13 +1,13 @@
 'use client'
 
-import { CreditCard, Loader, MapPin, User } from 'lucide-react'
+import { CheckCircle, Circle, CreditCard, Loader, MapPin, User } from 'lucide-react'
 import { useRouter } from 'next/navigation'
 
-import { Button, Container, Form } from '@/components/ui/common'
+import { Button, Form } from '@/components/ui/common'
 
 import { OrderStep, useOrderStore } from '@/store/useOrderStore'
 
-import { useUnmount } from '@/shared/hooks'
+import { cn, useUnmount } from '@/shared/hooks'
 import { ROUTE } from '@/shared/utils/constants/route'
 
 import { useCheckoutForm } from '../../(hooks)/useCheckoutForm'
@@ -17,9 +17,9 @@ import { DeliveryField } from './DeliveryField'
 import { PaymentField } from './PaymentField'
 
 const steps = [
-	{ id: 'user', title: 'Личные данные', icon: User },
-	{ id: 'delivery', title: 'Доставка', icon: MapPin },
-	{ id: 'payment', title: 'Оплата', icon: CreditCard }
+	{ id: 'user', title: 'Личные данные', icon: User, description: 'Ваша информация' },
+	{ id: 'delivery', title: 'Доставка', icon: MapPin, description: 'Способ и адрес' },
+	{ id: 'payment', title: 'Оплата', icon: CreditCard, description: 'Способ оплаты' }
 ]
 
 export function CheckoutForm() {
@@ -60,62 +60,120 @@ export function CheckoutForm() {
 		form.handleSubmit(onSubmit)(e)
 	}
 
+	const getStepStatus = (stepId: string) => {
+		const currentIndex = steps.findIndex(step => step.id === currentStep)
+		const stepIndex = steps.findIndex(step => step.id === stepId)
+
+		if (stepIndex < currentIndex) return 'completed'
+		if (stepIndex === currentIndex) return 'current'
+		return 'upcoming'
+	}
+
 	return (
-		<Container className='rounded-lg border p-6 shadow-sm'>
-			<div className='mb-8'>
+		<div className='space-y-8'>
+			<div className='relative'>
 				<div className='flex justify-between'>
-					{steps.map((step, index) => (
-						<div key={step.id} className='flex flex-1 cursor-pointer flex-col items-center'>
-							<div
-								className={`flex h-10 w-10 items-center justify-center rounded-full border-2 ${
-									currentStep === step.id ? 'border-primary bg-primary text-white' : 'border-gray-300 text-gray-500'
-								}`}>
-								<step.icon size={20} />
+					{steps.map((step, index) => {
+						const status = getStepStatus(step.id)
+
+						return (
+							<div key={step.id} className='relative flex flex-1 flex-col items-center'>
+								{index < steps.length - 1 && (
+									<div className='absolute left-1/2 top-6 z-0 h-0.5 w-full'>
+										<div
+											className={`h-full transition-colors duration-300 ${
+												status === 'completed' ? 'bg-primary' : 'bg-border'
+											}`}></div>
+									</div>
+								)}
+
+								<div
+									className={`relative z-10 flex h-12 w-12 items-center justify-center rounded-full border-2 transition-all duration-300 ${
+										status === 'completed'
+											? 'border-primary bg-primary text-primary-foreground shadow-lg'
+											: status === 'current'
+												? 'scale-110 border-primary bg-background text-primary shadow-md'
+												: 'border-border bg-background text-muted-foreground'
+									}`}>
+									{status === 'completed' ? (
+										<CheckCircle size={20} />
+									) : status === 'current' ? (
+										<step.icon size={20} />
+									) : (
+										<Circle size={20} />
+									)}
+								</div>
+
+								<div className='mt-3 text-center'>
+									<span
+										className={`text-sm font-medium transition-colors ${
+											status === 'current' ? 'text-primary' : 'text-muted-foreground'
+										}`}>
+										{step.title}
+									</span>
+									<div
+										className={`text-xs transition-colors ${
+											status === 'current' ? 'text-primary/70' : 'text-muted-foreground/70'
+										}`}>
+										{step.description}
+									</div>
+								</div>
 							</div>
-							<span className={`mt-2 text-sm ${currentStep === step.id ? 'font-medium text-primary' : 'text-gray-500'}`}>
-								{step.title}
-							</span>
-							{index < steps.length - 1 && <div className='absolute left-0 top-5 -z-10 h-[2px] w-full'></div>}
-						</div>
-					))}
+						)
+					})}
 				</div>
 			</div>
 
-			<Form {...form}>
-				<form onSubmit={handleSubmit} className='flex w-full flex-col gap-5'>
-					{currentStep === 'user' && <AboutUserField form={form} />}
-					{currentStep === 'delivery' && <DeliveryField form={form} />}
-					{currentStep === 'payment' && <PaymentField form={form} />}
+			<div className='rounded-2xl border-0 bg-background/60 p-8 shadow-xl backdrop-blur-sm'>
+				<Form {...form}>
+					<form onSubmit={handleSubmit} className='space-y-8'>
+						<div className='min-h-[400px]'>
+							{currentStep === 'user' && <AboutUserField form={form} />}
+							{currentStep === 'delivery' && <DeliveryField form={form} />}
+							{currentStep === 'payment' && <PaymentField form={form} />}
+						</div>
 
-					<Container className='mt-6 flex justify-between'>
-						{currentStep === 'user' ? (
-							<Button variant={'outline'} type='button' onClick={() => router.push(ROUTE.home)}>
-								Вернуться на главную
-							</Button>
-						) : (
-							<Button variant={'outline'} type='button' onClick={handleBack}>
-								Назад
-							</Button>
-						)}
-
-						<Button
-							type='submit'
-							disabled={isPending && currentStep === 'payment'}
-							className={currentStep === 'payment' ? 'min-w-[180px]' : ''}>
-							{isPending && currentStep === 'payment' ? (
-								<>
-									<Loader className='mr-2 animate-spin' />
-									Оформление...
-								</>
-							) : currentStep === 'payment' ? (
-								'Оформить заказ'
+						<div className='flex items-center justify-between border-t border-border/50 pt-6'>
+							{currentStep === 'user' ? (
+								<Button variant={'outline'} type='button' onClick={() => router.push(ROUTE.home)} className='group'>
+									← Вернуться на главную
+								</Button>
 							) : (
-								'Продолжить'
+								<Button variant={'outline'} type='button' onClick={handleBack} className='group'>
+									← Назад
+								</Button>
 							)}
-						</Button>
-					</Container>
-				</form>
-			</Form>
-		</Container>
+
+							<Button
+								type='submit'
+								disabled={isPending && currentStep === 'payment'}
+								className={cn(
+									'group relative overflow-hidden bg-gradient-to-r from-primary to-primary/80 shadow-lg transition-all duration-300 hover:shadow-xl hover:shadow-primary/25',
+									currentStep === 'payment' ? 'min-w-[200px]' : ''
+								)}>
+								<span className='relative flex items-center'>
+									{isPending && currentStep === 'payment' ? (
+										<>
+											<Loader className='mr-2 h-4 w-4 animate-spin' />
+											Оформление...
+										</>
+									) : currentStep === 'payment' ? (
+										<>
+											<CreditCard className='mr-2 h-4 w-4' />
+											Оформить заказ
+										</>
+									) : (
+										<>
+											Продолжить
+											<span className='ml-2 transition-transform group-hover:translate-x-1'>→</span>
+										</>
+									)}
+								</span>
+							</Button>
+						</div>
+					</form>
+				</Form>
+			</div>
+		</div>
 	)
 }

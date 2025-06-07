@@ -45,7 +45,7 @@ export function ProductInfo({ product }: ProductInfoProps) {
 			<div className='overflow-hidden rounded-3xl bg-background shadow-xl'>
 				<div className='grid grid-cols-1 gap-8 p-6 md:grid-cols-2 md:p-8 lg:grid-cols-[1fr_1.5fr]'>
 					<div className='space-y-6'>
-						<div className='group relative aspect-square overflow-hidden rounded-2xl bg-gray-50'>
+						<div className='group relative aspect-square overflow-hidden rounded-2xl'>
 							<Image
 								src={getMediaSource(product.imageUrl)}
 								alt={product.title}
@@ -60,15 +60,16 @@ export function ProductInfo({ product }: ProductInfoProps) {
 					<div className='flex flex-col'>
 						<div className='mb-6'>
 							<div className='mb-2 flex items-start justify-between'>
-								<Typography tag='h1' className='text-3xl font-bold tracking-tight text-gray-900 md:text-4xl'>
+								<Typography tag='h1' className='text-3xl font-bold tracking-tight md:text-4xl'>
 									{product.title}
 								</Typography>
-								<button
+								<Button
 									onClick={() => share({ title: 'MagicTaste', text: 'ОП', url: pathname })}
-									className='rounded-full p-2 transition-colors hover:bg-gray-100'
+									className='p-2 transition-colors'
+									variant='outline'
 									aria-label='Поделиться'>
 									<Share2 className='h-5 w-5 text-gray-500' />
-								</button>
+								</Button>
 							</div>
 							<Typography tag='h3' className='mb-4 text-lg font-medium text-primary'>
 								Вес: {product.weight} г.
@@ -103,12 +104,12 @@ export function ProductInfo({ product }: ProductInfoProps) {
 							<div className='flex items-end justify-between'>
 								<div>
 									<Typography className='mb-1 text-sm text-gray-500'>Цена</Typography>
-									<Typography tag='h2' className='text-3xl font-bold text-gray-900'>
+									<Typography tag='h2' className='text-3xl font-bold'>
 										{formatted.number(product.price, { style: 'currency', currency: 'RUB' })}
 									</Typography>
 								</div>
 
-								<div className='flex items-center overflow-hidden rounded-full border border-gray-200'>
+								<div className='flex items-center overflow-hidden rounded-full border'>
 									<Button
 										variant={'outline'}
 										onClick={decreaseQuantity}

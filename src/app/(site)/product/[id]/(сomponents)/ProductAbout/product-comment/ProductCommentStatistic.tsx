@@ -36,7 +36,7 @@ export function ProductCommentStatistic({ comments, averageRating, ratingDistrib
 
 						<div className='flex-1 space-y-2'>
 							{[5, 4, 3, 2, 1].map(rating => (
-								<div key={rating} className='flex items-center gap-2 text-sm'>
+								<div key={rating} className='flex items-center gap-2 text-xs'>
 									<div className='w-12 text-muted-foreground'>{rating} звезд</div>
 									<div className='h-2 flex-1 overflow-hidden rounded-full bg-muted'>
 										<m.div

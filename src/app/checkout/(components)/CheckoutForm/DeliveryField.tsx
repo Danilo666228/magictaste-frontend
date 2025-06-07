@@ -1,9 +1,9 @@
+import { Clock, MapPin, MessageSquare, Store, Truck } from 'lucide-react'
 import { useCallback, useState } from 'react'
 import { UseFormReturn } from 'react-hook-form'
 
 import {
 	Container,
-	FormBlock,
 	FormControl,
 	FormDescription,
 	FormField,
@@ -73,31 +73,122 @@ export function DeliveryField({ form }: DeliveryFieldProps) {
 	const isCourier = form.watch('deliveryType') === 'COURIER'
 
 	return (
-		<FormBlock title='Способ доставки'>
-			<Container className='flex flex-col gap-5'>
+		<div className='space-y-8'>
+			<div className='flex items-center gap-4 rounded-2xl bg-primary/5 p-6'>
+				<div className='flex h-12 w-12 items-center justify-center rounded-xl bg-primary/10'>
+					<Truck className='h-6 w-6 text-primary' />
+				</div>
+				<div>
+					<Typography tag='h3' className='text-xl font-bold text-foreground'>
+						Способ доставки
+					</Typography>
+					<Typography className='text-sm text-muted-foreground'>Выберите удобный для вас способ получения заказа</Typography>
+				</div>
+			</div>
+
+			<div className='space-y-6'>
 				<FormField
 					control={form.control}
 					name='deliveryType'
 					render={({ field }) => (
-						<FormItem className='w-full'>
-							<FormLabel>Выберите способ доставки</FormLabel>
+						<FormItem className='space-y-4'>
+							<FormLabel className='text-lg font-semibold'>Как вы хотите получить заказ?</FormLabel>
 							<FormControl>
-								<RadioGroup onValueChange={field.onChange} defaultValue={field.value} className='flex flex-col gap-3'>
-									<div className='flex items-center space-x-2 rounded-md border p-4'>
-										<RadioGroupItem value='COURIER' id='COURIER' onClick={() => handleClickDeliveryType('COURIER')} />
-										<label htmlFor='COURIER' className='flex-1 cursor-pointer'>
-											<div className='font-medium'>Курьером</div>
-											<div className='text-sm text-gray-500'>Доставка в течение 60-90 минут</div>
+								<RadioGroup onValueChange={field.onChange} defaultValue={field.value} className='grid gap-4 md:grid-cols-2'>
+									<div
+										className={cn(
+											'group relative cursor-pointer overflow-hidden rounded-2xl border-2 p-6 transition-all duration-300',
+											field.value === 'COURIER'
+												? 'border-primary bg-primary/5 shadow-lg shadow-primary/10'
+												: 'border-border bg-background/80 hover:border-primary/50 hover:bg-primary/5'
+										)}>
+										<RadioGroupItem
+											value='COURIER'
+											id='COURIER'
+											onClick={() => handleClickDeliveryType('COURIER')}
+											className='absolute right-4 top-4'
+										/>
+										<label htmlFor='COURIER' className='flex cursor-pointer flex-col space-y-4'>
+											<div className='flex items-center gap-4'>
+												<div
+													className={cn(
+														'flex h-12 w-12 items-center justify-center rounded-xl transition-colors',
+														field.value === 'COURIER' ? 'bg-primary/10' : 'bg-muted/50'
+													)}>
+													<Truck
+														className={cn(
+															'h-6 w-6 transition-colors',
+															field.value === 'COURIER' ? 'text-primary' : 'text-muted-foreground'
+														)}
+													/>
+												</div>
+												<div className='flex-1'>
+													<Typography className='text-lg font-semibold'>Курьером</Typography>
+													<div className='flex items-center gap-2 text-sm text-muted-foreground'>
+														<Clock className='h-4 w-4' />
+														<span>Доставка в течение 60-90 минут</span>
+													</div>
+												</div>
+											</div>
+											<div className='flex items-center justify-between'>
+												<div className='flex items-center gap-2'>
+													<span className='text-sm text-muted-foreground'>Стоимость:</span>
+													{isDeliveryFree && (
+														<span className='rounded-full bg-green-100 px-2 py-1 text-xs font-medium text-green-700'>
+															Бесплатно по бонусам
+														</span>
+													)}
+												</div>
+												<Typography
+													className={cn(
+														'text-lg font-bold',
+														isDeliveryFree ? 'text-green-600 line-through' : 'text-foreground'
+													)}>
+													300 ₽
+												</Typography>
+											</div>
 										</label>
-										<Typography className={cn('font-medium', isDeliveryFree && 'line-through')}>300 ₽</Typography>
 									</div>
-									<div className='flex items-center space-x-2 rounded-md border p-4'>
-										<RadioGroupItem value='PICKUP' id='PICKUP' onClick={() => handleClickDeliveryType('PICKUP')} />
-										<label htmlFor='PICKUP' className='flex-1 cursor-pointer'>
-											<div className='font-medium'>Самовывоз</div>
-											<div className='text-sm text-gray-500'>Готовность через 30 минут</div>
+
+									<div
+										className={cn(
+											'group relative cursor-pointer overflow-hidden rounded-2xl border-2 p-6 transition-all duration-300',
+											field.value === 'PICKUP'
+												? 'border-primary bg-primary/5 shadow-lg shadow-primary/10'
+												: 'border-border bg-background/80 hover:border-primary/50 hover:bg-primary/5'
+										)}>
+										<RadioGroupItem
+											value='PICKUP'
+											id='PICKUP'
+											onClick={() => handleClickDeliveryType('PICKUP')}
+											className='absolute right-4 top-4'
+										/>
+										<label htmlFor='PICKUP' className='flex cursor-pointer flex-col space-y-4'>
+											<div className='flex items-center gap-4'>
+												<div
+													className={cn(
+														'flex h-12 w-12 items-center justify-center rounded-xl transition-colors',
+														field.value === 'PICKUP' ? 'bg-primary/10' : 'bg-muted/50'
+													)}>
+													<Store
+														className={cn(
+															'h-6 w-6 transition-colors',
+															field.value === 'PICKUP' ? 'text-primary' : 'text-muted-foreground'
+														)}
+													/>
+												</div>
+												<div className='flex-1'>
+													<Typography className='text-lg font-semibold'>Самовывоз</Typography>
+													<div className='flex items-center gap-2 text-sm text-muted-foreground'>
+														<Clock className='h-4 w-4' />
+														<span>Готовность через 30 минут</span>
+													</div>
+												</div>
+											</div>
+											<div className='flex items-center justify-between'>
+												<Typography className='text-lg font-bold text-green-600'>Бесплатно</Typography>
+											</div>
 										</label>
-										<div className='font-medium'>Бесплатно</div>
 									</div>
 								</RadioGroup>
 							</FormControl>
@@ -107,35 +198,56 @@ export function DeliveryField({ form }: DeliveryFieldProps) {
 				/>
 
 				{isCourier && (
-					<div className='flex flex-col gap-3'>
-						<div className='flex flex-col gap-3'>
-							<div className='flex items-center gap-3'>
-								<Label htmlFor='deliveryAddress'>Выбрать свой адрес</Label>
-								<Switch id='deliveryAddress' checked={isDeliveryAddress} onCheckedChange={handleChangeDeliveryAddress} />
-							</div>
-							{isDeliveryAddress && <SelectAddressField form={form} />}
+					<div className='space-y-6 rounded-2xl bg-background/60 p-6 backdrop-blur-sm'>
+						<div className='flex items-center gap-3'>
+							<MapPin className='h-5 w-5 text-primary' />
+							<Typography className='text-lg font-semibold'>Адрес доставки</Typography>
 						</div>
-						{!isDeliveryAddress && <ManualAddressFields form={form} />}
+
+						<div className='flex items-center justify-between rounded-xl bg-primary/5 p-4'>
+							<div className='flex items-center gap-3'>
+								<Label htmlFor='deliveryAddress' className='font-medium'>
+									Использовать сохраненный адрес
+								</Label>
+								<span className='text-xs text-muted-foreground'>Быстрое оформление</span>
+							</div>
+							<Switch id='deliveryAddress' checked={isDeliveryAddress} onCheckedChange={handleChangeDeliveryAddress} />
+						</div>
+
+						<div className='space-y-4'>
+							{isDeliveryAddress ? <SelectAddressField form={form} /> : <ManualAddressFields form={form} />}
+						</div>
 
 						<FormField
 							control={form.control}
 							name='comment'
 							render={({ field }) => (
-								<FormItem className='w-full'>
+								<FormItem className='space-y-3'>
 									<Container className='flex justify-between'>
-										<FormLabel>Комментарий</FormLabel>
+										<FormLabel className='flex items-center gap-2 font-medium'>
+											<MessageSquare className='h-4 w-4 text-primary' />
+											Комментарий для курьера
+										</FormLabel>
 										<FormMessage />
 									</Container>
 									<FormControl>
-										<Textarea className='w-full' placeholder='Комментарий к заказу' {...field} />
+										<Textarea
+											className='resize-none'
+											placeholder='Например: домофон не работает, звонить в квартиру'
+											rows={3}
+											{...field}
+										/>
 									</FormControl>
-									<FormDescription>Оставьте комментарий для курьера</FormDescription>
+									<FormDescription className='flex items-center gap-2 text-xs'>
+										<span className='h-1 w-1 rounded-full bg-primary'></span>
+										Укажите особенности доставки, если есть
+									</FormDescription>
 								</FormItem>
 							)}
 						/>
 					</div>
 				)}
-			</Container>
-		</FormBlock>
+			</div>
+		</div>
 	)
 }

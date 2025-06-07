@@ -29,7 +29,7 @@ export function ProfileMenu() {
 	) : (
 		<DropdownMenu>
 			<DropdownMenuTrigger>
-				<Avatar className='border'>
+				<Avatar>
 					<AvatarImage src={getMediaSource(profileQuery.data?.data?.picture)} />
 					<AvatarFallback>{profileQuery.data?.data?.userName.slice(0, 2).toUpperCase()}</AvatarFallback>
 				</Avatar>
@@ -38,8 +38,8 @@ export function ProfileMenu() {
 				<DropdownMenuLabel>
 					<div className='flex items-center gap-3'>
 						<div>
-							<Avatar className=''>
-								<AvatarImage className='' src={getMediaSource(profile?.picture)} />
+							<Avatar>
+								<AvatarImage src={getMediaSource(profile?.picture)} />
 								<AvatarFallback>{profile?.userName.slice(0, 2).toUpperCase()}</AvatarFallback>
 							</Avatar>
 						</div>

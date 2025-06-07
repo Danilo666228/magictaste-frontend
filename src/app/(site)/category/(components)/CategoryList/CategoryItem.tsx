@@ -1,4 +1,4 @@
-import { ChevronRight } from 'lucide-react'
+import { ChevronRight, Sparkles } from 'lucide-react'
 import Link from 'next/link'
 
 import { Button, Typography } from '@/components/ui/common'
@@ -14,22 +14,35 @@ interface CategoryItemProps {
 
 export function CategoryItem({ category }: CategoryItemProps) {
 	return (
-		<div className='mb-16'>
-			<div className='mb-8 border-b-2 pb-4'>
-				<div className='flex items-center justify-between'>
-					<div>
-						<Typography tag='h2' className='text-2xl font-bold text-foreground'>
-							{category.title}
-						</Typography>
-						<Typography tag='p' className='mt-1 text-muted-foreground'>
-							{category.products?.length} блюд
-						</Typography>
+		<div className='relative mb-20'>
+			<div className='relative mb-12'>
+				<div className='mb-6 inline-flex items-center gap-2 rounded-full bg-primary/10 px-4 py-2 text-sm font-medium text-primary backdrop-blur-sm'>
+					<Sparkles size={16} className='animate-pulse' />
+					Категория блюд
+				</div>
+
+				<div className='mb-8 rounded-2xl bg-gradient-to-r from-background/80 to-background/40 p-6 backdrop-blur-sm'>
+					<div className='flex items-center justify-between'>
+						<div className='space-y-2'>
+							<Typography tag='h2' className='text-3xl font-bold'>
+								<span className='bg-gradient-to-r from-foreground to-foreground/70 bg-clip-text text-transparent'>
+									{category.title}
+								</span>
+							</Typography>
+							<div className='flex items-center gap-4'>
+								<Typography tag='p' className='text-muted-foreground'>
+									<span className='font-semibold text-primary'>{category.products?.length}</span> вкусных блюд
+								</Typography>
+							</div>
+						</div>
+
+						<Link href={ROUTE.category(category.title)}>
+							<Button className='group relative overflow-hidden shadow-lg transition-all duration-300 hover:shadow-xl hover:shadow-primary/25'>
+								<Typography className='relative'>Показать все</Typography>
+								<ChevronRight className='relative ml-2 transition-transform duration-300 group-hover:translate-x-1' size={16} />
+							</Button>
+						</Link>
 					</div>
-					<Link href={ROUTE.category(category.title)}>
-						<Button className='group'>
-							Показать все <ChevronRight className='transition-transform duration-300 group-hover:translate-x-1' size={16} />
-						</Button>
-					</Link>
 				</div>
 			</div>
 
