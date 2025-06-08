@@ -1,7 +1,8 @@
 import React, { ComponentProps, ReactNode } from 'react'
 
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from '@/components/ui/common'
-import { ModalContext } from '@/components/ui/elements/modal/Default/ModalContext'
+
+import { ModalContext } from './ModalContext'
 
 interface ModalProps extends ComponentProps<typeof Dialog> {
 	title: string

@@ -1,8 +1,8 @@
 import { ColumnDef } from '@tanstack/react-table'
 import { useFormatter } from 'next-intl'
 
+import { SortableHeader } from '@/components/shared/table/SortableHeader'
 import { Avatar, AvatarFallback, AvatarImage, Badge, Checkbox } from '@/components/ui/common'
-import { SortableHeader } from '@/components/ui/elements/table/SortableHeader'
 
 import { Product } from '@/shared/api/types'
 import { getMediaSource } from '@/shared/hooks/helpers'

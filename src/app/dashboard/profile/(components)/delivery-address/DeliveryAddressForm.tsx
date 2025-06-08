@@ -4,8 +4,8 @@ import { useState } from 'react'
 
 import { useDeliveryAddressForm } from '@/app/dashboard/profile/(hooks)/useDeliveryAddressForm'
 
+import { YandexMap } from '@/components/shared/yandex-map/YandexMap'
 import { Button, Form, FormControl, FormField, FormItem, FormLabel, FormMessage, Input, Label, Switch } from '@/components/ui/common'
-import { YandexMap } from '@/components/ui/elements/yandex-map/YandexMap'
 
 import { TypeCreateDeliveryAddressSchema } from '@/schemas/delivery-address/delivery-address'
 

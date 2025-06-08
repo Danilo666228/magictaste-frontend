@@ -9,18 +9,27 @@ interface SelectLimitProps extends ComponentProps<typeof Select> {
 	className?: string
 }
 
+const limitOptions = [
+	{ value: 5, label: '5 товаров' },
+	{ value: 10, label: '10 товаров' },
+	{ value: 15, label: '15 товаров' },
+	{ value: 20, label: '20 товаров' }
+]
+
 export const SelectLimit = ({ setLimit, className, ...props }: SelectLimitProps) => {
 	return (
 		<Select onValueChange={value => setLimit(Number(value))} {...props}>
-			<SelectTrigger className={cn('flex w-fit items-center gap-2', className)}>
+			<SelectTrigger className={cn('', className)}>
 				<SelectValue placeholder='Товаров на странице' />
 			</SelectTrigger>
 			<SelectContent>
-				{[5, 10, 15, 20].map(limit => (
-					<SelectItem key={limit} value={String(limit)}>
-						{limit}
-					</SelectItem>
-				))}
+				{limitOptions.map(option => {
+					return (
+						<SelectItem key={option.value} value={String(option.value)} className=''>
+							{option.label}
+						</SelectItem>
+					)
+				})}
 			</SelectContent>
 		</Select>
 	)

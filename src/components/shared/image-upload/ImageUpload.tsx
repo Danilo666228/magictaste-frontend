@@ -1,10 +1,11 @@
+'use client'
+
 import { ArrowUpToLine, ImagePlus, Trash2, Upload, X } from 'lucide-react'
 import Image from 'next/image'
 import { useCallback, useState } from 'react'
 
-import { Button, Input } from '@/components/ui/common'
-import { useImageUpload } from '@/components/ui/elements/image-upload/useImageUpload'
-import { useModal } from '@/components/ui/elements/modal/Default/ModalContext'
+import { useImageUpload, useModal } from '@/components/shared'
+import { Button, Input, Typography } from '@/components/ui/common'
 
 import { cn } from '@/shared/utils/twMerge'
 
@@ -83,8 +84,12 @@ export function ImageUpload({ onUpload, onSubmit }: ImageUploadProps) {
 						<ImagePlus className='h-6 w-6 text-muted-foreground' />
 					</div>
 					<div className='text-center'>
-						<p className='text-sm font-medium'>Click to select</p>
-						<p className='text-xs text-muted-foreground'>or drag and drop file here</p>
+						<Typography tag='p' className='text-sm font-medium'>
+							Нажмите для выбора
+						</Typography>
+						<Typography tag='p' className='text-xs text-muted-foreground'>
+							или перетащите файл сюда
+						</Typography>
 					</div>
 				</div>
 			) : (

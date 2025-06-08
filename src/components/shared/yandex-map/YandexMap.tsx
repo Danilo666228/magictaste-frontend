@@ -1,3 +1,5 @@
+'use client'
+
 import { GeolocationControl, Map, Placemark, useYMaps } from '@pbe/react-yandex-maps'
 import { useCallback, useEffect, useState } from 'react'
 

@@ -3,6 +3,8 @@ import { Row } from '@tanstack/react-table'
 import { MoreHorizontal } from 'lucide-react'
 import { useState } from 'react'
 
+import { Modal } from '@/components/shared'
+import { ImageUpload } from '@/components/shared/image-upload/ImageUpload'
 import {
 	Button,
 	DropdownMenu,
@@ -12,8 +14,6 @@ import {
 	DropdownMenuSeparator,
 	DropdownMenuTrigger
 } from '@/components/ui/common'
-import { ImageUpload } from '@/components/ui/elements/image-upload/ImageUpload'
-import { Modal } from '@/components/ui/elements/modal/Default/Modal'
 
 import { useChangeProductImageMutation } from '@/shared/api/hooks/products/useChangeProductImageMutation'
 import { useProfile } from '@/shared/utils/contexts'

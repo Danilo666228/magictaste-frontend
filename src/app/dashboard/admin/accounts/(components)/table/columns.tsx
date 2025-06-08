@@ -2,6 +2,7 @@ import { ColumnDef } from '@tanstack/react-table'
 import { Check, ChevronDown } from 'lucide-react'
 import { useFormatter } from 'next-intl'
 
+import { SortableHeader } from '@/components/shared/table/SortableHeader'
 import {
 	Avatar,
 	AvatarFallback,
@@ -17,7 +18,6 @@ import {
 	PopoverTrigger,
 	Typography
 } from '@/components/ui/common'
-import { SortableHeader } from '@/components/ui/elements/table/SortableHeader'
 
 import { getRoleName } from '@/shared/api/helpers/getRoleName'
 import { Account, Role } from '@/shared/api/types'

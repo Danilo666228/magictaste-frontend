@@ -2,7 +2,7 @@
 
 import { useState } from 'react'
 
-import { DataTable } from '@/components/ui/elements/table/DataTable'
+import { DataTable } from '@/components/shared/table/DataTable'
 
 import { useGetAccountsQuery } from '@/shared/api/hooks/account/useGetAccountsQuery'
 

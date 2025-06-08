@@ -1,17 +1,16 @@
 import { Heart, ShoppingCart, Star } from 'lucide-react'
 import { useFormatter } from 'next-intl'
-import { useRouter } from 'next/navigation'
 import { ComponentProps } from 'react'
+import { toast } from 'sonner'
 
 import { ProductCard, ProductCardContent, ProductCardFooter, ProductCardImage, ProductCardLink } from '@/components/shared/product-card/ProductCard'
-import { Button, Skeleton, Typography } from '@/components/ui/common'
+import { Badge, Button, Skeleton, Typography } from '@/components/ui/common'
 
 import { useCart } from '@/hooks/useCart'
 import { useFavorite } from '@/hooks/useFavorite'
 
 import { isActiveFavorite } from '@/shared/api/helpers/is-active-favorite'
 import { Product } from '@/shared/api/types'
-import { ROUTE } from '@/shared/utils/constants/route'
 import { useProfile } from '@/shared/utils/contexts'
 import { cn } from '@/shared/utils/twMerge'
 
@@ -25,7 +24,6 @@ export function ProductList({ products = [], take, className, ...props }: Produc
 	const { handleAddProduct } = useCart()
 	const { profile, isAuth } = useProfile()
 
-	const router = useRouter()
 	const { toggleFavorite } = useFavorite()
 
 	const displayedProducts = take ? products.slice(0, take) : products
@@ -38,16 +36,16 @@ export function ProductList({ products = [], take, className, ...props }: Produc
 						<div className='relative w-full max-w-[300px]'>
 							<ProductCardLink id={product.id}>
 								<ProductCard
-									className='group relative overflow-hidden rounded-2xl border-0 bg-background/40 shadow-lg backdrop-blur-sm transition-all duration-500 hover:shadow-2xl hover:shadow-primary/10'
+									className='group relative flex h-fit min-h-[380px] flex-col overflow-hidden rounded-2xl border bg-background/40 shadow-lg backdrop-blur-sm transition-all duration-500 hover:shadow-2xl hover:shadow-primary/10'
 									product={product}>
 									<div className='relative overflow-hidden rounded-t-2xl'>
 										<div className='h-56'>
 											<ProductCardImage />
 										</div>
 
-										<div className='absolute left-3 top-3 rounded-full bg-gradient-to-r from-primary/90 to-primary/70 px-3 py-1 text-xs font-medium text-white shadow-lg transition-all duration-300 group-hover:scale-105'>
+										<Badge className='absolute left-3 top-3 rounded-full bg-gradient-to-r from-primary/90 to-primary/70 px-3 py-1 text-xs text-background shadow-lg transition-all duration-300'>
 											{product.weight}г
-										</div>
+										</Badge>
 
 										{isAuth && (
 											<Button
@@ -57,51 +55,55 @@ export function ProductList({ products = [], take, className, ...props }: Produc
 													toggleFavorite(product.id)
 												}}
 												size={'icon'}
-												className='absolute right-3 top-3 z-10 h-10 w-10 rounded-full border-none bg-background/80 text-gray-600 shadow-lg backdrop-blur-md transition-all hover:scale-110 hover:bg-background/90 hover:text-red-500 hover:shadow-xl active:scale-95'>
+												className='absolute right-3 top-3 z-10 h-10 w-10 border-none bg-background/80 text-gray-600 shadow-lg backdrop-blur-md transition-all hover:scale-110 hover:bg-background/90 hover:text-red-500 hover:shadow-xl active:scale-95'>
 												<Heart size={18} className={cn(isActiveFavorite(profile, product) && 'fill-red-500 text-red-500')} />
 											</Button>
 										)}
 
-										<div className='absolute bottom-3 left-3 flex items-center gap-1 rounded-full bg-black/60 px-2 py-1 text-xs text-white opacity-0 backdrop-blur-sm transition-all duration-300 group-hover:opacity-100'>
+										<Badge className='absolute bottom-3 left-3 flex items-center gap-1 rounded-full bg-black/60 px-2 py-1 text-xs text-white opacity-0 backdrop-blur-sm transition-all duration-300 group-hover:opacity-100'>
 											<Star size={12} className='fill-yellow-400 text-yellow-400' />
-											<span>4.8</span>
-										</div>
+											<Typography tag='span' className='text-xs'>
+												4.8
+											</Typography>
+										</Badge>
 									</div>
 
-									<ProductCardContent className='flex flex-col gap-4 p-5'>
-										<div className='space-y-2'>
-											<Typography
-												tag='h3'
-												className='line-clamp-2 text-lg font-semibold text-foreground transition-colors group-hover:text-primary'>
-												{product.title}
+									<ProductCardContent className='flex flex-col gap-2'>
+										<Typography
+											tag='h3'
+											className='truncate text-lg font-semibold text-foreground transition-colors group-hover:text-primary'>
+											{product.title}
+										</Typography>
+										<Typography tag='p' className='truncate text-sm leading-relaxed text-muted-foreground'>
+											{product.ingredients.map(ingredient => ingredient.title).join(', ')}
+										</Typography>
+									</ProductCardContent>
+
+									<ProductCardFooter className='mt-auto flex flex-row items-center justify-between gap-4'>
+										<div className='flex flex-col'>
+											<Typography tag='span' className='text-lg font-bold text-foreground lg:text-2xl'>
+												{formatter.number(product.price, { style: 'currency', currency: 'RUB' })}
 											</Typography>
-											<Typography tag='p' className='line-clamp-2 text-sm leading-relaxed text-muted-foreground'>
-												{product.ingredients.map(ingredient => ingredient.title).join(', ')}
+											<Typography tag='span' className='text-xs text-muted-foreground'>
+												за порцию
 											</Typography>
 										</div>
+										<Button
+											onClick={e => {
+												e.preventDefault()
+												if (!isAuth) {
+													toast.error('Для добавления в корзину необходимо авторизоваться')
+													return
+												}
 
-										<ProductCardFooter className='flex flex-row items-center justify-between gap-4 p-0'>
-											<div className='flex flex-col'>
-												<Typography tag='span' className='text-2xl font-bold text-foreground'>
-													{formatter.number(product.price, { style: 'currency', currency: 'RUB' })}
-												</Typography>
-												<Typography tag='span' className='text-xs text-muted-foreground'>
-													за порцию
-												</Typography>
-											</div>
-											<Button
-												onClick={e => {
-													if (!isAuth) router.push(ROUTE.auth.signIn)
-													e.preventDefault()
-													handleAddProduct(product.id)
-												}}
-												className='group/btn relative overflow-hidden bg-gradient-to-r from-primary to-primary/80 text-primary-foreground transition-all duration-300 hover:shadow-lg hover:shadow-primary/25'>
-												<div className='absolute inset-0 translate-x-[-100%] bg-gradient-to-r from-white/0 via-white/20 to-white/0 transition-transform duration-700 group-hover/btn:translate-x-[100%]'></div>
-												<ShoppingCart className='mr-2 h-4 w-4 transition-transform group-hover/btn:scale-110 max-2xl:hidden' />
-												В корзину
-											</Button>
-										</ProductCardFooter>
-									</ProductCardContent>
+												handleAddProduct(product.id)
+											}}
+											className='group/btn relative overflow-hidden bg-gradient-to-r from-primary to-primary/80 text-primary-foreground transition-all duration-300 hover:shadow-lg hover:shadow-primary/25'>
+											<div className='absolute inset-0 translate-x-[-100%] bg-gradient-to-r from-white/0 via-white/20 to-white/0 transition-transform duration-700 group-hover/btn:translate-x-[100%]' />
+											<ShoppingCart className='mr-2 h-4 w-4 transition-transform group-hover/btn:scale-110 max-2xl:hidden' />В
+											корзину
+										</Button>
+									</ProductCardFooter>
 								</ProductCard>
 							</ProductCardLink>
 						</div>

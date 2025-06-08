@@ -3,6 +3,8 @@
 import { Image as ImageIcon, Trash2 } from 'lucide-react'
 import React, { useState } from 'react'
 
+import { Modal } from '@/components/shared'
+import { ImageUpload } from '@/components/shared/image-upload/ImageUpload'
 import {
 	Avatar,
 	AvatarFallback,
@@ -18,8 +20,6 @@ import {
 	Skeleton,
 	Typography
 } from '@/components/ui/common'
-import { ImageUpload } from '@/components/ui/elements/image-upload/ImageUpload'
-import { Modal } from '@/components/ui/elements/modal/Default/Modal'
 
 import { useChangeAvatarMutation } from '@/shared/api/hooks/account/useChangeAvatarMutation'
 import { getMediaSource } from '@/shared/hooks/helpers'
@@ -30,7 +30,7 @@ import { useChangeAvatarForm } from '../../(hooks)/useChangeAvatarForm'
 export function ChangeAvatarForm() {
 	const inputRef = React.useRef<HTMLInputElement>(null)
 	const { isPending, profile, handleFileChange, handleDeleteAvatar } = useChangeAvatarForm()
-	const { mutateAsync: changeAvatar, error } = useChangeAvatarMutation({
+	const { mutateAsync: changeAvatar } = useChangeAvatarMutation({
 		config: {
 			headers: {
 				ContentType: 'multipart/form-data'

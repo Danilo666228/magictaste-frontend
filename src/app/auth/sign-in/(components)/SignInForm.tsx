@@ -8,11 +8,10 @@ import ReCAPTCHA from 'react-google-recaptcha'
 import { AuthWrapper } from '@/app/auth/AuthWrapper'
 import { TwoFactorTotpForm } from '@/app/auth/sign-in/(components)/TwoFactorTotpForm'
 
+import { Modal } from '@/components/shared'
 import { Button, Container, Form, FormControl, FormField, FormItem, FormLabel, FormMessage, Input } from '@/components/ui/common'
-import { Modal } from '@/components/ui/elements/modal/Default/Modal'
 
-import { RECAPTCHA_SITE_KEY } from '@/shared/utils/constants/env'
-import { ROUTE } from '@/shared/utils/constants/route'
+import { RECAPTCHA_SITE_KEY, ROUTE } from '@/shared/utils/constants'
 
 import { useSignInForm } from '../(hooks)/useSignInForm'
 

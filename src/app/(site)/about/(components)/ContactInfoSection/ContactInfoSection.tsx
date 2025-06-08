@@ -1,7 +1,7 @@
 'use client'
 
+import { YandexMap } from '@/components/shared/yandex-map/YandexMap'
 import { Typography } from '@/components/ui/common'
-import { YandexMap } from '@/components/ui/elements/yandex-map/YandexMap'
 
 import { contactItems } from './contactItems'
 

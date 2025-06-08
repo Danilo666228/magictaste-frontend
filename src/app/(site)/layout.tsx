@@ -1,6 +1,6 @@
 import { ReactNode } from 'react'
 
-import { SupportChat } from '@/components/ui/elements/support-chat/SupportChat'
+import { SupportChat } from '@/components/shared'
 
 import { Footer, Header } from './(components)/layout'
 

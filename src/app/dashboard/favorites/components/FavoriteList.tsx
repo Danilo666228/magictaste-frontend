@@ -1,4 +1,3 @@
-import { useQueryClient } from '@tanstack/react-query'
 import { m } from 'framer-motion'
 import { Heart, ShoppingCart } from 'lucide-react'
 import { useFormatter } from 'next-intl'

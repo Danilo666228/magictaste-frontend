@@ -1,8 +1,8 @@
 import { ColumnDef } from '@tanstack/react-table'
 import { useFormatter } from 'next-intl'
 
+import { SortableHeader } from '@/components/shared/table/SortableHeader'
 import { Checkbox } from '@/components/ui/common'
-import { SortableHeader } from '@/components/ui/elements/table/SortableHeader'
 
 import { Category } from '@/shared/api/types'
 

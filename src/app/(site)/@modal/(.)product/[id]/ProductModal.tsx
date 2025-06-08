@@ -71,7 +71,6 @@ export function ProductModal({ product }: ProductModalProps) {
 										<Typography className='text-sm font-medium'>4.8</Typography>
 									</div>
 								</div>
-
 								<Image
 									src={getMediaSource(product.imageUrl)}
 									className='object-cover transition-all duration-500 group-hover:scale-110'
@@ -81,7 +80,6 @@ export function ProductModal({ product }: ProductModalProps) {
 								/>
 							</div>
 						</div>
-
 						<div className='flex flex-col space-y-6'>
 							<div className='space-y-4'>
 								<DialogTitle>
@@ -93,7 +91,6 @@ export function ProductModal({ product }: ProductModalProps) {
 									<Typography className='text-base leading-relaxed text-muted-foreground'>{product.description}</Typography>
 								</DialogDescription>
 							</div>
-
 							{product.ingredients && (
 								<div className='space-y-3'>
 									<Typography className='flex items-center gap-2 font-semibold text-foreground'>
@@ -103,14 +100,12 @@ export function ProductModal({ product }: ProductModalProps) {
 									<IngredientList className='max-w-full' ingredients={product.ingredients} />
 								</div>
 							)}
-
 							<div className='rounded-xl bg-primary/5 p-4'>
 								<div className='flex items-center justify-between gap-2'>
 									<Typography className='text-sm text-muted-foreground'>Цена</Typography>
 									<Typography className='text-2xl font-bold text-primary'>{product.price} ₽</Typography>
 								</div>
 							</div>
-
 							<div className='space-y-4'>
 								<div className='flex gap-3'>
 									<Button
@@ -138,7 +133,6 @@ export function ProductModal({ product }: ProductModalProps) {
 										/>
 									</Button>
 								</div>
-
 								<Button
 									variant='ghost'
 									className='h-10 w-full rounded-xl text-primary hover:bg-primary/5'

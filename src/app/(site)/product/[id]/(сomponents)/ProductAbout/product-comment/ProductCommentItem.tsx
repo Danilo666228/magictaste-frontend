@@ -5,8 +5,8 @@ import { ChevronDown, ChevronUp, Ellipsis, MessageCircle, Star, Trash } from 'lu
 import { useFormatter } from 'next-intl'
 import { useState } from 'react'
 
+import { Modal } from '@/components/shared'
 import { Avatar, AvatarFallback, AvatarImage, Button, Popover, PopoverContent, PopoverTrigger, Typography } from '@/components/ui/common'
-import { Modal } from '@/components/ui/elements/modal/Default/Modal'
 
 import { ProductComment } from '@/shared/api/types/product-comment'
 import { getMediaSource } from '@/shared/hooks/helpers'

@@ -2,8 +2,8 @@ import { Clock, Info, Loader2, MapPin, MapPinHouse, MonitorSmartphone } from 'lu
 import { useFormatter } from 'next-intl'
 import { useState } from 'react'
 
+import { YandexMap } from '@/components/shared/yandex-map/YandexMap'
 import { Button, Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from '@/components/ui/common'
-import { YandexMap } from '@/components/ui/elements/yandex-map/YandexMap'
 
 import { Session } from '@/shared/api/types'
 

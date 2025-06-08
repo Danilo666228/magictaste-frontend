@@ -20,7 +20,7 @@ import { ProfileMenu } from './ProfileMenu'
 import { CartButton } from './cart/CartButton'
 import { NavMenu } from './navMenu/NavMenu'
 
-const ThemeToggle = dynamic(() => import('@/components/ui/elements/theme/ThemeToggle').then(module => module.ThemeToggle), {
+const ThemeToggle = dynamic(() => import('@/components/shared/theme/ThemeToggle').then(module => module.ThemeToggle), {
 	ssr: false,
 	loading: () => (
 		<Button size='icon' variant='ghost'>
@@ -43,8 +43,8 @@ export const Header = () => {
 	return (
 		<header
 			className={cn(
-				'sticky top-0 z-20 m-5 rounded-lg p-2 transition-all duration-300',
-				isScrolled && 'bg-background/95 shadow-xl backdrop-blur-sm'
+				'sticky top-0 z-20 m-5 rounded-lg border bg-card p-2 transition-all duration-300',
+				isScrolled && 'shadow-xl backdrop-blur-sm'
 			)}>
 			<div className='flex items-center justify-between gap-3 px-4'>
 				<Link href={ROUTE.home} className='flex items-center gap-3'>

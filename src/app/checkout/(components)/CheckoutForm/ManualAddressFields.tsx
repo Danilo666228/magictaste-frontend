@@ -2,6 +2,7 @@ import { Building, Home, Loader2, MapPin, Navigation } from 'lucide-react'
 import { useState } from 'react'
 import { UseFormReturn } from 'react-hook-form'
 
+import { YandexMap } from '@/components/shared/yandex-map/YandexMap'
 import {
 	Container,
 	FormControl,
@@ -15,7 +16,6 @@ import {
 	Switch,
 	Typography
 } from '@/components/ui/common'
-import { YandexMap } from '@/components/ui/elements/yandex-map/YandexMap'
 
 import { TypeCheckoutSchema } from '@/schemas/checkout/checkout'
 

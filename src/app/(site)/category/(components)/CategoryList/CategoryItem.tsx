@@ -21,7 +21,7 @@ export function CategoryItem({ category }: CategoryItemProps) {
 					Категория блюд
 				</div>
 
-				<div className='mb-8 rounded-2xl bg-gradient-to-r from-background/80 to-background/40 p-6 backdrop-blur-sm'>
+				<div className='mb-8 rounded-2xl border border-border/50 bg-card/50 p-6 backdrop-blur-sm'>
 					<div className='flex items-center justify-between'>
 						<div className='space-y-2'>
 							<Typography tag='h2' className='text-3xl font-bold'>

@@ -3,9 +3,8 @@
 import { Plus } from 'lucide-react'
 import { useState } from 'react'
 
+import { DataTable, Modal } from '@/components/shared'
 import { Button } from '@/components/ui/common'
-import { Modal } from '@/components/ui/elements/modal/Default/Modal'
-import { DataTable } from '@/components/ui/elements/table/DataTable'
 
 import { useGetCategoryQuery } from '@/shared/api/hooks/category/useGetCategoryQuery'
 

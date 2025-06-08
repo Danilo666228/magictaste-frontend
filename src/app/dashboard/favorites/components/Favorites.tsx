@@ -3,8 +3,8 @@
 import { Heart } from 'lucide-react'
 import { useState } from 'react'
 
+import { SearchInput } from '@/components/shared/search-input/SearchInput'
 import { Typography } from '@/components/ui/common'
-import { SearchInput } from '@/components/ui/elements/input/SearchInput'
 
 import { useFavorite } from '@/hooks/useFavorite'
 

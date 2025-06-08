@@ -4,6 +4,7 @@ import { zodResolver } from '@hookform/resolvers/zod'
 import { useQueryClient } from '@tanstack/react-query'
 import { useForm } from 'react-hook-form'
 
+import { useModal } from '@/components/shared'
 import {
 	Button,
 	Form,
@@ -19,10 +20,9 @@ import {
 	SelectTrigger,
 	SelectValue,
 	Switch,
+	TagsSelector,
 	Textarea
 } from '@/components/ui/common'
-import { TagsSelector } from '@/components/ui/common/TagsSelector'
-import { useModal } from '@/components/ui/elements/modal/Default/ModalContext'
 
 import { CreateProductSchema, createProductSchema } from '@/schemas/product/createProduct'
 

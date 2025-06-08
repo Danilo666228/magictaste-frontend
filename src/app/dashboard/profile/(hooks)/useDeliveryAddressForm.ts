@@ -3,7 +3,7 @@ import { useQueryClient } from '@tanstack/react-query'
 import { useState } from 'react'
 import { useForm } from 'react-hook-form'
 
-import { useModal } from '@/components/ui/elements/modal/Default/ModalContext'
+import { useModal } from '@/components/shared'
 
 import { TypeCreateDeliveryAddressSchema, deliveryAddressSchema } from '@/schemas/delivery-address/delivery-address'
 

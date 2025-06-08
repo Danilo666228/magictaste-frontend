@@ -6,15 +6,14 @@ import { useEffect, useState } from 'react'
 import { Socket, io } from 'socket.io-client'
 import { v4 as uuidv4 } from 'uuid'
 
+import { Avatar, AvatarFallback, AvatarImage, Button, Input, Typography } from '@/components/ui/common'
+
 import { checkAccessRoles } from '@/shared/api/helpers/accessRoles'
 import { Account } from '@/shared/api/types'
 import { getMediaSource } from '@/shared/hooks/helpers'
 import { SERVER_URL, SOCKET_SUPPORT_CHAT_URL } from '@/shared/utils/constants/env'
 import { useProfile } from '@/shared/utils/contexts'
 import { cn } from '@/shared/utils/twMerge'
-
-import { Avatar, AvatarFallback, AvatarImage, Button, Input } from '../../common'
-import { Typography } from '../../common/Typography'
 
 import { ExpandableChat, ExpandableChatBody, ExpandableChatFooter, ExpandableChatHeader } from './ExpandableChat'
 

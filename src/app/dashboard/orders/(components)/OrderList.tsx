@@ -3,8 +3,8 @@
 import { SearchX } from 'lucide-react'
 import { useState } from 'react'
 
+import { SearchInput } from '@/components/shared/search-input/SearchInput'
 import { Select, SelectContent, SelectGroup, SelectItem, SelectLabel, SelectTrigger, SelectValue, Typography } from '@/components/ui/common'
-import { SearchInput } from '@/components/ui/elements/input/SearchInput'
 
 import { useGetOrdersQuery } from '@/shared/api/hooks/order/useGetOrdersQuery'
 
