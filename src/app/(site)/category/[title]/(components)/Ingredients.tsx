@@ -35,7 +35,7 @@ export function Ingredients({ className, handleClickIngredients, selectedIngredi
 	const hiddenIngredients = ingredients.slice(take)
 
 	return (
-		<div className={cn('space-y-3', className)}>
+		<div className={cn('', className)}>
 			<div className='flex flex-wrap gap-2'>
 				{visibleIngredients.map((ingredient, index) => (
 					<Badge
@@ -68,7 +68,7 @@ export function Ingredients({ className, handleClickIngredients, selectedIngredi
 						<Button
 							variant='outline'
 							size='sm'
-							className='group h-9 gap-2 rounded-lg border-2 border-dashed border-border/50 bg-transparent hover:border-primary/50 hover:bg-primary/5'>
+							className='group h-9 gap-2 rounded-lg border border-border/50 bg-transparent hover:border-primary/50 hover:bg-primary/5'>
 							<Plus size={14} className='text-primary transition-transform group-hover:rotate-90' />
 							<span className='text-sm font-medium'>Ещё {hiddenIngredients.length}</span>
 							<ChevronRight size={14} className='text-muted-foreground transition-transform duration-300 group-hover:translate-x-1' />

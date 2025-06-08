@@ -165,7 +165,7 @@ export function ProductFilterPanel({
 							selectedIngredients={selectedIngredients}
 							handleClickIngredients={onIngredientToggle}
 							ingredients={ingredients}
-							className='flex flex-wrap gap-2'
+							className='flex flex-wrap items-center gap-2'
 						/>
 					</div>
 					{hasActiveFilters && (
