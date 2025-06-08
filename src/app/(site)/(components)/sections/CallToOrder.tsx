@@ -4,6 +4,12 @@ import { Button, Typography } from '@/components/ui/common'
 
 import { ROUTE } from '@/shared/utils/constants/route'
 
+const stats = [
+	{ icon: '⚡', number: '30', label: 'минут доставка', suffix: 'мин' },
+	{ icon: '⭐', number: '4.9', label: 'рейтинг доставки', suffix: '/5' },
+	{ icon: '📦', number: '1000+', label: 'заказов в месяц', suffix: '+' }
+]
+
 export const CallToOrder = () => {
 	return (
 		<section className='relative overflow-hidden py-20'>
@@ -51,11 +57,7 @@ export const CallToOrder = () => {
 							</div>
 
 							<div className='mt-12 grid grid-cols-1 gap-6 sm:grid-cols-3'>
-								{[
-									{ icon: '⚡', number: '30', label: 'минут доставка', suffix: 'мин' },
-									{ icon: '⭐', number: '4.9', label: 'рейтинг доставки', suffix: '/5' },
-									{ icon: '📦', number: '1000+', label: 'заказов в месяц', suffix: '+' }
-								].map((stat, index) => (
+								{stats.map((stat, index) => (
 									<div
 										key={index}
 										className='group rounded-2xl border border-primary/10 bg-card/30 p-6 backdrop-blur-sm transition-all duration-300 hover:-translate-y-1 hover:border-primary/30 hover:bg-card/50'>
