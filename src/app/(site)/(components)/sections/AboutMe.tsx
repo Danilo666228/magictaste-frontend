@@ -1,18 +1,29 @@
 import { Clock, MapPin, Phone } from 'lucide-react'
 import Image from 'next/image'
 
-import { Typography } from '@/components/ui/common'
+import { Badge, Typography } from '@/components/ui/common'
+
+const contacts = [
+	{ icon: MapPin, label: 'Адрес', value: 'ул. Маркина 7' },
+	{ icon: Phone, label: 'Телефон', value: '+7 (123) 456-78-90' },
+	{ icon: Clock, label: 'Режим работы', value: '10:00 - 22:00' }
+]
+const benefits = [
+	{ value: '14+', label: 'лет опыта' },
+	{ value: '50k+', label: 'довольных гостей' },
+	{ value: '50+', label: 'блюд в меню' }
+]
 
 export function AboutMe() {
 	return (
 		<section className='relative overflow-hidden py-20'>
-			<div className='container mx-auto px-4'>
+			<div className='container mx-auto'>
 				<div className='mb-16 text-center'>
-					<Typography className='mb-6 inline-flex items-center gap-2 rounded-full bg-primary/10 px-4 py-2 text-sm font-medium text-primary'>
+					<Badge className='mb-6 inline-flex items-center gap-2 rounded-full bg-primary/10 px-4 py-2 text-sm font-medium text-primary hover:bg-primary/20'>
 						🏛️ Наша история
-					</Typography>
+					</Badge>
 					<Typography tag='h2' className='mb-6 text-4xl font-bold leading-tight lg:text-5xl'>
-						О нашем{' '}
+						О нашем {''}
 						<Typography className='bg-gradient-to-r from-primary to-primary/70 bg-clip-text text-transparent'>ресторане</Typography>
 					</Typography>
 				</div>
@@ -55,17 +66,10 @@ export function AboutMe() {
 						</div>
 
 						<div className='space-y-4'>
-							{[
-								{ icon: MapPin, label: 'Адрес', value: 'ул. Маркина 7' },
-								{ icon: Phone, label: 'Телефон', value: '+7 (123) 456-78-90' },
-								{ icon: Clock, label: 'Режим работы', value: '10:00 - 22:00' }
-							].map((item, index) => (
+							{contacts.map((item, index) => (
 								<div
 									key={index}
-									className='group flex items-center gap-4 rounded-2xl border border-transparent bg-card/50 p-4 backdrop-blur-sm transition-all duration-300 hover:border-primary/20 hover:bg-card/80'
-									style={{
-										animationDelay: `${index * 100}ms`
-									}}>
+									className='group flex items-center gap-4 rounded-2xl border border-transparent bg-card/50 p-4 backdrop-blur-sm transition-all duration-300 hover:border-primary/20 hover:bg-card/80'>
 									<div className='flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-to-br from-primary/20 to-primary/30 transition-transform duration-300 group-hover:scale-110'>
 										<item.icon className='h-5 w-5 text-primary' />
 									</div>
@@ -80,15 +84,11 @@ export function AboutMe() {
 						</div>
 
 						<div className='mt-8 grid grid-cols-3 gap-4'>
-							{[
-								{ number: '14+', label: 'лет опыта' },
-								{ number: '50k+', label: 'довольных гостей' },
-								{ number: '200+', label: 'блюд в меню' }
-							].map((stat, index) => (
+							{benefits.map((stat, index) => (
 								<div
 									key={index}
-									className='flex items-center gap-3 rounded-xl border border-primary/20 bg-gradient-to-br from-primary/5 to-primary/10 p-4 text-center'>
-									<Typography className='text-2xl font-bold text-primary'>{stat.number}</Typography>
+									className='flex items-center justify-center gap-3 rounded-xl border border-primary/20 bg-gradient-to-br from-primary/5 to-primary/10 p-4 text-center'>
+									<Typography className='text-2xl font-bold text-primary'>{stat.value}</Typography>
 									<Typography className='text-sm text-muted-foreground'>{stat.label}</Typography>
 								</div>
 							))}
