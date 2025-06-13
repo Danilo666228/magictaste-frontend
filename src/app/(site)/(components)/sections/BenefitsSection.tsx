@@ -1,6 +1,6 @@
 import { Clock, LucideIcon, Star, Utensils } from 'lucide-react'
 
-import { Card, CardContent, CardHeader, Typography } from '@/components/ui/common'
+import { Badge, Card, CardContent, CardHeader, Typography } from '@/components/ui/common'
 
 interface CardInfo {
 	id: number
@@ -32,29 +32,24 @@ const cardInfo: CardInfo[] = [
 
 export function BenefitsSection() {
 	return (
-		<section className='relative overflow-hidden py-20'>
+		<section className='relative py-20'>
 			<div className='container mx-auto'>
 				<div className='mb-16 text-center'>
-					<Typography className='mb-6 inline-flex items-center gap-2 rounded-full bg-primary/10 px-4 py-2 text-sm font-medium text-primary'>
+					<Badge className='mb-6 inline-flex items-center gap-2 rounded-full bg-primary/10 px-4 py-2 text-sm font-medium text-primary hover:bg-primary/20'>
 						🏆 Наши преимущества
-					</Typography>
-					<Typography tag='h2' className='mb-6 text-4xl font-bold leading-tight lg:text-5xl'>
+					</Badge>
+					<Typography tag='h1' className='mb-6 text-4xl font-bold leading-tight lg:text-5xl'>
 						Почему выбирают{' '}
 						<Typography className='bg-gradient-to-r from-primary to-primary/70 bg-clip-text text-transparent'>именно нас</Typography>
 					</Typography>
-					<Typography tag='p' className='mx-auto max-w-3xl text-lg leading-relaxed text-muted-foreground'>
+					<Typography tag='p' className='mx-auto text-lg leading-relaxed text-muted-foreground'>
 						Мы создаем не просто еду — мы создаем впечатления, которые остаются с вами надолго
 					</Typography>
 				</div>
 
 				<div className='grid grid-cols-1 gap-8 md:grid-cols-3'>
-					{cardInfo.map((card, index) => (
-						<div
-							key={card.id}
-							className='group relative'
-							style={{
-								animationDelay: `${index * 150}ms`
-							}}>
+					{cardInfo.map(card => (
+						<div key={card.id} className='group relative'>
 							<Card className='relative h-full overflow-hidden border-0 bg-card/50 shadow-lg backdrop-blur-sm transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl hover:shadow-primary/10'>
 								<CardHeader className='relative z-10 pb-4'>
 									<div className='flex items-start gap-4'>

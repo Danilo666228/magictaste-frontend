@@ -7,21 +7,19 @@ import { ROUTE } from '@/shared/utils/constants/route'
 const stats = [
 	{ icon: '⚡', number: '30', label: 'минут доставка', suffix: 'мин' },
 	{ icon: '⭐', number: '4.9', label: 'рейтинг доставки', suffix: '/5' },
-	{ icon: '📦', number: '1000+', label: 'заказов в месяц', suffix: '+' }
+	{ icon: '📦', number: '1000+', label: 'заказов в месяц' }
 ]
 
 export const CallToOrder = () => {
 	return (
 		<section className='relative overflow-hidden py-20'>
 			<div className='absolute inset-0 -z-10'>
-				<div className='bg-primary/8 absolute left-1/4 top-10 h-64 w-64 animate-pulse rounded-full blur-3xl'></div>
-				<div
-					className='bg-primary/6 absolute bottom-10 right-1/4 h-80 w-80 animate-pulse rounded-full blur-3xl'
-					style={{ animationDelay: '1s' }}></div>
+				<div className='bg-primary/8 absolute left-1/4 top-10 h-64 w-64 animate-pulse rounded-full blur-3xl' />
+				<div className='bg-primary/6 absolute bottom-10 right-1/4 h-80 w-80 animate-pulse rounded-full blur-3xl' />
 				<div className='bg-primary/4 absolute left-1/2 top-1/2 h-96 w-96 -translate-x-1/2 -translate-y-1/2 rounded-full blur-3xl'></div>
 			</div>
 
-			<div className='container mx-auto px-4'>
+			<div className='container mx-auto'>
 				<div className='relative'>
 					<div className='relative overflow-hidden rounded-3xl border border-primary/20 bg-gradient-to-br from-card/80 to-card/40 p-12 text-center shadow-2xl shadow-primary/10 backdrop-blur-lg'>
 						<div className='absolute inset-0 opacity-5'>
@@ -51,7 +49,7 @@ export const CallToOrder = () => {
 										size='lg'
 										variant='default'
 										className='group relative overflow-hidden bg-gradient-to-r from-primary to-primary/90 px-8 py-4 text-lg shadow-lg transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-primary/30'>
-										<span className='relative z-10 flex items-center gap-2'>🛒 Заказать доставку</span>
+										<Typography className='relative z-10 flex items-center gap-2'>🛒 Заказать доставку</Typography>
 									</Button>
 								</Link>
 							</div>

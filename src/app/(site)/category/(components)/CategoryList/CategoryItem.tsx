@@ -46,7 +46,7 @@ export function CategoryItem({ category }: CategoryItemProps) {
 				</div>
 			</div>
 
-			<ProductList take={5} className='[500px]:grid-cols-2 grid-cols-1' products={category.products} />
+			<ProductList take={5} className='' products={category.products} />
 		</div>
 	)
 }

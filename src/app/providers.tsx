@@ -29,5 +29,3 @@ export const Providers = ({ children }: ProvidersProps) => {
 		</ErrorBoundary>
 	)
 }
-
-export default Providers

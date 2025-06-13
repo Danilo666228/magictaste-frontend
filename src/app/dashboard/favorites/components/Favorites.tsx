@@ -3,6 +3,8 @@
 import { Heart } from 'lucide-react'
 import { useState } from 'react'
 
+import { ProductList } from '@/app/(site)/category/(components)/ProductList'
+
 import { SearchInput } from '@/components/shared/search-input/SearchInput'
 import { Typography } from '@/components/ui/common'
 
@@ -10,12 +12,12 @@ import { useFavorite } from '@/hooks/useFavorite'
 
 import { useDebounceValue } from '@/shared/hooks'
 
-import { FavoriteList } from './FavoriteList'
-
 export function Favorites() {
 	const [searchValue, setSearchValue] = useState<string>('')
 	const debouncedSearch = useDebounceValue(searchValue, 500)
 	const { favorites } = useFavorite(debouncedSearch)
+
+	const faviritesProduct = favorites?.data.map(favorites => favorites.product)
 
 	return (
 		<div className='container mx-auto'>
@@ -27,7 +29,7 @@ export function Favorites() {
 				<SearchInput placeholder='Введите название товара' searchValue={searchValue} setSearchValue={setSearchValue} />
 			</div>
 			<div className='flex flex-col gap-4'>
-				<FavoriteList favorites={favorites?.data} />
+				<ProductList products={faviritesProduct} />
 			</div>
 		</div>
 	)

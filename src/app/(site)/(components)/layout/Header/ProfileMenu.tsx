@@ -24,6 +24,7 @@ import { useProfile } from '@/shared/utils/contexts'
 export function ProfileMenu() {
 	const router = useRouter()
 	const { logout, profile, profileQuery } = useProfile()
+
 	return profileQuery.isPending ? (
 		<Loader2 size={32} className='animate-spin text-primary' />
 	) : (

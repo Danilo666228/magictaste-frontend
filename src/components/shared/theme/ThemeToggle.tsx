@@ -24,7 +24,7 @@ export const ThemeToggle = (props: ThemeButtonProps) => {
 					clipPath: [`circle(0px at ${x}px ${y}px)`, `circle(${radius}px at ${x}px ${y}px)`]
 				},
 				{
-					duration: 700,
+					duration: 800,
 					easing: 'ease-in-out',
 					pseudoElement: '::view-transition-new(root)'
 				}

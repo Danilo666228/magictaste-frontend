@@ -6,6 +6,8 @@ import { Typography } from '@/components/ui/common'
 
 import { NO_INDEX_PAGE } from '@/shared/utils/constants/seo'
 
+import { Logo } from '../(site)/(components)/layout'
+
 import { CheckoutForm } from './(components)/CheckoutForm/CheckoutForm'
 import { OrderList } from './(components)/OrderList'
 
@@ -20,7 +22,7 @@ export default async function CheckoutPage() {
 				<div className='mx-auto flex max-w-6xl items-center justify-between px-4 md:px-6'>
 					<div className='flex items-center gap-4'>
 						<div className='relative'>
-							<Image src={'/logo.png'} alt='Logo' width={64} height={64} className='rounded-xl shadow-lg' />
+							<Logo />
 							<div className='absolute -right-1 -top-1 flex h-6 w-6 animate-pulse items-center justify-center rounded-full bg-primary'>
 								<Sparkles className='h-3 w-3 text-primary-foreground' />
 							</div>

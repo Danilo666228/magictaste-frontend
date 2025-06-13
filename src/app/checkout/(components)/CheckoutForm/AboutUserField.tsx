@@ -82,7 +82,18 @@ export function AboutUserField({ form }: AboutUserProps) {
 								<FormMessage />
 							</div>
 							<FormControl>
-								<PhoneInput countries={[['Russia', 'ru', '7', '(...) ...-..-..', 1]]} defaultCountry='ru' {...field} />
+								<PhoneInput
+									inputStyle={{ backgroundColor: 'transparent', color: 'var(--foreground)' }}
+									countrySelectorStyleProps={{
+										buttonStyle: {
+											backgroundColor: 'transparent',
+											color: 'var(--foreground)'
+										}
+									}}
+									countries={[['Russia', 'ru', '7', '(...) ...-..-..', 1]]}
+									defaultCountry='ru'
+									{...field}
+								/>
 							</FormControl>
 							<FormDescription className='flex items-center gap-2 text-xs'>
 								<Typography className='h-1 w-1 rounded-full bg-primary'></Typography>

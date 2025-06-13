@@ -26,8 +26,6 @@ import { useChangeProfileForm } from '../../(hooks)/useChangeProfileForm'
 export function ChangeProfileForm() {
 	const { form, isPending, onSubmit } = useChangeProfileForm()
 
-	if (isPending) return <ChangeProfileFormSkeleton />
-
 	const { isDirty, isValid } = form.formState
 
 	return (

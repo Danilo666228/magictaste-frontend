@@ -6,7 +6,7 @@ import Image from 'next/image'
 import { usePathname } from 'next/navigation'
 import { useEffect, useState } from 'react'
 
-import { Button, Container, Typography } from '@/components/ui/common'
+import { Button, Typography } from '@/components/ui/common'
 
 import { useCart } from '@/hooks/useCart'
 import { useFavorite } from '@/hooks/useFavorite'
@@ -41,8 +41,8 @@ export function ProductInfo({ product }: ProductInfoProps) {
 	}, [])
 
 	return (
-		<Container className='mx-auto my-12 max-w-7xl'>
-			<div className='overflow-hidden rounded-3xl bg-background shadow-xl'>
+		<div className='mx-auto my-12 max-w-7xl'>
+			<div className='overflow-hidden rounded-3xl border bg-background shadow-inner'>
 				<div className='grid grid-cols-1 gap-8 p-6 md:grid-cols-2 md:p-8 lg:grid-cols-[1fr_1.5fr]'>
 					<div className='space-y-6'>
 						<div className='group relative aspect-square overflow-hidden rounded-2xl'>
@@ -113,7 +113,7 @@ export function ProductInfo({ product }: ProductInfoProps) {
 									<Button
 										variant={'outline'}
 										onClick={decreaseQuantity}
-										className='flex h-10 w-10 items-center justify-center border-none text-gray-500 transition-colors hover:bg-gray-100'
+										className='flex h-10 w-10 items-center justify-center border-none text-gray-500 transition-colors'
 										disabled={quantity <= 1}>
 										<Minus />
 									</Button>
@@ -121,7 +121,7 @@ export function ProductInfo({ product }: ProductInfoProps) {
 									<Button
 										variant={'outline'}
 										onClick={increaseQuantity}
-										className='flex h-10 w-10 items-center justify-center border-none text-gray-500 transition-colors hover:bg-gray-100'>
+										className='flex h-10 w-10 items-center justify-center border-none text-gray-500 transition-colors'>
 										<Plus />
 									</Button>
 								</div>
@@ -151,6 +151,6 @@ export function ProductInfo({ product }: ProductInfoProps) {
 					</div>
 				</div>
 			</div>
-		</Container>
+		</div>
 	)
 }

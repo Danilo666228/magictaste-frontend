@@ -39,10 +39,10 @@ export function OrderItem({ order }: OrderItemProps) {
 
 	return (
 		<Accordion type='multiple' className='my-6'>
-			<AccordionItem value={order.id} className='border bg-white'>
+			<AccordionItem value={order.id} className='border'>
 				<AccordionTrigger>
 					<div className='flex w-full flex-col items-start gap-4 p-2 sm:flex-row sm:items-center'>
-						<Badge variant='outline' className={`flex items-center gap-2 rounded ${info.bgColor} ${info.textColor}`}>
+						<Badge variant='outline' className={`flex items-center gap-2 rounded ${info.textColor}`}>
 							<info.icon size={16} />
 							<Typography className='text-sm font-medium'>{info.label}</Typography>
 						</Badge>
@@ -74,9 +74,9 @@ export function OrderItem({ order }: OrderItemProps) {
 					</div>
 				</AccordionTrigger>
 
-				<AccordionContent className='flex flex-col gap-3 bg-white'>
+				<AccordionContent className='flex flex-col gap-3'>
 					{order.items.slice(0, isExpanded ? order.items.length : 3).map(item => (
-						<div key={item.id} className='flex flex-col items-start gap-4 rounded-lg bg-white p-4 sm:flex-row sm:items-center'>
+						<div key={item.id} className='flex flex-col items-start gap-4 rounded-lg p-4 sm:flex-row sm:items-center'>
 							<div className='relative h-20 w-20 overflow-hidden rounded-md bg-muted'>
 								<Image
 									src={getMediaSource(item.productImageUrl)}

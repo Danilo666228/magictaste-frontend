@@ -88,7 +88,7 @@ export function OrderList() {
 						</Container>
 
 						{bonusPercentage > 0 && (
-							<div className='flex w-full items-center justify-between rounded-lg bg-green-50 px-3 py-2'>
+							<div className='flex w-full items-center justify-between rounded-lg px-3 py-2'>
 								<div className='flex items-center gap-2'>
 									<Gift className='h-4 w-4 text-green-600' />
 									<Typography className='font-medium text-green-700'>Скидка ({bonusPercentage}%)</Typography>
