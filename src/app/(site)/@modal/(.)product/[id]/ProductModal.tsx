@@ -116,12 +116,7 @@ export function ProductModal({ product }: ProductModalProps) {
 									<Button
 										onClick={handleClickAddFavorite}
 										variant='outline'
-										className={cn(
-											'h-12 w-12 rounded-xl border-2 transition-all duration-300',
-											isActiveFavorite(profile, product)
-												? 'border-red-200 bg-red-50 hover:bg-red-100'
-												: 'border-border hover:border-red-200 hover:bg-red-50'
-										)}
+										className={cn('h-12 w-12 rounded-xl border-2 transition-all duration-300')}
 										size='icon'>
 										<Heart
 											className={cn(

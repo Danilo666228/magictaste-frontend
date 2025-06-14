@@ -103,7 +103,7 @@ export function ProductFilterPanel({
 				)}
 			</div>
 
-			<div className='rounded-2xl border border-border/50 bg-card/50 p-6 backdrop-blur-sm transition-all duration-300 hover:shadow-lg'>
+			<div className='rounded-2xl border border-border/50 bg-card/50 p-6 backdrop-blur-sm transition-all duration-300'>
 				<div className='relative space-y-6'>
 					<div className='space-y-2'>
 						<div className='flex items-center gap-2'>

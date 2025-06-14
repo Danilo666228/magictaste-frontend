@@ -16,7 +16,7 @@ export function ProductSimilar({ similarProducts }: ProductSimilarProps) {
 	return (
 		<div className='my-10 flex flex-col gap-3'>
 			<Typography className='text-2xl font-bold'>Похожие продукты</Typography>
-			<ProductList products={similarProducts} />
+			<ProductList take={4} products={similarProducts} />
 		</div>
 	)
 }
