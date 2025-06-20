@@ -28,7 +28,7 @@ export default async function DashboardLayout({ children }: { children: ReactNod
 				</header>
 				<Separator />
 				<ScrollArea className='flex-1'>
-					<main className='px-[70px] py-5'>{children}</main>
+					<main className='px-[30px] py-5'>{children}</main>
 				</ScrollArea>
 			</SidebarInset>
 		</SidebarProvider>
