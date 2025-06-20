@@ -12,8 +12,6 @@
 - 📱 **Адаптивный дизайн** - Идеально работает на всех устройствах
 - ⚡ **Высокая производительность** - Быстрая загрузка и отзывчивость
 - 🗺️ **Интеграция с картами** - Яндекс.Карты для отображения местоположения
-- 🔄 **Real-time обновления** - Актуальная информация о продукции
-- 📞 **Удобные контакты** - Легкий способ связаться с компанией
 
 ## 🛠️ Технологический стек
 
@@ -21,12 +19,12 @@
 
 | Технология                                                                                          | Описание                                             | Версия    |
 | --------------------------------------------------------------------------------------------------- | ---------------------------------------------------- | --------- |
-| ![Next.js](https://img.shields.io/badge/Next.js-000?logo=nextdotjs&logoColor=fff)                   | **Next.js 14** - React фреймворк для production      | `^14.0.0` |
-| ![React](https://img.shields.io/badge/React-61DAFB?logo=react&logoColor=000)                        | **React 19** - Библиотека для создания UI            | `^18.0.0` |
+| ![Next.js](https://img.shields.io/badge/Next.js-000?logo=nextdotjs&logoColor=fff)                   | **Next.js 15** - React фреймворк для production      | `^15.0.0` |
+| ![React](https://img.shields.io/badge/React-61DAFB?logo=react&logoColor=000)                        | **React 19** - Библиотека для создания UI            | `^19.0.0` |
 | ![TanStack Query](https://img.shields.io/badge/TanStack_Query-FF4154?logo=reactquery&logoColor=fff) | **TanStack Query** - Управление серверным состоянием | `^5.0.0`  |
 | ![Zustand](https://img.shields.io/badge/Zustand-443E38?logo=zustand&logoColor=fff)                  | **Zustand** - Легковесное управление состоянием      | `^4.0.0`  |
 | ![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?logo=typescript&logoColor=fff)         | **TypeScript** - Типизированный JavaScript           | `^5.0.0`  |
-| ![Tailwind](https://img.shields.io/badge/Tailwind_CSS-06B6D4?logo=tailwindcss&logoColor=fff)        | **Tailwind CSS** - Utility-first CSS фреймворк       | `^3.0.0`  |
+| ![Tailwind](https://img.shields.io/badge/Tailwind_CSS-06B6D4?logo=tailwindcss&logoColor=fff)        | **Tailwind CSS V3** - Utility-first CSS фреймворк       | `^3.0.0`  |
 
 </div>
 
@@ -52,13 +50,10 @@
 
 ## 📞 Контакты
 
-- 🌐 **Веб-сайт**: [magictaste.ru](https://magictaste.ru)
-- 📧 **Email**: info@magictaste.ru
-- 📱 **Telegram**: @magictaste_support
-
+- 🌐 **Веб-сайт**: [magictaste.ru](https://kovinskiymagictaste.ru)
 ---
 
 <div align="center">
   <p>Сделано с ❤️ для любителей вкусных пельменей</p>
-  <p>© 2024 MagicTaste. Все права защищены.</p>
+  <p>© 2025 MagicTaste. Все права защищены.</p>
 </div>
