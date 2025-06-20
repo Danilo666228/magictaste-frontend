@@ -46,7 +46,7 @@ export function StatisticContainer({ ...props }: StatisticContainerProps) {
 					<CardTitle>Средняя оценка по отзывам</CardTitle>
 				</CardHeader>
 				<CardContent className='flex flex-1 items-center justify-center p-0'>
-					<Typography className='text-2xl font-semibold'>{products?.data.avarageRating} </Typography>
+					<Typography className='text-2xl font-semibold'>{Math.round(products?.data.avarageRating || 0)} </Typography>
 				</CardContent>
 			</Card>
 		</section>
