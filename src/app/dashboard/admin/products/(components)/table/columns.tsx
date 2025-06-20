@@ -61,22 +61,14 @@ export const columns: ColumnDef<ProductColumn>[] = [
 		accessorKey: 'category.title',
 		header: ({ column }) => <SortableHeader column={column}>Категория</SortableHeader>
 	},
-	{
-		accessorKey: 'createdAt',
-		cell: ({ getValue }) => {
-			const formatted = useFormatter()
-			return formatted.dateTime(new Date(getValue<string>()))
-		},
-		header: ({ column }) => <SortableHeader column={column}>Дата создания</SortableHeader>
-	},
-	{
-		accessorKey: 'updatedAt',
-		cell: ({ getValue }) => {
-			const formatted = useFormatter()
-			return formatted.dateTime(new Date(getValue<string>()))
-		},
-		header: ({ column }) => <SortableHeader column={column}>Дата обновления</SortableHeader>
-	},
+	// {
+	// 	accessorKey: 'createdAt',
+	// 	cell: ({ getValue }) => {
+	// 		const formatted = useFormatter()
+	// 		return formatted.dateTime(new Date(getValue<string>()))
+	// 	},
+	// 	header: ({ column }) => <SortableHeader column={column}>Дата создания</SortableHeader>
+	// },
 	{
 		accessorKey: 'onSale',
 		cell: ({ getValue }) =>
