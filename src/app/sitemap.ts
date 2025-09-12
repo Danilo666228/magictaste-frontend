@@ -7,7 +7,7 @@ import { CLIENT_URL } from '@/shared/utils/constants'
 async function getCategories() {
 	try {
 		return await api.get<{ categories: Category[] }>('/category')
-	} catch (error) {
+	} catch {
 		return { data: { categories: [] } }
 	}
 }

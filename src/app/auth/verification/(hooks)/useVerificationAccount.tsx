@@ -9,7 +9,7 @@ export function useVerificationAccount(token: string | null) {
 	const router = useRouter()
 	const { setIsAuth } = useProfile()
 
-	const { isError, isSuccess, data, isPending } = useGetVerificationQuery({
+	const { isError, isSuccess, isPending } = useGetVerificationQuery({
 		config: {
 			params: { token }
 		},

@@ -76,8 +76,8 @@ export function EnableTotp() {
 				<div className='space-y-4'>
 					<div className='rounded-lg border bg-muted/20 p-3'>
 						<p className='text-sm leading-relaxed text-muted-foreground'>
-							Отсканируйте QR-код с помощью приложения аутентификации (Google Authenticator, Authy) и введите 6-значный код для
-							подтверждения.
+							Отсканируйте QR-код с помощью приложения аутентификации (Google Authenticator, Authy) и введите 6-значный код
+							для подтверждения.
 						</p>
 					</div>
 
@@ -109,7 +109,9 @@ export function EnableTotp() {
 					<Container className='rounded-lg bg-muted/20 p-3'>
 						<div className='flex flex-col gap-2'>
 							<span className='text-center text-sm font-medium'>Секретный код:</span>
-							<div className='break-all rounded bg-black/5 p-2 text-center text-sm'>{twoFactorAuth?.data.secret || ''}</div>
+							<div className='break-all rounded bg-black/5 p-2 text-center text-sm'>
+								{twoFactorAuth?.data.secret || ''}
+							</div>
 							<span className='text-center text-xs text-muted-foreground'>
 								Используйте этот код, если не можете отсканировать QR-код
 							</span>

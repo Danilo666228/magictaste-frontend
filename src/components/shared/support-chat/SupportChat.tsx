@@ -115,7 +115,9 @@ export function SupportChat() {
 				setSupport(null)
 			} else {
 				const lastAdminMessage = response.history.reverse().find(msg => {
-					return msg.sender.roles?.some(role => role.name === 'ADMIN' || role.name === 'SUPER_ADMIN' || role.name === 'SUPPORT')
+					return msg.sender.roles?.some(
+						role => role.name === 'ADMIN' || role.name === 'SUPER_ADMIN' || role.name === 'SUPPORT'
+					)
 				})
 				if (lastAdminMessage) {
 					setSupport(lastAdminMessage.sender)
@@ -153,7 +155,7 @@ export function SupportChat() {
 
 		const localMessage: Message = {
 			id: messageId,
-			message: message,
+			message,
 			senderId: profile.id,
 			sender: profile,
 			receiverId: support?.id || 'support',
@@ -164,7 +166,11 @@ export function SupportChat() {
 		setMessages(prev => [...prev, localMessage])
 		setMessage('')
 
-		socket.emit('sendMessage', messageData, (response: { success: boolean; message: Message }) => {})
+		socket.emit('sendMessage', messageData, (response: { success: boolean; message: Message }) => {
+			if (response.success) {
+				setMessages(prev => [...prev, response.message])
+			}
+		})
 	}
 
 	if (!profile) {
@@ -191,7 +197,9 @@ export function SupportChat() {
 				{support ? (
 					<div className='flex items-center gap-3'>
 						<Avatar className='h-8 w-8 border-2 border-white/30'>
-							<AvatarFallback className='bg-blue-400 text-white'>{support.userName.slice(0, 2).toUpperCase()}</AvatarFallback>
+							<AvatarFallback className='bg-blue-400 text-white'>
+								{support.userName.slice(0, 2).toUpperCase()}
+							</AvatarFallback>
 						</Avatar>
 						<div className='flex flex-col'>
 							<Typography className='font-medium'>{support.userName}</Typography>
@@ -233,7 +241,9 @@ export function SupportChat() {
 							<MessageCircle className='h-10 w-10 text-primary' />
 						</div>
 						<Typography className='font-medium text-gray-800'>Добро пожаловать в чат поддержки</Typography>
-						<Typography className='text-gray-500'>Нажмите "Запросить поддержку", чтобы начать общение с менеджером</Typography>
+						<Typography className='text-gray-500'>
+							Нажмите &quot;Запросить поддержку&quot;, чтобы начать общение с менеджером
+						</Typography>
 					</div>
 				) : (
 					<div className='flex flex-col space-y-4 p-4'>
@@ -242,10 +252,16 @@ export function SupportChat() {
 								key={msg.id}
 								className={cn(
 									'flex items-start gap-2',
-									msg.senderId === 'system' ? 'justify-center' : msg.senderId === profile.id ? 'flex-row-reverse' : 'flex-row'
+									msg.senderId === 'system'
+										? 'justify-center'
+										: msg.senderId === profile.id
+											? 'flex-row-reverse'
+											: 'flex-row'
 								)}>
 								{msg.senderId === 'system' ? (
-									<div className='my-2 rounded-lg bg-gray-100 px-4 py-2 text-center text-sm text-gray-600'>{msg.message}</div>
+									<div className='my-2 rounded-lg bg-gray-100 px-4 py-2 text-center text-sm text-gray-600'>
+										{msg.message}
+									</div>
 								) : (
 									<>
 										<Avatar
@@ -254,7 +270,11 @@ export function SupportChat() {
 												msg.senderId === profile.id ? 'border-blue-200' : 'border-indigo-200 bg-indigo-100'
 											)}>
 											<AvatarImage
-												src={msg.senderId === profile.id ? getMediaSource(profile.picture) : getMediaSource(support?.picture)}
+												src={
+													msg.senderId === profile.id
+														? getMediaSource(profile.picture)
+														: getMediaSource(support?.picture)
+												}
 											/>
 											<AvatarFallback className='bg-indigo-600 text-white'>
 												{msg.sender?.userName?.slice(0, 2).toUpperCase()}

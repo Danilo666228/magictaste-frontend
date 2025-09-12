@@ -1,10 +1,19 @@
 'use client'
 
 import { SearchX } from 'lucide-react'
-import { useState } from 'react'
+import { useMemo, useState } from 'react'
 
 import { SearchInput } from '@/components/shared/search-input/SearchInput'
-import { Select, SelectContent, SelectGroup, SelectItem, SelectLabel, SelectTrigger, SelectValue, Typography } from '@/components/ui/common'
+import {
+	Select,
+	SelectContent,
+	SelectGroup,
+	SelectItem,
+	SelectLabel,
+	SelectTrigger,
+	SelectValue,
+	Typography
+} from '@/components/ui/common'
 
 import { useGetOrdersQuery } from '@/shared/api/hooks/order/useGetOrdersQuery'
 
@@ -19,20 +28,26 @@ export function OrderList() {
 
 	const hasOrders = orders?.data && orders.data.length > 0
 
-	const filterOrders = hasOrders
-		? orders.data.filter(order => order.items.some(item => item.productTitle.toLowerCase().includes(searchValue.toLowerCase())))
-		: []
+	const filterOrders = useMemo(() => {
+		return hasOrders
+			? orders.data.filter(order =>
+					order.items.some(item => item.productTitle.toLowerCase().includes(searchValue.toLowerCase()))
+				)
+			: []
+	}, [orders, searchValue, hasOrders])
 
-	const sortedOrders = [...filterOrders].sort((a, b) => {
-		switch (sortByDate) {
-			case 'date-asc':
-				return new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()
-			case 'date-desc':
-				return new Date(a.createdAt).getTime() - new Date(b.createdAt).getTime()
-			default:
-				return 0
-		}
-	})
+	const sortedOrders = useMemo(() => {
+		return [...filterOrders].sort((a, b) => {
+			switch (sortByDate) {
+				case 'date-asc':
+					return new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()
+				case 'date-desc':
+					return new Date(a.createdAt).getTime() - new Date(b.createdAt).getTime()
+				default:
+					return 0
+			}
+		})
+	}, [filterOrders, sortByDate])
 
 	return (
 		<div>
