@@ -4,7 +4,13 @@ import { ReactNode } from 'react'
 import { ErrorBoundary } from '@/components/shared'
 import { Toaster } from '@/components/ui/elements'
 
-import { ConfigProvider, FramerMotionProvider, ProfileProvider, TanStackQueryProvider, YandexMapsProvider } from '@/shared/utils/contexts'
+import {
+	ConfigProvider,
+	FramerMotionProvider,
+	ProfileProvider,
+	TanStackQueryProvider,
+	YandexMapsProvider
+} from '@/shared/utils/contexts'
 
 interface ProvidersProps {
 	children: ReactNode

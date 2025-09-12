@@ -8,5 +8,9 @@ export interface NextIntlProviderProps extends ComponentProps<typeof NextIntlCli
 }
 
 export function NextIntlProvider({ children, messages, ...props }: NextIntlProviderProps) {
-	return <NextIntlClientProvider {...props}>{children}</NextIntlClientProvider>
+	return (
+		<NextIntlClientProvider messages={messages} {...props}>
+			{children}
+		</NextIntlClientProvider>
+	)
 }
